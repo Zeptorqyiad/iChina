@@ -1,0 +1,83 @@
+.callback-card{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: vw(48px);
+    padding-block: vw(24px);
+    padding-left: vw(48px);
+    padding-right: vw(24px);
+    background-color: var(--color1-lighter);
+    @include border-r(12px);
+
+    @include HD{
+        padding-block: vwh(24px);
+        padding-left: vwh(48px);
+        padding-right: vwh(24px);
+        gap: vwh(48px);
+    }
+    @include Tablet{
+        flex-wrap: wrap;
+        padding: vwt(20px);
+        gap: vwt(20px);
+    }
+    @include Mobile{
+        flex-wrap: wrap;
+        padding: vwm(20px);
+        gap: vwm(20px);
+    }
+
+    &__title{
+        @include h4;
+        line-height: 120%;
+        color: var(--gray-darker);
+        max-width: vw(300px);
+
+        @include HD{
+            max-width: vwh(300px);
+        }
+        @include Tablet{
+            max-width: 100%;
+        }
+        @include Mobile{
+            max-width: 100%;
+        }
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: vw(40px);
+        width: 100%;
+        background-color: var(--gray-white);
+        padding-block: vw(24px);
+        padding-left: vw(40px);
+        padding-right: vw(24px);
+        @include border-r(12px);
+
+        @include HD{
+            padding-block: vwh(24px);
+            padding-left: vwh(40px);
+            padding-right: vwh(24px);
+            gap: vwh(40px);
+        }
+        @include Tablet{
+            padding: vwt(20px);
+            gap: vwt(40px);
+        }
+        @include Mobile{
+            flex-wrap: wrap;
+            padding: vwm(20px);
+            gap: vwm(20px);
+        }
+
+        &-desc{
+            @include t2;
+            color: var(--gray-dark);
+        }
+        &-button-callback{
+            white-space: nowrap;
+        }
+    }
+}

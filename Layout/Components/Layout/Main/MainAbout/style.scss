@@ -1,8 +1,6 @@
 .main-about {
 	@include spacing(padding-block, 100px, 80px, 60px, 60px);
 
-	&__container {}
-
 	&__content {
 		display: flex;
 		flex-direction: column;
@@ -52,5 +50,86 @@
 		&.third { grid-area: third; }
 		&.fouth { grid-area: fouth; }
 		&.fivth { grid-area: fivth; }
+	}
+
+	&__why {
+		@include spacing(margin-top, 60px);
+		display: flex;
+		flex-direction: row;
+		@include spacing(gap, 40px);
+
+		&-ls {
+			display: flex;
+			flex-direction: column;
+			@include spacing(gap, 28px);
+			@include spacing(flex-basis, 690px);
+			flex-shrink: 0;
+
+			&--title {
+				@include h4;
+				color: var(--gray-black);
+			}
+		}
+
+		&--list {
+			display: flex;
+			flex-direction: column;
+			@include spacing(gap, 8px);
+		}
+
+		&--item {
+			@include t2;
+			color: var(--gray-darker);
+			text-align: left;
+			@include spacing(padding-left, 24px);
+			position: relative;
+			display: flex;
+			align-items: center;
+
+			@include HD {
+				@include t3;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				@include spacing(top, 6px);
+				@include spacing(width, 12px);
+				@include spacing(height, 12px);
+				background-image: url("data:image/svg+xml,%3Csvg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L6 10L15 1' stroke='%23EFBC38' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+				background-repeat: no-repeat;
+				background-size: 100%;
+				background-position: center;
+			}
+		}
+
+		&-buttons {
+			@include spacing(margin-top, 40px);
+			display: flex;
+			flex-direction: row;
+			@include spacing(gap, 10px);
+		}
+
+		&-button {
+			&--about {
+				flex: 1;
+			}
+		}
+
+		&-rs {
+			display: flex;
+			flex-direction: column;
+
+			&--text {
+				@include t2;
+				color: var(--gray-darker);
+				@include spacing(margin-top, 20px);
+			}
+		}
+
+		&-separator {
+			@include spacing(margin-block, 32px);
+		}
 	}
 }
