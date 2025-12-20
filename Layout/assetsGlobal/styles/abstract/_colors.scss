@@ -1,0 +1,76 @@
+:root {
+    /*----------GRAY-----------*/
+    --gray-black: #0D0D0D;
+    --gray-darker: #262626;
+    --gray-dark: #4D4D4D;
+    --gray-medium: #919599;
+    --gray-light: #E6E7E9;
+    --gray-lighter: #F1F1F2;
+    --gray-white: #FFFFFF;
+
+    /*----------COLOR1-----------*/
+    --color1-darker: #12354D;
+    --color1-dark: #315B79;
+    --color1-main: #223863;
+    --color1-light: #376DD7;
+    --color1-lighter: #F0F5F9;
+
+    /*----------COLOR2-----------*/
+    --color2-darker: #884703;
+    --color2-dark: #C06D16;
+    --color2-main: #E28E36;
+    --color2-light: #EFBC38;
+    --color2-lighter: #FFE296;
+
+    /*----------GRADIENT-----------*/
+    --gradient1-dark: linear-gradient(90deg, #223863 0%, #315B79 100%);
+    --gradient1-main: linear-gradient(90deg, #EFBC38 0%, #E28E36 100%);
+    --gradient1-light: linear-gradient(90deg, #4DC3FF 0%, #376DD7 100%);
+
+    /*----------BACKGROUND-----------*/
+    --bg-light: #FFFFFF;
+    --bg-dark: #262626;
+    --bg-gradient: linear-gradient(90deg, #D9F2FF 0%, #B6D4F2 100%);
+
+    /*----------ERROR-----------*/
+    --error-dark: #CC2929;
+    --error-medium: #FFA6A6;
+    --error-light: #FFCCCC;
+
+    /*----------ALERT-----------*/
+    --alert-dark: #737300;
+    --alert-medium: #D9D998;
+    --alert-light: #F2F2AA;
+
+    /*----------SUCCESS-----------*/
+    --success-dark: #0E8C0E;
+    --success-medium: #98D998;
+    --success-light: #C3E5C3;
+
+    /*----------DISABLE-----------*/
+    --disable-dark: #343434;
+    --disable-medium: #919599;
+    --disable-light: #DFE4EB;
+
+    /*----------TRANSPARENT-----------*/
+    --transparent: transparent;
+
+    /*----------SOCIALS-----------*/
+    --socials-in: radial-gradient(230.93% 230.93% at 102.01% 2.03%, #F9ED32 0%, #EE2A7B 36%, #D22A8A 44%, #8B2AB2 60%, #1B2AF0 83%, #002AFF 88%);
+    --socials-wt: #48C95F;
+    --socials-tg: #27A6E5;
+    --socials-vk: #0077FF;
+    --socials-ya: #FC3F1D;
+
+    /*----------UNIQUE-----------*/
+    --uniq-dark: #332E31;
+    --uniq-green: #1F6739;
+    --uniq-blue: #515ECC;
+    --uniq-violet: #7D31DE;
+    --uniq-purple: #C279A3;
+    --uniq-pink: #F9AFCA;
+    --uniq-red: #E34530;
+    --uniq-orange: #E57A45;
+    --uniq-gold: #D9BA21;
+    --uniq-light: #D9D9D7;
+}

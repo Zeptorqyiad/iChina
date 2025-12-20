@@ -1,0 +1,74 @@
+.header {
+	&.absolute {
+		background: transparent;
+		position: absolute;
+		@include spacing(top, 30px);
+		left: 0;
+
+		& .header__content {
+			@include spacing(width, 1420px);
+
+		}
+	}
+
+	&__container {
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		@include spacing(padding-block, 12px);
+
+		&-ls {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			@include spacing(gap, 90px);
+		}
+		&-rs {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			@include spacing(gap, 40px);
+		}
+	}
+	&__burger {}
+
+	&__logo {
+		@include spacing(width, 150px);
+		@include spacing(height, 40px);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		@include spacing(gap, 4px);
+
+		&-callback {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			@include spacing(gap, 8px);
+		}
+
+		&--link {
+			@include t3;
+			color: var(--gray-light);
+			@include spacing(padding-block, 10px);
+			@include spacing(padding-inline, 8px);
+		}
+	}
+
+	&__button {
+
+	}
+}

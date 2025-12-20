@@ -1,0 +1,9 @@
+/.idea/*
+!/.idea/
+!/.idea/icon.svg
+/uf/*
+!/uf/.gitkeep
+vendor
+docker/data
+cache
+.DS_Store

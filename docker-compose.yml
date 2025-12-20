@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  php:
+    build: docker/php
+    volumes:
+      - ./:/var/www/html
+      - /var/www:/var/www
+    ports:
+      - "480:80"
+
+  db:
+    build: docker/mysql
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+    ports:
+      - "33066:3306"
+    environment:
+      MYSQL_DATABASE: simflex
+      MYSQL_USER: simflex
+      MYSQL_PASSWORD: simflex
+      MYSQL_ROOT_PASSWORD: root
+      VIRTUAL_HOST: db
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    ports:
+      - "4444:4444"

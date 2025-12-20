@@ -1,0 +1,48 @@
+.separator {
+    flex-shrink: 0;
+
+    /*----------ORIENTATION-----------*/
+    &-orientation_horizontal {
+        width: 100%;
+        height: max(#{vw(1px), 1px});
+
+        @include HD {
+            height: max(#{vwh(1px), 1px});
+        }
+        @include Tablet {
+            height: max(#{vwt(1px), 1px});
+        }
+        @include Mobile {
+            height: max(#{vwm(1px), 1px});
+        }
+    }
+
+    &-orientation_vertical {
+        align-self: stretch;
+        height: 100%;
+        width: max(#{vw(1px), 1px});
+
+        @include HD {
+            width: max(#{vwh(1px), 1px});
+        }
+        @include Tablet {
+            width: max(#{vwt(1px), 1px});
+        }
+        @include Mobile {
+            width: max(#{vwm(1px), 1px});
+        }
+    }
+
+    /*----------THEME-----------*/
+    &-theme_lighter {
+        background: var(--gray-lighter);
+    }
+
+    &-theme_medium {
+        background: var(--gray-medium);
+    }
+
+    &-theme_main {
+        background: var(--color2-main);
+    }
+}

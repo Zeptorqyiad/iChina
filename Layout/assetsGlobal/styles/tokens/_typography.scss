@@ -1,0 +1,116 @@
+/*----------HEADINGS-----------*/
+@mixin h1 {
+    @include spacing(font-size, 64px, 64px, 42px, 42px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@mixin h2 {
+    @include spacing(font-size, 42px, 42px, 28px, 28px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@mixin h3 {
+    @include spacing(font-size, 28px, 28px, 24px, 24px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@mixin h4 {
+    @include spacing(font-size, 24px, 24px, 20px, 20px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@mixin h5 {
+    @include spacing(font-size, 20px, 20px, 16px, 16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@mixin h6 {
+    @include spacing(font-size, 16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+/*----------BODY TEXT-----------*/
+@mixin t1 {
+    @include spacing(font-size, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    font-family: var(--font-family-body);
+}
+
+@mixin t1-b {
+    @include t1;
+    font-weight: 700;
+}
+
+@mixin t2 {
+    @include spacing(font-size, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    font-family: var(--font-family-body);
+}
+
+@mixin t2-b {
+    @include t2;
+    font-weight: 700;
+}
+
+@mixin t3 {
+    @include spacing(font-size, 13px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    font-family: var(--font-family-body);
+}
+
+@mixin t3-b {
+    @include t3;
+    font-weight: 700;
+}
+
+@mixin t4 {
+    @include spacing(font-size, 11px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%;
+    font-family: var(--font-family-body);
+}
+
+@mixin t4-b {
+    @include t4;
+    font-weight: 700;
+}
+
+@mixin t5 {
+    @include spacing(font-size, 9px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    font-family: var(--font-family-body);
+}
+
+@mixin t5-b {
+    @include t5;
+    font-weight: 700;
+}
+
+/*----------UNIQUE TEXT-----------*/
+@mixin hero {
+    @include spacing(font-size, 340px, 340px, 200px 200px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80%;
+}

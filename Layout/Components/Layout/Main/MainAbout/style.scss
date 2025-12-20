@@ -1,0 +1,56 @@
+.main-about {
+	@include spacing(padding-block, 100px, 80px, 60px, 60px);
+
+	&__container {}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		@include spacing(gap, 60px);
+	}
+
+	&__title {
+		@include spacing(max-width, 700px, 700px);
+
+		@include Tablet {
+			max-width: unset;
+			width: 100%;
+		}
+
+		h2 {
+			@include h2;
+			text-transform: uppercase;
+			color: var(--gray-darker);
+		}
+
+		&--accent {
+			color: var(--color2-main) !important;
+		}
+	}
+
+	&__items {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-rows: vw(292px) vw(316px);
+		@include spacing(gap, 20px);
+		grid-template-areas:
+		"first first first second second second"
+		"third third fouth fouth fivth fivth";
+
+		@include HD {
+			grid-template-rows: vwh(292px) vwh(340px);
+		}
+		@include Tablet {
+			grid-template-rows: vwt(222px) vwt(286px) vwt(286px);
+		}
+		@include Mobile {}
+	}
+
+	&__item {
+		&.first { grid-area: first; }
+		&.second { grid-area: second; }
+		&.third { grid-area: third; }
+		&.fouth { grid-area: fouth; }
+		&.fivth { grid-area: fivth; }
+	}
+}
