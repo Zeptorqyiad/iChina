@@ -1,0 +1,54 @@
+.main-benefit {
+	@include spacing(padding-block, 120px);
+	background: var(--color1-lighter);
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		@include spacing(gap, 60px);
+	}
+
+	&__top {
+		display: flex;
+		flex-direction: row;
+		@include spacing(gap, 40px);
+	}
+
+	&__title {
+		@include spacing(width, 680px);
+		flex-shrink: 0;
+
+		h2 {
+			@include h2;
+			color: var(--gray-darker);
+			text-transform: uppercase;
+		}
+
+		&--accent {
+			color: var(--color2-main) !important;
+		}
+	}
+
+	&__description {
+		color: var(--gray-dark);
+		@include t2;
+	}
+
+	&__items {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-rows: vw(380px) vw(356px);
+		@include spacing(gap, 20px);
+		grid-template-areas:
+		"first first second second third third"
+		"fouth fouth fouth fivth fivth fivth";
+	}
+
+	&__item {
+		&.first { grid-area: first; }
+		&.second { grid-area: second; }
+		&.third { grid-area: third; }
+		&.fouth { grid-area: fouth; }
+		&.fivth { grid-area: fivth; }
+	}
+}

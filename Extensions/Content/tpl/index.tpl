@@ -45,7 +45,6 @@ App\Layout\Components\Common\Header\Layout::draw();
                     'image' => '/assets/images/Main/key.png',
                 ]
             ],
-
             'title-why' => $content['params']['main-about_title-why'] ?? 'Почему бизнесу удобно и 
             выгодно с ICHINA?',
             'items-why' => [
@@ -71,6 +70,40 @@ App\Layout\Components\Common\Header\Layout::draw();
             из Китая для бизнеса любого масштаба — от первых тестовых партий до крупных контрактов. ',
             'callback-title' => $cotent['params']['main-about_callback-title'] ?? 'Персональный расчёт импорта в 2 клика!',
             'callback-desc' => $content['params']['main-about_callback-desc'] ?? 'Ответьте на несколько вопросов, и мы предложим самые выгодные условия',
+        ]);
+
+        App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
+            'title' => $content['params']['main-benefit_title'] ?? 'Почему бизнес',
+            'title-accent' => $content['params']['main-benefit_title-accent'] ?? 'выбирает ICHINA',
+            'description' => $content['params']['main-benefits_description'] ?? 'Наш опыт и подход позволяют клиентам быть уверенными в результате',
+            'items' => [
+                [
+                    'className' => 'first',
+                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'title' => 'Полный штат аудиторов в Китае',
+                    'text' => 'Лично выезжаем на фабрики, проводим инспекции, проверяем производство и даём фото/видео отчёты.',
+                ],[
+                    'className' => 'second',
+                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'title' => 'Свои склады в Китае',
+                    'text' => 'У нас есть склады в основных логистических узлах Китая: Иу, Шанхай, Гуанчжоу',
+                ],[
+                    'className' => 'third',
+                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'title' => 'Договор в РФ и защита сделки',
+                    'text' => 'Официальный договор и полный пакет документов для бухгалтерии и тендеров — юридическая защита сделки.',
+                ],[
+                    'className' => 'fouth',
+                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'title' => 'Официальное юридическое лицо в России и Китае',
+                    'text' => 'Соответствие стандартам безопасности и качества. У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'fivth',
+                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'title' => 'Своя платёжная инфраструктура',
+                    'text' => 'Безопасные переводы напрямую в Китай, оплата без риска блокировки с соблюдением всех требований.',
+                ],
+            ]
         ]);
 	?>
 </main>
