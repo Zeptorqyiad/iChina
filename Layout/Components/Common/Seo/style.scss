@@ -1,0 +1,31 @@
+.seo {
+    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+    background-color: var(--gray-lighter);
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        @include spacing(gap, 120px, 80px, 32px, 32px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h3;
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t3;
+    }
+}

@@ -1,0 +1,117 @@
+.case-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    @include spacing(gap, 12px, 20px);
+    cursor: pointer;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .case-card__image {
+                transform: scale(1.1);
+                transition: transform 0.2s, scale 0.2s;
+                will-change: transform, scale;
+            }
+
+            .case-card__button {
+                opacity: 1;
+                transform: translateY(0%);
+                @include spacing(bottom, 16px);
+                transition: transform 0.2s, opacity 0.2s;
+                will-change: transform, opacity;
+            }
+
+            .case-card__title {
+                color: var(--color1-main);
+            }
+        }
+    }
+
+    &:active {
+        .case-card__image {
+            transform: scale(1);
+            transition: transform 0.2s;
+        }
+
+        .case-card__button {
+            opacity: 1;
+            transform: translateX(0%);
+            transition: transform 0.2s;
+        }
+
+        .case-card__title {
+            color: var(--color1-darker);
+        }
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        @include spacing(height, 340px, 340px, 280px, 280px);
+        @include border-r(12px);
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        @include spacing(padding, 16px, 16px, 12px, 12px);
+    }
+
+    &__image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        user-select: none;
+        @include transition((transform));
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 0;
+        opacity: 0;
+        transform: translateY(100%);
+        z-index: 2;
+
+        @include Tablet {
+            opacity: 1;
+            transform: translateX(0);
+            @include spacing(bottom, 16px);
+        }
+        @include Mobile {
+            opacity: 1;
+            transform: translateX(0);
+            @include spacing(bottom, 16px);
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 12px, 12px, 8px, 8px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+        @include truncate(1);
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t3;
+        @include truncate(1);
+    }
+}

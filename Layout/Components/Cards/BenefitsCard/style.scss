@@ -1,4 +1,4 @@
-.service-card {
+.benefits-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -7,38 +7,16 @@
     @include border-r(12px);
     height: 100%;
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover {
-            .service-card__arrow,
-            .service-card__title {
-                @include transition((color));
-                color: var(--color1-main);
-            }
-        }
-    }
-
-    &:active {
-        background: var(--color1-lighter);
-        @include transition((background));
-
-        .service-card__arrow,
-        .service-card__title,
-        .service-card__desc{
-            @include transition((color));
-            color: var(--color1-darker);
-        }
-    }
-
-    &__title {
-        @include h3;
+    &__separator {
+        @include spacing(margin-block, 12px);
     }
 
     &__image {
-        @include spacing(width, 200px);
+        width: 100%;
         @include spacing(height, 200px);
-        position: absolute;
-        right: 0;
-        bottom: 0;
+        @include spacing(border-radius, 8px);
+        overflow: hidden;
+        flex-shrink: 0;
 
         img {
             width: 100%;
@@ -47,32 +25,32 @@
         }
     }
 
-    &__arrow {
-        flex-shrink: 0;
-        margin-top: auto;
-    }
-
-    &__desc {
-        @include t2;
+    &__wrap {
+        &--title {
+            @include h4;
+        }
+        &--desc {
+            @include t2;
+            color: var(--gray-darker);
+            width: 100%;
+        }
     }
 
     /*----------STYLE-----------*/
 
     &-style_gray {
-        &.service-card {
-            background: var(--gray-lighter);
+        &.benefits-card {
+            background: var(--gray-white);
         }
 
-        & .service-card__desc {
-            @include spacing(padding-right, 120px);
+        & .benefits-card__wrap {
+            &--title {
+                color: var(--gray-darker);
+            }
         }
 
-        & .service-card__title {
-            color: var(--gray-darker);
-        }
-
-        & .service-card__separator {
-            background: var(--color2-main) !important;
+        & .benefits-card__separator {
+            background: var(--gray-light) !important;
         }
     }
 

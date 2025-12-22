@@ -72,7 +72,7 @@
         display: flex;
         align-items: center;
         color: var(--gray-dark);
-        @include mq(padding-block, 4px);
+        @include spacing(padding-block, 4px);
 
         @media (hover: hover) and (pointer: fine) {
             &:hover {

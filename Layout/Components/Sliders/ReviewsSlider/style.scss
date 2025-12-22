@@ -1,0 +1,72 @@
+.reviews-slider {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "title buttons"
+        "slider slider";
+    @include spacing(padding-block, 80px, 80px 40px, 40px);
+    @include spacing(gap, 40px, 40px, 32px, 32px);
+    overflow: hidden;
+
+    @include Tablet {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        'title'
+        'slider'
+        'buttons';
+    }
+
+    &__title {
+        grid-area: title;
+        @include h2;
+        color: var(--gray-black);
+        @include spacing(padding-left, 250px, 45px, 16px, 16px);
+    }
+
+    &__buttons {
+        display: flex;
+        @include spacing(padding-right, 250px, 45px, 16px, 16px);
+        @include spacing(gap, 12px, 12px);
+        justify-self: end;
+        align-items: center;
+        grid-area: buttons;
+
+        @include Tablet {
+            width: 100%;
+            justify-self: start;
+            gap: 0;
+            padding-left: vwt(16px);
+        }
+        @include Mobile {
+            padding-left: vwm(16px);
+        }
+    }
+
+    &__button-link {
+        @include Mobile{
+            width: 100%;
+        }
+    }
+
+    &__slider-wrap {
+        @include spacing(padding-left, 250px, 45px, 16px, 16px);
+        grid-area: slider;
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    &__slider {
+        overflow: hidden;
+        @include spacing(border-top-left-radius, 12px);
+        @include spacing(border-bottom-left-radius, 12px);
+    }
+
+    &__button-prev,
+    &__button-next {
+        @include Tablet {
+            display: none;
+        }
+    }
+}

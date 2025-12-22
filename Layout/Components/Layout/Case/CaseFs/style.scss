@@ -1,0 +1,55 @@
+.case-fs {
+    @include spacing(padding-block, 20px, 20px, 12px, 12px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 20px, 20px, 16px, 16px);
+    }
+
+    &__image {
+        object-fit: cover;
+        @include spacing(border-radius, 24px, 12px, 12px, 12px);
+        @include spacing(width, 1420px, 1276px, 736px, 342px);
+        @include spacing(height, 480px, 428px, 248px, 200px);
+    }
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        @include spacing(gap, 20px, 40px, 12px, 12px);
+        @include spacing(padding-top, 20px, 20px, 8px, 8px);
+        @include spacing(padding-bottom, 20px, 20px, 12px, 12px);
+
+        @include Tablet {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 20px, 20px, 16px, 20px);
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h1;
+
+            @include HD {
+                @include h2;
+            }
+        }
+
+        &-company {
+            color: var(--gray-darker);
+            @include t2;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+    }
+}

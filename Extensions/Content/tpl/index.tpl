@@ -79,31 +79,82 @@ App\Layout\Components\Common\Header\Layout::draw();
             'items' => [
                 [
                     'className' => 'first',
-                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'image' => '/assets/images/Main/plug.png',
                     'title' => 'Полный штат аудиторов в Китае',
                     'text' => 'Лично выезжаем на фабрики, проводим инспекции, проверяем производство и даём фото/видео отчёты.',
                 ],[
                     'className' => 'second',
-                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'image' => '/assets/images/Main/plug.png',
                     'title' => 'Свои склады в Китае',
                     'text' => 'У нас есть склады в основных логистических узлах Китая: Иу, Шанхай, Гуанчжоу',
                 ],[
                     'className' => 'third',
-                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'image' => '/assets/images/Main/plug.png',
                     'title' => 'Договор в РФ и защита сделки',
                     'text' => 'Официальный договор и полный пакет документов для бухгалтерии и тендеров — юридическая защита сделки.',
                 ],[
                     'className' => 'fouth',
-                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'image' => '/assets/images/Main/plug.png',
                     'title' => 'Официальное юридическое лицо в России и Китае',
                     'text' => 'Соответствие стандартам безопасности и качества. У нас есть лицензия, мы предоставляем все документы',
                 ],[
                     'className' => 'fivth',
-                    'image' => '/assets/images/placeholder/fallback-img.webp',
+                    'image' => '/assets/images/Main/plug.png',
                     'title' => 'Своя платёжная инфраструктура',
                     'text' => 'Безопасные переводы напрямую в Китай, оплата без риска блокировки с соблюдением всех требований.',
                 ],
             ]
+        ]);
+
+        App\Layout\Components\Common\RouteMap\Layout::draw([
+            'title' => $content['route-map_title'] ?? 'Наши ',
+            'title-accent' => $content['route-map_title-accent'] ?? 'маршруты',
+            'desc' => $content['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России',
+            'items' => [
+                [
+                    'title' => 'Авиаперевозка: Китай — Россия',
+                    'image' => '',
+                    'provider' => '',
+                    'city' => 'Шанхай',
+                    'city2' => '',
+                    'city3' => 'Москва',
+                    'city4' => '',
+                    'transportation' => 'Авиаперевозка',
+                    'transportation2' => 'ЖД или автоперевозка',
+                    'transportation3' => '',
+                    'transportation4' => '',
+                ]
+            ]
+        ]);
+
+        App\Layout\Components\Common\Categories\Layout::draw([
+            'title' => $content['categories-title'] ?? 'товары',
+            'desc' => $content['categories-desc'] ?? 'У нас есть опыт перевозки и растаможки любых категорий товаров, в том числе:',
+            'cards' => [
+                [
+                    'title' => 'Техническое оснащение',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Запчасти',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Химия',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Электроника и оборудование',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Инструменты и крепеж',
+                    'img' => '/assets/images/Main/icon.png',
+                ],
+            ],
+            'callback-title' => $content['categories-callback_title'] ?? 'Работаем с любыми видами грузов',
+            'callback-desc' => $content['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
+        ]);
+
+        App\Layout\Components\Sliders\CasesSlider\Layout::draw([
+            'title' => 'Наши кейсы',
+            'link' => '/cases/',
         ]);
 	?>
 </main>

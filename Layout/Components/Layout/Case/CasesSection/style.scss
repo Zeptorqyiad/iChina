@@ -1,0 +1,31 @@
+.cases-section {
+    @include spacing(padding-top, 40px, 40px, 20px, 20px);
+    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 20px, 20px, 16px, 16px);
+    }
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        @include spacing(padding-bottom, 40px, 40px, 40px, 40px);
+        @include spacing(row-gap, 40px, 40px, 32px, 32px);
+        @include spacing(column-gap, 20px, 20px, 16px, 0);
+
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+    .pagination{
+        @include Tablet{
+            padding-inline: 0;
+        }
+    }
+}

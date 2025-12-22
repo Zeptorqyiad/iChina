@@ -1,0 +1,46 @@
+.route-map {
+    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 32px, 32px, 24px, 24px);
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        @include gap(12px);
+
+        @include Tablet {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__images {
+        position: relative;
+    }
+
+    &__image {
+        @include border-r(12px);
+
+        @include Tablet {
+            display: none;
+        }
+
+        &-route {
+            display: none;
+            position: absolute;
+            top: 0;
+
+            &.active {
+                display: block;
+
+                @include Tablet {
+                    display: none;
+                }
+            }
+        }
+    }
+}

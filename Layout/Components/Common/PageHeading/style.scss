@@ -1,0 +1,40 @@
+.page-heading {
+    display: flex;
+    @include spacing(padding-top, 20px, 20px, 12px, 12px);
+    @include spacing(padding-bottom, 12px, 12px, 20px, 20px);
+
+    &__back {
+        display: none;
+        align-items: center;
+        @include spacing(gap, 8px, 8px, 8px, 8px);
+
+        &-title{
+            @include t2-b;
+            @include truncate(1);
+            color: var(--gray-darker);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @include Tablet{
+            display: flex;
+        }
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h3;
+        line-height: 120%;
+
+        @include Tablet{
+            display: none;
+        }
+    }
+
+    &-style_primary{
+        display: none;
+        @include Tablet{
+            display: flex;
+        }
+    }
+}
