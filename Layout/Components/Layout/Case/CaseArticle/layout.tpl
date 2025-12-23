@@ -5,7 +5,7 @@
 
 <section class="case-article <?= $data['className'] ?>">
     <div class="case-article__container info-container">
-        <div class="case-article__body">
+        <div class="case-article__body content">
             <?= $data['content'] ?>
         </div>
 

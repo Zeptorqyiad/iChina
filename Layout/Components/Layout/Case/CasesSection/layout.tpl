@@ -5,6 +5,33 @@
 
 <section class="cases-section">
     <div class="cases-section__container container">
+        <div class="cases-section__categories">
+            <a href="##" class="cases-section__category">
+                <div class="cases-section__category--text">
+                    Все кейсы
+                </div>
+                <div class="cases-section__category--count">
+                    99
+                </div>
+            </a>
+            <a href="##" class="cases-section__category">
+                <div class="cases-section__category--text">
+                    Услуга
+                </div>
+                <div class="cases-section__category--count">
+                    40
+                </div>
+            </a>
+            <a href="##" class="cases-section__category">
+                <div class="cases-section__category--text">
+                    Вид товара
+                </div>
+                <div class="cases-section__category--count">
+                    12
+                </div>
+            </a>
+        </div>
+
         <div class="cases-section__wrap">
             <?php foreach ($data['items'] as $i): ?>
                 <?php

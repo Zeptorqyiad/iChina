@@ -25,23 +25,24 @@ $breadcrumbs = array_values($breadcrumbs);
                 App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                     className: 'page-heading__button-back',
                     icon: 'arrow-left',
-                    style: \App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
                     attributes: [
                         'onclick' => 'event.preventDefault(); history.back();',
                     ]
                 );
             ?>
 
-            <?php foreach ($breadcrumbs as $breadcrumb): ?>
-                <?php if ($activeBreadcrumb['link'] === $breadcrumb['link']): ?>
-                    <p class="page-heading__back-title"><?= $breadcrumb['name'] ?></p>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <p class="page-heading__back-title">Назад</p>
         </div>
 
         <?php foreach ($breadcrumbs as $breadcrumb): ?>
             <?php if ($activeBreadcrumb['link'] === $breadcrumb['link']): ?>
-                <h1 class="page-heading__title "><?= $breadcrumb['name'] ?></h1>
+                <h3 class="page-heading__title">
+                    <?= $breadcrumb['name'] ?>
+                </h3>
+                <div class="page-heading__count">
+                    639
+                </div>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>

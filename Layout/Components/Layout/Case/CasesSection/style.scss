@@ -1,5 +1,4 @@
 .cases-section {
-    @include spacing(padding-top, 40px, 40px, 20px, 20px);
     @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
 
     &__container {
@@ -8,11 +7,44 @@
         @include spacing(gap, 20px, 20px, 16px, 16px);
     }
 
+    &__categories {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include spacing(gap, 8px);
+        @include spacing(padding-block-start, 12px);
+        @include spacing(padding-block-end, 20px);
+    }
+    &__category {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--color1-lighter);
+        @include spacing(padding, 8px);
+        @include spacing(border-radius, 12px);
+
+        &--text {
+            @include t3;
+            color: var(--gray-black);
+            @include spacing(padding-inline, 4px);
+            @include spacing(padding-block, 2px);
+        }
+
+        &--count {
+            @include t4;
+            @include spacing(padding-inline, 4px);
+            color: var(--gray-white);
+            @include spacing(border-radius, 8px);
+            background: var(--color1-main);
+            width: fit-content;
+        }
+    }
+
     &__wrap {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
-        @include spacing(padding-bottom, 40px, 40px, 40px, 40px);
+        @include spacing(padding-bottom, 40px);
         @include spacing(row-gap, 40px, 40px, 32px, 32px);
         @include spacing(column-gap, 20px, 20px, 16px, 0);
 

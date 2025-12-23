@@ -3,10 +3,18 @@
     @include spacing(padding-top, 20px, 20px, 12px, 12px);
     @include spacing(padding-bottom, 12px, 12px, 20px, 20px);
 
-    &__back {
-        display: none;
+    &__container {
+        display: flex;
+        flex-direction: row;
         align-items: center;
-        @include spacing(gap, 8px, 8px, 8px, 8px);
+        @include spacing(gap, 20px);
+    }
+
+    &__back {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        @include spacing(gap, 8px);
 
         &-title{
             @include t2-b;
@@ -29,6 +37,15 @@
         @include Tablet{
             display: none;
         }
+    }
+
+    &__count {
+        @include t4;
+        color: var(--gray-dark);
+        @include spacing(padding-block, 4px);
+        @include spacing(padding-inline, 8px);
+        background: var(--gray-lighter);
+        @include spacing(border-radius, 12px);
     }
 
     &-style_primary{

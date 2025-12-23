@@ -6,7 +6,7 @@ $vk = Simflex\Core\Core::siteParam('vk');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 ?>
 
-<header class="header absolute">
+<header class="header <?= $data['absolute'] ? 'absolute' : 'fixed' ?>">
 	<div class="header__container wrapper">
 		<div class="header__content ">
 			<div class="header__content-ls">

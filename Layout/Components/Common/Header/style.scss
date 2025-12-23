@@ -7,7 +7,11 @@
 
 		& .header__content {
 			@include spacing(width, 1420px);
-
+		}
+	}
+	&.fixed {
+		& .header__items--link {
+			color: var(--gray-dark) !important;
 		}
 	}
 
