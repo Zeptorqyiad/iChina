@@ -1,0 +1,113 @@
+.certificate {
+    display: grid;
+    grid-template-columns: vw(250px) vw(480px) repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        '. title title buttons'
+        '. left slider slider';
+    row-gap: vw(40px);
+    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+    overflow: hidden;
+
+    @include HD {
+        grid-template-columns: vwh(45px) vwh(432px) repeat(2, 1fr);
+    }
+    @include Tablet {
+        display: flex;
+        flex-direction: column;
+        padding-inline: vwt(16px);
+        gap: vwt(24px);
+    }
+    @include Mobile {
+        padding-inline: vwm(16px);
+        gap: vwm(24px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h2;
+        grid-area: title;
+        @include spacing(max-width, 680px, 680px);
+
+        @include Tablet {
+            max-width: unset;
+            width: 100%;
+        }
+
+        br {
+            @include Tablet {
+                display: none;
+            }
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        @include spacing(gap, 12px, 12px, 12px, 12px);
+        align-items: center;
+        justify-content: end;
+        grid-area: buttons;
+        @include spacing(padding-right, 250px, 45px);
+
+        @include Tablet {
+          justify-content: start;
+          padding-right: 0;
+        }
+    }
+
+    &__separator {
+        display: none;
+
+        @include Tablet {
+            grid-area: separator;
+            display: block;
+            color: var(--gray-lighter);
+        }
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        @include spacing(padding-right, 40px, 40px);
+        @include spacing(gap, 32px, 32px, 24px, 24px);
+        grid-area: left;
+
+        @include Tablet {
+            padding-top: vwt(8px);
+            padding-right: 0;
+        }
+        @include Mobile {
+            padding-top: vwm(8px);
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+
+        &-wrap {
+            grid-area: slider;
+        }
+    }
+
+    &__plus {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 32px, 32px, 16px, 16px);
+        @include spacing(width, 340px, 340px);
+
+        @include Tablet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+        }
+        @include Mobile {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__text {
+        color: var(--gray-dark);
+        @include t2;
+    }
+}

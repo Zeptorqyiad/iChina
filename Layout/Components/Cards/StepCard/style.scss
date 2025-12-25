@@ -1,0 +1,133 @@
+.step-card {
+    display: flex;
+    flex-direction: column;
+    gap: vw(20px);
+    @include spacing(width, 460px, 412px, 360px);
+
+    @include HD {
+        gap: vwh(20px);
+    }
+    @include Tablet {
+        gap: vwt(20px);
+    }
+    @include Mobile {
+        gap: vwm(20px);
+        width: 100%;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: vw(20px);
+        width: vw(640px);
+
+        @include HD {
+            gap: vwh(20px);
+            width: vwh(568px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+            width: 100%;
+        }
+        @include Mobile {
+            gap: vwm(16px);
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: vw(16px);
+
+        @include HD {
+            gap: vwh(16px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+        }
+        @include Mobile {
+            gap: vwm(16px);
+        }
+    }
+
+    &__marker {
+        flex-shrink: 0;
+        background: var(--gray-lighter);
+        color: var(--gray-darker);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h3;
+    }
+
+    &__descr {
+        color: var(--gray-dark);
+        @include t2;
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    /*----------STYLES-----------*/
+    &-outline {
+        padding: vw(20px);
+        border: solid var(--gray-lighter);
+        @include border-r(12px);
+        @include border-w(2px);
+
+        @include HD {
+            padding: vwh(20px);
+        }
+        @include Tablet {
+            padding: vwt(20px);
+        }
+        @include Mobile {
+            padding: vwm(20px);
+        }
+
+        .step-card__text {
+            width: fit-content;
+
+            @include Tablet {
+                gap: vwt(20px);
+            }
+            @include Mobile {
+                gap: vwm(20px);
+            }
+        }
+    }
+
+    &-gray {
+        padding: vw(20px);
+        background: var(--gray-lighter);
+        @include border-r(12px);
+
+        .step-card__marker {
+            background: var(--gray-white);
+            color: var(--color1-main);
+        }
+
+        @include HD {
+            padding: vwh(20px);
+        }
+        @include Tablet {
+            padding: vwt(20px);
+        }
+        @include Mobile {
+            padding: vwm(20px);
+        }
+
+        .step-card__text {
+            width: fit-content;
+
+            @include Tablet {
+                gap: vwt(20px);
+            }
+            @include Mobile {
+                gap: vwm(20px);
+            }
+        }
+    }
+}

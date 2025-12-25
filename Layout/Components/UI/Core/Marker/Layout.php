@@ -9,6 +9,7 @@ class Layout extends LayoutBase
     public static function drawMarker(
         string     $className = '',
         string     $icon = 'true',
+		string     $img = '',
         MarkerSize $size = MarkerSize::Medium,
         array      $attributes = []
     ): void
@@ -16,6 +17,7 @@ class Layout extends LayoutBase
         static::draw(compact(
                 'className',
                 'icon',
+				'img',
                 'attributes'
             ) + [
                 'size' => $size->value,

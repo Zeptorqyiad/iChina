@@ -1,0 +1,82 @@
+.offer-card {
+    display: flex;
+    height: fit-content;
+    background-color: var(--gray-lighter);
+    border: solid var(--color1-main);
+    @include spacing(gap, 40px, 40px, 40px, 20px);
+    @include spacing(padding, 40px, 40px, 24px, 24px);
+    @include border-w(2px);
+    @include border-r(20px);
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 100%;
+        @include spacing(gap, 32px, 32px, 20px, 20px);
+
+        &-bullits {
+            display: none;
+
+            @include Mobile {
+                display: block;
+            }
+        }
+
+        &-button {
+            @include Mobile {
+                width: 100%;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        @include gap(20px);
+
+        &-title {
+            color: var(--gray-darker);
+            @include h3;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+
+        &-properties {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            background-color: var(--gray-white);
+            @include spacing(padding-inline, 20px, 20px, 20px, 20px);
+            @include spacing(padding-block, 12px, 12px, 12px, 12px);
+            @include gap(16px);
+            @include border-r(12px);
+
+            @include Mobile {
+                width: 100%;
+            }
+        }
+
+        &-property {
+            color: var(--color1-main);
+            @include h4;
+        }
+
+        &-separator {
+            @include spacing(height, 24px, 24px, 24px, 24px);
+        }
+    }
+
+    &__bullits {
+        width: 100%;
+
+        @include Mobile {
+            display: none;
+        }
+    }
+}

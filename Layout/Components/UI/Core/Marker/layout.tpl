@@ -8,7 +8,13 @@ $markerClasses = [
 ];
 ?>
 
+<?php if ($data['icon']): ?>
 <div class="<?= implode(' ', $markerClasses) ?>" <?= buildAttrs($data['attributes'] ?? []) ?>>
     <?= renderIcon($data['icon'], 'marker__icon') ?>
 </div>
+<?php elseif ($data['img']): ?>
+<div class="<?= implode(' ', $markerClasses) ?>" <?= buildAttrs($data['attributes'] ?? []) ?>>
+    <img src="<?= $data['img'] ?>" alt="">
+</div>
+<?php endif; ?>
 

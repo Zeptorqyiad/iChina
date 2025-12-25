@@ -1,0 +1,20 @@
+.info{
+    @include spacing(padding-block, 80px, 80px 40px, 40px);
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      @include spacing(gap, 40px, 40px, 32px, 32px);
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        @include spacing(gap, 12px, 12px, 12px, 12px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+}

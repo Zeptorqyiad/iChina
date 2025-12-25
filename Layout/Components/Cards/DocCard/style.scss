@@ -1,0 +1,78 @@
+.doc-card {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+    @include spacing(gap, 20px, 20px, 20px, 16px);
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .doc-card__image {
+                scale: 1.1;
+            }
+            .doc-card__wrap {
+                border-color: var(--color1-main);
+            }
+            .doc-card__icon {
+                color: var(--color1-dark);
+            }
+        }
+    }
+
+    &:active {
+        .doc-card__image {
+            scale: 1;
+        }
+        .doc-card__wrap {
+            border-color: var(--color1-darker);
+        }
+        .doc-card__icon {
+            color: var(--color1-darker);
+        }
+    }
+
+    &__wrap {
+        position: relative;
+        overflow: hidden;
+        border: solid var(--color1-lighter);
+        width: fit-content;
+        @include border-r(12px);
+        @include border-w(2px);
+    }
+
+    &__image {
+        @include transition((scale));
+        @include border-r(12px)
+    }
+
+    &__icon {
+        position: absolute;
+        width: fit-content;
+        color: var(--color1-lighter);
+        @include spacing(top, 20px, 20px, 20px, 20px);
+        @include spacing(right, 20px, 20px, 20px, 20px);
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+
+        svg {
+            @include spacing(width, 24px, 24px, 24px, 24px);
+            @include spacing(height, 24px, 24px, 24px, 24px);
+        }
+    }
+
+    &__title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        color: var(--gray-darker);
+        line-height: 120%;
+        @include h5;
+    }
+}

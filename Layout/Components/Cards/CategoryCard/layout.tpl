@@ -14,6 +14,7 @@ $categoryCardClasses = [
         App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
             className: 'category-card__category-marker',
             icon: $data['icon'] ?? '',
+            img: $data['img'] ?? '',
             size: App\Layout\Components\UI\Core\Marker\MarkerSize::Small
         );
     ?>
