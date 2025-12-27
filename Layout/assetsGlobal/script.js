@@ -518,3 +518,412 @@ const shareLinksHandler = new ShareLink();
         lazyLoadImages();
     }
 })();
+
+//!===========================================================
+//! EMAIL INPUT VALIDATOR
+//!===========================================================
+class EmailValidator {
+    /**
+     * Creates an instance for the given selector(s).
+     * @param {string | NodeList | HTMLInputElement[]} selector - A CSS selector or collection of inputs.
+     */
+    constructor(form, selector) {
+        this.inputs = form.querySelectorAll(selector);
+        this.inputs = Array.from(this.inputs).filter(el => el && typeof el.value === 'string');
+        this.init();
+    }
+
+    /**
+     * Attach input listeners to each email input.
+     */
+    init() {
+        this.inputs.forEach(input => {
+            input.dataset.touched = 'false';
+
+            input.addEventListener('input', (event) => {
+                if (input.dataset.touched === 'false') {
+                    input.dataset.touched = 'true';
+                }
+                this.handleInput(event);
+            });
+
+            this.handleInput({target: input, isTrusted: false});
+        });
+    }
+
+    /**
+     * Validate the email input on each change.
+     * @param {Event} event
+     */
+    handleInput(event) {
+        const input = event.target;
+        const value = input.value.trim();
+
+        const isTouched = input.dataset.touched === 'true' || event.isTrusted;
+
+        if (this.validateEmail(value)) {
+            this.toggleValidity(input, true);
+
+            if (isTouched) {
+                this.hideError(input);
+            }
+        } else {
+            this.toggleValidity(input, false);
+
+            if (isTouched) {
+                this.showError(input, "Введите корректный e-mail.");
+            }
+        }
+    }
+
+    /**
+     * Validate email using a simple regex.
+     * @param {string} email
+     * @returns {boolean} True if valid.
+     */
+    validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    /**
+     * Toggle valid/invalid CSS classes.
+     * @param {HTMLInputElement} input
+     * @param {boolean} isValid
+     */
+    toggleValidity(input, isValid) {
+        if (isValid) {
+            input.classList.add('valid');
+            input.classList.remove('invalid');
+        } else {
+            input.classList.add('invalid');
+            input.classList.remove('valid');
+        }
+    }
+
+    /**
+     * Show the error message in the nearby error span.
+     * @param {HTMLInputElement} input
+     * @param {string} message
+     */
+    showError(input, message) {
+        // Look for the closest wrapper with the class .text-input__wrapper
+        const wrapper = input.closest('.text-input__wrapper');
+        if (wrapper) {
+            const errorSpan = wrapper.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+                errorSpan.classList.remove('hidden');
+            }
+        }
+    }
+
+    /**
+     * Hide the error message.
+     * @param {HTMLInputElement} input
+     */
+    hideError(input) {
+        const wrapper = input.closest('.text-input__wrapper');
+        if (wrapper) {
+            const errorSpan = wrapper.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = '';
+                errorSpan.classList.add('hidden');
+            }
+        }
+    }
+
+    /**
+     * Check if all email inputs are valid.
+     * @returns {boolean}
+     */
+    areAllInputsValid() {
+        return Array.from(this.inputs).every(input => {
+            return input.value.trim() !== '' && input.classList.contains('valid');
+        });
+    }
+}
+
+window.EmailValidator = EmailValidator;
+
+//!===========================================================
+//! PHONE INPUT VALIDATOR
+//!===========================================================
+/**
+ * A class to validate and format phone number inputs in a specific format.
+ * Supports Russian phone numbers starting with "+7" or "8", formatted as "+7 (XXX) XXX-XX-XX" or "8 (XXX) XXX-XX-XX".
+ */
+class PhoneValidator {
+    /**
+     * Creates an instance for the given phone input selector(s).
+     * @param {string | NodeList | HTMLInputElement[]} selector - CSS selector string, NodeList, or array of input elements.
+     * @throws {Error} If the selector is invalid or no valid inputs are found.
+     */
+    constructor(form, selector) {
+        this.inputs = form.querySelectorAll(selector);
+        this.inputs = Array.from(this.inputs).filter(el => el && typeof el.value === 'string');
+        this.init();
+    }
+
+    /**
+     * Initializes the phone validator by attaching event listeners to all managed inputs.
+     */
+    init() {
+        this.inputs.forEach(input => {
+            input.dataset.touched = 'false';
+            input.addEventListener('input', (event) => {
+                if (input.dataset.touched === 'false') {
+                    input.dataset.touched = 'true';
+                }
+                this.handleInput(event);
+            });
+            this.handleInput({target: input, isTrusted: false});
+        });
+    }
+
+    /**
+     * Handles input events by formatting the phone number and validating it.
+     * @param {Event} event - The input event object or a synthetic event for initial setup.
+     */
+    handleInput(event) {
+        const input = event.target;
+        this.formatPhoneInput(input);
+        const isValid = this.validatePhone(input.value);
+        this.toggleValidity(input, isValid);
+
+        if (!isValid && input.dataset.touched === 'true') {
+            this.showError(input, "Введите корректный номер.");
+        } else {
+            this.hideError(input);
+        }
+    }
+
+    /**
+     * Formats the phone number input based on its digits.
+     * - Full 11-digit numbers starting with "7" or "8" are formatted as "+7 (XXX) XXX-XX-XX" or "8 (XXX) XXX-XX-XX".
+     * - Full 10-digit numbers are prefixed with "+7" (e.g., "3121286805" → "+7 (312) 128-68-05").
+     * - Partial inputs are formatted incrementally.
+     * @param {HTMLInputElement} input - The input element to format.
+     */
+    formatPhoneInput(input) {
+        let rawInput = input.value.trim();
+        let prefix = '';
+        let digits = '';
+
+        // Determine the prefix and extract digits
+        if (rawInput.startsWith('+7')) {
+            prefix = '+7';
+            digits = rawInput.slice(2).replace(/\D/g, ''); // Digits after "+7"
+        } else if (rawInput.startsWith('8')) {
+            prefix = '8';
+            digits = rawInput.slice(1).replace(/\D/g, ''); // Digits after "8"
+        } else {
+            // No recognized prefix; assume raw digits and default to "+7"
+            digits = rawInput.replace(/\D/g, '');
+            prefix = digits.length > 0 ? '+7' : '';
+        }
+
+        // If no digits, set input to prefix (or empty if no prefix)
+        if (!digits) {
+            input.value = prefix;
+            return;
+        }
+
+        // Format the digits after the prefix
+        let formatted = prefix + ' (';
+        if (digits.length > 0) {
+            formatted += digits.substring(0, Math.min(3, digits.length));
+        }
+        if (digits.length >= 4) {
+            formatted += ') ' + digits.substring(3, Math.min(6, digits.length));
+        }
+        if (digits.length >= 7) {
+            formatted += '-' + digits.substring(6, Math.min(8, digits.length));
+        }
+        if (digits.length >= 9) {
+            formatted += '-' + digits.substring(8, Math.min(10, digits.length));
+        }
+
+        input.value = formatted;
+    }
+
+    /**
+     * Validates the phone number by checking it has exactly 11 digits and starts with "7" or "8".
+     * @param {string} value - The phone number string to validate.
+     * @returns {boolean} True if the phone number is valid, false otherwise.
+     */
+    validatePhone(value) {
+        const digits = value.replace(/\D/g, '');
+        return digits.length === 11 && ['7', '8'].includes(digits[0]);
+    }
+
+    /**
+     * Toggles CSS classes "valid" and "invalid" on the input based on its validity.
+     * @param {HTMLInputElement} input - The input element to update.
+     * @param {boolean} isValid - Whether the input is valid.
+     */
+    toggleValidity(input, isValid) {
+        if (isValid) {
+            input.classList.add('valid');
+            input.classList.remove('invalid');
+        } else {
+            input.classList.add('invalid');
+            input.classList.remove('valid');
+        }
+    }
+
+    /**
+     * Displays an error message near the input if it exists within a wrapper.
+     * @param {HTMLInputElement} input - The input element associated with the error.
+     * @param {string} message - The error message to display.
+     */
+    showError(input, message) {
+        const wrapper = input.closest('.text-input__wrapper');
+        if (wrapper) {
+            const errorSpan = wrapper.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+                errorSpan.classList.remove('hidden');
+            }
+        }
+    }
+
+    /**
+     * Hides the error message near the input if it exists.
+     * @param {HTMLInputElement} input - The input element associated with the error.
+     */
+    hideError(input) {
+        const wrapper = input.closest('.text-input__wrapper');
+        if (wrapper) {
+            const errorSpan = wrapper.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = '';
+                errorSpan.classList.add('hidden');
+            }
+        }
+    }
+
+    /**
+     * Checks if all managed phone inputs are valid and non-empty.
+     * @returns {boolean} True if all inputs are valid, false otherwise.
+     */
+    areAllInputsValid() {
+        return Array.from(this.inputs).every(input => {
+            return input.value.trim() !== '' && input.classList.contains('valid');
+        });
+    }
+}
+
+window.PhoneValidator = PhoneValidator;
+
+//!===========================================================
+//! BASIC TEXT INPUT VALIDATOR
+//!===========================================================
+class BasicTextValidator {
+    /**
+     * Creates an instance for the given selector(s).
+     * @param {string | NodeList | HTMLInputElement[]} selector - A CSS selector or collection of inputs.
+     */
+    constructor(form, selector) {
+        this.inputs = form.querySelectorAll(selector);
+        this.inputs = Array.from(this.inputs).filter(el => el && typeof el.value === 'string');
+        this.init();
+    }
+
+    /**
+     * Attach input event listeners to each text input.
+     */
+    init() {
+        this.inputs.forEach(input => {
+            input.dataset.touched = 'false';
+
+            input.addEventListener('input', (event) => {
+                if (input.dataset.touched === 'false') {
+                    input.dataset.touched = 'true';
+                }
+                this.handleInput(event);
+            });
+
+            this.handleInput({target: input, isTrusted: false});
+        });
+    }
+
+    /**
+     * Handle the input event: if the trimmed value is empty, mark the field as invalid.
+     * @param {Event} event
+     */
+    handleInput(event) {
+        const input = event.target;
+        const value = input.value.trim();
+
+        if (value === '') {
+            this.toggleValidity(input, false);
+
+            if (input.dataset.touched === 'true') {
+                this.showError(input, "Это поле обязательно.");
+            }
+        } else {
+            this.toggleValidity(input, true);
+            this.hideError(input);
+        }
+    }
+
+    /**
+     * Toggle valid/invalid CSS classes on the input.
+     * @param {HTMLInputElement} input
+     * @param {boolean} isValid
+     */
+    toggleValidity(input, isValid) {
+        if (isValid) {
+            input.classList.add('valid');
+            input.classList.remove('invalid');
+        } else {
+            input.classList.add('invalid');
+            input.classList.remove('valid');
+        }
+    }
+
+    /**
+     * Show the error message in the associated error message span.
+     * @param {HTMLInputElement} input
+     * @param {string} message
+     */
+    showError(input, message) {
+        // Find the nearest container that holds the error message.
+        const container = input.closest('.text-input__wrapper');
+        if (container) {
+            const errorSpan = container.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+                errorSpan.classList.remove('hidden');
+            }
+        }
+    }
+
+    /**
+     * Hide the error message.
+     * @param {HTMLInputElement} input
+     */
+    hideError(input) {
+        const container = input.closest('.text-input__wrapper');
+        if (container) {
+            const errorSpan = container.querySelector('.text-input__error-message');
+            if (errorSpan) {
+                errorSpan.textContent = '';
+                errorSpan.classList.add('hidden');
+            }
+        }
+    }
+
+    /**
+     * Check if all managed text inputs are valid.
+     * @returns {boolean}
+     */
+    areAllInputsValid() {
+        return Array.from(this.inputs).every(input => {
+            return input.value.trim() !== '' && input.classList.contains('valid');
+        });
+    }
+}
+
+window.BasicTextValidator = BasicTextValidator;
