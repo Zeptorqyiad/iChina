@@ -21,10 +21,11 @@
     &__info {
         display: flex;
         flex-direction: column;
-        border: solid var(--color1-main);
-        @include spacing(width, 460px, 460px);
-        @include spacing(padding, 24px, 24px, 24px, 24px);
-        @include spacing(gap, 20px, 20px, 20px, 20px);
+        border: solid var(--color2-main);
+        background: var(--gray-white);
+        @include spacing(width, 460px);
+        @include spacing(padding, 24px);
+        @include spacing(gap, 20px);
         @include border-r(24px);
         @include border-w(2px);
 
@@ -35,7 +36,7 @@
         &-row {
             display: flex;
             flex-direction: column;
-            @include spacing(gap, 8px, 8px, 8px, 8px);
+            @include spacing(gap, 8px);
 
             &--label {
                 @include h5;
@@ -48,14 +49,13 @@
                 align-items: center;
                 background-color: var(--gray-lighter);
                 @include spacing(padding, 20px, 20px, 12px, 12px);
-                @include spacing(gap, 12px, 12px, 12px, 12px);
+                @include spacing(gap, 12px);
                 @include border-r(12px);
                 user-select: none;
-
             }
 
             &--marker {
-                background-color: var(--gray-white);
+                background: var(--gray-white);
                 color: var(--color1-main);
                 flex-shrink: 0;
             }
@@ -71,20 +71,24 @@
             }
 
             &--social {
-                @include spacing(gap, 12px, 12px, 12px, 12px);
+                @include spacing(gap, 12px);
 
-                .btn-social-type--tg{
+                .btn-social-type--tg {
                     color: var(--socials-tg);
                 }
-                .btn-social-type--vk{
+                .btn-social-type--vk {
                     color: var(--socials-vk);
                 }
+            }
+
+            &--button {
+                color: var(--gray-darker);
+                @include h5;
             }
         }
     }
 
     &__map {
-        @include spacing(height, 540px, 610px, 640px, 640px);
         @include spacing(width, 920px, 776px);
 
         @include Tablet {
@@ -98,14 +102,13 @@
             filter: grayscale(100%);
             z-index: 10;
         }
-
     }
 }
-.contacts-page{
+.contacts-page {
     @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
-    @include spacing(padding-top, 40px, 40px, 40px, 40px);
+    @include spacing(padding-top, 40px);
 
-    .title-card{
+    .title-card {
         display: none;
     }
 }

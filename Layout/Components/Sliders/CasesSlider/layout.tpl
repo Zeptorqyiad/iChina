@@ -46,7 +46,7 @@ $cases = App\Extensions\Cases\Model\Cases::findAdv()
                         name: $i->name ?? '',
                         short: $i->short ?? '',
                         photo: $i->photo_min ?? '',
-                        link: $i->alias . '/',
+                        link: '/cases/' . $i->alias . '/',
                     );
                 } ?>
             </div>

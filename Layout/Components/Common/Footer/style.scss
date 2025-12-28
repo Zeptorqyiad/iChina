@@ -6,153 +6,148 @@
     @include spacing(padding-block-start, 80px, 80px, 20px,20px);
     @include spacing(padding-block-end, 80px, 80px, 160px, 160px);
 
-    &__container{
+    &__container {
         display: flex;
-        @include spacing(gap, 20px, 20px);
+        flex-direction: row-reverse;
+        @include spacing(gap, 20px);
     }
 
-    &__menu{
+    &__menu {
         display: grid;
-        grid-template-columns: repeat(3, vw(340));
+        grid-template-columns: repeat(3, vw(340px));
         @include spacing(gap, 20px, 20px);
 
-        @include HD{
-            grid-template-columns: repeat(3, vwh(320));
+        @include HD {
+            grid-template-columns: repeat(3, vwh(320px));
         }
-        @include Tablet{
-            display: none;
-        }
-        @include Mobile{
+        @include Tablet {
             display: none;
         }
 
-        &--column-container{
+        &--column-container {
             display: flex;
             flex-direction: column;
-            @include spacing(gap, 32px, 32px);
+            @include spacing(gap, 32px);
         }
-        &-column{
+
+        &-column {
             display: flex;
             flex-direction: column;
             text-wrap: nowrap;
 
-            &--title{
+            &--title {
                 @include t2-b;
                 color: var(--gray-light);
                 text-wrap: nowrap;
-                @include spacing(padding-block, 12px, 12px);
+                @include spacing(padding-block, 12px);
             }
-            &--tab{
+            &--tab {
                 display: flex;
                 flex-direction: column;
-                //@include spacing(padding-block, 8px, 8px);
             }
-            a:hover{
-                color: var(--color1-light);
-                @include transition((color));
-            }
-            a:active{
-                color: var(--color1-main);
-                @include transition((color));
+
+            a {
+                @media (hover: hover) and (pointer: fine) {
+                    color: var(--color1-light);
+                    @include transition((color));
+                }
+
+                &:active {
+                    color: var(--color1-main);
+                    @include transition((color));
+                }
             }
         }
     }
 
-    &__contact-us{
+    &__contact-us {
         display: flex;
         flex-direction: column;
-        @include spacing(gap, 32px, 32px, 32px, 32px);
+        @include spacing(gap, 32px);
+        width: 100%;
 
-        &--callback{
+        &--callback {
             display: flex;
             flex-direction: column;
-            @include spacing(gap, 20px, 20px, 20px, 20px)
+            @include spacing(gap, 20px)
         }
-        &--info{
+
+        &--info {
             display: flex;
             flex-direction: column;
-            @include spacing(gap, 12px, 12px, 12px, 12px);
-            &-row{
+            @include spacing(gap, 12px);
+
+            &-row {
                 display: flex;
                 flex-direction: column;
-                @include spacing(gap, 8px, 8px, 8px, 8px);
+                @include spacing(gap, 8px);
             }
-            &-label{
+
+            &-label {
                 @include t4;
                 color: var(--gray-medium);
             }
-            &-text{
-                font-family: var(--font-family-heading);
+
+            &-text {
                 @include h5;
-                color: var(--color1-main);
+                color: var(--gray-lighter);
                 line-height: 120%;
             }
         }
 
+        &--button {
+            @include h5;
+            color: var(--gray-lighter);
+            font-family: Inter;
+        }
     }
 
 
     &__logo{
-        width:160px;
-        height: 40px;
+        @include spacing(width, 160px);
+        @include spacing(height, 40px);
     }
-    &__separator{
-        background-color: var(--gray-dark);
+
+    &__separator {
+        background: var(--gray-dark);
     }
-    &__bottom{
-        &-container{
+
+    &__bottom {
+        &-container {
             display: flex;
             justify-content: space-between;
-            @include spacing(padding-top, 14px, 14px, 14px, 14px);
+            @include spacing(padding-top, 14px);
             @include spacing(gap, 60px, 60px, 20px, 16px);
-            @include Tablet{
-                flex-direction: column;
-            }
-            @include Mobile{
+
+            @include Tablet {
                 flex-direction: column;
             }
         }
 
-        &-policy{
+        &-policy {
             display: flex;
             flex-direction: column;
             @include spacing(gap, 0, 0, 0, 16px);
 
-            &--tab-list{
+            &--tab-list {
                 display: flex;
-                @include spacing(gap, 20px, 20px, 20px);
+                @include spacing(gap, 20px);
 
-                @include Mobile{
+                @include Mobile {
                     gap: vwm(4px) vwm(20px);
                     flex-wrap: wrap;
                 }
             }
 
-            &--copyright{
+            &--copyright {
                 @include t3;
                 color: var(--gray-medium);
             }
         }
-        &-dev{
+
+        &-dev {
             display: flex;
-            @include spacing(gap, 40px, 40px, 40px, 40px);
-        }
-    }
-
-    &__made-in {
-        @include spacing(width, 160px, 160px, 160px, 160px);
-        @include spacing(height, 38px, 38px, 38px, 38px);
-
-        a {
-            width: fit-content;
-        }
-    }
-
-    &__simflex {
-        @include spacing(width, 114px, 114px, 114px, 114px);
-        @include spacing(height, 40px, 40px, 40px, 40px);
-        a {
-            width: fit-content;
+            @include spacing(gap, 40px);
         }
     }
 }

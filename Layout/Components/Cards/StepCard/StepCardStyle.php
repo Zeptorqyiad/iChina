@@ -6,4 +6,5 @@ enum StepCardStyle: string
 {
     case Outline = 'outline';
     case Gray = 'gray';
+	case White = 'white';
 }

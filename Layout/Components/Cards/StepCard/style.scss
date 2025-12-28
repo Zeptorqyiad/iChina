@@ -1,53 +1,28 @@
 .step-card {
     display: flex;
     flex-direction: column;
-    gap: vw(20px);
+    @include spacing(gap, 20px);
     @include spacing(width, 460px, 412px, 360px);
 
-    @include HD {
-        gap: vwh(20px);
-    }
-    @include Tablet {
-        gap: vwt(20px);
-    }
     @include Mobile {
-        gap: vwm(20px);
         width: 100%;
     }
 
     &__text {
         display: flex;
         flex-direction: column;
-        gap: vw(20px);
-        width: vw(640px);
+        @include spacing(gap, 20px, 20px, 16px);
+        @include spacing(width, 640px, 568px);
 
-        @include HD {
-            gap: vwh(20px);
-            width: vwh(568px);
-        }
         @include Tablet {
-            gap: vwt(16px);
             width: 100%;
-        }
-        @include Mobile {
-            gap: vwm(16px);
         }
     }
 
     &__item {
         display: flex;
         align-items: center;
-        gap: vw(16px);
-
-        @include HD {
-            gap: vwh(16px);
-        }
-        @include Tablet {
-            gap: vwt(16px);
-        }
-        @include Mobile {
-            gap: vwm(16px);
-        }
+        @include spacing(gap, 16px);
     }
 
     &__marker {
@@ -72,61 +47,59 @@
 
     /*----------STYLES-----------*/
     &-outline {
-        padding: vw(20px);
-        border: solid var(--gray-lighter);
-        @include border-r(12px);
+        @include spacing(padding, 20px);
+        border: solid var(--gray-white);
+        @include border-r(8px);
         @include border-w(2px);
 
-        @include HD {
-            padding: vwh(20px);
-        }
-        @include Tablet {
-            padding: vwt(20px);
-        }
-        @include Mobile {
-            padding: vwm(20px);
+        .step-card__marker {
+            background: var(--color2-main);
+            color: var(--gray-white);
         }
 
         .step-card__text {
             width: fit-content;
 
             @include Tablet {
-                gap: vwt(20px);
-            }
-            @include Mobile {
-                gap: vwm(20px);
+                @include spacing(gap, 20px);
             }
         }
     }
 
     &-gray {
-        padding: vw(20px);
+        @include spacing(padding, 20px);
         background: var(--gray-lighter);
-        @include border-r(12px);
+        @include border-r(8px);
 
         .step-card__marker {
             background: var(--gray-white);
             color: var(--color1-main);
         }
 
-        @include HD {
-            padding: vwh(20px);
+        .step-card__text {
+            width: fit-content;
+
+            @include Tablet {
+                @include spacing(gap, 20px);
+            }
         }
-        @include Tablet {
-            padding: vwt(20px);
-        }
-        @include Mobile {
-            padding: vwm(20px);
+    }
+
+    &-white {
+        @include spacing(padding, 20px);
+        background: var(--gray-white);
+        @include border-r(8px);
+
+        .step-card__marker {
+            background: var(--gray-white);
+            color: var(--color1-main);
         }
 
         .step-card__text {
             width: fit-content;
 
             @include Tablet {
-                gap: vwt(20px);
-            }
-            @include Mobile {
-                gap: vwm(20px);
+                @include spacing(gap, 20px);
             }
         }
     }

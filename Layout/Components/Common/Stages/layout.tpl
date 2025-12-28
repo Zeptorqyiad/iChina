@@ -6,15 +6,13 @@ $serviceCards = $data['cards']['v'] ?? $data['cards'] ?? [];
 
 <section class="stages <?= $data['className'] ?>">
     <div class="stages__container container">
-        <?php
-        if ($data['title'] || $data['desc']) {
+        <?php if ($data['title'] || $data['desc']) {
             App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
                 title: $data['title'] ?? '',
                 desc: $data['desc'] ?? '',
                 separator: true,
             );
-        }
-        ?>
+        } ?>
 
         <?php if ($data['image'] && $data['offer-title']): ?>
             <div class="stages__steps">
@@ -60,15 +58,13 @@ $serviceCards = $data['cards']['v'] ?? $data['cards'] ?? [];
             <div class="stages__banner">
                 <img src="<?= $data['image'] ?>" alt="image" class="stages__banner-image">
 
-                <?php
-                    App\Layout\Components\Cards\OfferCard\Layout::drawOfferCard(
-                        title: $data['offer-title'],
-                        desc: $data['offer-desc'] ?? '',
-                        price: $data['offer-price'] ?? '',
-                        time: $data['offer-time'] ?? '',
-                        text: $data['offer-text'] ?? '',
-                    );
-                ?>
+                <?php App\Layout\Components\Cards\OfferCard\Layout::drawOfferCard(
+                    title: $data['offer-title'],
+                    desc: $data['offer-desc'] ?? '',
+                    price: $data['offer-price'] ?? '',
+                    time: $data['offer-time'] ?? '',
+                    text: $data['offer-text'] ?? '',
+                ); ?>
             </div>
         <?php else: ?>
             <div class="stages__steps">
@@ -91,7 +87,7 @@ $serviceCards = $data['cards']['v'] ?? $data['cards'] ?? [];
                         $num = (string) ($i + 1);
                     } elseif ($i === 5) {
                         $img = $cards[$i]['img'] ?? '';
-                        $style = App\Layout\Components\Cards\StepCard\StepCardStyle::Gray;
+                        $style = App\Layout\Components\Cards\StepCard\StepCardStyle::White;
                     }
 
                     App\Layout\Components\Cards\StepCard\Layout::drawStepCard(

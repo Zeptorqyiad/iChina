@@ -38,3 +38,7 @@ App\Layout\Components\Common\Header\Layout::draw([
     ]);
     ?>
 </main>
+
+<?php
+App\Layout\Components\Common\Footer\Layout::draw();
+?>

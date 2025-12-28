@@ -32,10 +32,6 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                     <?php if ($phone): ?>
                         <div class="contacts__info-row--container">
                             <?php
-                            App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                                className: 'contacts__info-row--marker',
-                                icon: 'phone'
-                            );
                             App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
                                 className: 'contacts__info-row--phone',
                                 text: '{phone}',
@@ -57,20 +53,13 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 
                     <?php if ($email): ?>
                         <div class="contacts__info-row--container">
-                            <?php
-                                App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                                    className: 'contacts__info-row--marker',
-                                    icon: 'mail'
-                                );
-
-                                App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
-                                    className: 'footer__contact-us--button',
-                                    text: '{email}',
-                                    link: 'mailto:{email}',
-                                    style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Monochrome,
-                                    size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
-                                );
-                            ?>
+                            <?php App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
+                                className: 'contacts__info-row--button',
+                                text: '{email}',
+                                link: 'mailto:{email}',
+                                style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Monochrome,
+                                size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
+                            ); ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -83,13 +72,7 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                     <h5 class="contacts__info-row--label">График работы:</h5>
 
                     <div class="contacts__info-row--container">
-                        <?php if ($workhours):
-                                App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                                    className: 'contacts__info-row--marker',
-                                    icon: 'clock'
-                                );
-                            ?>
-
+                        <?php if ($workhours): ?>
                             <p class="contacts__info-row--text-lh">
                                 <?= '{workhours}' ?>
                             </p>
@@ -101,6 +84,20 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         className: 'contacts__separator'
                     );
                 ?>
+
+                <div class="contacts__info-row">
+                    <h5 class="contacts__info-row--label">Адрес главного офиса:</h5>
+
+                    <div class="contacts__info-row--container">
+                        <?php if ($address): ?>
+                            <p class="contacts__info-row--text-lh"><?='{address}'?></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                        className: 'contacts__separator'
+                ); ?>
 
                 <?php if ($tg || $wt): ?>
                     <div class="contacts__info-row contacts__info-row--social">
@@ -124,30 +121,8 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         }
                         ?>
                     </div>
+                <?php endif; ?>
                 </div>
-
-                    <?php
-                        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                            className: 'contacts__separator'
-                        );
-                    ?>
-
-                    <div class="contacts__info-row">
-                        <h5 class="contacts__info-row--label">Адрес главного офиса:</h5>
-
-                        <div class="contacts__info-row--container">
-                            <?php if ($address):
-                                    App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                                        className: 'contacts__info-row--marker',
-                                        icon: 'marker'
-                                    );
-                                ?>
-
-                                <p class="contacts__info-row--text-lh"><?='{address}'?></p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                <?php endif ?>
             </div>
 
             <div class="contacts__map">

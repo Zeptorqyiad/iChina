@@ -89,7 +89,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="<?= url('/assets/meta/og-image.png') ?>">
 
-    <!-- Analytics tools (Yandex.Metrika etc.) -->
 
 </head>
 <body>

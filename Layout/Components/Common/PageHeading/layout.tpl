@@ -41,7 +41,7 @@ $breadcrumbs = array_values($breadcrumbs);
                     <?= $breadcrumb['name'] ?>
                 </h3>
                 <div class="page-heading__count">
-                    639
+                    <?= $data['count'] ?>
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>

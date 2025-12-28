@@ -1,35 +1,33 @@
 <?php
 /** @var array $data */
 
+$totalCount = App\Extensions\Cases\Model\CasesCategory::getTotalCount();
+$cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
 ?>
 
 <section class="cases-section">
     <div class="cases-section__container container">
         <div class="cases-section__categories">
-            <a href="##" class="cases-section__category">
-                <div class="cases-section__category--text">
-                    Все кейсы
-                </div>
-                <div class="cases-section__category--count">
-                    99
-                </div>
-            </a>
-            <a href="##" class="cases-section__category">
-                <div class="cases-section__category--text">
-                    Услуга
-                </div>
-                <div class="cases-section__category--count">
-                    40
-                </div>
-            </a>
-            <a href="##" class="cases-section__category">
-                <div class="cases-section__category--text">
-                    Вид товара
-                </div>
-                <div class="cases-section__category--count">
-                    12
-                </div>
-            </a>
+
+            <?php
+            App\Layout\Components\UI\Core\Tab\Layout::drawTab(
+                className: !$data['cats'] ? 'active' : '',
+                text: 'Все кейсы',
+                link: '/cases/',
+                badge: $totalCount,
+                size: App\Layout\Components\UI\Core\Tab\TabSize::Small
+            );
+
+            foreach ($cats as $cat) {
+                App\Layout\Components\UI\Core\Tab\Layout::drawTab(
+                    className: $data['cats'] == $cat->cc_id  ? 'active' : '',
+                    text: $cat->name,
+                    link: '/cases/?c=' . $cat->cc_id,
+                    badge: $cat->getCount(),
+                    size: App\Layout\Components\UI\Core\Tab\TabSize::Small
+                );
+            }
+            ?>
         </div>
 
         <div class="cases-section__wrap">

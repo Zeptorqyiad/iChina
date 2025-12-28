@@ -233,7 +233,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             для блока Небольшой текст-описание для блока Небольшой текст-описание для блока ',
             'items' => [
                 [
-                    'image' => '/assets/images/Main/plug.png'
+                    'image' => '/assets/images/Main/partners.png'
                 ],
             ],
         ]);
