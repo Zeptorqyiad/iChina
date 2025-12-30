@@ -16,11 +16,11 @@ class BlogCategory extends ModelBase
 
     public function getCount()
     {
-        return Blog::findAdv()->where('bc_id = ' . $this->bc_id . ' AND is_active = 1')->select('count(*)')->fetchScalar();
+        return Reviews::findAdv()->where('bc_id = ' . $this->bc_id . ' AND is_active = 1')->select('count(*)')->fetchScalar();
     }
 
     public static function getTotalCount()
     {
-        return Blog::findAdv()->where('is_active = 1')->select('count(*)')->fetchScalar();
+        return Reviews::findAdv()->where('is_active = 1')->select('count(*)')->fetchScalar();
     }
 }

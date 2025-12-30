@@ -13,7 +13,7 @@ use Simflex\Extensions\Content\Model\ModelContent;
 
 class Blog extends Content
 {
-    protected ?\App\Extensions\Blog\Model\Blog $post;
+    protected ?\App\Extensions\Blog\Model\Reviews $post;
     protected string $path = '/blog/';
     protected int $c = 0;
 
@@ -34,7 +34,7 @@ class Blog extends Content
 
     protected function like(): array
     {
-        $post = \App\Extensions\Blog\Model\Blog::findOne(['blog_id' => $this->request->request('post_id')]);
+        $post = \App\Extensions\Blog\Model\Reviews::findOne(['blog_id' => $this->request->request('post_id')]);
         if (!$post) {
             return ['success' => false];
         }
@@ -70,7 +70,7 @@ class Blog extends Content
 
         $this->c = $this->request->request('c', 0);
 
-        $this->post = \App\Extensions\Blog\Model\Blog::findOne(['alias' => Container::getRequest()->getUrlLastPart()]);
+        $this->post = \App\Extensions\Blog\Model\Reviews::findOne(['alias' => Container::getRequest()->getUrlLastPart()]);
         if ($this->post) {
             Breadcrumbs::remove('/blog/post/');
             Breadcrumbs::add($this->post->name, '/blog/' . $this->post->alias . '/');

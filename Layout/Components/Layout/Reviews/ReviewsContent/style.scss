@@ -1,0 +1,15 @@
+.reviews-content {
+
+    &__container {}
+
+    &__list {
+        @include spacing(padding-block-start, 12px);
+        @include spacing(padding-block-end, 60px);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        @include spacing(column-gap, 20px);
+        @include spacing(row-gap, 40px);
+    }
+
+    &__item {}
+}

@@ -1,7 +1,7 @@
 <?php
 /** @var array $data */
 
-$q = App\Extensions\Blog\Model\Blog::findAdv();
+$q = App\Extensions\Blog\Model\Reviews::findAdv();
 $items = $q->select('*')
     ->limit(15)
     ->orderBy('date desc')

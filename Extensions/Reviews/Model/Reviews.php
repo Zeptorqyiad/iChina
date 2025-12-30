@@ -1,26 +1,23 @@
 <?php
 
-namespace App\Extensions\Blog\Model;
+namespace App\Extensions\Reviews\Model;
 
 use Simflex\Core\ModelBase;
 
 /**
- * @property int blog_id
+ * @property int reviews_id
  * @property int npp
  * @property string name
  * @property string short
  * @property string date
+ * @property boolean is_active
  * @property string photo
  * @property string alias
  * @property string path
- * @property string content
- * @property int bc_id
  * @property string photo_mob
- * @property int likes
- * @property int dislikes
- * @property boolean pinned
- * @property boolean is_active
- * @property int views
+ * @property string content
+ * @property string video_horizontal
+ * @property string video_vertical
  * @property string meta_kw
  * @property string meta_desc
  * @property string meta_title
@@ -28,22 +25,20 @@ use Simflex\Core\ModelBase;
  * @property string seo_desc
  * @property string seo2_title
  * @property string seo2_desc
- *
- * @property ReviewsCategory category
  */
 
-class Blog extends ModelBase
+class Reviews extends ModelBase
 {
-    protected static $table = 'blog';
-    protected static $primaryKeyName = 'blog_id';
-
-    public function offsetGetCategory(): ReviewsCategory
-    {
-        return new ReviewsCategory($this->bc_id);
-    }
+    protected static $table = 'reviews';
+    protected static $primaryKeyName = 'reviews_id';
 
     public function getContent(): array
     {
         return json_decode($this->content, true)['v'] ?? [];
     }
+
+	public static function getTotalCount()
+	{
+		return Reviews::findAdv()->where('is_active = 1')->select('count(*)')->fetchScalar();
+	}
 }
