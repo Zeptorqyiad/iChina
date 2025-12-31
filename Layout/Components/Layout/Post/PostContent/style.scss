@@ -1,0 +1,142 @@
+.post-content {
+    @include spacing(margin-inline, 610px, 369px, 144px, 12px);
+    @include spacing(padding-top, 20px, 20px, 12px, 12px);
+    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        @include spacing(margin-bottom, 20px, 20px, 12px, 12px);
+    }
+
+    &__bottom {
+        display: grid;
+        grid-template-areas:
+                'views date'
+                'back share';
+        justify-content: space-between;
+        gap: vw(20px);
+        border-top: solid var(--gray-lighter);
+        padding-top: vw(40px);
+        @include border-w(2px);
+
+        @include HD {
+            gap: vwh(20px);
+            padding-top: vwh(40px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+            padding-top: vwt(32px);
+        }
+        @include Mobile {
+            grid-template-areas:
+                'views'
+                'date'
+                'back'
+                'share';
+            justify-content: normal;
+            gap: 0;
+            padding-top: vwm(32px);
+        }
+    }
+
+    &__views {
+        grid-area: views;
+        display: flex;
+        justify-self: flex-start;
+        color: var(--gray-medium);
+        @include t3;
+        @include gap(4px);
+    }
+
+    &__date {
+        grid-area: date;
+        justify-self: flex-end;
+        color: var(--gray-medium);
+        @include t3;
+
+        @include Mobile {
+            justify-self: flex-start;
+        }
+    }
+
+    &__button-back {
+        grid-area: back;
+
+        @include Mobile {
+            margin-top: vwm(16px);
+            justify-self: center;
+            width: 100% !important;
+        }
+    }
+
+    &__feedback{
+        grid-area: share;
+        display: flex;
+        align-items: center;
+        @include spacing(gap, 20px, 20px, 20px, 20px);
+
+        @include Mobile{
+            justify-content: space-between;
+            margin-top: vwm(12px);
+        }
+
+        &-buttons{
+            display: flex;
+            @include spacing(gap, 12px, 12px, 12px, 12px);
+        }
+
+        &-button{
+            display: flex;
+            align-items: center;
+            @include spacing(gap, 8px, 8px, 8px, 8px);
+
+            @include Tablet{
+                height: vwt(48px);
+            }
+            @include Mobile{
+                height: vwm(48px);
+            }
+
+            &:hover{
+                .post-content__feedback-value,
+                .feedback__icon{
+                    color: var(--color1-light);
+                }
+            }
+
+            &:active{
+                .post-content__feedback-value,
+                .feedback__icon{
+                    color: var(--color1-main);
+                }
+            }
+
+        }
+
+        &-value{
+            @include t2-b;
+            color: var(--gray-medium);
+            @include transition((color));
+        }
+
+        .feedback__icon{
+            @include icon(24px);
+            color: var(--gray-medium);
+            @include transition((color));
+        }
+
+        .feedback-btn_active{
+            .feedback-btn__value,
+            .feedback__icon{
+                color: var(--color1-main);
+            }
+        }
+    }
+
+}
+
+.feedback-btn__value {
+    @include t2-b;
+    color: var(--gray-medium);
+}

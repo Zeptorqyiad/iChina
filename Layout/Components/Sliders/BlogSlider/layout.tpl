@@ -1,7 +1,8 @@
 <?php
 /** @var array $data */
+use App\Extensions\Reviews\Model\Reviews;
 
-$q = App\Extensions\Blog\Model\Reviews::findAdv();
+$q = Reviews::findAdv();
 $items = $q->select('*')
     ->limit(15)
     ->orderBy('date desc')
@@ -22,18 +23,18 @@ $items = $q->select('*')
                     className: 'blog-slider__button-link',
                     text: 'Показать все',
                     link: $data['link'],
-                    style: \App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
+                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
                 );
             }
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'blog-slider__button-prev',
                 icon: 'arrow-left',
-                style: \App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline,
+                style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline,
             );
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'blog-slider__button-next',
                 icon: 'arrow-right',
-                style: \App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline,
+                style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline,
             );
         ?>
     </div>
@@ -42,15 +43,16 @@ $items = $q->select('*')
         <div class="blog-slider__slider">
             <div class="swiper-wrapper">
                 <?php foreach ($items as $i) {
-                    $cat = $i->category->name;
-                    App\Layout\Components\Cards\BlogCard\Layout::drawBlogCard(
+                    App\Layout\Components\Cards\ReviewsCard\Layout::drawReviewsCard(
                         className: 'swiper-slide',
-                        link: '/blog/' . $i['alias'] . '/',
                         title: $i['name'] ?? '',
-                        desc: $i['short'] ?? '',
-                        image: $i['photo'] ?? '',
+                        text: $i['short'] ?? '',
                         date: $i['date'] ?? '',
-                        category: $cat,
+                        photo: $i['photo'] ?? '',
+                        video: $i['video'] ?? '',
+                        video_h: $i['video_horizontal'] ?? '',
+                        video_v: $i['video_vertical'] ?? '',
+                        path: '/blog/' . $i['alias'] . '/',
                     );
                 } ?>
             </div>
