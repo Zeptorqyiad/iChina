@@ -11,8 +11,11 @@
                     <?php App\Layout\Components\Cards\ReviewsCard\Layout::drawReviewsCard(
                         title: $i['name'] ?? '',
                         text: $i['short'] ?? '',
-                        badge: $i['date'] ?? '',
+                        date: $i['date'] ?? '',
+                        category: $i['rev_id'] ?? '',
                         photo: $i['photo'] ?? '',
+                        video: $i['video'] ?? '',
+                        video_v: $i['video_vertical'] ?? '',
                         path: '/reviews/' . $i['alias'] . '/',
                     ); ?>
                 </li>

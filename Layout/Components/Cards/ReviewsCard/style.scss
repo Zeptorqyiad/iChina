@@ -6,14 +6,27 @@
     @include spacing(gap, 12px, 20px);
     cursor: pointer;
 
+    &.video-card {
+        & .reviews-card__button {
+            @include spacing(left, 16px, 16px, 12px, 12px);
+        }
+        & .reviews-card__badges {
+            position: absolute;
+            @include spacing(top, 16px, 16px, 12px, 12px);
+            @include spacing(left, 16px, 16px, 12px, 12px);
+        }
+        & .reviews-card__container {
+            justify-content: center;
+        }
+    }
+    &.reviews-card-text {
+        & .reviews-card__container {
+            display: unset;
+        }
+    }
+
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-            .reviews-card__image {
-                transform: scale(1.1);
-                transition: transform 0.2s, scale 0.2s;
-                will-change: transform, scale;
-            }
-
             .reviews-card__button {
                 opacity: 1;
                 transform: translateY(0%);
@@ -29,11 +42,6 @@
     }
 
     &:active {
-        .reviews-card__image {
-            transform: scale(1);
-            transition: transform 0.2s;
-        }
-
         .reviews-card__button {
             opacity: 1;
             transform: translateX(0%);
@@ -50,7 +58,7 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        z-index: 2;
+        z-index: 10;
     }
 
     &__container {
@@ -59,6 +67,8 @@
         overflow: hidden;
         @include spacing(height, 340px, 340px, 280px, 280px);
         @include border-r(12px);
+        background: var(--gray-light);
+        z-index: 1;
     }
 
     &__wrap {
@@ -70,23 +80,22 @@
     }
 
     &__badges {
+        position: relative;
+        z-index: 11;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         @include gap(8px);
-
-        .badge__icon{
-            color: var(--color1-main);
-        }
     }
 
     &__image {
         position: absolute;
         width: 100%;
         height: 100%;
-        z-index: -1;
+        object-fit: contain;
         user-select: none;
         @include transition((transform));
+        z-index: 2;
     }
 
     &__button {
@@ -94,7 +103,7 @@
         bottom: 0;
         opacity: 0;
         transform: translateY(100%);
-        z-index: 2;
+        z-index: 10;
 
         @include Tablet {
             opacity: 1;
@@ -120,46 +129,23 @@
         @include truncate(1);
     }
 
-    &-text {
-        display: flex;
-        flex-direction: column;
-        background: var(--gray-light);
-        @include spacing(padding, 16px);
-        @include spacing(gap, 40px, 40px, 20px, 20px);
-        @include spacing(border-radius, 12px);
-        @include spacing(height, 407px, 407px, 343px, 342px);
-
-        &__content {
-            display: flex;
-            flex-direction: column;
-            @include spacing(gap, 12px);
-            width: 100%;
-
-            &--title {
-                @include h5;
-                color: var(--gray-darker);
-                @include truncate(2);
-                user-select: none;
-            }
-            &--desc {
-                @include t2;
-                color: var(--gray-dark);
-                user-select: none;
-
-                @include Tablet {
-                    @include truncate(5);
-                }
-            }
-        }
-
-        &__link {
-            margin-top: auto;
-        }
-    }
-
     &__desc {
         color: var(--gray-dark);
         @include t3;
-        @include truncate(1);
+        @include spacing(padding-inline, 16px, 16px, 12px, 12px);
+        @include spacing(padding-top, 50px);
+    }
+
+    &__video {
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        iframe {
+            height: 100%;
+            width: 100%;
+        }
     }
 }
