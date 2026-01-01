@@ -7,8 +7,8 @@
         flex-direction: column;
         margin: 0 auto;
         @include spacing(gap, 20px, 20px, 16px, 16px);
+        @include spacing(max-width, 700px, 628px, 480px, 342px);
     }
-
 
     &__buttons {
         display: flex;
@@ -16,12 +16,11 @@
         align-items: center;
 
         @include Tablet {
-            gap: vwt(12px);
+            @include spacing(gap, 12px);
         }
         @include Mobile {
             flex-direction: column;
             justify-content: start;
-            gap: vwm(12px);
         }
     }
 
@@ -32,8 +31,182 @@
             width: 100%;
         }
     }
-}
 
-.info-container {
-    @include spacing(max-width, 700px, 628px, 480px, 342px);
+    &__content .case-content {
+        &__navigation {
+            @include spacing(padding, 20px, 20px, 12px, 12px);
+            @include spacing(padding-bottom, 12px, 12px, 8px, 8px);
+            @include spacing(border-radius, 20px, 20px, 12px, 12px);
+            background: var(--gray-lighter);
+            @include spacing(margin-bottom, 20px, 20px, 16px, 16px);
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 8px);
+
+            &--title {
+                @include h4;
+                color: var(--gray-darker);
+                @include spacing(padding-bottom, 8px);
+            }
+            &--link {
+                @include t2;
+                color: var(--color1-dark);
+
+                &:not(:last-child) {
+                    @include spacing(padding-bottom, 4px);
+                }
+            }
+        }
+
+        &__title {
+            @include h3;
+            color: var(--gray-darker);
+            @include spacing(padding-block, 20px, 20px, 16px, 16px);
+        }
+
+        &__text {
+            @include t2;
+            color: var(--gray-dark);
+            @include spacing(padding-bottom, 20px, 20px, 16px, 16px);
+        }
+
+        &__desc {
+            @include t4;
+            color: var(--gray-medium);
+            @include spacing(padding-bottom, 20px, 20px, 16px, 16px);
+        }
+
+        &__steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include spacing(gap, 12px);
+            @include spacing(margin-bottom, 20px, 20px, 16px, 16px);
+
+            @include Tablet {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &__step {
+            @include spacing(padding, 20px);
+            @include border-w(2px);
+            border: solid var(--gray-lighter);
+            @include border-r(12px);
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px);
+
+            &--marker {
+                @include h5;
+                color: var(--gray-darker);
+                @include spacing(padding-block, 6px);
+                @include spacing(padding-inline, 4px);
+                @include icon(32px);
+                background: var(--color1-lighter);
+                @include border-r(8px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &--text {
+                @include t2;
+                color: var(--gray-dark);
+            }
+        }
+
+        &__list-image {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include spacing(gap, 12px);
+
+            img {
+                @include spacing(height, 258px);
+            }
+
+            @include Mobile {
+                display: flex;
+                flex-direction: column;
+                @include spacing(height, 286px);
+            }
+        }
+
+        &__image {
+            width: 100%;
+            object-fit: cover;
+            @include spacing(height, 432px, 372px, 304px, 242px);
+            @include border-r(12px);
+            @include spacing(margin-bottom, 12px, 12px, 8px, 8px);
+
+        }
+
+        &__benefits {
+            background: var(--gray-lighter);
+            @include border-r(12px);
+            @include spacing(padding-block, 16px);
+            @include spacing(padding-inline, 20px);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            @include spacing(gap, 12px, 12px, 8px, 8px);
+
+            & .separator {
+                @include spacing(height, 80px);
+            }
+
+            @include Tablet {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        &__benefit {
+            @include spacing(flex-basis, 204px, 180px);
+            flex-shrink: 0;
+
+            @include Tablet {
+                flex-basis: unset;
+                width: 100%;
+            }
+
+            &--title {
+                @include h6;
+                color: var(--gray-black);
+                @include spacing(padding-bottom, 4px);
+            }
+            &--text {
+                @include t3;
+                color: var(--gray-black);
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            flex-direction: row;
+            @include spacing(gap, 12px);
+
+            @include Tablet {
+                a {
+                    flex: 1;
+                    width: 100%;
+                }
+            }
+            @include Mobile {
+                flex-direction: column;
+            }
+        }
+
+        &__video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &__date {
+            @include spacing(paddin-block, 20px, 20px, 16px, 16px);
+            @include t3-b;
+            color: var(--gray-medium);
+        }
+    }
 }
