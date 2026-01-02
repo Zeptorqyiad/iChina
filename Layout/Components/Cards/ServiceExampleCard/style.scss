@@ -1,0 +1,99 @@
+.service-example-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray-lighter);
+    @include border-r(12px);
+    @include spacing(padding, 20px);
+    @include spacing(gap, 16px);
+    transition: background 0.3s ease;
+
+    &.pointer-none {
+        pointer-events: none;
+
+        & .btn {
+            pointer-events: initial;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .service-example-card__arrow,
+            .service-example-card__title {
+                color: var(--color1-main);
+            }
+
+            .service-example-card__arrow {
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    &:active {
+        background: var(--color1-lighter);
+
+        .service-example-card__arrow,
+        .service-example-card__title {
+            color: var(--color1-darker);
+        }
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    &__arrow {
+        flex-shrink: 0;
+        @include transition((transform));
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 16px, 16px, 8px, 8px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+        transition: color 0.3s ease;
+
+        @include Tablet {
+            @include h6;
+        }
+    }
+
+    &__text {
+        color: var(--gray-dark);
+        @include t3;
+        transition: color 0.3s ease;
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &-color {
+        &_main {
+            .service-example-card__marker {
+                background: var(--color1-main);
+            }
+        }
+        &_red {
+            .service-example-card__marker {
+                background: var(--uniq-red);
+            }
+        }
+        &_blue {
+            .service-example-card__marker {
+                background: var(--uniq-blue);
+            }
+        }
+        &_green {
+            .service-example-card__marker {
+                background: var(--uniq-green);
+            }
+        }
+    }
+}

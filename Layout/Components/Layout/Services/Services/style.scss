@@ -1,0 +1,61 @@
+.services {
+    @include spacing(padding-block, 80px, 80px 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 30px, 30px, 16px, 16px);
+    }
+
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 30px, 30px, 16px, 16px);
+    }
+
+    &__step {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include spacing(gap, 20px, 20px, 20px, 20px);
+
+        @include Tablet {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &_ls {
+            position: sticky;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            @include spacing(padding-right, 40px, 40px);
+            @include spacing(top, 124px, 124px);
+            @include spacing(gap, 20px, 20px, 12px, 12px);
+
+            &--title {
+                color: var(--gray-darker);
+                @include h3;
+            }
+
+            &--text {
+                color: var(--gray-dark);
+                @include t2;
+            }
+
+            @include Tablet {
+                position: static;
+            }
+        }
+
+        &_rs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            @include spacing(gap, 20px, 20px, 16px, 16px);
+
+            @include Mobile {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
