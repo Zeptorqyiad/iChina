@@ -1,0 +1,36 @@
+.blog-fs {
+    background: url('/assets/images/background/background-fs.png') center center / cover no-repeat;
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        @include spacing(padding-bottom, 40px, 40px, 40px, 40px);
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 20px, 20px, 12px, 12px);
+    }
+    &__title{
+        @include h2;
+        color: var(--gray-darker);
+    }
+    &__desc{
+        @include t2;
+        color: var(--gray-dark);
+        @include spacing(width, 800px, 800px);
+
+        @include Tablet {
+            width: 100%;
+        }
+    }
+    
+    .bread-crumbs__container{
+        margin-inline: 0;
+        @include spacing(margin-bottom, 30px, 30px, 20px, 20px);
+    }
+    .page-heading__container{
+        margin-inline: 0;
+    }
+}
+

@@ -1,0 +1,112 @@
+.pagination {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include spacing(gap, 20px, 20px, 20px, 20px);
+
+    &--desktop {
+        display: flex;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &--mobile {
+        display: none;
+
+        @include Tablet {
+            display: flex;
+            align-items: start;
+        }
+    }
+
+    &__container {
+        display: flex;
+        @include spacing(gap, 8px, 8px, 8px, 8px);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gray-lighter);
+        color: var(--gray-darker);
+        touch-action: manipulation;
+        @include spacing(width, 40px, 40px, 40px, 40px);
+        @include spacing(height, 40px, 40px, 40px, 40px);
+        @include border-r(8px);
+        @include transition((color, background));
+        @include t3-b;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--color1-lighter);
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            background: var(--color1-light);
+            color: var(--color1-dark);
+        }
+
+        &.active {
+            cursor: default;
+            pointer-events: none;
+            background: var(--gray-dark);
+            color: var(--gray-white);
+            font-weight: 700;
+        }
+
+        svg {
+            flex-shrink: 0;
+            @include spacing(width, 24px, 24px, 24px, 24px);
+            @include spacing(height, 24px, 24px, 24px, 24px);
+
+            path {
+                stroke: currentColor;
+            }
+        }
+
+        &--disabled {
+            color: var(--gray-medium);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        &--prev,
+        &--next {
+            background: transparent;
+            @include spacing(width, 40px, 40px, 40px, 40px);
+            @include spacing(height, 40px, 40px, 40px, 40px);
+        }
+    }
+
+    &__button-more {
+        background: var(--gray-black);
+        color: var(--gray-white);
+        @include t3;
+        @include transition((color, background));
+        @include spacing(padding-block, 10px, 10px, 10px);
+        @include spacing(padding-inline, 16px, 16px, 16px);
+
+        @include Mobile {
+            display: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-dark);
+            }
+        }
+
+        &:active {
+            background: var(--gray-darker);
+        }
+
+        &--disabled {
+            display: none;
+        }
+    }
+}

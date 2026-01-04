@@ -1,4 +1,10 @@
 //!===========================================================
+//! DEFAULT INITS
+//!===========================================================
+Fancybox.bind("[data-fancybox]");
+window.dataLayer = window.dataLayer || [];
+
+//!===========================================================
 //! MODAL MANAGER
 //!===========================================================
 /**
@@ -201,6 +207,187 @@ class ModalManager {
 
 // Expose the modalManager globally.
 window.modalManager = new ModalManager();
+
+//!===========================================================
+//! API CLIENT
+//!===========================================================
+/**
+ * Global API client for frontend-to-backend calls.
+ * Uses callback signature: `(params…, onSuccess, onError)`.
+ * @namespace window.api
+ */
+window.api = {
+    /**
+     * Search-related endpoints.
+     * @namespace window.api.search
+     */
+    search: {
+        /**
+         * Fetch city suggestions.
+         * @param {string} q - Query string
+         * @param {Function} onSuccess - Called with parsed JSON on 2xx
+         * @param {Function} [onError] - Called on network/error
+         */
+        city(q, onSuccess, onError) {
+            fetch(`/qs/?a=city&q=${encodeURIComponent(q)}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.json();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('search.city error:', err);
+                    onError && onError(err);
+                });
+        },
+
+        /**
+         * Fetch product suggestions.
+         * @param {string} q
+         * @param {Function} onSuccess
+         * @param {Function} [onError]
+         */
+        products(q, onSuccess, onError) {
+            fetch(`/qs/?a=products&q=${encodeURIComponent(q)}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.json();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('search.products error:', err);
+                    onError && onError(err);
+                });
+        },
+    },
+
+    /**
+     * Feedback submission endpoints.
+     * @namespace window.api.feedback
+     */
+    feedback: {
+        /**
+         * Submit blog feedback.
+         * @param {FormData} fd
+         * @param {Function} onSuccess - Called with parsed JSON on 2xx
+         * @param {Function} [onError]
+         */
+        blog(fd, onSuccess, onError) {
+            fetch('/blog/', {
+                method: 'POST',
+                body: fd,
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.json();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('feedback.blog error:', err);
+                    onError && onError(err);
+                });
+        },
+
+        /**
+         * Submit a review.
+         * @param {FormData} fd
+         * @param {Function} onSuccess
+         * @param {Function} [onError]
+         */
+        reviews(fd, onSuccess, onError) {
+            fetch('/reviews/', {
+                method: 'POST',
+                body: fd,
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.json();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('feedback.reviews error:', err);
+                    onError && onError(err);
+                });
+        },
+    },
+
+    /**
+     * Product comparison endpoints.
+     * @namespace window.api.compare
+     */
+    compare: {
+        /**
+         * Add a product to compare.
+         * @param {number|string} id
+         * @param {number|string} variant
+         * @param {Function} onSuccess - Called with server response text/JSON on 2xx
+         * @param {Function} [onError]
+         */
+        add(id, variant, onSuccess, onError) {
+            fetch(`/compare/?action=add&id=${encodeURIComponent(id)}&variant=${encodeURIComponent(variant)}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.text();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('compare.add error:', err);
+                    onError && onError(err);
+                });
+        },
+
+        /**
+         * Remove a product from compare.
+         * @param {number|string} id
+         * @param {number|string} variant
+         * @param {Function} onSuccess
+         * @param {Function} [onError]
+         */
+        remove(id, variant, onSuccess, onError) {
+            fetch(`/compare/?action=remove&id=${encodeURIComponent(id)}&variant=${encodeURIComponent(variant)}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            })
+                .then(resp => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.text();
+                })
+                .then(onSuccess)
+                .catch(err => {
+                    console.error('compare.remove error:', err);
+                    onError && onError(err);
+                });
+        },
+    },
+
+    catalog: {
+        count: function (fd, callback) {
+            let str = (window.location.origin + window.location.pathname).toString();
+            if (str.includes('?')) {
+                str += '&';
+            } else {
+                str += '?';
+            }
+
+            fetch(str + 'action=count', {
+                method: 'POST',
+                body: fd,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            }).then(res => res.text()).then(response => {
+                if (callback) {
+                    callback(response);
+                }
+            });
+        },
+    }
+};
 
 //!===========================================================
 //! SWIPER MANAGER
@@ -927,3 +1114,28 @@ class BasicTextValidator {
 }
 
 window.BasicTextValidator = BasicTextValidator;
+
+//!===========================================================
+//! LIKE, DISLIKE FEEDBACK
+//!===========================================================
+
+async function makeFeedback(id, like, hadOld) {
+    return new Promise((resolve, reject) => {
+        const fd = new FormData();
+        fd.append('action', 'like');
+        fd.append('post_id', id);
+        fd.append('like', like);
+        fd.append('had_old', hadOld);
+
+        api.feedback.blog(fd, (result) => {
+            if (result.success) {
+                resolve(result);
+            } else {
+                reject(new Error('Server error: ' + (result.message || 'Unknown')));
+            }
+        }, (err) => {
+            console.error('Feedback API error:', err);
+            reject(err);
+        });
+    });
+}

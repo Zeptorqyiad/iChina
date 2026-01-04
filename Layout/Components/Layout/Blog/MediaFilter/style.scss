@@ -1,0 +1,20 @@
+.media-filter {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: fit-content;
+    @include spacing(gap, 12px, 12px);
+    @include spacing(width, 340px, 280px);
+    @include border-r(12px);
+    @include spacing(padding, 12px, 12px);
+    @include spacing(top, 124px, 124px);
+    border: solid var(--gray-lighter);
+    @include border-w(2px);
+
+    .tab{
+        width: 100%;
+        justify-content: flex-start;
+        @include spacing(gap, 8px, 8px);
+    }
+}

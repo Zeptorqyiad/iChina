@@ -5,7 +5,7 @@
 
 <section class="case-article <?= $data['className'] ?>">
     <div class="case-article__container">
-        <div class="case-article__content case-content">\
+        <div class="case-article__content case-content">
             <?php if ($data['nav-title'] || $data['link']): ?>
                 <div class="case-content__navigation">
                     <h4 class="case-content__navigation--title">
@@ -103,19 +103,21 @@
 
             <?php if (!empty($data['benefits'])): ?>
                 <div class="case-content__benefits">
-                    <?php foreach ($data['benefits'] as $i): ?>
+                    <?php foreach ($data['benefits'] as $index => $i): ?>
                         <div class="case-content__benefit">
-                            <h6 class="case-content__benefit--title">
+                            <h6 class="case-content__benefit--title uppercase">
                                 <?= $i['title'] ?>
                             </h6>
                             <div class="case-content__benefit--text">
                                 <?= $i['text'] ?>
                             </div>
                         </div>
-                        <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                            orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical,
-                            theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
-                        ); ?>
+                        <?php if ($index < 2) {
+                            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                                orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical,
+                                theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
+                            );
+                        }  ?>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>

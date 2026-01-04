@@ -1,0 +1,197 @@
+.media-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include spacing(gap, 20px, 20px, 20px, 20px);
+    @include spacing(padding-block, 30px, 30px, 24px, 24px);
+    @include border-w(1px);
+    border-top: solid var(--gray-lighter);
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 16px, 16px, 16px, 16px);
+    }
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 8px, 8px, 8px, 8px);
+
+        &-title{
+            @include h5;
+            color: var(--gray-darker);
+        }
+
+        &-desc{
+            @include t3;
+            color: var(--gray-dark);
+        }
+    }
+
+    &__image-block {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--gray-light);
+        width: 100%;
+        @include border-r(12px);
+        @include spacing(height, 400px, 358px, 274px, 196px);
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    }
+
+    &__video {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        @include spacing(border-radius, 12px);
+        background: var(--gray-light);
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        &.horizontal-video {
+            height: vw(400px);
+
+            @include HD {
+                height: vwh(358px);
+            }
+            @include Tablet {
+                height: vwt(274px);
+            }
+            @include Mobile {
+                height: vwm(196px);
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &.vertical-video {
+            display: flex;
+            justify-content: center;
+            height: vw(620px);
+
+            @include HD {
+                height: vwh(496px);
+            }
+
+            @include Tablet {
+                height: vwt(496px);
+            }
+
+            @include Mobile {
+                height: vwm(606px);
+            }
+
+            iframe {
+                width: vw(350px);
+
+                @include HD {
+                    width: vwh(280px);
+                }
+                @include Tablet {
+                    width: vwt(280px);
+                }
+                @include Mobile {
+                    width: 100%;
+                    border-radius: inherit;
+                }
+            }
+        }
+    }
+
+    &__bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include Mobile{
+            flex-direction: column;
+            gap: vwm(20px);
+        }
+
+        &--ls{
+            width: 100%;
+
+            .media-card__link{
+
+                @include Mobile{
+                    width: 100%;
+                }
+            }
+        }
+
+        &--rs{
+            display: flex;
+            @include spacing(gap, 16px, 16px, 16px, 16px);
+            align-items: center;
+        }
+
+        &-separator{
+            @include spacing(height, 24px, 24px, 24px, 24px);
+            background: var(--gray-medium);
+            width: 1px;
+        }
+    }
+
+    &__feedback{
+        display: flex;
+        @include spacing(gap, 8px, 8px, 8px, 8px);
+
+        &-value{
+            @include t2-b;
+            color: var(--gray-medium);
+            @include transition((color));
+        }
+
+        .feedback__icon{
+            @include icon(24px);
+            color: var(--gray-medium);
+            @include transition((color));
+            flex-shrink: 0;
+        }
+        &-button{
+            display: flex;
+            align-items: center;
+            @include spacing(gap, 8px, 8px, 8px, 8px);
+
+            @include Tablet{
+                height: vwt(48px);
+            }
+            @include Mobile{
+                height: vwm(48px);
+            }
+
+            &:hover{
+                .post-content__feedback-value,
+                .feedback__icon{
+                    color: var(--color1-light);
+                }
+            }
+
+            &:active{
+                .post-content__feedback-value,
+                .feedback__icon{
+                    color: var(--color1-main);
+                }
+            }
+        }
+    }
+    .feedback-btn_active{
+        .media-card__feedback-value,
+        .feedback__icon{
+            color: var(--color1-main);
+        }
+    }
+}

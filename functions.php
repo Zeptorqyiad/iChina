@@ -101,3 +101,20 @@ function buildAttrs(array $attributes = []): string
         $attributes
     ));
 }
+
+function paginate(int $page, int $maxPage = PHP_INT_MAX, string $name = 'page'): string
+{
+	// fallback
+	if ($page < 0 || $page > $maxPage) {
+		return '';
+	}
+
+	$request = \Simflex\Core\Container::getRequest();
+
+	$extra = [];
+	if ($page) {
+		$extra[$name] = $page;
+	}
+
+	return url($request->getPath() . '?' . $request->buildQuery($extra, [$name]));
+}

@@ -14,6 +14,9 @@ use Simflex\Core\ModelBase;
  * @property string alias
  * @property string path
  * @property string content
+ * @property string video
+ * @property string video_horizontal
+ * @property string video_vertical
  * @property int bc_id
  * @property string photo_mob
  * @property int likes
@@ -29,7 +32,7 @@ use Simflex\Core\ModelBase;
  * @property string seo2_title
  * @property string seo2_desc
  *
- * @property ReviewsCategory category
+ * @property BlogCategory category
  */
 
 class Blog extends ModelBase
@@ -37,9 +40,9 @@ class Blog extends ModelBase
     protected static $table = 'blog';
     protected static $primaryKeyName = 'blog_id';
 
-    public function offsetGetCategory(): ReviewsCategory
+    public function offsetGetCategory(): BlogCategory
     {
-        return new ReviewsCategory($this->bc_id);
+        return new BlogCategory($this->bc_id);
     }
 
     public function getContent(): array
