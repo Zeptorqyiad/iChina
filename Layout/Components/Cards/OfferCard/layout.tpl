@@ -24,12 +24,10 @@
                         <?= $data['price'] ?> ₽
                     </div>
 
-                    <?php
-                        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                            className: 'offer-card__content-separator',
-                            orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical
-                        );
-                    ?>
+                    <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                        className: 'offer-card__content-separator',
+                        orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical
+                    ); ?>
 
                     <?php if ($data['time']): ?>
                         <div class="offer-card__content-property">
@@ -42,15 +40,13 @@
 
         <?php if ($data['bullits']): ?>
             <div class="offer-card__wrap-bullits">
-                <?php
-                    App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
-                        bullits: $data['bullits'],
-                    );
-                ?>
+                <?php App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
+                    bullits: $data['bullits'],
+                ); ?>
             </div>
         <?php endif; ?>
 
-        <?php if($data['text']){
+        <?php if($data['text']) {
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'offer-card__wrap-button',
                 text: $data['text'],
@@ -59,7 +55,7 @@
                     'onclick' => 'modalManager.open("callback-modal")',
                 ],
             );
-        }else{
+        } else {
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'offer-card__wrap-button',
                 text: 'Оставить заявку',
@@ -69,7 +65,6 @@
                 ],
             );
         }
-
         ?>
     </div>
 

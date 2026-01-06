@@ -19,19 +19,41 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                 </div>
             <?php endif; ?>
 
-            <ul class="main-about__items">
-                <?php foreach ($data['items'] as $i): ?>
-                    <li class="main-about__item <?= $i['className'] ?>" >
-                        <?php App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
-                            title: $i['title'],
-                            desc: $i['desc'],
-                            link: $i['link'],
-                            image: $i['image'],
-                            style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
-                        ); ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <?php if ($data['items']): ?>
+                <ul class="main-about__items">
+                    <?php foreach ($data['items'] as $i): ?>
+                        <li class="main-about__item <?= $i['className'] ?>" >
+                            <?php App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
+                                title: $i['title'],
+                                desc: $i['desc'],
+                                link: $i['link'],
+                                image: $i['image'],
+                                style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
+                            ); ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php elseif ($data['benefits']): ?>
+                <ul class="main-about__benefits">
+                    <?php foreach ($data['benefits'] as $index => $i): ?>
+                        <li class="main-about__benefit">
+                            <h2 class="main-about__benefit--title uppercase">
+                                <?= $i['title'] ?>
+                            </h2>
+                            <div class="main-about__benefit--text">
+                                <?= $i['text'] ?>
+                            </div>
+                        </li>
+                        <?php if ($index < 2) {
+                            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                                orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical,
+                                theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
+                            );
+                        }
+                        ?>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
 
         <div class="main-about__why">

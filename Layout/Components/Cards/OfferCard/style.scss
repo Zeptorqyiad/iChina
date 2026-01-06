@@ -1,12 +1,12 @@
 .offer-card {
     display: flex;
-    height: fit-content;
     background-color: var(--gray-lighter);
     border: solid var(--color1-main);
     @include spacing(gap, 40px, 40px, 40px, 20px);
     @include spacing(padding, 40px, 40px, 24px, 24px);
     @include border-w(2px);
     @include border-r(20px);
+    height: 100%;
 
     &__wrap {
         display: flex;
@@ -24,9 +24,8 @@
         }
 
         &-button {
-            @include Mobile {
-                width: 100%;
-            }
+            margin-top: auto;
+            width: 100%;
         }
     }
 
@@ -42,7 +41,7 @@
         }
 
         &-desc {
-            color: var(--gray-dark);
+            color: var(--gray-darker);
             @include t2;
         }
 
@@ -52,8 +51,8 @@
             justify-content: center;
             width: fit-content;
             background-color: var(--gray-white);
-            @include spacing(padding-inline, 20px, 20px, 20px, 20px);
-            @include spacing(padding-block, 12px, 12px, 12px, 12px);
+            @include spacing(padding-inline, 20px);
+            @include spacing(padding-block, 12px);
             @include gap(16px);
             @include border-r(12px);
 
@@ -63,12 +62,12 @@
         }
 
         &-property {
-            color: var(--color1-main);
+            color: var(--color2-main);
             @include h4;
         }
 
         &-separator {
-            @include spacing(height, 24px, 24px, 24px, 24px);
+            @include spacing(height, 24px);
         }
     }
 

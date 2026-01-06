@@ -19,9 +19,9 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
                     )
                 ?>
-				<div class="header__logo">
+				<a href="/" class="header__logo">
                     <img src="/assets/images/Main/Logotype.png" alt="" draggable="false">
-                </div>
+                </a>
 			</div>
 			<div class="header__content-rs">
                 <nav class="header__items">

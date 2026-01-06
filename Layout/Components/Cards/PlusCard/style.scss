@@ -2,14 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    @include spacing(gap, 20px, 20px, 20px, 20px);
+    @include spacing(gap, 8px);
+    background: var(--gray-lighter);
+    @include spacing(padding, 20px);
+    @include border-r(12px);
 
     &__marker {
-        background-color: var(--gray-lighter);
+        background: var(--gray-lighter);
     }
 
     &__text {
-        color: var(--gray-dark);
+        color: var(--gray-darker);
         @include t2;
     }
 

@@ -1,9 +1,9 @@
 .accent-card {
     display: flex;
     flex-direction: column;
-    background-color: var(--color1-lighter);
+    background-color: var(--gray-lighter);
     height: fit-content;
-    @include spacing(padding, 20px, 20px, 20px, 20px);
+    @include spacing(padding, 20px);
     @include gap(20px);
     @include border-r(12px);
 
@@ -19,6 +19,6 @@
 
     &__desc {
         color: var(--gray-darker);
-        @include t1;
+        @include t2;
     }
 }

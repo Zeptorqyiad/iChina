@@ -5,7 +5,6 @@
     border: transparent solid;
     width: fit-content;
     color: var(--gray-white);
-    background: var(--color1-main);
     @include transition((border, background, color, opacity));
     @include border-w(2px);
 
@@ -28,7 +27,7 @@
     }
 
     &-size_l {
-        @include icon(56px);
+        @include icon(64px);
         @include border-r(16px);
 
         .marker__icon {

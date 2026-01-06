@@ -1,0 +1,20 @@
+.options {
+    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 32px, 32px, 24px, 24px);
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        @include spacing(gap, 20px, 20px, 16px, 16px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+}

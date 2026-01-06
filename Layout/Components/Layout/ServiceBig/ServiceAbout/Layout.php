@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Layout\Components\Layout\Services\ServicesAbout;
+namespace App\Layout\Components\Layout\ServiceBig\ServiceAbout;
 
 use App\Layout\LayoutBase;
 

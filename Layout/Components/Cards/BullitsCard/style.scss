@@ -1,0 +1,110 @@
+.bullits-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--gray-white);
+    border: solid var(--gray-lighter);
+    @include border-r(12px);
+    @include border-w(2px);
+    @include gap(8px);
+    @include spacing(padding-block, 20px, 20px, 20px, 20px);
+    @include spacing(padding-inline, 20px, 20px, 20px, 20px);
+
+    &__title {
+        color: var(--gray-darker);
+        @include t2;
+
+        @include Tablet {
+            @include t3;
+        }
+
+        ul > li {
+            @include t2;
+            text-align: left;
+            @include spacing(padding-left, 20px);
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            @include Tablet {
+                @include t3;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                @include spacing(top, 6px, 2px, 3px, 2.5px);
+                @include spacing(width, 12px);
+                @include spacing(height, 12px);
+                left: 0;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='11' viewBox='0 0 16 11' fill='none'%3E%3Cpath d='M1 5L6 10L15 1' stroke='%23E87409' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-position: center;
+            }
+
+            &:not(:last-child) {
+                @include spacing(margin-bottom, 6px);
+                @include spacing(margin-bottom, 8px);
+                @include spacing(padding-bottom, 8px);
+                border-bottom: vw(1px) solid var(--gray-lighter);
+
+                @include HD {
+                    border-bottom: vwh(1px) solid var(--gray-lighter);
+                }
+                @include Tablet {
+                    border-bottom: vwt(1px) solid var(--gray-lighter);
+                }
+                @include Mobile {
+                    border-bottom: vwm(1px) solid var(--gray-lighter);
+                }
+            }
+        }
+    }
+
+    &__bullit {
+        display: flex;
+        align-items: flex-start;
+        border-bottom: solid var(--gray-lighter);
+        @include border-w(2px);
+        @include gap(8px);
+        @include spacing(padding-bottom, 8px, 8px, 8px, 8px);
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        &-icon {
+            color: var(--color2-light);
+            flex-shrink: 0;
+            @include icon(24px);
+        }
+
+        span {
+            color: var(--gray-dark);
+            @include t2;
+
+            @include Tablet {
+                @include t3;
+            }
+        }
+    }
+
+    /*----------THEME-----------*/
+    &-theme_dark {
+        background-color: var(--gray-lighter);
+        border: none;
+        padding: 0;
+
+        .bullits-card__bullit {
+            border-bottom: solid var(--gray-light);
+            @include border-w(2px);
+
+            &:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
