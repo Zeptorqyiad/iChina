@@ -5,7 +5,7 @@
 
     &__wrap {
         display: grid;
-        align-items: end;
+        align-items: start;
         grid-template-columns: vw(680px) vw(700px);
         @include spacing(gap, 40px, 40px, 12px, 12px);
 

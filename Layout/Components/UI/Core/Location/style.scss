@@ -1,0 +1,36 @@
+.location {
+    /*----------CORE STYLE-----------*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    @include spacing(padding-block, 12px);
+    @include spacing(padding-inline, 16px);
+    @include spacing(gap, 4px);
+    background: var(--gray-white);
+    color: var(--gray-darker);
+    @include transition((border, background, color, opacity));
+    @include border-r(12px);
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        flex-shrink: 0;
+    }
+
+    &__title {
+        @include t3-b;
+    }
+
+    &__subtitle {
+        @include t4;
+    }
+
+    /*----------THEME-----------*/
+
+    &-theme_dark {
+        background: var(--gray-darker);
+        color: var(--gray-white);
+    }
+}

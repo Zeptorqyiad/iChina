@@ -1,0 +1,118 @@
+.map-section{
+    &__wrap{
+        position: relative;
+    }
+
+    &__img{
+        @include spacing(height, 500px, 450px, 320px, 320px);
+
+        &-desktop{
+            display: flex;
+            @include border-r(12px);
+
+            @include Tablet{
+                display: none;
+            }
+        }
+        &-mobile{
+            display: none;
+            @include border-r(12px);
+
+            @include Tablet{
+                display: flex;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__location{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        align-items: center;
+        @include spacing(gap, 2px);
+
+        @include Tablet{
+            display: none;
+        }
+
+        &:hover {
+            .map-section__location-wrapper {
+                visibility: visible;
+                opacity: 1;
+            }
+            .map-section__location-marker{
+                color: var(--color1-main);
+            }
+        }
+
+        &-msk{
+            @include spacing(top, 200px, 180px);
+            @include spacing(left, 340px, 310px);
+        }
+
+        &-vld{
+            @include spacing(top, 384px, 344px);
+            @include spacing(right, 144px, 134px);
+        }
+
+        &-ekb{
+            @include spacing(top, 174px, 154px);
+            @include spacing(left, 550px, 500px);
+        }
+
+        &-spb{
+            @include spacing(top, 120px, 110px);
+            @include spacing(left, 280px, 250px);
+        }
+
+        &-mo{
+            @include spacing(top, 190px, 170px);
+            @include spacing(left, 330px, 300px);
+        }
+
+        &-vilnius{
+            @include spacing(top, 210px, 190px);
+            @include spacing(left, 220px, 200px);
+        }
+
+        &-shanghai{
+            @include spacing(bottom, 32px, 24px);
+            @include spacing(right, 300px, 280px);
+        }
+
+        &-nansha{
+            @include spacing(bottom, 36px, 28px);
+            @include spacing(right, 430px, 400px);
+        }
+
+        &-wrapper{
+            z-index: 1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            @include spacing(bottom, 24px);
+            @include transition((opacity, visibility));
+        }
+
+        &-content{
+            background-color: var(--gray-lighter);
+            box-shadow: var(--shadow-near);
+            @include spacing(width, 260px, 260px, 160px, 160px);
+        }
+
+        &-marker {
+            @include icon(16px);
+            color: var(--gray-dark);
+            cursor: pointer;
+            @include transition((color));
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.tab-list {
+    display: none;
+    overflow: scroll hidden;
+    width: 100%;
+    @include hide-scrollbar;
+
+    @include Tablet{
+        display: flex;
+    }
+
+    &__container{
+        display: flex;
+        flex-shrink: 0;
+        border: solid var(--gray-light);
+        @include border-r(12px);
+        @include border-w(2px);
+        @include spacing(padding, 12px, 12px, 12px, 12px);
+    }
+
+    &__list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        @include spacing(gap, 12px, 12px, 12px, 12px);
+    }
+
+    &__tab {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        position: relative;
+
+        &:first-of-type {
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

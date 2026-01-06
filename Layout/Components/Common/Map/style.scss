@@ -1,0 +1,141 @@
+.map {
+    @include spacing(padding-top, 80px, 80px, 40px, 40px);
+    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 32px, 32px, 16px, 16px);
+    }
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 40px, 40px, 16px, 16px);
+
+        &__content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include spacing(gap, 40px, 40px, 16px, 16px);
+
+            @include Mobile {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &-separator {
+                display: none;
+
+                @include Mobile {
+                    display: block;
+                }
+            }
+        }
+
+        &__separator {
+            display: none;
+
+            @include Tablet {
+                display: block;
+            }
+        }
+
+        &__cities, &__countries {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 20px, 20px, 20px, 16px);
+
+            &-title {
+                color: var(--gray-dark);
+                @include t2;
+            }
+
+            &-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                @include spacing(gap, 8px, 8px, 8px, 8px);
+
+                .badge-size_m .badge__text {
+                    font-weight: 400;
+                }
+            }
+        }
+
+        &__map-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            @include spacing(gap, 16px);
+
+            @include Tablet {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include Mobile {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &__padding {
+            display: none;
+
+            @include Tablet {
+                display: flex;
+                flex-direction: column;
+                align-self: stretch;
+                @include spacing(gap, 8px);
+                @include spacing(padding, 20px);
+                background-color: var(--gray-lighter);
+                @include border-r(12px);
+            }
+
+            &-title{
+                @include h5;
+                color: var(--gray-darker);
+            }
+
+            &-addresses {
+                display: flex;
+                flex-direction: column;
+                @include spacing(gap, 8px);
+                @include spacing(height, 265px);
+                overflow-y: auto;
+
+                scrollbar-width: thin;
+                scrollbar-color: var(--color1-light) var(--gray-light);
+
+                & .location {
+                    width: 100%;
+                }
+
+                &::-webkit-scrollbar {
+                    background-color: var(--gray-light);
+                    @include spacing(width, 8px);
+                    @include border-r(8px);
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--color1-light);
+                    @include border-r(8px);
+                }
+
+                &::-webkit-scrollbar-track {
+                    background-color: var(--gray-light);
+                    @include border-r(8px);
+                }
+
+                @supports not (scrollbar-width: thin) {
+                    & {
+                        -webkit-overflow-scrolling: touch;
+                    }
+                }
+            }
+
+            &-separator {
+                display: none;
+
+                @include Mobile{
+                    display: block;
+                }
+            }
+        }
+    }
+}

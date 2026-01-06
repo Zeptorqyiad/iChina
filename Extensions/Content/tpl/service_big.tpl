@@ -1,6 +1,16 @@
 <?php
 /** @var array $content */
 
+use App\Extensions\Reviews\Model\Reviews;
+
+$reviews = Reviews::findAdv()
+        ->limit(10)
+        ->where(['is_active' => 1])
+        ->orderBy('npp')
+        ->all();
+
+$index = $content->loadFrom('/');
+
 App\Layout\Components\Common\Header\Layout::draw([
 	'absolute' => true,
 ]);
@@ -274,7 +284,162 @@ App\Layout\Components\Common\Header\Layout::draw([
             'offer-text' => $this->service->stages_offer_text ?? 'Задать вопрос эксперту'
         ]);
 
+        App\Layout\Components\Common\Risks\Layout::draw([
+            'title' => $this->service->risks_title ?? 'Разбор вопросов по теме услуги ',
+            'titleAccent' => $this->service->risks_title_accent ?? '(инструкция для клиента)',
+            'desc' => $this->service->risks_desc ?? 'Здесь мы собрали ключевые вопросы, которые помогут вам принять 
+            взвешенное решение. Выберите вкладку, чтобы увидеть подробный ответ.',
+            'text' => [
+                [
+                    'title' => 'С чего начать?',
+                    'desc' => 'Тест 1',
+                ],[
+                    'title' => 'На что направлена [услуга]?',
+                    'desc' => 'Тест 2',
+                ],[
+                    'title' => 'Зачем нужна [услуга]?',
+                    'desc' => 'Тест 3',
+                ],[
+                    'title' => 'Примеры [услуги]?',
+                    'desc' => 'Тест 4',
+                ],
+            ],
+            'callback-title' => $this->service->risks_callback_title ?? 'Персональный расчёт [услуга] в 2 клика!',
+            'callback-desc' => $this->service->risks_callback_desc ?? 'Ответьте на несколько вопросов, и мы предложим самые выгодные условия',
+        ]);
 
+        App\Layout\Components\Common\Map\Layout::draw([
+            'main-title' => $this->service->map_title ?? '',
+            'main-desc' => $this->service->map_desc ?? '',
+            'city-title' => [],
+            'city-badge' => [],
+            'country-title' => [],
+            'country-badge' => [],
+            'image' => '/assets/images/Main/Mapping.png',
+            'image-t' => '/assets/images/Main/miniMap.png',
+        ]);
+
+        App\Layout\Components\Common\RouteMap\Layout::draw([
+            'title' => $index['route-map_title'] ?? 'Наши ',
+            'title-accent' => $index['route-map_title-accent'] ?? 'маршруты',
+            'desc' => $index['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России',
+            'items' => [
+                    [
+                            'title' => 'Авиаперевозка: Китай — Россия',
+                            'image' => '',
+                            'provider' => '',
+                            'city' => 'Шанхай',
+                            'city2' => '',
+                            'city3' => 'Москва',
+                            'city4' => '',
+                            'transportation' => 'Авиаперевозка',
+                            'transportation2' => 'ЖД или автоперевозка',
+                            'transportation3' => '',
+                            'transportation4' => '',
+                    ]
+            ]
+        ]);
+
+        App\Layout\Components\Common\Categories\Layout::draw([
+            'title' => $index['categories-title'] ?? 'товары',
+            'desc' => $index['categories-desc'] ?? 'У нас есть опыт перевозки и растаможки любых категорий товаров, в том числе:',
+            'cards' => [
+                    [
+                            'title' => 'Техническое оснащение',
+                            'img' => '/assets/images/Main/icon.png',
+                    ],[
+                            'title' => 'Запчасти',
+                            'img' => '/assets/images/Main/icon.png',
+                    ],[
+                            'title' => 'Химия',
+                            'img' => '/assets/images/Main/icon.png',
+                    ],[
+                            'title' => 'Электроника и оборудование',
+                            'img' => '/assets/images/Main/icon.png',
+                    ],[
+                            'title' => 'Инструменты и крепеж',
+                            'img' => '/assets/images/Main/icon.png',
+                    ],
+            ],
+            'callback-title' => $index['categories-callback_title'] ?? 'Работаем с любыми видами грузов',
+            'callback-desc' => $index['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
+        ]);
+
+        // Секция Другие услуги
+
+        App\Layout\Components\Common\Certificate\Layout::draw([
+            'title' => $index['params']['certificate-title'] ?? 'Разрешительные документы',
+            'desc' => $index['params']['certificate-desc'] ?? 'Мы гарантируем надёжность и прозрачность в сфере 
+                таможенных перевозок, соблюдая все требования законодательства для вашего спокойствия и доверия',
+            'cards-doc' => [
+                    [
+                            'title' => 'Свидетельство',
+                            'image' => '/assets/images/Main/plug.png',
+                    ],[
+                            'title' => 'Свидетельство',
+                            'image' => '/assets/images/Main/plug.png',
+                    ],
+            ],
+        ]);
+
+        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
+            'title' => 'Наши отзывы',
+            'link' => '/reviews/',
+            'cards' => $reviews,
+        ]);
+
+        App\Layout\Components\Common\Info\Layout::draw([
+            'title' => $index['params']['info_title'] ?? 'Информация',
+            'desc' => $index['params']['info_desc'] ?? 'Мы стремимся сделать процесс работы максимально понятным 
+            и комфортным для вас, обеспечивая полную поддержку на каждом этапе сотрудничества',
+            'cards' => [
+                    [
+                            'img' => 'assets/images/Main/icon.png',
+                            'title' => 'Частые вопросы',
+                            'link' => '##'
+                    ],[
+                            'img' => 'assets/images/Main/icon.png',
+                            'title' => 'Гарантии',
+                            'link' => '##'
+                    ],[
+                            'img' => 'assets/images/Main/icon.png',
+                            'title' => 'Глоссарий',
+                            'link' => '##'
+                    ],[
+                            'img' => 'assets/images/Main/icon.png',
+                            'title' => 'Политика конфиденциальности',
+                            'link' => '##'
+                    ],
+            ],
+        ]);
+
+        App\Layout\Components\Common\Partners\Layout::draw([
+            'title' => $index['params']['partners_title'] ?? 'Партнёры и клиенты',
+            'desc' => $index['params']['partners_desc'] ?? 'Небольшой текст-описание для блока Небольшой текст-описание 
+                для блока Небольшой текст-описание для блока Небольшой текст-описание для блока ',
+            'items' => [
+                    [
+                            'image' => '/assets/images/Main/partners.png'
+                    ],
+            ],
+        ]);
+
+        App\Layout\Components\Common\Contacts\Layout::draw([
+            'title' => $index['params']['contacts_title'] ?? 'Контакты',
+            'desc' => $index['params']['contacts_desc'] ?? '',
+        ]);
+
+        App\Layout\Components\Common\FormFeedback\Layout::draw([
+            'title' => $index['params']['form-feedback_title'] ?? 'Обратная связь',
+            'desc' => $index['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
+        ]);
+
+        App\Layout\Components\Common\Seo\Layout::draw([
+            'seo-title' => $this->service->seo_title ?? 'Тест',
+            'seo-desc' => $this->service->seo_desc ?? 'Тест',
+            'seo2-title' => $this->service->seo_title_2 ?? 'Тест',
+            'seo2-desc' => $this->service->seo_desc_2 ?? 'Тест',
+        ]);
     ?>
 </main>
 

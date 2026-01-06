@@ -1,0 +1,45 @@
+.risks{
+    @include spacing(padding-block, 80px, 80px 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 30px, 30px, 24px, 24px);
+    }
+
+    &__body {
+        display: flex;
+        @include spacing(gap, 260px, 236px, 32px, 32px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+
+        &-text{
+            display: none;
+            flex-direction: column;
+            @include spacing(gap, 20px, 20px, 16px, 20px);
+            &-title{
+                @include h4;
+                color: var(--gray-darker);
+            }
+            &-desc{
+                @include t2;
+                color: var(--gray-dark);
+            }
+            &.active {
+                display: flex;
+            }
+        }
+    }
+
+    &__callback-card {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 30px, 32px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+}
