@@ -157,6 +157,7 @@
 			}
 		}
 	}
+
 	&__benefit {
 		flex: 1;
 		display: flex;
@@ -176,6 +177,47 @@
 			@include Tablet {
 				@include t3-b;
 			}
+		}
+	}
+
+	&__mission {
+		position: relative;
+		width: 100%;
+		@include spacing(padding, 24px);
+		border: vw(2px) solid var(--color2-main);
+		@include border-r(12px);
+		background: transparent;
+		@include t1;
+		color: var(--gray-darker);
+		z-index: 1;
+
+		@include HD {
+			border-width: vwh(2px);
+		}
+		@include Tablet {
+			border-width: vwt(2px);
+		}
+		@include Mobile {
+			border-width: vwm(2px);
+		}
+
+		&::before {
+			content: 'Миссия ichina';
+			@include h6;
+			color: var(--gray-white);
+			text-transform: uppercase;
+			position: absolute;
+			@include spacing(top, -15px);
+			@include spacing(left, 44px);
+			@include spacing(height, 30px);
+			width: fit-content;
+			background: var(--color2-main);
+			@include border-r(4px);
+			@include spacing(padding-block-start, 8px);
+			@include spacing(padding-block-end, 6px);
+			@include spacing(padding-inline, 12px);
+			z-index: 10;
+
 		}
 	}
 }

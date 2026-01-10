@@ -68,9 +68,9 @@ App\Layout\Components\Common\Header\Layout::draw([
             ],
             'cardText-why' => $content['params']['main-about_cardText-why'] ?? 'Мы не просто доставляем товары — мы строим надёжный мост между Россией и Китаем, 
             помогая вашему бизнесу расти без границ.',
-            'description-why' => $cotent['params']['main-about_description-why'] ?? 'Каждый проект ICHINA проходит без задержек и рисков. Мы организуем поставки 
+            'description-why' => $content['params']['main-about_description-why'] ?? 'Каждый проект ICHINA проходит без задержек и рисков. Мы организуем поставки 
             из Китая для бизнеса любого масштаба — от первых тестовых партий до крупных контрактов. ',
-            'callback-title' => $cotent['params']['main-about_callback-title'] ?? 'Персональный расчёт импорта в 2 клика!',
+            'callback-title' => $content['params']['main-about_callback-title'] ?? 'Персональный расчёт импорта в 2 клика!',
             'callback-desc' => $content['params']['main-about_callback-desc'] ?? 'Ответьте на несколько вопросов, и мы предложим самые выгодные условия',
         ]);
 

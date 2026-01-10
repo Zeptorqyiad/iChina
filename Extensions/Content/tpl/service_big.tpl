@@ -19,14 +19,14 @@ App\Layout\Components\Common\Header\Layout::draw([
 <main>
 	<?php
 		App\Layout\Components\Layout\Services\BannerService\Layout::draw([
-			'title' => $content['params']['banner_service-title'] ?? 'Услуги ICHINA',
-			'subtitle' => $content['params']['banner_service-subtitle'] ?? 'Комплексные решения для вашего бизнеса 
+			'title' => $this->service->banner_service_title ?? 'Услуги ICHINA',
+			'subtitle' => $this->service->banner_service_subtitle ?? 'Комплексные решения для вашего бизнеса 
 				в Китае',
-			'description' => $content['params']['banner_service-description'] ?? 'От поиска поставщика и контроля 
+			'description' => $this->service->banner_service_desc ?? 'От поиска поставщика и контроля 
 				производства до логистики и таможенного оформления. Аутсорсинг ВЭД «под ключ» и экспертные услуги на месте. 
 				Ваша уверенность в импорте.',
-			'card-title' => $content['params']['banner_card-title'] ?? 'Расчет <br /> за 24 часа',
-			'card-text' => $content['params']['banner_card-text'] ?? 'Оставьте заявку, и наш специалист подготовит для вас 
+			'card-title' => $this->service->banner_card_title ?? 'Расчет <br /> за 24 часа',
+			'card-text' => $this->service->banner_card_text ?? 'Оставьте заявку, и наш специалист подготовит для вас 
 				индивидуальный расчет и план работ по вашему направлению ВЭД.',
 			'items' => [
 				[

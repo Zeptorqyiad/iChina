@@ -53,6 +53,10 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         ?>
                     <?php endforeach; ?>
                 </ul>
+            <?php elseif ($data['mission']): ?>
+                <div class="main-about__mission">
+                    <?= $data['mission'] ?>
+                </div>
             <?php endif; ?>
         </div>
 

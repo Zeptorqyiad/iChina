@@ -1,20 +1,21 @@
 <?php
 /** @var array $data */
-use App\Extensions\Reviews\Model\Reviews;
-
-$q = Reviews::findAdv();
-$items = $q->select('*')
-    ->limit(15)
-    ->orderBy('date desc')
-    ->andWhere(['is_active' => 1])
-    ->all();
 
 ?>
 
 <section class="blog-slider <?= $data['className'] ?>">
-    <h2 class="section-title blog-slider__title title wrapper">
-        <?= $data['title'] ?>
-    </h2>
+    <?php if ($data['title']): ?>
+        <h2 class="section-title blog-slider__title title wrapper uppercase">
+            <?= $data['title'] ?>
+
+            &nbsp;
+            <?php if ($data['title-accent']): ?>
+                <div class="blog-slider__title--accent">
+                    <?= $data['title-accent'] ?>
+                </div>
+            <?php endif; ?>
+        </h2>
+    <?php endif; ?>
 
     <div class="blog-slider__buttons wrapper">
         <?php
@@ -42,7 +43,7 @@ $items = $q->select('*')
     <div class="blog-slider__slider-wrap">
         <div class="blog-slider__slider">
             <div class="swiper-wrapper">
-                <?php foreach ($items as $i) {
+                <?php foreach ($data['cards'] as $i) {
                     App\Layout\Components\Cards\ReviewsCard\Layout::drawReviewsCard(
                         className: 'swiper-slide',
                         title: $i['name'] ?? '',

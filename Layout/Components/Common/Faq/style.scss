@@ -1,0 +1,28 @@
+.faq {
+    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 40px, 40px, 24px, 24px);
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include spacing(gap, 12px, 12px, 12px, 12px);
+
+        @include Tablet{
+            grid-template-columns: 1fr;
+        }
+
+        &-column{
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px, 12px, 12px, 12px);
+        }
+
+        .accordion{
+            align-self: flex-start;
+        }
+    }
+}

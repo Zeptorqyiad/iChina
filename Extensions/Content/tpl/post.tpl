@@ -5,10 +5,10 @@ $index = $content->loadFrom('/');
 
 $q = App\Extensions\Blog\Model\Blog::findAdv();
 $items = $q->select('*')
-	->limit(15)
-	->orderBy('npp')
-	->andWhere(['is_active' => 1])
-	->all();
+        ->limit(15)
+        ->orderBy('npp')
+        ->andWhere(['is_active' => 1])
+        ->all();
 
 App\Layout\Components\Common\Header\Layout::draw([
 	'subtitle' => $index['params']['header_logo-text'],

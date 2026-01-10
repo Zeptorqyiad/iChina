@@ -23,7 +23,7 @@
             <div class="banner-service__center">
                 <div class="banner-service__center-ls">
                     <div class="banner-service__title-block">
-                        <h1 class="banner-service__title-block--title">
+                        <h1 class="banner-service__title-block--title uppercase">
                             <?= $data['title'] ?>
                         </h1>
                         <div class="banner-service__title-block--subtitle">
