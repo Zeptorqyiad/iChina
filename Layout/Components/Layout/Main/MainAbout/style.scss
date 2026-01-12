@@ -26,32 +26,6 @@
 		}
 	}
 
-	&__items {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-		grid-template-rows: vw(292px) vw(316px);
-		@include spacing(gap, 20px);
-		grid-template-areas:
-		"first first first second second second"
-		"third third fouth fouth fivth fivth";
-
-		@include HD {
-			grid-template-rows: vwh(292px) vwh(340px);
-		}
-		@include Tablet {
-			grid-template-rows: vwt(222px) vwt(286px) vwt(286px);
-		}
-		@include Mobile {}
-	}
-
-	&__item {
-		&.first { grid-area: first; }
-		&.second { grid-area: second; }
-		&.third { grid-area: third; }
-		&.fouth { grid-area: fouth; }
-		&.fivth { grid-area: fivth; }
-	}
-
 	&__why {
 		@include spacing(margin-top, 60px);
 		display: flex;

@@ -216,6 +216,29 @@
         }
     }
 
+    &-dark {
+        background: var(--gray-dark);
+        color: var(--gray-white);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-lighter);
+                color: var(--color1-dark);
+            }
+        }
+
+        &:active {
+            background: var(--color1-lighter);
+            color: var(--color1-darker);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: var(--gray-medium);
+            color: var(--gray-white);
+        }
+    }
+
     /*----------SIZES-----------*/
     &-size_l {
         @include spacing(height, 56px);

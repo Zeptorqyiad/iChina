@@ -9,7 +9,6 @@
             App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
                 title: $data['title'],
                 desc: $data['desc'],
-                separator: false,
             );
         ?>
 

@@ -179,7 +179,44 @@ App\Layout\Components\Common\Header\Layout::draw([
             'callback-desc' => $index['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
         ]);
 
-        // Секция Другие услуги
+        App\Layout\Components\Common\OtherServices\Layout::draw([
+            'title' => $this->service->o_serv_title ?? 'Другие',
+            'titleAccent' => $this->service->o_serv_title_accent ?? 'услуги',
+            'desc' => $this->service->o_serv_desc ?? 'Другие услуги, которые могут быть вам полезны',
+            'items' => [
+                [
+                    'className' => 'first',
+                    'title' => 'Полный аутсорсинг ВЭД',
+                    'desc' => 'Все сложности работы с Китаем решаем за вас — от китайской фабрики до вашего склада',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'second',
+                    'title' => 'Таможенное сопровождение ',
+                    'desc' => 'Работаем с разрешительной документацией, чтобы ваши грузы проходили без риска простоев',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'third',
+                    'title' => 'Ведение переговоров',
+                    'desc' => 'Мы команда, готовая отстаивать ваши интересы перед китайской стороной на равных',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'fouth',
+                    'title' => 'Подбор поставщика ',
+                    'desc' => 'Проверка от ICHINA - безопасный путь к качественному производителю',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'fivth',
+                    'title' => 'Оплата в Китай',
+                    'desc' => 'Описание услуги',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ]
+            ]
+        ]);
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
             'title' => $index['params']['main-benefit_title'] ?? 'Почему бизнес',

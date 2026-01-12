@@ -10,4 +10,5 @@ enum ButtonStyle: string
    case Outline = 'outline';
    case Monochrome = 'monochrome';
    case Flat = 'flat';
+   case Dark = 'dark';
 }
