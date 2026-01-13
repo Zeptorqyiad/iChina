@@ -4,7 +4,11 @@
 ?>
 
 <section class="about-history">
-    <h2 class="section-title about-history__title"><?= $data['title'] ?></h2>
+    <?php App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
+        className: 'wrapper',
+        title: $data['title'],
+        titleAccent: $data['titleAccent'],
+    ); ?>
 
     <div class="about-history__controls">
         <?php

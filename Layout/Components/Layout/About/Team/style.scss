@@ -1,0 +1,53 @@
+.team {
+    @include spacing(padding-block, 100px, 80px, 60px, 60px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 60px, 60px, 40px, 40px);
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: vw(476px);
+        @include spacing(gap, 20px);
+
+        @include HD {
+            grid-template-rows: vwh(431px);
+        }
+        @include Tablet {
+            grid-template-rows: vwt(494px);
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include Mobile {
+            grid-template-rows: vwm(521px);
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 100%;
+                @include spacing(height, 420px, 375px, 442px, 471px);
+                object-fit: cover;
+                @include border-r(12px);
+            }
+
+            &--title {
+                @include h5;
+                color: var(--gray-darker);
+                display: block;
+                @include spacing(margin-top, 12px);
+            }
+            &--subtitle {
+                display: block;
+                @include t3;
+                color: var(--color2-dark);
+                @include spacing(margin-top, 4px);
+            }
+        }
+    }
+}
