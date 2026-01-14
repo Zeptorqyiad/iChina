@@ -325,21 +325,9 @@
     }
 
     &-size_xs {
-        @include spacing(height, 32px);
-        @include spacing(padding-inline, 12px);
-        @include spacing(gap, 4px);
-
-        &:has(.btn__icon_left) {
-            @include spacing(padding-left, 8px);
-        }
-
-        &:has(.btn__icon_right) {
-            @include spacing(padding-right, 8px);
-        }
-
-        &:has(.btn__icon_center) {
-            @include spacing(padding-inline, 8px);
-        }
+        @include spacing(height, 24px);
+        @include spacing(width, 24px);
+        @include spacing(padding, 4px);
 
         .btn__icon {
             svg {
