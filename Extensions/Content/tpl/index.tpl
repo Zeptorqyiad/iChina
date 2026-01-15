@@ -8,7 +8,20 @@
 
 <main>
 	<?php
-        App\Layout\Components\Layout\Main\MainBanner\Layout::draw();
+        App\Layout\Components\Layout\Main\MainBanner\Layout::draw([
+            'items' => [
+                [
+                    'title' => '2500+',
+                    'text' => 'успешный поставок'
+                ],[
+                    'title' => '85 000+',
+                    'text' => 'фабрик в базе'
+                ],[
+                    'title' => '120+',
+                    'text' => 'проверенных поставщиков'
+                ]
+            ]
+        ]);
 
 //        App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
 //            'title' => $content['params']['main-about_title'] ?? 'Проверенный эксперт',

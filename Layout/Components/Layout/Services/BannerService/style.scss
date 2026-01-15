@@ -107,32 +107,6 @@
         @include spacing(width, 660px);
     }
 
-    &__card {
-        display: flex;
-        flex-direction: column;
-        @include spacing(gap, 12px);
-        @include spacing(width, 340px);
-        height: fit-content;
-        @include spacing(padding, 24px);
-        @include border-r(12px);
-        background: var(--gray-white);
-
-        &--title {
-            @include h3;
-            color: var(--gray-black);
-        }
-
-        &--text {
-            @include t2;
-            color: var(--gray-darker);
-        }
-
-        &--button {
-            width: 100%;
-            justify-content: space-between !important;
-        }
-    }
-
     &__bottom {
         display: flex;
         flex-direction: row;

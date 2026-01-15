@@ -5,38 +5,63 @@
 		position: relative;
 		z-index: 2;
 		width: 100%;
-		@include spacing(height, 798px);
+		@include spacing(height, 798px, 650px, 700px, 550px);
 	}
 
 	&__slider {
-		position: absolute;
-		top: 0;
-		left: 0;
+		position: relative;
 		z-index: 5;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		@include spacing(height, 798px);
+		@include spacing(height, 798px, 650px, 700px, 550px);
 	}
 
 	&__slide {
 		width: 100%;
 
-		img {
+		&-image {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
-			user-select: none;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				user-select: none;
+			}
+
+			&--mask {
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: var(--gray-black);
+				opacity: 0.5;
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 
 	&__navigation {
-		display: flex;
-		flex-direction: row;
 		position: absolute;
-		@include spacing(left, 250px);
-		@include spacing(bottom, 80px);
+		@include spacing(left, 250px, 46px);
+		@include spacing(bottom, 80px, 30px, 20px, 20px);
 		z-index: 10;
+
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: vw(28px) vw(1px);
+		@include spacing(row-gap, 8px);
+		grid-template-areas:
+		"number buttons"
+		"scroll scroll";
+
+		@include Tablet {
+			@include spacing(width, 300px);
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
 	}
 
 	&__button-prev,
@@ -52,5 +77,195 @@
 		&:active {
 			background: transparent !important;
 		}
+	}
+
+	&__wrap {
+		position: absolute;
+		@include spacing(top, 142px, 112px, 100px, 100px);
+		right: 0;
+		display: grid;
+		justify-items: end;
+		grid-template-columns: 1fr vw(340px);
+		grid-template-rows: vw(413px) vw(132px);
+		@include spacing(column-gap, 180px);
+		@include spacing(row-gap, 30px);
+		grid-template-areas:
+		"info card"
+		"bottom bottom";
+
+		@include HD {
+			grid-template-columns: 1fr vwh(360px);
+			grid-template-rows: vwh(394px) vwh(132px);
+			@include spacing(column-gap, 40px);
+		}
+
+		@include Tablet {
+			display: flex;
+			flex-direction: column;
+			left: 0;
+		}
+
+		@include Mobile {
+			gap: vwm(158px);
+		}
+
+		&-ls {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			@include HD {
+				padding-left: vwh(200px);
+			}
+			@include Tablet {
+				padding-left: 0;
+			}
+
+			&.banner-grid-info {
+				grid-area: info;
+			}
+
+			&--title {
+				@include h1;
+				color: var(--gray-white);
+				@include spacing(max-width, 660px, 539px);
+
+				@include HD {
+					@include h2;
+				}
+				@include Tablet {
+					@include h1;
+				}
+				@include Mobile {
+					@include h2;
+				}
+			}
+			&--text {
+				@include t2;
+				color: var(--gray-white);
+				@include spacing(max-width, 660px, 539px);
+
+				@include Tablet {
+					display: none;
+				}
+			}
+		}
+		&-rs {
+			&.banner-grid-card {
+				grid-area: card;
+			}
+
+			@include Tablet {
+				display: flex;
+				justify-content: flex-end;
+			}
+			@include Mobile {
+				display: none;
+			}
+		}
+
+		&-bottom {
+			display: flex;
+			flex-direction: row;
+			@include spacing(gap, 70px);
+			align-items: flex-end;
+
+			&.banner-grid-bottom {
+				grid-area: bottom;
+			}
+
+			@include Tablet {
+				justify-content: center;
+
+				& .min-service-card {
+					display: none;
+				}
+			}
+			@include Mobile {
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	&__page {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		@include spacing(gap, 4px);
+		@include spacing(padding-block, 2px);
+
+		@include Tablet {
+			display: none;
+		}
+
+		&--current {
+			@include t2;
+			color: var(--gray-white);
+			@include spacing(padding-inline, 1.5px);
+		}
+		&--all {
+			@include t4;
+			color: var(--gray-medium);
+			@include spacing(padding-block, 2px);
+			@include spacing(padding-inline, 1.5px);
+		}
+	}
+
+	&__numbers {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		@include spacing(gap, 20px);
+
+		@include Mobile {
+			flex-direction: column;
+			gap: vwm(20px);
+		}
+
+		&-item {
+			display: flex;
+			flex-direction: column;
+			@include spacing(gap, 12px);
+			@include spacing(width, 224px, 224px, 220px);
+
+			@include Mobile {
+				gap: vwm(4px);
+				width: 100%;
+			}
+
+			&--title {
+				@include h2;
+				color: var(--gray-white);
+			}
+			&--text {
+				@include t2-b;
+				color: var(--gray-white);
+				white-space: nowrap;
+
+				@include Tablet {
+					@include t3-b;
+				}
+			}
+		}
+	}
+
+	&__buttons {
+		@include spacing(padding-block, 2px);
+
+		@include Tablet {
+			display: none;
+		}
+	}
+
+	& .swiper-scrollbar {
+		background: var(--gray-medium) !important;
+		@include spacing(height, 1px);
+	}
+
+	& .swiper-scrollbar-drag {
+		background: var(--gray-white) !important;
+		@include spacing(height, 1px);
+		@include spacing(borde-radius, 1px);
 	}
 }

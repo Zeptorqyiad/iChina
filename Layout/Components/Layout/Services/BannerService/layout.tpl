@@ -35,31 +35,10 @@
                     </div>
                 </div>
                 <div class="banner-service__center-rs">
-                    <div class="banner-service__card">
-                        <?php if ($data['card-title']): ?>
-                            <div class="banner-service__card--title">
-                                <?= $data['card-title'] ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                            theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
-                        ); ?>
-
-                        <?php if ($data['card-text']): ?>
-                            <div class="banner-service__card--text">
-                                <?= $data['card-text'] ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                            className: 'banner-service__card--button',
-                            text: 'Получить расчет',
-                            icon: 'arrow-right',
-                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
-                            iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
-                        ) ?>
-                    </div>
+                    <?php App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
+                        title: $data['card-title'],
+                        text: $data['card-text'],
+                    ); ?>
                 </div>
             </div>
 

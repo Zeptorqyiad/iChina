@@ -1,0 +1,58 @@
+.banner-service {
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 12px);
+        @include spacing(width, 340px);
+        height: fit-content;
+        @include spacing(padding, 24px);
+        @include border-r(12px);
+        background: var(--gray-white);
+
+        &--title {
+            @include h3;
+            color: var(--gray-black);
+        }
+
+        &--text {
+            @include t2;
+            color: var(--gray-darker);
+        }
+
+        &--button {
+            min-width: 100%;
+            justify-content: space-between !important;
+            @include spacing(margin-top, 20px);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        @include spacing(gap, 8px);
+        align-items: center;
+
+        &:not(:last-child) {
+            @include spacing(padding-bottom, 8px);
+            @include spacing(margin-bottom, 8px);
+            border-bottom: solid var(--gray-light);
+            border-width: vw(1px);
+        }
+
+        & .bullits-card__bullit-icon {
+            color: var(--color2-light);
+            @include icon(24px);
+        }
+
+        &--text {
+            @include t2;
+            color: var(--gray-darker);
+        }
+    }
+}
