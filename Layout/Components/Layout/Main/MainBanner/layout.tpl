@@ -66,6 +66,39 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div class="banner__mobile-wrap wrapper">
+                        <div class="banner__mobile-wrap--text">
+                            Полный цикл услуг по внешнеэкономической деятельности «под ключ».
+                            Мы берем на себя всю документацию, логистику, таможенное оформление и
+                            валютный контроль, чтобы вы могли сосредоточиться на развитии бизнеса.
+                            Минимизируем риски, экономим ваше время и деньги.
+                        </div>
+
+                        <?php
+                        App\Layout\Components\Cards\MinServiceCard\Layout::draw([
+                            'title' => 'Наши услуги',
+                            'text' => 'Полный цикл импорта: от китайской фабрики 
+                            до вашего склада в России',
+                            'link' => '/services/',
+                        ]);
+                        App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
+                            title: 'Аутсорсинг ВЭД',
+                            list: [
+                                [
+                                    'text' => 'Подбор поставщика'
+                                ],[
+                                    'text' => 'Оплата в Китай'
+                                ],[
+                                    'text' => 'Таможенное сопровождение'
+                                ],[
+                                    'text' => 'Логистика'
+                                ],[
+                                    'text' => 'Оформление документации'
+                                ],
+                            ],
+                        ); ?>
+                    </div>
                 </div>
                 <div class="banner__slide swiper-slide">
                     <div class="banner__slide-image">

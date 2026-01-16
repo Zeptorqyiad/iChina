@@ -10,6 +10,11 @@
         @include border-r(12px);
         background: var(--gray-white);
 
+        @include Mobile {
+            background: var(--gray-lighter);
+            width: 100%;
+        }
+
         &--title {
             @include h3;
             color: var(--gray-black);

@@ -18,9 +18,17 @@
             grid-template-rows: vwh(292px) vwh(340px);
         }
         @include Tablet {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+            "first first"
+            "second third"
+            "fouth fivth";
             grid-template-rows: vwt(222px) vwt(286px) vwt(286px);
         }
-        @include Mobile {}
+        @include Mobile {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__item {

@@ -9,21 +9,13 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 <section class="main-benefit">
     <div class="main-benefit__container wrapper">
         <div class="main-benefit__top">
-            <?php if ($data['title'] || $data['title-accent']): ?>
-                <div class="main-benefit__title">
-                    <h2> <?= $data['title'] ?> </h2>
-
-                    <h2 class="main-benefit__title--accent">
-                        <?= $data['title-accent'] ?>
-                    </h2>
-                </div>
-            <?php endif; ?>
-
-            <?php if ($data['description']): ?>
-                <div class="main-benefit__description">
-                    <?= $data['description'] ?>
-                </div>
-            <?php endif; ?>
+            <?php if ($data['title'] || $data['titleAccent']) {
+                App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
+                    title: $data['title'] ?? '',
+                    titleAccent: $data['titleAccent'] ?? '',
+                    desc: $data['description'] ?? '',
+                );
+            } ?>
         </div>
 
         <?php if (!empty($data['items'])): ?>

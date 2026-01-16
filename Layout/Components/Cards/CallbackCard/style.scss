@@ -10,8 +10,10 @@
     @include border-r(12px);
 
     @include Tablet {
-        flex-wrap: wrap;
         @include spacing(padding, 20px);
+    }
+    @include Mobile {
+        flex-direction: column;
     }
 
     &__title {
@@ -40,6 +42,9 @@
 
         @include Tablet {
             @include spacing(padding, 20px);
+            flex-direction: column;
+            gap: vwt(20px);
+            align-items: flex-start;
         }
         @include Mobile {
             flex-wrap: wrap;
@@ -48,10 +53,18 @@
         &-desc {
             @include t2;
             color: var(--gray-dark);
+
+            @include Tablet {
+                @include t3;
+            }
         }
 
         &-button-callback {
             white-space: nowrap;
+
+            @include Mobile {
+                width: 100%;
+            }
         }
     }
 }

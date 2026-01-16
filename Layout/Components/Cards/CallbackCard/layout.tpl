@@ -17,14 +17,12 @@
             </div>
         <?php endif; ?>
 
-        <?php
-            App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                className: 'callback-card__info-button-callback',
-                text: 'Назначить встречу',
-                attributes: [
-                    'onclick' => 'modalManager.open("callback-modal")',
-                ]
-            );
-        ?>
+        <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+            className: 'callback-card__info-button-callback',
+            text: 'Оставить заявку',
+            attributes: [
+                'onclick' => 'modalManager.open("callback-modal")',
+            ]
+        ); ?>
     </div>
 </div>

@@ -7,6 +7,10 @@
     @include border-r(12px);
     height: 100%;
 
+    @include Mobile {
+        height: vwm(266px);
+    }
+
     @media (hover: hover) and (pointer: fine) {
         &:hover {
             .service-card__arrow,
@@ -34,8 +38,8 @@
     }
 
     &__image {
-        @include spacing(width, 200px);
-        @include spacing(height, 200px);
+        @include spacing(width, 200px, 200px, 150px, 150px);
+        @include spacing(height, 200px, 200px, 150px, 150px);
         position: absolute;
         right: 0;
         bottom: 0;
@@ -54,6 +58,10 @@
 
     &__desc {
         @include t2;
+
+        @include Tablet {
+            @include t3;
+        }
     }
 
     /*----------STYLE-----------*/

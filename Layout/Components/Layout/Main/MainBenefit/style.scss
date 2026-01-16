@@ -1,11 +1,11 @@
 .main-benefit {
-	@include spacing(padding-block, 120px);
+	@include spacing(padding-block, 120px, 100px, 80px, 80px);
 	background: var(--color1-lighter);
 
 	&__container {
 		display: flex;
 		flex-direction: column;
-		@include spacing(gap, 60px);
+		@include spacing(gap, 60px, 60px, 40px, 40px);
 	}
 
 	&__top {
@@ -42,6 +42,22 @@
 		grid-template-areas:
 		"first first second second third third"
 		"fouth fouth fouth fivth fivth fivth";
+
+		@include HD {
+			grid-template-rows: vwh(404px) vwh(380px);
+		}
+		@include Tablet {
+			grid-template-rows: auto;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+			"first second"
+			"third third"
+			"fouth fivth";
+		}
+		@include Mobile {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 
 	&__item {
