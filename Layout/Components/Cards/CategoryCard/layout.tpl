@@ -10,14 +10,14 @@ $categoryCardClasses = [
 
 <?php if ($data['link']): ?>
     <a href="<?= $data['link'] ?>" class="category-card--link <?= implode(' ', $categoryCardClasses) ?>" <?= buildAttrs($data['attributes'] ?? []) ?> title="<?= $data['title'] ?>">
-    <?php
-        App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-            className: 'category-card__category-marker',
-            icon: $data['icon'] ?? '',
-            img: $data['img'] ?? '',
-            size: App\Layout\Components\UI\Core\Marker\MarkerSize::Small
-        );
-    ?>
+
+    <?php App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
+    className: 'category-card__category-marker',
+    icon: $data['icon'] ?? '',
+    img: $data['img'] ?? '',
+    size: App\Layout\Components\UI\Core\Marker\MarkerSize::Small
+    ); ?>
+
     <?php if ($data['title']): ?>
         <p class="category-card__title"><?= $data['title'] ?></p>
     <?php endif; ?>
@@ -29,13 +29,12 @@ $categoryCardClasses = [
     <div class="<?= implode(' ', $categoryCardClasses) ?>"
         <?= buildAttrs($data['attributes'] ?? []) ?> title="<?= $data['title'] ?>">
 
-        <?php
-            App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                className: 'category-card__category-marker',
-                icon: $data['icon'] ?? '',
-                size: App\Layout\Components\UI\Core\Marker\MarkerSize::Small
-            );
-        ?>
+        <?php App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
+            className: 'category-card__category-marker',
+            icon: $data['icon'] ?? '',
+            img: $data['img'] ?? '',
+            size: App\Layout\Components\UI\Core\Marker\MarkerSize::Large,
+        ); ?>
 
         <?php if ($data['title']): ?>
             <p class="category-card__title"><?= $data['title'] ?></p>

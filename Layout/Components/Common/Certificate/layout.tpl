@@ -4,42 +4,32 @@
 ?>
 
 <section class="certificate">
-    <?php if ($data['title']): ?>
-        <h2 class="certificate__title">
-            <?= $data['title'] ?>
-        </h2>
-    <?php endif; ?>
+    <?php if ($data['title'] || $data['desc']) {
+        App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
+            className: 'wrapper',
+            title: $data['title'] ?? '',
+            desc: $data['desc'] ?? '',
+        );
+    } ?>
 
     <div class="certificate__left">
-        <?php if ($data['desc']): ?>
-            <div class="certificate__text">
-                <?= $data['desc'] ?>
-            </div>
-        <?php endif; ?>
-
-        <?php
-            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                className: 'certificate__left-separator',
-            );
-        ?>
-
-        <?php if (!empty($data['cards-plus'])): ?>
+        <?php if (!empty($data['items'])): ?>
             <div class="certificate__plus">
-                <?php foreach ($data['cards-plus'] as $i) {
-                    App\Layout\Components\Cards\PlusCard\Layout::drawPlusCard(
+                <?php foreach ($data['items'] as $i) {
+                    App\Layout\Components\Cards\CertificateCard\Layout::drawCertificateCard(
+                        className: $i['className'],
+                        title: $i['title'],
                         text: $i['text'],
-                        icon: $i['icon'],
+                        image: $i['img'],
                     );
                 } ?>
             </div>
         <?php endif; ?>
     </div>
 
-    <?php
-        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-            className: 'certificate__separator',
-        );
-    ?>
+    <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+        className: 'certificate__separator',
+    ); ?>
 
     <div class="certificate__slider-wrap">
         <div class="certificate__slider">

@@ -20,29 +20,31 @@ $breadcrumbs = array_values($breadcrumbs);
 
 <div class="<?= implode(' ', $pageHeadingClasses) ?>">
     <div class="page-heading__container container">
-        <div class="page-heading__back">
-            <?php
-                App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+        <?php if ($data['backButton']): ?>
+            <div class="page-heading__back">
+                <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                     className: 'page-heading__button-back',
                     icon: 'arrow-left',
                     style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
                     attributes: [
                         'onclick' => 'event.preventDefault(); history.back();',
                     ]
-                );
-            ?>
+                ); ?>
 
-            <p class="page-heading__back-title">Назад</p>
-        </div>
+                <p class="page-heading__back-title">Назад</p>
+            </div>
+        <?php endif; ?>
 
         <?php foreach ($breadcrumbs as $breadcrumb): ?>
             <?php if ($activeBreadcrumb['link'] === $breadcrumb['link']): ?>
                 <h3 class="page-heading__title">
                     <?= $breadcrumb['name'] ?>
                 </h3>
-                <div class="page-heading__count">
-                    <?= $data['count'] ?>
-                </div>
+                <?php if ($data['count']): ?>
+                    <div class="page-heading__count">
+                        <?= $data['count'] ?>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>

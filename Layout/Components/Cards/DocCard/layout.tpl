@@ -23,5 +23,7 @@
         </div>
     </div>
 
-    <h5 class="doc-card__title"><?= $data['title'] ?></h5>
+    <h4 class="doc-card__title">
+        <?= $data['title'] ?>
+    </h4>
 </div>

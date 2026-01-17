@@ -1,0 +1,46 @@
+.nav-sticky {
+    position: sticky;
+    display: flex;
+    height: fit-content;
+    flex-shrink: 0;
+    background: var(--gray-white);
+    @include border-r(12px);
+    @include spacing(top, 124px, 124px);
+    @include spacing(min-width, 340px, 304px);
+    @include border-w(2px);
+    border: solid var(--gray-lighter);
+
+    @include Tablet {
+        display: none;
+    }
+
+    &__container {
+        display: flex;
+        width: 100%;
+        @include spacing(padding, 12px);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include spacing(gap, 12px);
+
+        & .nav-sticky__tab {
+            @include spacing(padding-block, 16px);
+        }
+    }
+
+    &__tab {
+        width: 100%;
+        justify-content: space-between;
+        background-color: var(--gray-lighter);
+    }
+    &__block {
+        &.with-separator {
+            @include border-w(2px);
+            border-top: solid var(--gray-lighter);
+            @include spacing(padding-top, 12px, 12px, 12px, 12px);
+        }
+    }
+}

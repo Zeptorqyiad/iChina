@@ -6,7 +6,7 @@
     @include spacing(gap, 20px);
     background: var(--gray-white);
     @include spacing(border-radius, 12px);
-    @include spacing(padding, 40px);
+    @include spacing(padding, 40px, 40px, 32px, 32px);
 
     .item-a {
         grid-area: name;
@@ -55,5 +55,10 @@
     .checkbox__input {
         width: unset;
         height: unset;
+    }
+
+    &__captcha {
+        @include spacing(width, 320px);
+        @include spacing(height, 80px);
     }
 }

@@ -1,0 +1,116 @@
+.faq-section {
+    @include spacing(padding-top, 40px, 40px, 20px, 20px);
+    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+    @include spacing(gap, 0, 0, 32px, 32px);
+
+    @include Tablet{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__container {
+        display: flex;
+        @include spacing(gap, 40px, 40px);
+
+        @include Tablet {
+            display: block;
+            width: vwt(480px);
+            margin: 0 auto;
+        }
+
+        @include Mobile {
+            width: fit-content;
+            margin: 0 vwm(16px);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include spacing(gap, 40px, 40px, 32px, 32px);
+    }
+
+    &__category {
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-lighter);
+        @include spacing(padding-top, 40px, 40px, 32px, 32px);
+        @include spacing(gap, 20px, 20px, 16px, 16px);
+        @include border-w(2px);
+
+        &:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h3;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            @include gap(12px);
+
+            &-wrap {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                @include gap(12px);
+
+                @include Tablet {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
+        }
+
+        &-item {
+            @include Tablet {
+                padding: vwt(16px);
+                @include border-r(12px);
+
+                .accordion__header {
+                    gap: vwt(16px);
+
+                    &-wrapper {
+                        gap: vwt(16px);
+                    }
+
+                    .accordion__text-wrapper {
+                        gap: 0;
+                    }
+
+                    .accordion__title {
+                        @include t2-b;
+                    }
+
+                    .accordion__subtitle {
+                        @include t3;
+                    }
+                }
+
+                .accordion__description {
+                    margin-top: vwt(16px);
+                }
+            }
+
+            @include Mobile {
+                padding: vwm(16px);
+                @include border-r(12px);
+
+                .accordion__header {
+                    gap: vwm(16px);
+
+                    &-wrapper {
+                        gap: vwm(16px);
+                    }
+                }
+
+                .accordion__description {
+                    margin-top: vwm(16px);
+                }
+            }
+        }
+    }
+}

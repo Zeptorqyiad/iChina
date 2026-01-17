@@ -1,7 +1,7 @@
 .doc-card {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: 100%;
     width: fit-content;
     cursor: pointer;
     @include spacing(gap, 20px, 20px, 20px, 16px);
@@ -39,11 +39,13 @@
         width: fit-content;
         @include border-r(12px);
         @include border-w(2px);
+        height: 100%;
     }
 
     &__image {
         @include transition((scale));
-        @include border-r(12px)
+        @include border-r(12px);
+        height: 100%;
     }
 
     &__icon {
@@ -67,12 +69,8 @@
     }
 
     &__title {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
+        @include h4;
+        @include truncate(1);
         color: var(--gray-darker);
-        line-height: 120%;
-        @include h5;
     }
 }

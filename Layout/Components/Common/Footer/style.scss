@@ -3,8 +3,8 @@
     flex-direction: column;
     @include spacing(gap, 32px, 40px, 32px, 32px);
     background-color: var(--gray-darker);
-    @include spacing(padding-block-start, 80px, 80px, 20px,20px);
-    @include spacing(padding-block-end, 80px, 80px, 160px, 160px);
+    @include spacing(padding-block-start, 80px, 80px, 20px, 20px);
+    @include spacing(padding-block-end, 80px);
 
     &__container {
         display: flex;
@@ -101,7 +101,6 @@
             font-family: Inter;
         }
     }
-
 
     &__logo{
         @include spacing(width, 160px);

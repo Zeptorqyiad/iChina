@@ -1,6 +1,14 @@
 <?php
 /** @var array $content */
 
+use App\Extensions\Blog\Model\Blog;
+
+$post = Blog::findAdv()
+        ->limit(10)
+        ->andWhere(['is_active' => 1])
+        ->orderBy('npp')
+        ->all();
+
 App\Layout\Components\Common\Header\Layout::draw([
     'absolute' => true,
 ]);
@@ -161,116 +169,148 @@ App\Layout\Components\Common\Header\Layout::draw([
                 ],[
                     'title' => 'Инструменты и крепеж',
                     'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Стройматериалы',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Мебель и прочие товары для дома',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Химия',
+                    'img' => '/assets/images/Main/icon.png',
                 ],
             ],
             'callback-title' => $content['categories-callback_title'] ?? 'Работаем с любыми видами грузов',
             'callback-desc' => $content['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
         ]);
-//
-//        App\Layout\Components\Sliders\CasesSlider\Layout::draw([
-//            'title' => 'Наши кейсы',
-//            'link' => '/cases/',
-//        ]);
-//
-//        App\Layout\Components\Common\Stages\Layout::draw([
-//            'title' => $content['params']['main_stages-title'] ?? 'Этапы взаимодействия',
-//            'desc' => $content['params']['main_stages-desc'] ?? 'Наша помощь клиентам позволяет им минимизировать риски
-//            потери времени и денег при взаимодействии с таможенными органами',
-//            'cards' => [
-//                [
-//                    'title' => 'Консультация',
-//                    'desc' => 'Готовим документы к таможенному оформлению с момента отправки груза и ведем переговоры с СВХ и перевозчиком',
-//                ],[
-//                    'title' => 'Договор',
-//                    'desc' => 'Подписываем договор, в котором прописываем все условия сотрудничества: перечень работ, стоимость, алгоритм взаимодействия'
-//                ],[
-//                    'title' => 'Услуга',
-//                    'desc' => 'Мы полностью берем на себя всю работу по оформлению необходимой документации, таможенному оформлению или международной логистике за вас'
-//                ],[
-//                    'title' => 'Доп. вопросы',
-//                    'desc' => 'Решаем все дополнительные вопросы, при необходимости — досмотр, корректировка стоимости, экспертиза'
-//                ],[
-//                    'title' => 'Оплата',
-//                    'desc' => 'Вы оплачиваете стоимость услуги в форме постоплаты, в счёт уже входят все таможенные платежи и сборы'
-//                ],[
-//                    'title' => 'Поддержка',
-//                    'desc' => 'Предоставляем консультации по дальнейшим логистическим операциям и документальному сопровождению после оказания услуги',
-//                    'img' => '/assets/images/Main/key.png',
-//                ],
-//            ],
-//        ]);
-//
-//        App\Layout\Components\Common\Certificate\Layout::draw([
-//                'title' => $content['params']['certificate-title'] ?? 'Разрешительные документы',
-//                'desc' => $content['params']['certificate-desc'] ?? 'Мы гарантируем надёжность и прозрачность в сфере
-//                таможенных перевозок, соблюдая все требования законодательства для вашего спокойствия и доверия',
-//                'cards-doc' => [
-//                    [
-//                        'title' => 'Свидетельство',
-//                        'image' => '/assets/images/Main/plug.png',
-//                    ],[
-//                        'title' => 'Свидетельство',
-//                        'image' => '/assets/images/Main/plug.png',
-//                    ],
-//                ],
-//        ]);
-//
-//        App\Layout\Components\Common\Info\Layout::draw([
-//            'title' => $content['params']['info_title'] ?? 'Информация',
-//            'desc' => $content['params']['info_desc'] ?? 'Мы стремимся сделать процесс работы максимально понятным
-//            и комфортным для вас, обеспечивая полную поддержку на каждом этапе сотрудничества',
-//            'cards' => [
-//                [
-//                    'img' => 'assets/images/Main/icon.png',
-//                    'title' => 'Частые вопросы',
-//                    'link' => '##'
-//                ],[
-//                    'img' => 'assets/images/Main/icon.png',
-//                    'title' => 'Гарантии',
-//                    'link' => '##'
-//                ],[
-//                    'img' => 'assets/images/Main/icon.png',
-//                    'title' => 'Глоссарий',
-//                    'link' => '##'
-//                ],[
-//                    'img' => 'assets/images/Main/icon.png',
-//                    'title' => 'Политика конфиденциальности',
-//                    'link' => '##'
-//                ],
-//            ],
-//        ]);
-//
-//        App\Layout\Components\Common\Partners\Layout::draw([
-//            'title' => $content['params']['partners_title'] ?? 'Партнёры и клиенты',
-//            'desc' => $content['params']['partners_desc'] ?? 'Небольшой текст-описание для блока Небольшой текст-описание
-//            для блока Небольшой текст-описание для блока Небольшой текст-описание для блока ',
-//            'items' => [
-//                [
-//                    'image' => '/assets/images/Main/partners.png'
-//                ],
-//            ],
-//        ]);
-//
-//        App\Layout\Components\Common\Contacts\Layout::draw([
-//            'title' => $content['params']['contacts_title'] ?? 'Контакты',
-//            'desc' => $content['params']['contacts_desc'] ?? '',
-//        ]);
-//
-//        App\Layout\Components\Common\FormFeedback\Layout::draw([
-//            'title' => $content['params']['form-feedback_title'] ?? 'Обратная связь',
-//            'desc' => $content['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
-////            'image' => $content['params']['form-feedback-img'] ?? '/assets/images/Main/plug.png',
-//        ]);
-//
-//        App\Layout\Components\Common\Seo\Layout::draw([
-//            'seo-title' => $content['params']['seo_title_1'] ?? 'Тест',
-//            'seo-desc' => $content['params']['seo_text_1'] ?? 'Тест',
-//            'seo2-title' => $content['params']['seo_title_2'] ?? 'Тест',
-//            'seo2-desc' => $content['params']['seo_text_2'] ?? 'Тест',
-//        ]);
+
+        App\Layout\Components\Sliders\CasesSlider\Layout::draw([
+            'title' => 'Наши кейсы',
+            'link' => '/cases/',
+        ]);
+
+        App\Layout\Components\Common\Stages\Layout::draw([
+            'title' => $content['params']['main_stages-title'] ?? 'Этапы взаимодействия',
+            'desc' => $content['params']['main_stages-desc'] ?? 'Наша помощь клиентам позволяет им минимизировать риски
+            потери времени и денег при взаимодействии с таможенными органами',
+            'cards' => [
+                [
+                    'title' => 'Консультация',
+                    'desc' => 'Готовим документы к таможенному оформлению с момента отправки груза и ведем переговоры с СВХ и перевозчиком',
+                ],[
+                    'title' => 'Договор',
+                    'desc' => 'Подписываем договор, в котором прописываем все условия сотрудничества: перечень работ, стоимость, алгоритм взаимодействия'
+                ],[
+                    'title' => 'Услуга',
+                    'desc' => 'Мы полностью берем на себя всю работу по оформлению необходимой документации, таможенному оформлению или международной логистике за вас'
+                ],[
+                    'title' => 'Доп. вопросы',
+                    'desc' => 'Решаем все дополнительные вопросы, при необходимости — досмотр, корректировка стоимости, экспертиза'
+                ],[
+                    'title' => 'Оплата',
+                    'desc' => 'Вы оплачиваете стоимость услуги в форме постоплаты, в счёт уже входят все таможенные платежи и сборы'
+                ],[
+                    'title' => 'Поддержка',
+                    'desc' => 'Предоставляем консультации по дальнейшим логистическим операциям и документальному сопровождению после оказания услуги',
+                    'img' => '/assets/images/Main/key.png',
+                ],
+            ],
+        ]);
+
+        App\Layout\Components\Common\Certificate\Layout::draw([
+            'title' => $content['params']['certificate-title'] ?? 'Разрешительные документы',
+            'desc' => $content['params']['certificate-desc'] ?? 'Мы гарантируем надёжность и прозрачность в сфере
+            таможенных перевозок, соблюдая все требования законодательства для вашего спокойствия и доверия',
+            'cards-doc' => [
+                [
+                    'title' => 'Свидетельство',
+                    'image' => '/assets/images/Main/plug.png',
+                ],[
+                    'title' => 'Свидетельство',
+                    'image' => '/assets/images/Main/plug.png',
+                ],
+            ],
+            'items' => [
+                [
+                    'className' => 'first',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Работаем официально ',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'second',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Соответствие стандартам безопасности и качества',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'third',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Соответствие стандартам безопасности и качества',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],
+            ]
+        ]);
+
+        App\Layout\Components\Common\Info\Layout::draw([
+            'title' => $content['params']['info_title'] ?? 'Информация',
+            'desc' => $content['params']['info_desc'] ?? 'Мы стремимся сделать процесс работы максимально понятным
+            и комфортным для вас, обеспечивая полную поддержку на каждом этапе сотрудничества',
+            'cards' => [
+                [
+                    'img' => 'assets/images/Main/icon.png',
+                    'title' => 'Частые вопросы',
+                    'link' => '##'
+                ],[
+                    'img' => 'assets/images/Main/icon.png',
+                    'title' => 'Гарантии',
+                    'link' => '##'
+                ],[
+                    'img' => 'assets/images/Main/icon.png',
+                    'title' => 'Глоссарий',
+                    'link' => '##'
+                ],[
+                    'img' => 'assets/images/Main/icon.png',
+                    'title' => 'Политика конфиденциальности',
+                    'link' => '##'
+                ],
+            ],
+        ]);
+
+        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
+            'title' => 'медиа-центр',
+            'title-accent' => 'ichina',
+            'link' => '/blog/',
+            'cards' => $post,
+        ]);
+
+        App\Layout\Components\Common\Partners\Layout::draw([
+            'title' => $content['params']['partners_title'] ?? 'Партнёры и клиенты',
+            'desc' => $content['params']['partners_desc'] ?? 'Небольшой текст-описание для блока Небольшой текст-описание
+            для блока Небольшой текст-описание для блока Небольшой текст-описание для блока ',
+            'items' => [
+                [
+                    'image' => '/assets/images/Main/partners.png'
+                ],
+            ],
+        ]);
+
+        App\Layout\Components\Common\Contacts\Layout::draw([
+            'title' => $content['params']['contacts_title'] ?? 'Контакты',
+            'desc' => $content['params']['contacts_desc'] ?? '',
+        ]);
+
+        App\Layout\Components\Common\FormFeedback\Layout::draw([
+            'title' => $content['params']['form-feedback_title'] ?? 'Обратная связь',
+            'desc' => $content['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
+            'image' => $content['params']['form-feedback-img'] ?? '/assets/images/Main/Form.png',
+        ]);
+
+        App\Layout\Components\Common\Seo\Layout::draw([
+            'seo-title' => $content['params']['seo_title_1'] ?? 'Тест',
+            'seo-desc' => $content['params']['seo_text_1'] ?? 'Тест',
+            'seo2-title' => $content['params']['seo_title_2'] ?? 'Тест',
+            'seo2-desc' => $content['params']['seo_text_2'] ?? 'Тест',
+        ]);
 	?>
 </main>
 
-<?php
-//    App\Layout\Components\Common\Footer\Layout::draw();
-?>
+<?php App\Layout\Components\Common\Footer\Layout::draw(); ?>

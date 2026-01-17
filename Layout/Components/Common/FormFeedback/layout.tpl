@@ -24,10 +24,8 @@
             <?php endif; ?>
         </div>
 
-        <?php
-            App\Layout\Components\Common\Form\Layout::draw([
-                'className' => 'form-feedback__form',
-            ]);
-        ?>
+        <?php App\Layout\Components\Common\Form\Layout::draw([
+            'className' => 'form-feedback__form',
+        ]); ?>
     </div>
 </section>

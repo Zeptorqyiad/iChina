@@ -6,7 +6,7 @@
         '. title title buttons'
         '. left slider slider';
     row-gap: vw(40px);
-    @include spacing(padding-block, 80px, 80px, 40px, 40px);
+    @include spacing(padding-block, 80px, 80px, 60px, 60px);
     overflow: hidden;
 
     @include HD {
@@ -21,6 +21,12 @@
     @include Mobile {
         padding-inline: vwm(16px);
         gap: vwm(24px);
+    }
+
+    & .title-card {
+        @include Tablet {
+            padding-inline: 0;
+        }
     }
 
     &__title {
@@ -83,6 +89,7 @@
 
     &__slider {
         overflow: hidden;
+        height: 100%;
 
         &-wrap {
             grid-area: slider;
@@ -93,11 +100,15 @@
         display: flex;
         flex-direction: column;
         @include spacing(gap, 32px, 32px, 16px, 16px);
-        @include spacing(width, 340px, 340px);
+        width: 100%;
 
         @include Tablet {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+            "first second"
+            "third third";
             width: 100%;
         }
         @include Mobile {

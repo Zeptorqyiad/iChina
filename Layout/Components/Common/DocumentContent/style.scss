@@ -1,0 +1,7 @@
+.documents-section {
+    &--text {
+        @include spacing(padding-inline, 360px, 324px, 128px, 0);
+        @include spacing(padding-block-start, 40px, 40px, 20px, 20px);
+        @include spacing(padding-block-end, 80px, 80px, 40px, 40px);
+    }
+}

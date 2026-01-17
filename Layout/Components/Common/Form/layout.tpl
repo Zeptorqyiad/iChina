@@ -63,6 +63,8 @@ $formId = uniqid('form_');
         ?>
     </div>
 
+    <img class="form__captcha" src="/assets/images/Main/captcha.png" alt="">
+
     <div class="form__controls">
         <?php
         App\Layout\Components\UI\Core\Checkbox\Layout::drawCheckbox(

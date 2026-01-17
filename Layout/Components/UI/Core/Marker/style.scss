@@ -2,9 +2,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: transparent solid;
+    //border: transparent solid;
     width: fit-content;
-    color: var(--gray-white);
+    //color: var(--gray-white);
     @include transition((border, background, color, opacity));
     @include border-w(2px);
 

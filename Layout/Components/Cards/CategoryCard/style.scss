@@ -7,8 +7,10 @@
     @include border-r(12px);
     @include border-w(2px);
     @include transition((border, background));
-    @include spacing(gap, 12px, 12px, 12px, 12px);
-    @include spacing(padding, 20px, 20px, 12px, 12px);
+    @include spacing(gap, 12px, 12px, 8px, 8px);
+    @include spacing(padding-block, 12px, 12px, 8px, 8px);
+    @include spacing(padding-inline-start, 8px);
+    @include spacing(padding-inline-end, 20px, 20px, 8px, 8px);
 
     &--link{
         @media (hover: hover) and (pointer: fine) {
@@ -52,8 +54,16 @@
     }
 
     &__category-marker {
-        background-color: var(--gray-white);
         flex-shrink: 0;
+
+        @include Tablet {
+            width: vwt(40px) !important;
+            height: vwt(40px) !important;
+        }
+        @include Mobile {
+            width: vwm(40px) !important;
+            height: vwm(40px) !important;
+        }
     }
 
     &__title {
@@ -62,6 +72,10 @@
         line-height: 120%;
         box-sizing: border-box;
         width: 100%;
+
+        @include Tablet {
+            @include t3-b;
+        }
     }
 
     &__icon{

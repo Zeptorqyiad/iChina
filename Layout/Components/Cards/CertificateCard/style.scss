@@ -1,0 +1,78 @@
+.certificate-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include spacing(padding, 20px);
+    @include spacing(padding-top, 12px);
+    @include spacing(gap, 12px);
+    @include border-r(12px);
+    height: 100%;
+    border: solid var(--color2-main);
+    border-width: vw(2px);
+
+    @include HD {
+        border-width: vwh(2px);
+    }
+    @include Tablet {
+        border-width: vwt(2px);
+
+        &.first {
+            grid-area: first;
+        }
+        &.second {
+            grid-area: second;
+        }
+        &.third {
+            grid-area: third;
+        }
+    }
+    @include Mobile {
+        border-width: vwm(2px);
+    }
+
+    &__title {
+        @include h4;
+    }
+
+    &__image {
+        @include icon(60px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__desc {
+        @include t2;
+
+        @include Tablet {
+            @include t3;
+        }
+    }
+
+    /*----------STYLE-----------*/
+
+    &-style_gray {
+        &.certificate-card {
+            background: var(--gray-lighter);
+        }
+
+        & .certificate-card__desc {
+            @include spacing(padding-right, 120px);
+        }
+
+        & .certificate-card__title {
+            color: var(--gray-darker);
+        }
+
+        & .certificate-card__separator {
+            background: var(--color2-main) !important;
+        }
+    }
+
+    &-style_main {
+
+    }
+}

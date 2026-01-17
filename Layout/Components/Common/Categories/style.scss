@@ -15,10 +15,10 @@
         @include spacing(gap, 12px, 12px, 12px, 12px);
 
         @include Tablet {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
         @include Mobile {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }

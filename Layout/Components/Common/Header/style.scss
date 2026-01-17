@@ -1,10 +1,11 @@
 .header {
 	&.absolute {
 		background: transparent;
-		position: absolute;
+		position: fixed;
 		@include spacing(top, 30px, 20px, 0);
 		left: 0;
 		z-index: 99;
+		@include transition((background, top));
 
 		@include Tablet {
 			position: fixed;
@@ -15,7 +16,7 @@
 		}
 
 		& .header__content {
-			@include spacing(width, 1420px);
+			@include spacing(width, 1406px);
 
 			@include HD {
 				width: vwh(1276px);
@@ -33,8 +34,25 @@
 			color: var(--gray-dark) !important;
 		}
 	}
+	&.scrolled {
+		position: fixed;
+		background: var(--gray-white) !important;
+		width: 100%;
+		top: 0;
 
-	&__container {
+		& .header__logo {
+			display: none !important;
+
+			&--mobile {
+				display: block !important;
+			}
+		}
+		& .header__items--link {
+			color: var(--gray-dark);
+		}
+		& .header__items-callback--social {
+			background: var(--gray-lighter) !important;
+		}
 	}
 
 	&__content {
@@ -124,7 +142,7 @@
 		}
 
 		&--link {
-			@include t3;
+			@include t3-b;
 			color: var(--gray-light);
 			@include spacing(padding-block, 10px);
 			@include spacing(padding-inline, 8px);
@@ -133,5 +151,13 @@
 
 	&__button {
 
+	}
+
+	&__burger {
+		display: none !important;
+
+		@include Tablet {
+			display: flex !important;
+		}
 	}
 }

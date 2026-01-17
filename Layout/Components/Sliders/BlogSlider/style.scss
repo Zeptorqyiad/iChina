@@ -1,5 +1,5 @@
 .blog-slider {
-    @include spacing(padding-block, 80px, 80px, 80px, 40px);
+    @include spacing(padding-block, 80px, 80px, 60px, 60px);
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;

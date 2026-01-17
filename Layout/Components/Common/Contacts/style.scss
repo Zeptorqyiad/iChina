@@ -1,6 +1,5 @@
 .contacts {
-    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
-    @include spacing(padding-top, 80px, 80px, 40px, 40px);
+    @include spacing(padding-block, 80px, 80px, 60px, 60px);
     background: var(--color1-lighter);
 
     &__container {
@@ -93,6 +92,10 @@
 
         @include Tablet {
             width: 100%;
+            height: vwt(400px);
+        }
+        @include Mobile {
+            height: vwm(500px);
         }
 
         iframe {
