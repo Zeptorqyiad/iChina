@@ -1,0 +1,133 @@
+.callback-modal {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    @include spacing(max-width, 500px, 500px);
+    @include border-r(12px);
+
+    @include Tablet {
+        border-radius: 0;
+        max-width: 100%;
+        height: 100%;
+        @include hide-scrollbar;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            background-color: var(--gray-light);
+            @include spacing(width, 8px, 8px, 8px, 8px);
+            @include border-r(8px);
+
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color1-light);
+            @include border-r(8px);
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 20px, 20px, 20px, 20px);
+        @include spacing(padding-inline, 32px, 32px, 16px, 16px);
+        @include spacing(padding-block, 32px, 32px, 20px, 20px);
+
+
+
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        @include spacing(right, -60px, -60px);
+
+        @include Tablet {
+            @include spacing(max-width, 40px);
+            @include spacing(max-height, 40px);
+            top: vwt(8px);
+            right: vwt(8px);
+        }
+        @include Mobile {
+            top: vwm(8px);
+            right: vwm(8px);
+        }
+    }
+
+    .btn-close {
+        background: var(--gray-black);
+
+        &__icon {
+            color: var(--gray-white);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-dark);
+            }
+        }
+
+        &:active {
+            background: var(--gray-black);
+        }
+
+        @include Tablet {
+            background: var(--gray-lighter);
+
+            &__icon {
+                color: var(--gray-darker);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light);
+            }
+        }
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        @include spacing(gap, 12px);
+
+        @include Tablet {
+            @include spacing(padding-top, 20px);
+            border-top: solid vwt(2px) var(--gray-lighter);
+            @include spacing(margin-top, 36px);
+        }
+        @include Mobile {
+            border-top: solid vwm(2px) var(--gray-lighter);
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+        line-height: 120%;
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t2;
+    }
+
+    &__form {
+        padding: 0 !important;
+
+        .form__inputs {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px);
+            width: 100%;
+        }
+
+        .form__button-submit {
+            width: 100%;
+        }
+    }
+}

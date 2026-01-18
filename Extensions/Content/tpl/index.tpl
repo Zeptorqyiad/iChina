@@ -293,9 +293,8 @@ App\Layout\Components\Common\Header\Layout::draw([
             ],
         ]);
 
-        App\Layout\Components\Common\Contacts\Layout::draw([
-            'title' => $content['params']['contacts_title'] ?? 'Контакты',
-            'desc' => $content['params']['contacts_desc'] ?? '',
+        App\Layout\Components\Common\ContactSection\Layout::draw([
+            'title' => $content['params']['main_contact_title'] ?? 'Контакты',
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([

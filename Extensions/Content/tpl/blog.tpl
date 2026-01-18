@@ -46,6 +46,7 @@ App\Layout\Components\Common\Header\Layout::draw();
 	App\Layout\Components\Common\FormFeedback\Layout::draw([
 		'title' => $index['params']['form-feedback_title'] ?? 'Обратная связь',
 		'desc' => $index['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
+        'image' => $index['params']['form-feedback-img'] ?? '/assets/images/Main/Form.png',
 	]);
 
 	App\Layout\Components\Common\Seo\Layout::draw([

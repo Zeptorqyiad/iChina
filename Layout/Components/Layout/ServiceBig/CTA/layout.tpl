@@ -27,12 +27,14 @@
                     <?php
                     App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                         text: 'Получить консультацию',
-                        link: '##',
                         style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
+                        attributes: [
+                            'onclick' => 'modalManager.open("callback-modal")',
+                        ]
                     );
                     App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                         text: 'Читать подробную инструкцию',
-                        link: '##',
+                        link: '/info/',
                         style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Dark,
                     );
                     ?>

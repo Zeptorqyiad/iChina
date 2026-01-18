@@ -1,0 +1,139 @@
+.contact-section {
+    @include spacing(padding-block, 120px, 100px, 80px, 80px);
+    background: var(--color1-lighter);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 32px, 32px, 16px, 16px);
+    }
+
+    &__wrap {
+        display: flex;
+        @include spacing(gap, 40px, 40px, 20px, 20px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        border: solid var(--color2-main);
+        @include spacing(width, 460px, 460px);
+        @include spacing(padding, 24px, 24px, 20px, 20px);
+        @include spacing(gap, 20px, 20px, 12px, 12px);
+        @include border-r(24px);
+        @include border-w(2px);
+        background: var(--gray-white);
+
+        @include Tablet{
+            width: 100%;
+        }
+
+        &-row {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px);
+
+            &--label {
+                @include h5;
+                color: var(--gray-darker);
+
+                @include Tablet {
+                    @include h6;
+                }
+            }
+
+            &--container {
+                display: flex;
+                align-items: center;
+                background-color: var(--gray-lighter);
+                @include spacing(padding, 14px);
+                @include spacing(gap, 12px);
+                @include border-r(12px);
+                user-select: none;
+            }
+
+            &--marker {
+                background-color: var(--gray-white);
+                color: var(--color1-main);
+                flex-shrink: 0;
+
+                @include Tablet {
+                    @include spacing(width, 40px);
+                    @include spacing(height, 40px);
+                }
+            }
+
+            &--phone, .footer__contact-us--button {
+                .btn-contact__text {
+                    @include Tablet {
+                        @include h6;
+                    }
+                }
+            }
+
+            &--text {
+                color: var(--gray-darker);
+                @include h5;
+
+                &-lh {
+                    @include t2;
+                    color: var(--gray-dark);
+
+                    @include Tablet {
+                        @include t3;
+                    }
+                }
+            }
+
+            &--social {
+                @include spacing(gap, 12px);
+
+                .btn-social-type--tg{
+                    color: var(--socials-tg);
+                }
+
+                .btn-social-type--vk{
+                    color: var(--socials-vk);
+                }
+            }
+        }
+
+        &-social{
+            display: flex;
+            @include spacing(gap, 8px);
+        }
+    }
+
+    &__map {
+        @include spacing(height, 650px, 540px, 480px, 480px);
+        @include spacing(width, 920px, 776px);
+
+        @include HD {
+        }
+        @include Tablet {
+            width: 100%;
+        }
+
+        iframe {
+            @include border-r(24px);
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+            z-index: 10;
+        }
+
+    }
+
+    &-page {
+        @include spacing(padding-bottom, 40px, 40px, 20px, 20px);
+        @include spacing(padding-top, 40px, 40px, 20px, 20px);
+
+        .title-card{
+            display: none;
+        }
+    }
+}

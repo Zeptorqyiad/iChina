@@ -4,18 +4,27 @@
     &__content {
         display: flex;
         flex-direction: row;
-        @include spacing(gap, 60px);
+        @include spacing(gap, 60px, 40px, 32px, 32px);
         background: var(--color1-main);
-        @include spacing(padding, 40px);
-        @include border-r(32px);
-        @include spacing(height, 540px);
+        @include spacing(padding, 40px, 40px, 16px, 16px);
+        @include spacing(border-radius, 32px, 32px, 12px, 12px);
+        @include spacing(height, 540px, 540px);
+
+        @include Tablet {
+            height: fit-content;
+            flex-direction: column-reverse;
+        }
 
         &-ls {
-            @include spacing(width, 630px);
+            @include spacing(width, 630px, 547px);
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             @include spacing(gap, 12px);
+
+            @include Tablet {
+                width: 100%;
+            }
 
             &--title {
                 @include h3;
@@ -36,15 +45,34 @@
                 @include border-r(12px);
                 width: 100%;
                 margin-bottom: auto;
+
+                @include Tablet {
+                    margin-bottom: unset;
+                }
             }
         }
         &-buttons {
             display: flex;
             flex-direction: row;
             @include spacing(gap, 12px);
+
+            @include Mobile {
+                flex-direction: column;
+
+                & .btn {
+                    width: 100%;
+                }
+            }
         }
         &-rs {
             flex-shrink: 0;
+
+            @include Tablet {
+                height: vwt(500px);
+            }
+            @include Mobile {
+                height: vwm(280px);
+            }
 
             &--image {
 
