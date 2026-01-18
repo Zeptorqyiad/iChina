@@ -1,0 +1,46 @@
+.tab-bar {
+    position: fixed;
+    display: none;
+    z-index: z('tooltip');
+    max-width: calc(100% - 2 * #{vw(8px)});
+    @include spacing(bottom, 8px);
+
+    @include HD {
+        max-width: calc(100% - 2 * #{vwh(8px)});
+    }
+    @include Tablet {
+        display: block;
+        @include spacing(left, 8px);
+        width: 100%;
+    }
+    @include Mobile {
+        right: vwm(8px);
+        margin-left: 0;
+        margin-right: 0;
+        width: unset;
+        max-width: unset;
+    }
+
+    &__container {
+        display: flex;
+        width: 100%;
+        background: var(--gray-white);
+        border: solid var(--gray-light);
+        @include gap(8px);
+        @include border-r(8px);
+        @include border-w(1px);
+        @include spacing(padding, 8px);
+
+        a,button {
+            flex: 1;
+        }
+    }
+
+    &__button {
+        flex: 1;
+
+        .btn__text {
+            @include t3-b;
+        }
+    }
+}

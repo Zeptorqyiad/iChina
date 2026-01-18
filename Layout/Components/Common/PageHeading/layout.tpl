@@ -25,13 +25,14 @@ $breadcrumbs = array_values($breadcrumbs);
                 <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                     className: 'page-heading__button-back',
                     icon: 'arrow-left',
-                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Flat,
+                    size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::ExtraSmall,
                     attributes: [
                         'onclick' => 'event.preventDefault(); history.back();',
                     ]
                 ); ?>
 
-                <p class="page-heading__back-title">Назад</p>
+                <a href="" class="page-heading__back-title">Назад</a>
             </div>
         <?php endif; ?>
 

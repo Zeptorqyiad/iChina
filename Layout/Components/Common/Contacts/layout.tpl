@@ -12,6 +12,7 @@ $address = Simflex\Core\Core::siteParam('address');
 $workhours = Simflex\Core\Core::siteParam('workhours');
 $tg = Simflex\Core\Core::siteParam('tg');
 $wt = Simflex\Core\Core::siteParam('whats_app');
+$vk = Simflex\Core\Core::siteParam('vk');
 
 ?>
 
@@ -43,11 +44,11 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         </div>
                     <?php endif; ?>
                 </div>
-                <?php
-                    App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'contacts__separator'
-                    );
-                ?>
+
+                <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                    className: 'contacts__separator'
+                ); ?>
+
                 <div class="contacts__info-row">
                     <h5 class="contacts__info-row--label">Почта:</h5>
 
@@ -109,14 +110,20 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                             App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
                                 className: 'contacts__button-social',
                                 link: $wt,
-                                type: \App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::WhatsApp
+                                type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::WhatsApp
                             );
                         }
-
                         if ($tg) {
                             App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
                                 className: 'contacts__button-social',
                                 link: $tg
+                            );
+                        }
+                        if ($vk) {
+                            App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                                className: 'contacts__button-social',
+                                link: $vk,
+                                type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::Vkontakte,
                             );
                         }
                         ?>

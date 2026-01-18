@@ -13,7 +13,11 @@ $serviceCardClasses = [
    <?= buildAttrs($data['attributes'] ?? []) ?>
    draggable="false"
 >
-    <h3 class="service-card__title"><?= $data['title'] ?? '' ?></h3>
+    <?php if ($data['title']): ?>
+        <h3 class="service-card__title">
+            <?= $data['title'] ?>
+        </h3>
+    <?php endif ?>
 
     <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
         className: 'service-card__separator',
@@ -21,7 +25,7 @@ $serviceCardClasses = [
 
     <?php if ($data['desc']): ?>
         <div class="service-card__desc">
-            <?= $data['desc'] ?? '' ?>
+            <?= $data['desc'] ?>
         </div>
     <?php endif; ?>
 

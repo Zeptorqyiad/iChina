@@ -2,21 +2,31 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    @include spacing(gap, 20px, 20px, 20px, 20px);
+    @include spacing(gap, 20px);
     @include spacing(padding-block, 30px, 30px, 24px, 24px);
-    @include border-w(1px);
+    border-width: vw(1px);
     border-top: solid var(--gray-lighter);
 
-    &__info{
-        display: flex;
-        flex-direction: column;
-        @include spacing(gap, 16px, 16px, 16px, 16px);
+    @include HD {
+        border-width: vwh(1px);
+    }
+    @include Tablet {
+        border-width: vwt(1px);
+    }
+    @include Mobile {
+        border-width: vwm(1px);
     }
 
-    &__text{
+    &__info {
         display: flex;
         flex-direction: column;
-        @include spacing(gap, 8px, 8px, 8px, 8px);
+        @include spacing(gap, 16px);
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 8px);
 
         &-title{
             @include h5;
@@ -58,17 +68,7 @@
         }
 
         &.horizontal-video {
-            height: vw(400px);
-
-            @include HD {
-                height: vwh(358px);
-            }
-            @include Tablet {
-                height: vwt(274px);
-            }
-            @include Mobile {
-                height: vwm(196px);
-            }
+            @include spacing(height, 400px, 358px, 274px, 196px);
 
             iframe {
                 width: 100%;
@@ -80,29 +80,11 @@
         &.vertical-video {
             display: flex;
             justify-content: center;
-            height: vw(620px);
-
-            @include HD {
-                height: vwh(496px);
-            }
-
-            @include Tablet {
-                height: vwt(496px);
-            }
-
-            @include Mobile {
-                height: vwm(606px);
-            }
+            @include spacing(height, 620px, 496px, 496px, 606px);
 
             iframe {
-                width: vw(350px);
+                @include spacing(width, 350px, 280px, 280px);
 
-                @include HD {
-                    width: vwh(280px);
-                }
-                @include Tablet {
-                    width: vwt(280px);
-                }
                 @include Mobile {
                     width: 100%;
                     border-radius: inherit;
@@ -111,7 +93,7 @@
         }
     }
 
-    &__bottom{
+    &__bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -132,44 +114,44 @@
             }
         }
 
-        &--rs{
+        &--rs {
             display: flex;
-            @include spacing(gap, 16px, 16px, 16px, 16px);
+            @include spacing(gap, 16px);
             align-items: center;
         }
 
-        &-separator{
-            @include spacing(height, 24px, 24px, 24px, 24px);
+        &-separator {
+            @include spacing(height, 24px);
             background: var(--gray-medium);
             width: 1px;
         }
     }
 
-    &__feedback{
+    &__feedback {
         display: flex;
-        @include spacing(gap, 8px, 8px, 8px, 8px);
+        @include spacing(gap, 8px);
 
-        &-value{
+        &-value {
             @include t2-b;
             color: var(--gray-medium);
             @include transition((color));
         }
 
-        .feedback__icon{
+        .feedback__icon {
             @include icon(24px);
             color: var(--gray-medium);
             @include transition((color));
             flex-shrink: 0;
         }
-        &-button{
+        &-button {
             display: flex;
             align-items: center;
-            @include spacing(gap, 8px, 8px, 8px, 8px);
+            @include spacing(gap, 8px);
 
-            @include Tablet{
+            @include Tablet {
                 height: vwt(48px);
             }
-            @include Mobile{
+            @include Mobile {
                 height: vwm(48px);
             }
 

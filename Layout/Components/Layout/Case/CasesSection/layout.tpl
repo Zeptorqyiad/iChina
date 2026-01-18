@@ -32,14 +32,13 @@ $cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
 
         <div class="cases-section__wrap">
             <?php foreach ($data['items'] as $i): ?>
-                <?php
-                    App\Layout\Components\Cards\CaseCard\Layout::drawCaseCard(
-                        name: $i->name ?? '',
-                        short: $i->short ?? '',
-                        photo: $i->photo_min ?? '',
-                        link: $i->alias . '/',
-                    );
-                ?>
+                <?php App\Layout\Components\Cards\CaseCard\Layout::drawCaseCard(
+                    name: $i->name ?? '',
+                    short: $i->short ?? '',
+                    photo: $i->photo_min ?? '',
+                    link: $i->alias . '/',
+                    badge: $i->badge ?? '',
+                ); ?>
             <?php endforeach; ?>
         </div>
         <?php

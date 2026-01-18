@@ -114,4 +114,17 @@
         @include t3;
         @include truncate(1);
     }
+
+    &__badges {
+        position: absolute;
+        @include spacing(top, 16px);
+        @include spacing(left, 16px);
+        display: flex;
+        flex-direction: row;
+        @include spacing(gap, 8px);
+
+        & .badge {
+
+        }
+    }
 }

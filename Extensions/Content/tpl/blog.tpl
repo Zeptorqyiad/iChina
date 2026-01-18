@@ -35,6 +35,10 @@ App\Layout\Components\Common\Header\Layout::draw();
 		'desc' => $content['params']['blog_fs-desc'],
 	]);
 
+    App\Layout\Components\Common\PageHeading\Layout::drawPageHeading(
+        style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
+    );
+
 	App\Layout\Components\Layout\Blog\BlogContent\Layout::draw([
 		'cats' => $c,
 		'cards' => $cards,

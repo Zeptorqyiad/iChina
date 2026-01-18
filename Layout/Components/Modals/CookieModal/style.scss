@@ -1,0 +1,67 @@
+.cookie-modal {
+    width: 100%;
+    max-width: 100dvw;
+    position: fixed !important;
+    margin: 0;
+    bottom: 0;
+    top: auto;
+    background: var(--gray-lighter);
+    z-index: z('tooltip');
+    transform: translateY(100%) translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    contain: layout paint;
+    user-select: none;
+    pointer-events: none;
+    @include transition((transform), 0.3s);
+
+    &.active {
+        transform: translateY(0) translateZ(0);
+        user-select: auto;
+        pointer-events: auto;
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: solid var(--gray-light);
+        @include border-w(2px);
+        @include spacing(gap, 8px, 8px, 12px, 12px);
+        @include spacing(padding-top, 12px, 12px, 12px, 12px);
+        @include spacing(padding-bottom, 16px, 16px, 16px, 16px);
+
+        @include Tablet {
+            display: grid;
+        }
+    }
+
+    &__description {
+        display: grid;
+        @include gap(4px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include t2-b;
+    }
+
+    &__text {
+        color: var(--gray-dark);
+        @include t4;
+    }
+
+    &__submit {
+        width: max-content;
+
+        @include Mobile {
+            width: 100%;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
+

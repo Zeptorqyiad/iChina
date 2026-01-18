@@ -1,10 +1,15 @@
 .blog-content {
-    &__container{
+    .wrapper {
+        padding-inline: 0;
+        align-self: center;
+    }
+
+    &__container {
         display: flex;
         flex-direction: column;
     }
 
-    .media-filter__content{
+    .media-filter__content {
         @include Tablet{
             display: none;
         }
@@ -37,8 +42,6 @@
         }
     }
 
-
-
     &__article {
         display: flex;
         flex-direction: column;
@@ -49,12 +52,6 @@
         }
 
     }
-
-    .wrapper{
-        padding-inline: 0;
-        align-self: center;
-    }
-
 
     &__list {
         display: flex;

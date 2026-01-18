@@ -1,0 +1,96 @@
+.collapsible {
+    width: 100%;
+    display: grid;
+    grid-template-rows: min-content 0fr;
+    overflow: hidden;
+    @include transition((grid-template-rows));
+
+    &.active {
+        grid-template-rows: min-content 1fr;
+
+        .tab__icon-right {
+            transform: rotateX(180deg);
+        }
+    }
+
+    &__trigger {
+        background-color: transparent;
+        justify-content: start;
+        width: 100%;
+        @include border-r(8px);
+
+        .tab__text-wrap {
+            margin-right: auto;
+        }
+
+        .tab__text {
+            @include t3-b;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--gray-darker);
+                background: var(--gray-lighter);
+            }
+        }
+
+        &:active {
+            cursor: pointer !important;
+            background: var(--color1-lighter) !important;
+            color: var(--gray-darker) !important;
+        }
+
+        &.active {
+            cursor: pointer !important;
+            background-color: var(--gray-lighter);
+            color: var(--gray-darker);
+        }
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        overflow: hidden;
+        @include spacing(gap, 8px);
+    }
+
+    &__option {
+        @include spacing(margin-inline, 12px);
+        @include border-r(8px);
+
+        .tab__text {
+            @include t3;
+        }
+
+        &:first-of-type {
+            @include spacing(margin-top, 8px)
+        }
+    }
+
+    &__link {
+        justify-content: start;
+        width: 100% !important;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: var(--color1-lighter);
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            cursor: pointer !important;
+            background: var(--color1-light) !important;
+            color: var(--color1-dark) !important;
+        }
+
+        .tab__text-wrap {
+            margin-right: auto;
+        }
+    }
+
+    &__show-all {
+        width: 100% !important;
+    }
+}

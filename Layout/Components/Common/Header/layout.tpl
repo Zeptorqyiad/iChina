@@ -101,6 +101,9 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         className: 'header__button',
                         text: 'Связаться',
                         size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                        attributes: [
+                            'onclick' => 'modalManager.open("callback-modal")'
+                        ]
                     )
                     ?>
                 </div>
@@ -110,8 +113,18 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                     icon: 'menu-3-line',
                     style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
                     size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                    attributes: [
+                        'onclick' => 'modalManager.open("menu-modal")'
+                    ]
                 ); ?>
             </div>
 		</div>
 	</div>
 </header>
+
+<?php
+App\Layout\Components\Modals\CookieModal\Layout::draw();
+App\Layout\Components\Modals\CallbackModal\Layout::draw();
+App\Layout\Components\Modals\MenuModal\Layout::draw();
+App\Layout\Components\UI\Other\TabBar\Layout::draw();
+?>

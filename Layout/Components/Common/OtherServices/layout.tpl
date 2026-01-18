@@ -18,11 +18,11 @@
         <?php foreach ($data['items'] as $i): ?>
             <li class="other-services__item <?= $i['className'] ?>" >
                 <?php App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
-                        title: $i['title'],
-                        desc: $i['desc'],
-                        link: $i['link'],
-                        image: $i['image'],
-                        style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
+                    title: $i['title'],
+                    desc: $i['desc'],
+                    link: $i['link'],
+                    image: $i['image'],
+                    style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
                 ); ?>
             </li>
         <?php endforeach; ?>

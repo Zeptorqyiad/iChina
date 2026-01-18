@@ -29,7 +29,7 @@
     }
     &-size_m {
         @include border-r(8px);
-        @include t3;
+        @include t3-b;
     }
     &-size_s {
         @include border-r(12px);
@@ -99,12 +99,12 @@
 
     &-gradient {
         background: var(--gradient1-main);
-        color: var(--gray-white);
+        color: var(--gray-black);
     }
 
     &-gradient-light {
         background: var(--gradient1-light);
-        color: var(--gray-white);
+        color: var(--gray-black);
     }
 
     &-sale {

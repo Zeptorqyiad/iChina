@@ -13,7 +13,7 @@ $cats = App\Extensions\Blog\Model\BlogCategory::findAdv()->all();
             text: 'Все категории',
             link: '/blog/',
             badge: $totalCount,
-            style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
+            style: App\Layout\Components\UI\Core\Tab\TabStyle::Outline,
             size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
         );
         foreach ($cats as $cat) {
@@ -23,7 +23,7 @@ $cats = App\Extensions\Blog\Model\BlogCategory::findAdv()->all();
                     text:  $cat->name,
                     link: '/blog/?c=' . $cat->bc_id,
                     badge: $cat->getCount(),
-                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
+                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Outline,
                     size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
                 );
             }

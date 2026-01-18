@@ -25,6 +25,21 @@
             ); ?>
         </div>
 
+        <div class="case-card__badges">
+            <?php
+            App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
+                text: 'Услуга',
+                style: App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
+                size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
+            );
+            App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
+                text: 'Вид товара',
+                style: App\Layout\Components\UI\Core\Badge\BadgeStyle::GradientLight,
+                size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
+            );
+            ?>
+        </div>
+
         <img class="case-card__image"
              src="/uf/images/source/<?= $data['photo'] ?>"
              alt=""

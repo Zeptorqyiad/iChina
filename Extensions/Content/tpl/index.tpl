@@ -258,19 +258,19 @@ App\Layout\Components\Common\Header\Layout::draw([
                 [
                     'img' => 'assets/images/Main/icon.png',
                     'title' => 'Частые вопросы',
-                    'link' => '##'
+                    'link' => '/faq/'
                 ],[
                     'img' => 'assets/images/Main/icon.png',
                     'title' => 'Гарантии',
-                    'link' => '##'
+                    'link' => '/guarantee/'
                 ],[
                     'img' => 'assets/images/Main/icon.png',
                     'title' => 'Глоссарий',
-                    'link' => '##'
+                    'link' => '/glossary/'
                 ],[
                     'img' => 'assets/images/Main/icon.png',
                     'title' => 'Политика конфиденциальности',
-                    'link' => '##'
+                    'link' => '/documents/policy/'
                 ],
             ],
         ]);

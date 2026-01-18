@@ -135,6 +135,24 @@ App\Layout\Components\Common\Header\Layout::draw([
 					'image' => '/assets/images/Main/plug.png',
 				],
 			],
+            'items' => [
+                [
+                    'className' => 'first',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Работаем официально ',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'second',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Соответствие стандартам безопасности и качества',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'third',
+                    'img' => '/assets/images/Main/key.png',
+                    'title' => 'Соответствие стандартам безопасности и качества',
+                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
+                ],
+            ]
 		]);
 
 		App\Layout\Components\Sliders\CasesSlider\Layout::draw([
@@ -182,21 +200,21 @@ App\Layout\Components\Common\Header\Layout::draw([
 				и комфортным для вас, обеспечивая полную поддержку на каждом этапе сотрудничества',
 			'cards' => [
 				[
-					'img' => 'assets/images/Main/icon.png',
+					'img' => '/assets/images/Main/icon.png',
 					'title' => 'Частые вопросы',
-					'link' => '##'
+					'link' => '/faq/'
 				],[
-					'img' => 'assets/images/Main/icon.png',
+					'img' => '/assets/images/Main/icon.png',
 					'title' => 'Гарантии',
-					'link' => '##'
+					'link' => '/guarantee/'
 				],[
-					'img' => 'assets/images/Main/icon.png',
+					'img' => '/assets/images/Main/icon.png',
 					'title' => 'Глоссарий',
-					'link' => '##'
+					'link' => '/glossary/'
 				],[
-					'img' => 'assets/images/Main/icon.png',
+					'img' => '/assets/images/Main/icon.png',
 					'title' => 'Политика конфиденциальности',
-					'link' => '##'
+					'link' => '/documents/policy/'
 				],
 			],
 		]);

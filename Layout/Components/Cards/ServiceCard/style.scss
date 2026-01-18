@@ -16,7 +16,7 @@
             .service-card__arrow,
             .service-card__title {
                 @include transition((color));
-                color: var(--color1-main);
+                color: var(--color2-main);
             }
         }
     }
@@ -26,10 +26,9 @@
         @include transition((background));
 
         .service-card__arrow,
-        .service-card__title,
-        .service-card__desc{
+        .service-card__title {
             @include transition((color));
-            color: var(--color1-darker);
+            color: var(--color2-darker);
         }
     }
 

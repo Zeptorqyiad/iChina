@@ -4,7 +4,7 @@
 		position: fixed;
 		@include spacing(top, 30px, 20px, 0);
 		left: 0;
-		z-index: 99;
+		z-index: z('header');
 		@include transition((background, top));
 
 		@include Tablet {
@@ -22,7 +22,7 @@
 				width: vwh(1276px);
 			}
 			@include Tablet {
-				width: vwt(811px);
+				width: unset;
 			}
 			@include Mobile {
 				width: 100%;
@@ -32,6 +32,9 @@
 	&.fixed {
 		& .header__items--link {
 			color: var(--gray-dark) !important;
+		}
+		& .header__items-callback--social {
+			background: var(--gray-lighter) !important;
 		}
 	}
 	&.scrolled {
