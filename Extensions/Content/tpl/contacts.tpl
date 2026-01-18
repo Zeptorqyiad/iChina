@@ -15,10 +15,7 @@ App\Layout\Components\Common\Header\Layout::draw();
         style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
     );
 
-    App\Layout\Components\Common\Contacts\Layout::draw([
-        'title' => 'Контакты',
-        'className' => 'contacts-page'
-    ]);
+    App\Layout\Components\Common\Contacts\Layout::draw();
 
     App\Layout\Components\Common\FormFeedback\Layout::draw([
         'title' => $index['params']['form-feedback_title'] ?? 'Обратная связь',

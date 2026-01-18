@@ -9,7 +9,7 @@ $contactsClasses = [
 $email = Simflex\Core\Core::siteParam('email');
 $phone = Simflex\Core\Core::siteParam('phone');
 $address = Simflex\Core\Core::siteParam('address');
-$workhours = Simflex\Core\Core::siteParam('workhours');
+$workhours = Simflex\Core\Core::siteParam('office_address');
 $tg = Simflex\Core\Core::siteParam('tg');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 $vk = Simflex\Core\Core::siteParam('vk');
@@ -17,127 +17,133 @@ $vk = Simflex\Core\Core::siteParam('vk');
 ?>
 
 <section class="<?= implode(' ', $contactsClasses) ?>" <?= buildAttrs($data['attributes'] ?? []) ?> id="contacts">
-    <div class="contacts__container container">
-        <?php
-            App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
-                title: $data['title'] ?? '',
-                desc: $data['desc'] ?? '',
-            );
-        ?>
-
-        <div class="contacts__wrap">
-            <div class="contacts__info">
-                <div class="contacts__info-row">
-                    <h5 class="contacts__info-row--label">Телефон:</h5>
-
-                    <?php if ($phone): ?>
-                        <div class="contacts__info-row--container">
-                            <?php
-                            App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
-                                className: 'contacts__info-row--phone',
-                                text: '{phone}',
-                                link: 'tel:{phone}',
-                                style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Monochrome,
-                                size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
-                            );
-                            ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                    className: 'contacts__separator'
-                ); ?>
-
-                <div class="contacts__info-row">
-                    <h5 class="contacts__info-row--label">Почта:</h5>
-
-                    <?php if ($email): ?>
-                        <div class="contacts__info-row--container">
-                            <?php App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
-                                className: 'contacts__info-row--button',
-                                text: '{email}',
-                                link: 'mailto:{email}',
-                                style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Monochrome,
-                                size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
-                            ); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <?php
-                    App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'contacts__separator'
+    <div class="contacts__content container">
+        <div class="contacts__content-ls">
+            <div class="contacts__content_item">
+                <h5 class="contacts__content_item--title">
+                    Телефон:
+                </h5>
+                <div class="contacts__content_item--btn">
+                    <?php
+                    App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
+                        className: 'contacts__info-row--phone',
+                        text: '{phone}',
+                        link: 'tel:{phone}',
+                        style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Filled,
+                        size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
                     );
-                ?>
-                <div class="contacts__info-row">
-                    <h5 class="contacts__info-row--label">График работы:</h5>
-
-                    <div class="contacts__info-row--container">
-                        <?php if ($workhours): ?>
-                            <p class="contacts__info-row--text-lh">
-                                <?= '{workhours}' ?>
-                            </p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <?php
-                    App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'contacts__separator'
-                    );
-                ?>
-
-                <div class="contacts__info-row">
-                    <h5 class="contacts__info-row--label">Адрес главного офиса:</h5>
-
-                    <div class="contacts__info-row--container">
-                        <?php if ($address): ?>
-                            <p class="contacts__info-row--text-lh"><?='{address}'?></p>
-                        <?php endif; ?>
-                    </div>
+                    if ($wt) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                            className: 'contacts__button-social',
+                            link: $wt,
+                            type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::WhatsApp
+                        );
+                    }
+                    if ($tg) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                            className: 'contacts__button-social',
+                            link: $tg
+                        );
+                    }
+                    ?>
                 </div>
 
-                <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'contacts__separator'
-                ); ?>
-
-                <?php if ($tg || $wt): ?>
-                    <div class="contacts__info-row contacts__info-row--social">
-                        <h5 class="contacts__info-row--label">Соц.сети и мессенджеры:</h5>
-
-                    <div class="contacts__info-social">
-                        <?php
-                        if ($wt) {
-                            App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
-                                className: 'contacts__button-social',
-                                link: $wt,
-                                type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::WhatsApp
-                            );
-                        }
-                        if ($tg) {
-                            App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
-                                className: 'contacts__button-social',
-                                link: $tg
-                            );
-                        }
-                        if ($vk) {
-                            App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
-                                className: 'contacts__button-social',
-                                link: $vk,
-                                type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::Vkontakte,
-                            );
-                        }
-                        ?>
+                <?php if ($workhours): ?>
+                    <div class="contacts__content_item--workhours">
+                        <?= $workhours ?>
                     </div>
                 <?php endif; ?>
+            </div>
+
+            <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(); ?>
+
+            <div class="contacts__content_item">
+                <h5 class="contacts__content_item--title">
+                    Почта:
+                </h5>
+                <div class="contacts__content_item--btn">
+                    <?php if ($email) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonContact\Layout::drawButtonContact(
+                            className: 'contacts__info-row--phone',
+                            text: '{email}',
+                            link: 'mailto:{email}',
+                            style: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactStyle::Filled,
+                            size: App\Layout\Components\UI\Core\Buttons\ButtonContact\ButtonContactSize::Small,
+                        );
+                    } ?>
                 </div>
             </div>
 
-            <div class="contacts__map">
-                <script type="text/javascript"
-                        charset="utf-8"
-                        async
-                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A62261dc0d04e1464d22f7b773ff6e3971932c95790cfdcaf30723afdfcc059a6&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=true">
-                </script>
+            <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(); ?>
+
+            <div class="contacts__content_item">
+                <h5 class="contacts__content_item--title">
+                    Соц.сети и мессенджеры:
+                </h5>
+                <div class="contacts__content_item--btn">
+                    <?php
+                    if ($wt) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                            className: 'contacts__button-social',
+                            link: $wt,
+                            type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::WhatsApp
+                        );
+                    }
+                    if ($tg) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                            className: 'contacts__button-social',
+                            link: $tg
+                        );
+                    }
+                    if ($vk) {
+                        App\Layout\Components\UI\Core\Buttons\ButtonSocial\Layout::drawButtonSocial(
+                            className: 'contacts__button-social',
+                            link: $vk,
+                            type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::Vkontakte,
+                        );
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="contacts__content-rs">
+            <div class="contacts__content-rs_item">
+                <h5 class="contacts__content-rs_item--title">
+                    Офис в России:
+                </h5>
+                <div class="contacts__content-rs_item--address">
+                    г. Комсомольск-на-Амуре, ул. Достоевского, д. 17
+                </div>
+                <div class="contacts__content-rs_item--image">
+                    <img src="/assets/images/Contacts/image.png"
+                         alt=""
+                         class="contacts__content-rs_item--image"
+                    >
+
+                    <img src="/assets/images/Contacts/dot.png"
+                         alt=""
+                         class="contacts__content-dot"
+                    >
+                </div>
+            </div>
+            <div class="contacts__content-rs_item">
+                <h5 class="contacts__content-rs_item--title">
+                    Офис в Шанхае:
+                </h5>
+                <div class="contacts__content-rs_item--address">
+                    上海上海市虹口区广中路街道
+                </div>
+                <div class="contacts__content-rs_item--image">
+                    <img src="/assets/images/Contacts/image.png"
+                         alt=""
+                         class="contacts__content-rs_item--image"
+                    >
+
+                    <img src="/assets/images/Contacts/dot.png"
+                         alt=""
+                         class="contacts__content-dot"
+                    >
+                </div>
             </div>
         </div>
     </div>

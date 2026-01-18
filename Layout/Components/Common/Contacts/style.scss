@@ -1,117 +1,101 @@
 .contacts {
-    @include spacing(padding-block, 80px, 80px, 60px, 60px);
-    background: var(--color1-lighter);
+    @include spacing(padding-block-start, 40px, 40px, 20px, 20px);
+    @include spacing(padding-block-end, 80px, 80px, 40px, 40px);
 
-    &__container {
+    &__content {
         display: flex;
-        flex-direction: column;
-        @include spacing(gap, 32px, 32px, 24px, 32px);
-    }
-
-    &__wrap {
-        display: flex;
-        @include spacing(gap, 40px, 40px, 32px, 32px);
+        flex-direction: row;
+        @include spacing(gap, 20px, 20px, 16px, 16px);
 
         @include Tablet {
             flex-direction: column;
         }
-    }
 
-    &__info {
-        display: flex;
-        flex-direction: column;
-        border: solid var(--color2-main);
-        background: var(--gray-white);
-        @include spacing(width, 460px);
-        @include spacing(padding, 24px);
-        @include spacing(gap, 20px);
-        @include border-r(24px);
-        @include border-w(2px);
-
-        @include Tablet{
-            width: 100%;
-        }
-
-        &-row {
+        &-ls {
             display: flex;
             flex-direction: column;
-            @include spacing(gap, 8px);
+            @include spacing(gap, 20px);
+            @include spacing(width, 480px, 402px);
 
-            &--label {
-                @include h5;
-                font-family: var(--font-family-heading);
-                color: var(--gray-darker);
+            @include Tablet {
+                width: 100%;
             }
+        }
 
-            &--container {
+        &-rs {
+            display: flex;
+            flex-direction: row;
+            @include spacing(gap, 20px);
+
+            &_item {
                 display: flex;
-                align-items: center;
-                background-color: var(--gray-lighter);
-                @include spacing(padding, 20px, 20px, 12px, 12px);
+                flex-direction: column;
                 @include spacing(gap, 12px);
-                @include border-r(12px);
-                user-select: none;
-            }
 
-            &--marker {
-                background: var(--gray-white);
-                color: var(--color1-main);
-                flex-shrink: 0;
-            }
-
-            &--text {
-                color: var(--gray-darker);
-                @include h5;
-
-                &-lh {
+                &--title {
+                    @include h5;
+                    color: var(--gray-darker);
+                }
+                &--address {
                     @include t2;
-                    color: var(--gray-dark);
+                    color: var(--gray-darker);
+                    @include spacing(padding-block, 12px);
+                    @include spacing(padding-inline, 20px);
+                    background: var(--gray-lighter);
+                    @include border-r(12px);
+                    width: 100%;
+
+                    @include Tablet {
+                        height: vwt(72px);
+                    }
+                    @include Mobile {
+                        height: fit-content;
+                    }
+                }
+                &--image {
+                    position: relative;
+                    width: 100%;
+                    @include spacing(height, 600px);
+                    @include border-r(12px);
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        @include border-r(12px);
+                    }
                 }
             }
+        }
 
-            &--social {
-                @include spacing(gap, 12px);
+        &_item {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px);
 
-                .btn-social-type--tg {
-                    color: var(--socials-tg);
-                }
-                .btn-social-type--vk {
-                    color: var(--socials-vk);
-                }
-            }
-
-            &--button {
-                color: var(--gray-darker);
+            &--title {
                 @include h5;
+                color: var(--gray-darker);
+            }
+            &--btn {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                @include spacing(gap, 8px);
+            }
+            &--workhours {
+                @include t3;
+                color: var(--gray-dark);
             }
         }
-    }
 
-    &__map {
-        @include spacing(width, 920px, 776px);
-
-        @include Tablet {
-            width: 100%;
-            height: vwt(400px);
+        &-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include spacing(max-width, 46px);
+            @include spacing(max-height, 54px);
         }
-        @include Mobile {
-            height: vwm(500px);
-        }
-
-        iframe {
-            @include border-r(24px);
-            width: 100%;
-            height: 100%;
-            filter: grayscale(100%);
-            z-index: 10;
-        }
-    }
-}
-.contacts-page {
-    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
-    @include spacing(padding-top, 40px);
-
-    .title-card {
-        display: none;
     }
 }

@@ -30,10 +30,7 @@ App\Layout\Components\Common\Header\Layout::draw();
 
 <main>
 	<?php
-	App\Layout\Components\Layout\Blog\BlogFs\Layout::draw([
-		'title' => $content['params']['blog_fs-title'],
-		'desc' => $content['params']['blog_fs-desc'],
-	]);
+    App\Layout\Components\UI\Core\BreadCrumbs\Layout::draw();
 
     App\Layout\Components\Common\PageHeading\Layout::drawPageHeading(
         style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary

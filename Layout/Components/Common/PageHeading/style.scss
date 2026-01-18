@@ -33,10 +33,6 @@
         color: var(--gray-black);
         @include h3;
         line-height: 120%;
-
-        @include Tablet{
-            display: none;
-        }
     }
 
     &__count {
