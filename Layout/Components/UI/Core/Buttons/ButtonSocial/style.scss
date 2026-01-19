@@ -23,82 +23,30 @@
 
     /*----------SIZES-----------*/
     &-size--l {
-        height: vw(56px);
-        padding-inline: vw(14px);
+        @include spacing(height, 56px);
+        @include spacing(padding-inline, 14px);
         @include border-r(8px);
-
-        @include HD {
-            height: vwh(56px);
-            padding-inline: vwh(14px);
-        }
-        @include Tablet {
-            height: vwt(56px);
-            padding-inline: vwt(14px);
-        }
-        @include Mobile {
-            height: vwm(56px);
-            padding-inline: vwm(14px);
-        }
     }
 
     &-size--m {
-        height: vw(48px);
-        padding-inline: vw(10px);
+        @include spacing(height, 48px);
+        @include spacing(padding-inline, 10px);
         @include border-r(8px);
-
-        @include HD {
-            height: vwh(48px);
-            padding-inline: vwh(10px);
-        }
-        @include Tablet {
-            height: vwt(48px);
-            padding-inline: vwt(10px);
-        }
-        @include Mobile {
-            height: vwm(48px);
-            padding-inline: vwm(10px);
-        }
     }
 
     &-size--s {
-        height: vw(40px);
-        padding-inline: vw(6px);
+        @include spacing(height, 40px);
+        @include spacing(padding-inline, 6px);
         @include border-r(8px);
-
-        @include HD {
-            height: vwh(40px);
-            padding-inline: vwh(6px);
-        }
-        @include Tablet {
-            height: vwt(40px);
-            padding-inline: vwt(6px);
-        }
-        @include Mobile {
-            height: vwm(40px);
-            padding-inline: vwm(6px);
-        }
     }
 
     &-size--xs {
-        height: vw(32px);
-        padding-inline: vw(6px);
+        @include spacing(height, 32px);
+        @include spacing(padding-inline, 6px);
         @include border-r(8px);
 
-        @include HD {
-            height: vwh(32px);
-            padding-inline: vwh(6px);
-        }
-        @include Tablet {
-            height: vwt(32px);
-            padding-inline: vwt(6px);
-        }
-        @include Mobile {
-            height: vwm(32px);
-            padding-inline: vwm(6px);
-        }
-
         svg {
-            @include icon(16px)
+            @include icon(16px);
         }
     }
     /*----------TYPE-----------*/
@@ -149,7 +97,6 @@
         background: var(--gray-dark);
         border-color: transparent;
 
-
         @media (hover: hover) and (pointer: fine) {
             &:hover {
                 background: var(--gray-medium);
@@ -163,6 +110,7 @@
         &:active {
             background: var(--gray-darker);
             border-color: var(--gray-dark);
+
             .btn-social__icon {
                 color: var(--color1-darker);
             }
@@ -175,7 +123,7 @@
 
         @media (hover: hover) and (pointer: fine) {
             &:hover {
-                background: transparent;
+                background: var(--color1-lighter);
 
                 .btn-social__icon {
                     color: var(--color1-darker);
@@ -184,8 +132,8 @@
         }
 
         &:active {
-            background: transparent;
-            border-color: var(--gray-dark);
+            background: var(--color1-light);
+            border-color: transparent;
 
             .btn-social__icon {
                 color: var(--color1-darker);

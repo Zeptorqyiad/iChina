@@ -50,7 +50,7 @@
         &--ellipse {
             position: absolute;
             top: 39.7%;
-            left: 14%;
+            left: 13.9%;
             transform: translate(-14%, -39.7%);
             z-index: 2;
         }
@@ -110,12 +110,13 @@
     &__bottom {
         display: flex;
         flex-direction: row;
-        @include spacing(gap, 20px);
+        align-items: flex-end;
+        @include spacing(gap, 70px);
         justify-content: flex-end;
         @include spacing(margin-right, 250px);
     }
 
-    &__item {
+    &__rullet {
         display: flex;
         flex-direction: column;
         @include spacing(gap, 12px);

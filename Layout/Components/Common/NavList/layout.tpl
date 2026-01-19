@@ -5,17 +5,26 @@ use Simflex\Core\Container;
 
 $navListLinks = [
     [
-        'text' => 'Частые вопросы',
+        'text' => 'Общая информация',
+        'link' => '/info/',
+    ], [
+        'text' => 'Частные вопросы',
         'link' => '/faq/',
     ], [
-        'text' => 'Гарантии',
-        'link' => '/guarantees/',
-    ],  [
+        'text' => 'Гарантия и безопасность',
+        'link' => '/guarantee/',
+    ], [
         'text' => 'Глоссарий',
         'link' => '/glossary/',
-    ], [
-        'text' => 'Политика конфиденциальности',
-        'link' => '/privacy-policy/'
+    ],[
+        'text' => 'Инструкция для клиентов',
+        'link' => '/instructions/',
+    ],[
+        'text' => 'Список городов',
+        'link' => '/cities/'
+    ],[
+        'text' => 'Документы',
+        'link' => '/documents/',
     ]
 ];
 

@@ -52,7 +52,7 @@
         @include border-r(8px);
     }
     &-size_s {
-        @include t3;
+        @include t3-b;
         @include border-r(8px);
     }
     &-size_xs {
@@ -114,6 +114,7 @@
         }
 
         &:active {
+            color: var(--gray-white);
             background: var(--color2-darker);
         }
 

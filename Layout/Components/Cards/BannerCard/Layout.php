@@ -11,6 +11,7 @@ class Layout extends LayoutBase
         string       $title = '',
         string       $text = '',
         array        $list = [],
+        bool         $buttonCard = true,
         array        $attributes = []
     ): void
     {
@@ -19,6 +20,7 @@ class Layout extends LayoutBase
                 'title',
                 'text',
                 'list',
+                'buttonCard',
                 'attributes'
             )
         );

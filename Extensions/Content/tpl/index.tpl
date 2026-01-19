@@ -224,10 +224,10 @@ App\Layout\Components\Common\Header\Layout::draw([
             'cards-doc' => [
                 [
                     'title' => 'Свидетельство',
-                    'image' => '/assets/images/Main/plug.png',
+                    'image' => '/assets/images/Main/certificate.png',
                 ],[
                     'title' => 'Свидетельство',
-                    'image' => '/assets/images/Main/plug.png',
+                    'image' => '/assets/images/Main/certificate.png',
                 ],
             ],
             'items' => [

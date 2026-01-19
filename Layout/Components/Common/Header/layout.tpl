@@ -16,6 +16,19 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                     icon: 'menu-3-line',
                     style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
                     iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                    attributes: [
+                        'onclick' => 'modalManager.open("service-modal")'
+                    ],
+                ) ?>
+                <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                    className: 'header__content-ls--modal-btn',
+                    text: 'Услуги',
+                    icon: 'close',
+                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
+                    iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                    attributes: [
+                        'onclick' => 'modalManager.close("service-modal")'
+                    ],
                 ) ?>
 				<a href="/" class="header__logo">
                     <svg width="138" height="40" viewBox="0 0 138 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -48,22 +61,22 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 
 			<div class="header__content-rs">
                 <nav class="header__items">
-                    <a class="header__items--link" href="/about/">
+                    <a class="header__items--link" draggable="false" href="/about/">
                         О компании
                     </a>
-                    <a class="header__items--link" href="/blog/">
+                    <a class="header__items--link" draggable="false" href="/blog/">
                         Медиа-центр
                     </a>
-                    <a class="header__items--link" href="/reviews/">
+                    <a class="header__items--link" draggable="false" href="/reviews/">
                         Отзывы
                     </a>
-                    <a class="header__items--link" href="/cases/">
+                    <a class="header__items--link" draggable="false" href="/cases/">
                         Кейсы
                     </a>
-                    <a class="header__items--link" href="/info/">
+                    <a class="header__items--link" draggable="false" href="/info/">
                         Информация
                     </a>
-                    <a class="header__items--link" href="/contacts/">
+                    <a class="header__items--link" draggable="false" href="/contacts/">
                         Контакты
                     </a>
                 </nav>
@@ -125,6 +138,7 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 <?php
 App\Layout\Components\Modals\CookieModal\Layout::draw();
 App\Layout\Components\Modals\CallbackModal\Layout::draw();
+App\Layout\Components\Modals\ServicesModal\Layout::draw();
 App\Layout\Components\Modals\MenuModal\Layout::draw();
 App\Layout\Components\UI\Other\TabBar\Layout::draw();
 ?>

@@ -34,11 +34,15 @@
         </ul>
     <?php endif; ?>
 
-    <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-        className: 'banner-service__card--button',
-        text: 'Получить расчет',
-        icon: 'arrow-right',
-        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
-        iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
-    ) ?>
+    <?php
+        if ($data['buttonCard']) {
+            App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+            className: 'banner-service__card--button',
+            text: 'Получить расчет',
+            icon: 'arrow-right',
+            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
+            iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+        );
+    }
+    ?>
 </div>

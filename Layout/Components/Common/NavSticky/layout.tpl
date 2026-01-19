@@ -42,8 +42,8 @@ $tabs = !empty($data['tabs']) ? $data['tabs'] : $navStickyLinks;
                         text: $tab['text'] ?? '',
                         link: $tab['link'] ?? '',
                         iconRight: $tab['iconRight'] ?? '',
-                        style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
-                        size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
+                        style: App\Layout\Components\UI\Core\Tab\TabStyle::Outline,
+                        size: App\Layout\Components\UI\Core\Tab\TabSize::Small,
                     ); ?>
                 </div>
             <?php endforeach; ?>

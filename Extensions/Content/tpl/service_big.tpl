@@ -97,33 +97,33 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title-third' => $this->service->about_us_title_third ?? 'для бизнеса',
             'title-why' => $this->service->about_us_title_why ?? 'Почему бизнесу удобно и выгодно с ICHINA?',
             'benefits' => [
-                    [
-                            'title' => '2500+',
-                            'text' => 'успешных поставок',
-                    ],[
-                            'title' => '85000+',
-                            'text' => 'фабрик в базе',
-                    ],[
-                            'title' => '120+',
-                            'text' => 'проверенных поставщиков',
-                    ]
+                [
+                    'title' => '2500+',
+                    'text' => 'успешных поставок',
+                ],[
+                    'title' => '85000+',
+                    'text' => 'фабрик в базе',
+                ],[
+                    'title' => '120+',
+                    'text' => 'проверенных поставщиков',
+                ]
             ],
             'items-why' => [
-                    [
-                            'text' => 'Работаем под ключ: от поиска до отгрузки на ваш склад'
-                    ],[
-                            'text' => 'Официальное таможенное оформление: выпуск ДТ, сертификация и сопровождение'
-                    ],[
-                            'text' => 'Параллельный импорт и полный пакет документов для B2B-сделок и тендеров'
-                    ],[
-                            'text' => 'Уникальный алгоритм поиска: находим фабрики выпускающие продукцию 
-                даже для международных брендов'
-                    ],[
-                            'text' => 'Оптимальные логистические маршруты: сокращаем сроки и ваши расходы 
-                на доставку'
-                    ],[
-                            'text' => 'Собственная платёжная инфраструктура: безопасные переводы напрямую в КНР'
-                    ]
+                [
+                    'text' => 'Работаем под ключ: от поиска до отгрузки на ваш склад'
+                ],[
+                    'text' => 'Официальное таможенное оформление: выпуск ДТ, сертификация и сопровождение'
+                ],[
+                    'text' => 'Параллельный импорт и полный пакет документов для B2B-сделок и тендеров'
+                ],[
+                    'text' => 'Уникальный алгоритм поиска: находим фабрики выпускающие продукцию 
+            даже для международных брендов'
+                ],[
+                    'text' => 'Оптимальные логистические маршруты: сокращаем сроки и ваши расходы 
+            на доставку'
+                ],[
+                    'text' => 'Собственная платёжная инфраструктура: безопасные переводы напрямую в КНР'
+                ]
             ],
             'cardText-why' => $this->service->about_us_cardtext_why ?? 'Мы не просто доставляем товары — мы строим надёжный мост между Россией и Китаем, 
             помогая вашему бизнесу расти без границ.',
@@ -138,32 +138,32 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title-accent' => $index['params']['main-benefit_title-accent'] ?? 'выбирает ICHINA',
             'description' => $index['params']['main-benefits_description'] ?? 'Наш опыт и подход позволяют клиентам быть уверенными в результате',
             'items' => [
-                    [
-                            'className' => 'first',
-                            'image' => '/assets/images/Main/plug.png',
-                            'title' => 'Полный штат аудиторов в Китае',
-                            'text' => 'Лично выезжаем на фабрики, проводим инспекции, проверяем производство и даём фото/видео отчёты.',
-                    ],[
-                            'className' => 'second',
-                            'image' => '/assets/images/Main/plug.png',
-                            'title' => 'Свои склады в Китае',
-                            'text' => 'У нас есть склады в основных логистических узлах Китая: Иу, Шанхай, Гуанчжоу',
-                    ],[
-                            'className' => 'third',
-                            'image' => '/assets/images/Main/plug.png',
-                            'title' => 'Договор в РФ и защита сделки',
-                            'text' => 'Официальный договор и полный пакет документов для бухгалтерии и тендеров — юридическая защита сделки.',
-                    ],[
-                            'className' => 'fouth',
-                            'image' => '/assets/images/Main/plug.png',
-                            'title' => 'Официальное юридическое лицо в России и Китае',
-                            'text' => 'Соответствие стандартам безопасности и качества. У нас есть лицензия, мы предоставляем все документы',
-                    ],[
-                            'className' => 'fivth',
-                            'image' => '/assets/images/Main/plug.png',
-                            'title' => 'Своя платёжная инфраструктура',
-                            'text' => 'Безопасные переводы напрямую в Китай, оплата без риска блокировки с соблюдением всех требований.',
-                    ],
+                [
+                    'className' => 'first',
+                    'image' => '/assets/images/Main/plug.png',
+                    'title' => 'Полный штат аудиторов в Китае',
+                    'text' => 'Лично выезжаем на фабрики, проводим инспекции, проверяем производство и даём фото/видео отчёты.',
+                ],[
+                    'className' => 'second',
+                    'image' => '/assets/images/Main/plug.png',
+                    'title' => 'Свои склады в Китае',
+                    'text' => 'У нас есть склады в основных логистических узлах Китая: Иу, Шанхай, Гуанчжоу',
+                ],[
+                    'className' => 'third',
+                    'image' => '/assets/images/Main/plug.png',
+                    'title' => 'Договор в РФ и защита сделки',
+                    'text' => 'Официальный договор и полный пакет документов для бухгалтерии и тендеров — юридическая защита сделки.',
+                ],[
+                    'className' => 'fouth',
+                    'image' => '/assets/images/Main/plug.png',
+                    'title' => 'Официальное юридическое лицо в России и Китае',
+                    'text' => 'Соответствие стандартам безопасности и качества. У нас есть лицензия, мы предоставляем все документы',
+                ],[
+                    'className' => 'fivth',
+                    'image' => '/assets/images/Main/plug.png',
+                    'title' => 'Своя платёжная инфраструктура',
+                    'text' => 'Безопасные переводы напрямую в Китай, оплата без риска блокировки с соблюдением всех требований.',
+                ],
             ]
         ]);
 
@@ -331,19 +331,19 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title-accent' => $index['route-map_title-accent'] ?? 'маршруты',
             'desc' => $index['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России',
             'items' => [
-                    [
-                            'title' => 'Авиаперевозка: Китай — Россия',
-                            'image' => '',
-                            'provider' => '',
-                            'city' => 'Шанхай',
-                            'city2' => '',
-                            'city3' => 'Москва',
-                            'city4' => '',
-                            'transportation' => 'Авиаперевозка',
-                            'transportation2' => 'ЖД или автоперевозка',
-                            'transportation3' => '',
-                            'transportation4' => '',
-                    ]
+                [
+                    'title' => 'Авиаперевозка: Китай — Россия',
+                    'image' => '',
+                    'provider' => '',
+                    'city' => 'Шанхай',
+                    'city2' => '',
+                    'city3' => 'Москва',
+                    'city4' => '',
+                    'transportation' => 'Авиаперевозка',
+                    'transportation2' => 'ЖД или автоперевозка',
+                    'transportation3' => '',
+                    'transportation4' => '',
+                ]
             ]
         ]);
 
@@ -351,22 +351,22 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $index['categories-title'] ?? 'товары',
             'desc' => $index['categories-desc'] ?? 'У нас есть опыт перевозки и растаможки любых категорий товаров, в том числе:',
             'cards' => [
-                    [
-                            'title' => 'Техническое оснащение',
-                            'img' => '/assets/images/Main/icon.png',
-                    ],[
-                            'title' => 'Запчасти',
-                            'img' => '/assets/images/Main/icon.png',
-                    ],[
-                            'title' => 'Химия',
-                            'img' => '/assets/images/Main/icon.png',
-                    ],[
-                            'title' => 'Электроника и оборудование',
-                            'img' => '/assets/images/Main/icon.png',
-                    ],[
-                            'title' => 'Инструменты и крепеж',
-                            'img' => '/assets/images/Main/icon.png',
-                    ],
+                [
+                    'title' => 'Техническое оснащение',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Запчасти',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Химия',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Электроника и оборудование',
+                    'img' => '/assets/images/Main/icon.png',
+                ],[
+                    'title' => 'Инструменты и крепеж',
+                    'img' => '/assets/images/Main/icon.png',
+                ],
             ],
             'callback-title' => $index['categories-callback_title'] ?? 'Работаем с любыми видами грузов',
             'callback-desc' => $index['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
@@ -377,37 +377,37 @@ App\Layout\Components\Common\Header\Layout::draw([
             'titleAccent' => $this->service->o_serv_title_accent ?? 'услуги',
             'desc' => $this->service->o_serv_desc ?? 'Другие услуги, которые могут быть вам полезны',
             'items' => [
-                    [
-                            'className' => 'first',
-                            'title' => 'Полный аутсорсинг ВЭД',
-                            'desc' => 'Все сложности работы с Китаем решаем за вас — от китайской фабрики до вашего склада',
-                            'link' => '##',
-                            'image' => '/assets/images/Main/key.png',
-                    ],[
-                            'className' => 'second',
-                            'title' => 'Таможенное сопровождение ',
-                            'desc' => 'Работаем с разрешительной документацией, чтобы ваши грузы проходили без риска простоев',
-                            'link' => '##',
-                            'image' => '/assets/images/Main/key.png',
-                    ],[
-                            'className' => 'third',
-                            'title' => 'Ведение переговоров',
-                            'desc' => 'Мы команда, готовая отстаивать ваши интересы перед китайской стороной на равных',
-                            'link' => '##',
-                            'image' => '/assets/images/Main/key.png',
-                    ],[
-                            'className' => 'fouth',
-                            'title' => 'Подбор поставщика ',
-                            'desc' => 'Проверка от ICHINA - безопасный путь к качественному производителю',
-                            'link' => '##',
-                            'image' => '/assets/images/Main/key.png',
-                    ],[
-                            'className' => 'fivth',
-                            'title' => 'Оплата в Китай',
-                            'desc' => 'Описание услуги',
-                            'link' => '##',
-                            'image' => '/assets/images/Main/key.png',
-                    ]
+                [
+                    'className' => 'first',
+                    'title' => 'Полный аутсорсинг ВЭД',
+                    'desc' => 'Все сложности работы с Китаем решаем за вас — от китайской фабрики до вашего склада',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'second',
+                    'title' => 'Таможенное сопровождение ',
+                    'desc' => 'Работаем с разрешительной документацией, чтобы ваши грузы проходили без риска простоев',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'third',
+                    'title' => 'Ведение переговоров',
+                    'desc' => 'Мы команда, готовая отстаивать ваши интересы перед китайской стороной на равных',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'fouth',
+                    'title' => 'Подбор поставщика ',
+                    'desc' => 'Проверка от ICHINA - безопасный путь к качественному производителю',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ],[
+                    'className' => 'fivth',
+                    'title' => 'Оплата в Китай',
+                    'desc' => 'Описание услуги',
+                    'link' => '##',
+                    'image' => '/assets/images/Main/key.png',
+                ]
             ]
         ]);
 
@@ -416,13 +416,13 @@ App\Layout\Components\Common\Header\Layout::draw([
             'desc' => $index['params']['certificate-desc'] ?? 'Мы гарантируем надёжность и прозрачность в сфере 
                 таможенных перевозок, соблюдая все требования законодательства для вашего спокойствия и доверия',
             'cards-doc' => [
-                    [
-                            'title' => 'Свидетельство',
-                            'image' => '/assets/images/Main/plug.png',
-                    ],[
-                            'title' => 'Свидетельство',
-                            'image' => '/assets/images/Main/plug.png',
-                    ],
+                [
+                    'title' => 'Свидетельство',
+                    'image' => '/assets/images/Main/certificate.png',
+                ],[
+                    'title' => 'Свидетельство',
+                    'image' => '/assets/images/Main/certificate.png',
+                ],
             ],
             'items' => [
                 [

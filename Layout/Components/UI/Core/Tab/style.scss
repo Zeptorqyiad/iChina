@@ -97,14 +97,18 @@
 
     &-outline {
         background: transparent;
-        border-color: var(--gray-light);
-        color: var(--gray-dark);
+        border-color: transparent;
+        color: var(--gray-black);
+
+        &.nav-sticky__tab {
+            background-color: transparent !important;
+        }
 
         @media (hover: hover) and (pointer: fine) {
             &:hover {
-                background: var(--gray-lighter);
+                background: transparent;
                 border-color: var(--color1-light);
-                color: var(--gray-dark);
+                color: var(--gray-black);
             }
         }
 

@@ -23,37 +23,56 @@
             <div class="banner-service__center">
                 <div class="banner-service__center-ls">
                     <div class="banner-service__title-block">
-                        <h1 class="banner-service__title-block--title uppercase">
-                            <?= $data['title'] ?>
-                        </h1>
-                        <div class="banner-service__title-block--subtitle">
-                            <?= $data['subtitle'] ?>
+                        <?php if ($data['title']): ?>
+                            <h1 class="banner-service__title-block--title uppercase">
+                                <?= $data['title'] ?>
+                            </h1>
+                        <?php endif; ?>
+                        <?php if ($data['subtitle']): ?>
+                            <div class="banner-service__title-block--subtitle">
+                                <?= $data['subtitle'] ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($data['description']): ?>
+                        <div class="banner-service__description">
+                            <?= $data['description'] ?>
                         </div>
-                    </div>
-                    <div class="banner-service__description">
-                        <?= $data['description'] ?>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="banner-service__center-rs">
-                    <?php App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
-                        title: $data['card-title'],
-                        text: $data['card-text'],
-                    ); ?>
+                    <?php if ($data['card-title'] || $data['card-text']) {
+                        App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
+                            title: $data['card-title'],
+                            text: $data['card-text'] ?? '',
+                            list: $data['card-list'] ?? [],
+                            buttonCard: $data['buttonCard'] ? true : false,
+                        );
+                    } ?>
                 </div>
             </div>
 
-            <ul class="banner-service__bottom">
-                <?php foreach ($data['items'] as $i): ?>
-                    <li class="banner-service__item">
-                        <h2 class="banner-service__item--title">
-                            <?= $i['title'] ?>
-                        </h2>
-                        <div class="banner-service__item--text">
-                            <?= $i['text'] ?>
-                        </div>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <?php if (!empty($data['items'])): ?>
+                <ul class="banner-service__bottom">
+                    <?php App\Layout\Components\Cards\MinServiceCard\Layout::draw([
+                        'title' => 'Наши услуги',
+                        'text' => 'Полный цикл импорта: от китайской фабрики 
+                            до вашего склада в России',
+                        'link' => '/services/',
+                    ]); ?>
+
+                    <?php foreach ($data['items'] as $i): ?>
+                        <li class="banner-service__rullet">
+                            <h2 class="banner-service__rullet--title">
+                                <?= $i['title'] ?>
+                            </h2>
+                            <div class="banner-service__rullet--text">
+                                <?= $i['text'] ?>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
     </div>
 </section>

@@ -1,133 +1,79 @@
-.callback-modal {
-    width: 100%;
-    height: auto;
-    max-height: 100vh;
-    @include spacing(max-width, 500px, 500px);
-    @include border-r(12px);
+.service-modal {
+    position: fixed;
+    height: fit-content;
+    width: 100vw;
+    z-index: 120 !important;
+    top: -100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    @include spacing(padding-top, 96px);
+    opacity: 1;
+    @include transition((top, opacity, transform), 0.3s);
+
+    &.active {
+        top: 0 !important;
+        opacity: 1;
+    }
 
     @include Tablet {
-        border-radius: 0;
-        max-width: 100%;
-        height: 100%;
-        @include hide-scrollbar;
-        overflow-y: scroll;
-
-        &::-webkit-scrollbar {
-            background-color: var(--gray-light);
-            @include spacing(width, 8px, 8px, 8px, 8px);
-            @include border-r(8px);
-
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--color1-light);
-            @include border-r(8px);
-        }
+        display: none;
     }
 
-    &__container {
+    &__content {
+        @include spacing(padding-block, 20px);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__item {
         display: flex;
         flex-direction: column;
-        @include spacing(gap, 20px, 20px, 20px, 20px);
-        @include spacing(padding-inline, 32px, 32px, 16px, 16px);
-        @include spacing(padding-block, 32px, 32px, 20px, 20px);
+        @include spacing(gap, 4px);
 
+        &:not(:last-child) {
+            @include spacing(padding-right, 12px);
+            @include spacing(margin-right, 12px);
+            border-right: solid var(--gray-lighter);
+            border-width: vw(1px);
 
-
-    }
-
-    &__button-close {
-        position: absolute;
-        top: 0;
-        @include spacing(right, -60px, -60px);
-
-        @include Tablet {
-            @include spacing(max-width, 40px);
-            @include spacing(max-height, 40px);
-            top: vwt(8px);
-            right: vwt(8px);
-        }
-        @include Mobile {
-            top: vwm(8px);
-            right: vwm(8px);
-        }
-    }
-
-    .btn-close {
-        background: var(--gray-black);
-
-        &__icon {
-            color: var(--gray-white);
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            &:hover {
-                background: var(--gray-dark);
+            @include HD {
+                border-width: vwh(1px);
             }
         }
 
-        &:active {
-            background: var(--gray-black);
-        }
+        &--link {
+            @include spacing(padding, 4px);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            @include spacing(gap, 12px);
+            background: transparent;
+            @include transition((background, color));
+            @include border-r(12px);
+            color: var(--gray-darker);
+            @include t2-b;
 
-        @include Tablet {
-            background: var(--gray-lighter);
-
-            &__icon {
-                color: var(--gray-darker);
+            img {
+                @include icon(48px);
+                @include border-r(8px);
+                flex-shrink: 0;
             }
 
             @media (hover: hover) and (pointer: fine) {
                 &:hover {
-                    background: var(--color1-lighter);
+                    background: var(--gray-lighter);
+                    color: var(--color1-main);
                 }
             }
 
             &:active {
-                background: var(--color1-light);
+                color: var(--color1-darker);
             }
         }
-    }
 
-    &__top {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        @include spacing(gap, 12px);
-
-        @include Tablet {
-            @include spacing(padding-top, 20px);
-            border-top: solid vwt(2px) var(--gray-lighter);
-            @include spacing(margin-top, 36px);
-        }
-        @include Mobile {
-            border-top: solid vwm(2px) var(--gray-lighter);
-        }
-    }
-
-    &__title {
-        color: var(--gray-darker);
-        @include h5;
-        line-height: 120%;
-    }
-
-    &__desc {
-        color: var(--gray-dark);
-        @include t2;
-    }
-
-    &__form {
-        padding: 0 !important;
-
-        .form__inputs {
-            display: flex;
-            flex-direction: column;
-            @include spacing(gap, 12px);
+        &--btn {
             width: 100%;
-        }
-
-        .form__button-submit {
-            width: 100%;
+            justify-content: flex-start;
         }
     }
 }
