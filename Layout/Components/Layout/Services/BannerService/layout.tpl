@@ -18,7 +18,9 @@
 
     <div class="banner-service__container">
         <div class="banner-service__content">
-            <?php App\Layout\Components\UI\Core\BreadCrumbs\Layout::draw(); ?>
+            <?php App\Layout\Components\UI\Core\BreadCrumbs\Layout::draw([
+                'serviceColor' => true,
+            ]); ?>
 
             <div class="banner-service__center">
                 <div class="banner-service__center-ls">

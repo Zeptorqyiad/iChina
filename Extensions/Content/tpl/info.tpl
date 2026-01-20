@@ -13,9 +13,9 @@ App\Layout\Components\Common\Header\Layout::draw();
             style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
         );
 
-        App\Layout\Components\Common\InfoSection\Layout::drawInfoSection(
-            text: $content['params']['info_page_text'] ?? 'text',
-        );
+        App\Layout\Components\Common\InfoSection\Layout::draw([
+            'text' => self::getTableFrom('info_page_text', $content),
+        ]);
     ?>
 </main>
 

@@ -13,7 +13,10 @@ App\Layout\Components\Common\Header\Layout::draw();
         style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
     );
 
-    App\Layout\Components\Common\DocumentsSection\Layout::draw();
+    App\Layout\Components\Common\DocumentsSection\Layout::draw([
+        'title' => $content['params']['documents_title'],
+        'text' => $content['params']['documents_text'],
+    ]);
     ?>
 </main>
 

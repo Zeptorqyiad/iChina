@@ -41,9 +41,9 @@ $breadcrumbs = array_values($breadcrumbs);
                     <li class="bread-crumbs__separator">/</li>
                     <li class="bread-crumbs__item">
                         <?php if ($activeBreadcrumb['link'] === $breadcrumb['link']): ?>
-                            <p class="bread-crumbs__item-title"><?= $breadcrumb['name'] ?></p>
+                            <p class="bread-crumbs__item-title <?= $data['serviceColor'] ? 'white-color' : '' ?>"><?= $breadcrumb['name'] ?></p>
                         <?php else: ?>
-                            <a class="bread-crumbs__item-link" href="<?= $breadcrumb['link'] ?>">
+                            <a class="bread-crumbs__item-link <?= $data['serviceColor'] ? 'white-color' : '' ?>" href="<?= $breadcrumb['link'] ?>">
                                 <?= $breadcrumb['name'] ?>
                             </a>
                         <?php endif; ?>

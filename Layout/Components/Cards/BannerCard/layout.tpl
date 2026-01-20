@@ -34,8 +34,7 @@
         </ul>
     <?php endif; ?>
 
-    <?php
-        if ($data['buttonCard']) {
+    <?php if ($data['buttonCard']) {
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
             className: 'banner-service__card--button',
             text: 'Получить расчет',
@@ -43,6 +42,5 @@
             style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
             iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
         );
-    }
-    ?>
+    } ?>
 </div>

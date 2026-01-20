@@ -39,7 +39,8 @@ App\Layout\Components\Common\Header\Layout::draw([
 					'title' => '120+',
 					'text' => 'проверенных поставщиков'
 				]
-			]
+			],
+            'buttonCard' => true,
 		]);
 
         App\Layout\Components\Layout\ServiceBig\ServiceAbout\Layout::draw([

@@ -33,6 +33,11 @@
 
     &__item-title {
         color: var(--gray-darker);
+        @include t3-b;
+
+        &.white-color {
+            color: var(--gray-white);
+        }
     }
 
     &__item-link {
@@ -40,6 +45,11 @@
         align-items: center;
         color: var(--gray-dark);
         @include spacing(padding-block, 4px);
+        @include t3-b;
+
+        &.white-color {
+            color: var(--gray-white);
+        }
 
         @media (hover: hover) and (pointer: fine) {
             &:hover {
