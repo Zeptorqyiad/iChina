@@ -18,7 +18,7 @@
             <?php endif; ?>
 
             <?php if ($data['image']): ?>
-                <img src="<?= $data['image'] ?>"
+                <img src="/uf/images/source/<?= $data['image'] ?>"
                      class="form-feedback__content--image"
                      alt="">
             <?php endif; ?>

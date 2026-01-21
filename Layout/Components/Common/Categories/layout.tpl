@@ -5,11 +5,12 @@
 
 <section class="categories <?= $data['className'] ?>">
     <div class="categories__container container">
-        <?php
+        <?php if ($data['title'] || $data['desc']) {
             App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
                 title: $data['title'],
                 desc: $data['desc'],
             );
+        }
         ?>
 
         <div class="categories__list">
@@ -27,10 +28,12 @@
             App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
                 className: 'categories__separator',
             );
-            App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
-                title: $data['callback-title'],
-                desc: $data['callback-desc'],
-            );
+            if ($data['callback-title'] || $data['callback-desc']) {
+                App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
+                    title: $data['callback-title'],
+                    desc: $data['callback-desc'],
+                );
+            }
         ?>
     </div>
 </section>

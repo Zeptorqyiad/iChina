@@ -16,25 +16,12 @@ App\Layout\Components\Common\Header\Layout::draw([
 
 <main>
 	<?php
-        App\Layout\Components\Layout\Main\MainBanner\Layout::draw([
-            'items' => [
-                [
-                    'title' => '2500+',
-                    'text' => 'успешный поставок'
-                ],[
-                    'title' => '85 000+',
-                    'text' => 'фабрик в базе'
-                ],[
-                    'title' => '120+',
-                    'text' => 'проверенных поставщиков'
-                ]
-            ]
-        ]);
+        App\Layout\Components\Layout\Main\MainBanner\Layout::draw();
 
         App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
-            'title' => $content['params']['main-about_title'] ?? 'Проверенный эксперт',
-            'title-accent' => $content['params']['main-about_title-accent'] ?? 'по поставкам из китая',
-            'title-third' => $content['params']['main-about_title-third'] ?? 'для бизнеса',
+            'title' => $content['params']['main-about_title'],
+            'title-accent' => $content['params']['main-about_title-accent'],
+            'title-third' => $content['params']['main-about_title-third'],
             'items' => [
                 [
                     'className' => 'first',
@@ -68,71 +55,25 @@ App\Layout\Components\Common\Header\Layout::draw([
                     'image' => '/assets/images/Main/key.png',
                 ]
             ],
-            'title-why' => $content['params']['main-about_title-why'] ?? 'Почему бизнесу удобно и
-            выгодно с ICHINA?',
-            'items-why' => [
-                [
-                    'text' => 'Работаем под ключ: от поиска до отгрузки на ваш склад'
-                ],[
-                    'text' => 'Официальное таможенное оформление: выпуск ДТ, сертификация и сопровождение'
-                ],[
-                    'text' => 'Параллельный импорт и полный пакет документов для B2B-сделок и тендеров'
-                ],[
-                    'text' => 'Уникальный алгоритм поиска: находим фабрики выпускающие продукцию
-                    даже для международных брендов'
-                ],[
-                    'text' => 'Оптимальные логистические маршруты: сокращаем сроки и ваши расходы
-                    на доставку'
-                ],[
-                    'text' => 'Собственная платёжная инфраструктура: безопасные переводы напрямую в КНР'
-                ]
-            ],
-            'cardText-why' => $content['params']['main-about_cardText-why'] ?? 'Мы не просто доставляем товары — мы строим надёжный мост между Россией и Китаем,
-            помогая вашему бизнесу расти без границ.',
-            'description-why' => $content['params']['main-about_description-why'] ?? 'Каждый проект ICHINA проходит без задержек и рисков. Мы организуем поставки
-            из Китая для бизнеса любого масштаба — от первых тестовых партий до крупных контрактов. ',
-            'callback-title' => $content['params']['main-about_callback-title'] ?? 'Персональный расчёт импорта в 2 клика!',
-            'callback-desc' => $content['params']['main-about_callback-desc'] ?? 'Ответьте на несколько вопросов, и мы предложим самые выгодные условия',
-        ]);
+            'title-why' => $content['params']['main-about_title-why'],
+            'items-why' => self::getTableFrom('main-about_items-why', $content),
+            'cardText-why' => $content['params']['main-about_cardText-why'],
+            'description-why' => $content['params']['main-about_description-why'],
+            'callback-title' => $content['params']['main-about_callback-title'],
+            'callback-desc' => $content['params']['main-about_callback-desc'],
+        ]); //TODO Натянуто,  кроме карточек услуг
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-            'title' => $content['params']['main-benefit_title'] ?? 'Почему бизнес',
-            'titleAccent' => $content['params']['main-benefit_title-accent'] ?? 'выбирает ICHINA',
-            'description' => $content['params']['main-benefits_description'] ?? 'Наш опыт и подход позволяют клиентам быть уверенными в результате',
-            'items' => [
-                [
-                    'className' => 'first',
-                    'image' => '/assets/images/Main/plug.png',
-                    'title' => 'Полный штат аудиторов в Китае',
-                    'text' => 'Лично выезжаем на фабрики, проводим инспекции, проверяем производство и даём фото/видео отчёты.',
-                ],[
-                    'className' => 'second',
-                    'image' => '/assets/images/Main/plug.png',
-                    'title' => 'Свои склады в Китае',
-                    'text' => 'У нас есть склады в основных логистических узлах Китая: Иу, Шанхай, Гуанчжоу',
-                ],[
-                    'className' => 'third',
-                    'image' => '/assets/images/Main/plug.png',
-                    'title' => 'Договор в РФ и защита сделки',
-                    'text' => 'Официальный договор и полный пакет документов для бухгалтерии и тендеров — юридическая защита сделки.',
-                ],[
-                    'className' => 'fouth',
-                    'image' => '/assets/images/Main/plug.png',
-                    'title' => 'Официальное юридическое лицо в России и Китае',
-                    'text' => 'Соответствие стандартам безопасности и качества. У нас есть лицензия, мы предоставляем все документы',
-                ],[
-                    'className' => 'fivth',
-                    'image' => '/assets/images/Main/plug.png',
-                    'title' => 'Своя платёжная инфраструктура',
-                    'text' => 'Безопасные переводы напрямую в Китай, оплата без риска блокировки с соблюдением всех требований.',
-                ],
-            ]
-        ]);
+            'title' => $content['params']['main-benefit_title'] ?? '',
+            'titleAccent' => $content['params']['main-benefit_title-accent'] ?? '',
+            'description' => $content['params']['main-benefits_description'] ?? '',
+            'items' => self::getTableFrom('main-benefit-items', $content),
+        ]); // Натянуто
 
         App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $content['route-map_title'] ?? 'Наши ',
-            'title-accent' => $content['route-map_title-accent'] ?? 'маршруты',
-            'desc' => $content['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России',
+            'title' => $content['params']['route-map_title'] ?? 'Наши ' , // 29
+            'title-accent' => $content['params']['route-map_title-accent'] ?? 'маршруты', // 30
+            'desc' => $content['params']['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России', // 31
             'items' => [
                 [
                     'title' => 'Авиаперевозка: Китай — Россия',
@@ -148,167 +89,69 @@ App\Layout\Components\Common\Header\Layout::draw([
                     'transportation4' => '',
                 ]
             ]
-        ]);
+        ]); // 32 // TODO оставил npp под них
 
         App\Layout\Components\Common\Categories\Layout::draw([
-            'title' => $content['categories-title'] ?? 'товары',
-            'desc' => $content['categories-desc'] ?? 'У нас есть опыт перевозки и растаможки любых категорий товаров, в том числе:',
-            'cards' => [
-                [
-                    'title' => 'Техническое оснащение',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Запчасти',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Химия',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Электроника и оборудование',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Инструменты и крепеж',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Стройматериалы',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Мебель и прочие товары для дома',
-                    'img' => '/assets/images/Main/icon.png',
-                ],[
-                    'title' => 'Химия',
-                    'img' => '/assets/images/Main/icon.png',
-                ],
-            ],
-            'callback-title' => $content['categories-callback_title'] ?? 'Работаем с любыми видами грузов',
-            'callback-desc' => $content['categories-callback-desc'] ?? 'Оставьте заявку, и мы проконсультируем, как сможем вам помочь с его растоможкой',
-        ]);
+            'title' => $content['params']['categories-title'],
+            'desc' => $content['params']['categories-desc'],
+            'cards' => self::getTableFrom('categories-items', $content),
+            'callback-title' => $content['params']['categories-callback_title'],
+            'callback-desc' => $content['params']['categories-callback-desc'],
+        ]); // Натянуто
 
         App\Layout\Components\Sliders\CasesSlider\Layout::draw([
             'title' => 'Наши кейсы',
             'link' => '/cases/',
-        ]);
+        ]); // Отедельно дорабатывать
 
         App\Layout\Components\Common\Stages\Layout::draw([
-            'title' => $content['params']['main_stages-title'] ?? 'Этапы взаимодействия',
-            'desc' => $content['params']['main_stages-desc'] ?? 'Наша помощь клиентам позволяет им минимизировать риски
-            потери времени и денег при взаимодействии с таможенными органами',
-            'cards' => [
-                [
-                    'title' => 'Консультация',
-                    'desc' => 'Готовим документы к таможенному оформлению с момента отправки груза и ведем переговоры с СВХ и перевозчиком',
-                ],[
-                    'title' => 'Договор',
-                    'desc' => 'Подписываем договор, в котором прописываем все условия сотрудничества: перечень работ, стоимость, алгоритм взаимодействия'
-                ],[
-                    'title' => 'Услуга',
-                    'desc' => 'Мы полностью берем на себя всю работу по оформлению необходимой документации, таможенному оформлению или международной логистике за вас'
-                ],[
-                    'title' => 'Доп. вопросы',
-                    'desc' => 'Решаем все дополнительные вопросы, при необходимости — досмотр, корректировка стоимости, экспертиза'
-                ],[
-                    'title' => 'Оплата',
-                    'desc' => 'Вы оплачиваете стоимость услуги в форме постоплаты, в счёт уже входят все таможенные платежи и сборы'
-                ],[
-                    'title' => 'Поддержка',
-                    'desc' => 'Предоставляем консультации по дальнейшим логистическим операциям и документальному сопровождению после оказания услуги',
-                    'img' => '/assets/images/Main/key.png',
-                ],
-            ],
-        ]);
+            'title' => $content['params']['main_stages-title'],
+            'desc' => $content['params']['main_stages-desc'],
+            'cards' => self::getTableFrom('main_stage-items', $content)
+        ]); // Натянуто
 
         App\Layout\Components\Common\Certificate\Layout::draw([
-            'title' => $content['params']['certificate-title'] ?? 'Разрешительные документы',
-            'desc' => $content['params']['certificate-desc'] ?? 'Мы гарантируем надёжность и прозрачность в сфере
-            таможенных перевозок, соблюдая все требования законодательства для вашего спокойствия и доверия',
-            'cards-doc' => [
-                [
-                    'title' => 'Свидетельство',
-                    'image' => '/assets/images/Main/certificate.png',
-                ],[
-                    'title' => 'Свидетельство',
-                    'image' => '/assets/images/Main/certificate.png',
-                ],
-            ],
-            'items' => [
-                [
-                    'className' => 'first',
-                    'img' => '/assets/images/Main/key.png',
-                    'title' => 'Работаем официально ',
-                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
-                ],[
-                    'className' => 'second',
-                    'img' => '/assets/images/Main/key.png',
-                    'title' => 'Соответствие стандартам безопасности и качества',
-                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
-                ],[
-                    'className' => 'third',
-                    'img' => '/assets/images/Main/key.png',
-                    'title' => 'Соответствие стандартам безопасности и качества',
-                    'text' => 'У нас есть лицензия, мы предоставляем все документы',
-                ],
-            ]
-        ]);
+            'title' => $content['params']['certificate-title'],
+            'desc' => $content['params']['certificate-desc'],
+            'cards-doc' => self::getTableFrom('certificate-cards_doc', $content),
+            'items' => self::getTableFrom('certificate-items', $content),
+        ]); // Натянуто
 
         App\Layout\Components\Common\Info\Layout::draw([
-            'title' => $content['params']['info_title'] ?? 'Информация',
-            'desc' => $content['params']['info_desc'] ?? 'Мы стремимся сделать процесс работы максимально понятным
-            и комфортным для вас, обеспечивая полную поддержку на каждом этапе сотрудничества',
-            'cards' => [
-                [
-                    'img' => 'assets/images/Main/icon.png',
-                    'title' => 'Частые вопросы',
-                    'link' => '/faq/'
-                ],[
-                    'img' => 'assets/images/Main/icon.png',
-                    'title' => 'Гарантии',
-                    'link' => '/guarantee/'
-                ],[
-                    'img' => 'assets/images/Main/icon.png',
-                    'title' => 'Глоссарий',
-                    'link' => '/glossary/'
-                ],[
-                    'img' => 'assets/images/Main/icon.png',
-                    'title' => 'Политика конфиденциальности',
-                    'link' => '/documents/policy/'
-                ],
-            ],
-        ]);
+            'title' => $content['params']['info_title'],
+            'desc' => $content['params']['info_desc'],
+            'cards' => self::getTableFrom('info-items', $content),
+        ]); // Натянуто
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([
             'title' => 'медиа-центр',
             'title-accent' => 'ichina',
             'link' => '/blog/',
             'cards' => $post,
-        ]);
+        ]); // Отдельно дорабатывать
 
         App\Layout\Components\Common\Partners\Layout::draw([
-            'title' => $content['params']['partners_title'] ?? 'Партнёры и клиенты',
-            'desc' => $content['params']['partners_desc'] ?? 'Небольшой текст-описание для блока Небольшой текст-описание
-            для блока Небольшой текст-описание для блока Небольшой текст-описание для блока ',
-            'items' => [
-                [
-                    'image' => '/assets/images/Main/partners.png'
-                ],
-            ],
-        ]);
+            'title' => $content['params']['partners_title'],
+            'desc' => $content['params']['partners_desc'] ,
+            'items' => self::getTableFrom('partner-items', $content),
+        ]); // Натянуто
 
         App\Layout\Components\Common\ContactSection\Layout::draw([
-            'title' => $content['params']['main_contact_title'] ?? 'Контакты',
-        ]);
+            'title' => $content['params']['main_contact_title'],
+        ]); // Натянуто
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
-            'title' => $content['params']['form-feedback_title'] ?? 'Обратная связь',
-            'desc' => $content['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
-            'image' => $content['params']['form-feedback-img'] ?? '/assets/images/Main/Form.png',
-        ]);
+            'title' => $content['params']['form-feedback_title'],
+            'desc' => $content['params']['form-feedback_desc'],
+            'image' => $content['params']['form-feedback-img'],
+        ]); // Натянуто
 
         App\Layout\Components\Common\Seo\Layout::draw([
-            'seo-title' => $content['params']['seo_title_1'] ?? 'Тест',
-            'seo-desc' => $content['params']['seo_text_1'] ?? 'Тест',
-            'seo2-title' => $content['params']['seo_title_2'] ?? 'Тест',
-            'seo2-desc' => $content['params']['seo_text_2'] ?? 'Тест',
-        ]);
+            'seo-title' => $content['params']['seo_title_1'],
+            'seo-desc' => $content['params']['seo_text_1'],
+            'seo2-title' => $content['params']['seo_title_2'],
+            'seo2-desc' => $content['params']['seo_text_2'],
+        ]); // Натянуто
 	?>
 </main>
 

@@ -13,14 +13,17 @@
     } ?>
 
     <div class="certificate__left">
-        <?php if (!empty($data['items'])): ?>
+        <?php
+            $classNames = ['first', 'second', 'third'];
+            if (!empty($data['items'])): ?>
             <div class="certificate__plus">
-                <?php foreach ($data['items'] as $i) {
+                <?php foreach ($data['items'] as $index => $i) {
+                    $className = $classNames[$index] ?? '';
                     App\Layout\Components\Cards\CertificateCard\Layout::drawCertificateCard(
-                        className: $i['className'],
-                        title: $i['title'],
-                        text: $i['text'],
-                        image: $i['img'],
+                        className: $className,
+                        title: $i['title'] ?? '',
+                        text: $i['text'] ?? '',
+                        image: $i['img'] ?? '',
                     );
                 } ?>
             </div>

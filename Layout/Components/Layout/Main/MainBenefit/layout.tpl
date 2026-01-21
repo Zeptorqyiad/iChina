@@ -20,8 +20,13 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 
         <?php if (!empty($data['items'])): ?>
         <ul class="main-benefit__items">
-            <?php foreach ($data['items'] as $i): ?>
-                <li class="main-benefit__item <?= $i['className'] ?>">
+            <?php
+                $classNames = ['first', 'second', 'third', 'fouth', 'fivth'];
+
+                foreach ($data['items'] as $index => $i):
+                    $className = $classNames[$index] ?? '';
+                ?>
+                <li class="main-benefit__item <?= $className ?>">
                     <?php App\Layout\Components\Cards\BenefitsCard\Layout::drawBenefitsCard(
                         image: $i['image'],
                         title: $i['title'],
