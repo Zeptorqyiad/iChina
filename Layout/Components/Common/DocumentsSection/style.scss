@@ -26,4 +26,28 @@
             min-width: 100%;
         }
     }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 12px);
+    }
+
+    &__item {
+
+        &--title {
+            @include h3;
+            color: var(--gray-darker);
+        }
+
+        & .category-card__title {
+            padding-bottom: 0 !important;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include spacing(gap, 12px);
+    }
 }

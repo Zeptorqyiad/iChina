@@ -25,12 +25,12 @@ $cats = App\Extensions\Site\Model\DocumentsCategory::findAdv()->all();
             <div class="documents-section__items">
                 <?php foreach ($cats as $c): ?>
                     <?php if ($children = $c->getChildrenDocuments()): ?>
-                        <div class="document-section__item">
-                            <h3 class="document-section__item--title">
+                        <div class="documents-section__item">
+                            <h3 class="documents-section__item--title">
                                 <?= $c->name ?>
                             </h3>
 
-                            <div class="documet-section__grid">
+                            <div class="documents-section__grid">
                                 <?php foreach ($children as $index => $i): ?>
                                     <?php App\Layout\Components\Cards\CategoryCard\Layout::drawCategoryCard(
                                         link: '/documents/' . $i['alias'] . '/',

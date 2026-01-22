@@ -8,7 +8,13 @@
             style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
     ); ?>
 
-    <div class="documents-section--text content">
-        <?= $data['text'] ?>
-    </div>
+    <?php if ($data['text']): ?>
+        <div class="documents-section--text content">
+            <?php foreach ($data['text'] as $i): ?>
+                <?= $i['anchor'] ?>
+                <?= $i['title'] ?>
+                <?= $i['text'] ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 </section>
