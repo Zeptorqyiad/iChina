@@ -19,136 +19,55 @@ App\Layout\Components\Common\Header\Layout::draw([
 <main>
     <?php
         App\Layout\Components\Layout\Services\BannerService\Layout::draw([
-            'title' => 'о компании <br /> ICHINA',
-            'card-title' => 'Наши ценности:',
-            'card-list' => [
-                [
-                    'text' => '<b>Прозрачность:</b> открытая схема работы, предварительные расчёты',
-                ],[
-                    'text' => '<b>Контроль:</b> проверка товара, поставщиков, отправки груза',
-                ],[
-                    'text' => '<b>Ответственность:</b> мы отвечаем  за процесс и за результат',
-                ]
-            ],
-            'buttonsCard' => false,
-            'items' => [
-                [
-                    'title' => '2500+',
-                    'text' => 'успешных поставок',
-                ],[
-                    'title' => '85 000+ ',
-                    'text' => 'фабрик в базе',
-                ],[
-                    'title' => '120+',
-                    'text' => 'проверенных поставщиков',
-                ],
-            ]
+            'image' => $content['params']['about_banner-image'],
+            'title' => $content['params']['about_banner-title'],
+            'card-title' => $content['params']['about_banner-card-title'],
+            'card-text' => $content['params']['about_banner-card-text'],
+            'button-text' => $content['params']['about_banner-button-text'],
+            'button-link' => $content['params']['about_banner-button-link'],
+            'items' => self::getTableFrom('about_banner-items', $content),
+            'service_card-title' => $content['params']['about_banner-serv-title'],
+            'service_card-text' => $content['params']['about_banner-serv-text'],
+            'service_card-link' => $content['params']['about_banner-serv-link'],
         ]);
 
         App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
-            'title' => $index['params']['main-about_title'] ?? 'Проверенный эксперт',
-            'title-accent' => $index['params']['main-about_title-accent'] ?? 'по поставкам из китая',
-            'title-third' => $index['params']['main-about_title-third'] ?? 'для бизнеса',
-            'mission' => $content['params']['about_mission'] ?? '<b>Мы не просто доставляем товары </b> — мы строим надёжный мост между Россией 
-            и Китаем, <b> помогая вашему бизнесу расти без границ.</b>',
-            'title-why' => $index['params']['main-about_title-why'] ?? 'Почему бизнесу удобно и 
-                выгодно с ICHINA?',
-            'items-why' => [
-                [
-                    'text' => 'Работаем под ключ: от поиска до отгрузки на ваш склад'
-                ],[
-                    'text' => 'Официальное таможенное оформление: выпуск ДТ, сертификация и сопровождение'
-                ],[
-                    'text' => 'Параллельный импорт и полный пакет документов для B2B-сделок и тендеров'
-                ],[
-                    'text' => 'Уникальный алгоритм поиска: находим фабрики выпускающие продукцию 
-                        даже для международных брендов'
-                ],[
-                    'text' => 'Оптимальные логистические маршруты: сокращаем сроки и ваши расходы 
-                        на доставку'
-                ],[
-                    'text' => 'Собственная платёжная инфраструктура: безопасные переводы напрямую в КНР'
-                ]
-            ],
-            'cardText-why' => $index['params']['main-about_cardText-why'] ?? 'Мы не просто доставляем товары — мы строим надёжный мост между Россией и Китаем, 
-                помогая вашему бизнесу расти без границ.',
-            'description-why' => $index['params']['main-about_description-why'] ?? 'Каждый проект ICHINA проходит без задержек и рисков. Мы организуем поставки 
-                из Китая для бизнеса любого масштаба — от первых тестовых партий до крупных контрактов. ',
-            'callback-title' => $index['params']['main-about_callback-title'] ?? 'Персональный расчёт импорта в 2 клика!',
-            'callback-desc' => $index['params']['main-about_callback-desc'] ?? 'Ответьте на несколько вопросов, и мы предложим самые выгодные условия',
+            'title' => $content['params']['about_us-title'],
+            'title-accent' => $content['params']['about_us-title-accent'],
+            'title-third' => $content['params']['about_us-title-third'],
+            'mission' => $content['params']['about_us-mission'],
+            'title-why' => $cotnent['params']['about_us-title-why'] ?? $index['params']['main-about_title-why'],
+            'items-why' => self::getTableFrom('about_us-items-why', $content) ?? self::getTableFrom('main-about_items-why', $index),
+            'cardText-why' => $content['params']['about_us-cardText-why'] ?? $index['params']['main-about_cardText-why'],
+            'description-why' => $content['params']['about_us-description-why'] ?? $index['params']['main-about_description-why'],
+            'callback-title' => $content['params']['about_us-callback-title'] ?? $index['params']['main-about_callback-title'],
+            'callback-desc' => $content['params']['about_us-callback-desc'] ?? $index['params']['main-about_callback-desc'],
         ]);
 
         App\Layout\Components\Layout\About\AboutHistory\Layout::draw([
-            'title' => $content['params']['about_path_title'] ?? 'История ',
-            'titleAccent' => $content['params']['about_path_titleAccent'] ?? 'ICHINA',
-            'cards' => [
-                [
-                    'title' => '2024',
-                    'descRowFirst' => 'Создание компании',
-                    'descRowSecond' => 'Создание компании',
-                    'descRowThird' => 'Создание компании',
-                ],[
-                    'title' => '2024',
-                    'descRowFirst' => 'Создание компании',
-                    'descRowSecond' => 'Создание компании',
-                    'descRowThird' => 'Создание компании',
-                ],[
-                    'title' => '2024',
-                    'descRowFirst' => 'Создание компании',
-                    'descRowSecond' => 'Создание компании',
-                    'descRowThird' => 'Создание компании',
-                ],
-            ],
+            'title' => $content['params']['about_history_title'],
+            'titleAccent' => $content['params']['about_history_title-accent'],
+            'cards' => self::getTableFrom('about_history-cards', $content),
         ]);
 
         App\Layout\Components\Layout\About\Created\Layout::draw([
-            'title' => $content['params']['created_title'] ?? 'основатель',
-            'titleAccent' => $content['params']['created_titleAccent'] ?? 'компании',
-            'hello' => $content['params']['created_hello'] ?? 'Здравствуйте! <br /><br /> Меня зовут Екатерина Моисеева.',
-            'subhello' => $content['params']['created_subhello'] ?? 'Я операционный директор компании ICHINA.',
-            'article' => $content['params']['created_article'] ?? 'Мы организуем поставки из Китая для бизнеса любого масштаба — от первых тестовых партий до крупных контрактов.',
-            'about-me' => $content['params']['created_about-me'] ?? 'Я живу и работаю в Китае уже более восьми лет. Окончила ВУЗ в г. Шанхай:  Shanghai University 
-            for Science and Technology Bachelor of Management Business Administration (Sino-US) ',
-            'card-text' => $content['params']['created_card-text'] ?? 'Это наше главное преимущество: мы не просто знаем китайский рынок, а находимся внутри него. 
-            Понимаем, как работают фабрики, как мыслят партнёры и какие детали определяют успех сделки. ',
-            'bottom-text' => $content['params']['created_bottom-text'] ?? 'Благодаря этому каждый проект ICHINA проходит без задержек и рисков. 
-            Мы не просто доставляем товары — мы строим надёжный мост между Россией и Китаем, помогая вашему бизнесу расти без границ. ',
-
-            'image' => $content['params']['created_image'] ?? '/assets/images/About/director.png',
-            'dir-title' => $content['params']['created_dir-title'] ?? 'Екатерина Моисеева',
-            'dir-subtitle' => $content['params']['created_dir-subtitle'] ?? 'Операционный директор',
+            'title' => $content['params']['about_created-title'],
+            'titleAccent' => $content['params']['about_created-title-accent'],
+            'hello' => $content['params']['about_created-hello'],
+            'subhello' => $content['params']['about_created-subhello'],
+            'article' => $content['params']['about_created-article'],
+            'about-me' => $content['params']['about_created-about-me'],
+            'card-text' => $content['params']['about_created-card-text'],
+            'bottom-text' => $content['params']['about_created-bottom-text'],
+            'image' => $content['params']['about_created-image'],
+            'dir-title' => $content['params']['about_created-dir-title'],
+            'dir-subtitle' => $content['params']['about_created-dir-subtitle'],
         ]);
 
         App\Layout\Components\Layout\About\Team\Layout::draw([
-            'title' => $content['params']['team_title'] ?? 'наша',
-            'titleAccent' => $content['params']['team_titleAccent'] ?? 'команда',
-            'items' => [
-                [
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],[
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],[
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],[
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],[
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],[
-                    'image' => '/assets/images/About/team.png',
-                    'title' => 'Имя Фамилия',
-                    'subtitle' => 'Должность',
-                ],
-            ]
+            'title' => $content['params']['about_team-title'] ?? 'наша',
+            'titleAccent' => $content['params']['about_team-title-accent'] ?? 'команда',
+            'items' => self::getTableFrom('about_team-items', $content),
         ]);
 
         App\Layout\Components\Common\Map\Layout::draw([

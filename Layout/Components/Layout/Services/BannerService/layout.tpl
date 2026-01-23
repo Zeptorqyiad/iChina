@@ -5,7 +5,7 @@
 
 <section class="banner-service wrapper">
     <div class="banner-service__background-image">
-        <img src="/assets/images/placeholders/Banner.png" alt="">
+        <img src="/uf/images/source/<?= $data['image'] ?>" alt="">
         <div class="banner-service__background-image--mask"></div>
         <div class="banner-service__background-image--v-line"></div>
         <div class="banner-service__background-image--h-line"></div>
@@ -47,8 +47,8 @@
                         App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
                             title: $data['card-title'],
                             text: $data['card-text'] ?? '',
-                            list: $data['card-list'] ?? [],
-                            buttonCard: $data['buttonCard'] ? true : false,
+                            buttonText: $data['button-text'] ?? '',
+                            buttonLink: $data['button-link'] ?? '',
                         );
                     } ?>
                 </div>
@@ -57,10 +57,9 @@
             <?php if (!empty($data['items'])): ?>
                 <ul class="banner-service__bottom">
                     <?php App\Layout\Components\Cards\MinServiceCard\Layout::draw([
-                        'title' => 'Наши услуги',
-                        'text' => 'Полный цикл импорта: от китайской фабрики 
-                            до вашего склада в России',
-                        'link' => '/services/',
+                        'title' => $data['service_card-title'],
+                        'text' => $data['service_card-text'],
+                        'link' => $data['service_card-link'],
                     ]); ?>
 
                     <?php foreach ($data['items'] as $i): ?>

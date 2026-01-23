@@ -9,7 +9,7 @@
     cursor: pointer;
     overflow: hidden;
     transform-origin: left top;
-    --transition-timing: 0.6s;
+    --transition-timing: 0.4s;
     @include spacing(gap, 20px, 20px, 12px, 12px);
     @include spacing(padding, 28px, 28px, 12px, 12px);
     @include spacing(width, 100px, 88px, 56px, 48px);
@@ -66,7 +66,7 @@
         text-transform: uppercase;
         transform: translateY(-250%);
         @include h2;
-        @include transition((color, opacity, transform), var(--transition-timing), var(--ease-spring));
+        @include transition((color, opacity, transform), var(--transition-timing), linear);
         @include truncate(1);
 
         &-preview {
@@ -82,7 +82,7 @@
             opacity: 1;
             transform: translateY(0);
             @include h2;
-            @include transition((color, opacity, transform), var(--transition-timing), var(--ease-spring));
+            @include transition((color, opacity, transform), var(--transition-timing), linear);
             @include truncate(1);
             @include spacing(left, 24px, 16px, 10px, 6px);
             @include spacing(bottom, 20px);
