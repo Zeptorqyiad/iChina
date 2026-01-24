@@ -1,6 +1,5 @@
 .map {
-    @include spacing(padding-top, 80px, 80px, 40px, 40px);
-    @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+    @include spacing(padding-block, 80xp, 80px, 40px, 40px);
 
     &__container {
         display: flex;
@@ -53,7 +52,7 @@
             &-wrap {
                 display: flex;
                 flex-wrap: wrap;
-                @include spacing(gap, 8px, 8px, 8px, 8px);
+                @include spacing(gap, 8px);
 
                 .badge-size_m .badge__text {
                     font-weight: 400;

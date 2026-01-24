@@ -1,16 +1,18 @@
-.map-section{
-    &__wrap{
+.map-section {
+    &__wrap {
         position: relative;
     }
 
-    &__img{
+    &__img {
+        width: 100%;
         @include spacing(height, 500px, 450px, 320px, 320px);
+        object-fit: cover;
 
         &-desktop{
             display: flex;
             @include border-r(12px);
 
-            @include Tablet{
+            @include Tablet {
                 display: none;
             }
         }

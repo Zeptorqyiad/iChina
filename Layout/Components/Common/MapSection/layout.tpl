@@ -5,8 +5,18 @@
 
 <div class="map-section">
     <div class="map-section__wrap">
-        <img class="map-section__img map-section__img-desktop" src="<?= $data['image'] ?>" draggable="false">
-        <img class="map-section__img map-section__img-mobile" src="<?= $data['image-t'] ?> " draggable="false">
+        <?php if ($data['image']): ?>
+            <img class="map-section__img map-section__img-desktop"
+                 src="/uf/images/source/<?= $data['image'] ?>"
+                 draggable="false"
+                 alt="">
+        <?php endif; ?>
+        <?php if ($data['image-t']): ?>
+            <img class="map-section__img map-section__img-mobile"
+                 src="/uf/images/source/<?= $data['image-t'] ?> "
+                 draggable="false"
+                 alt="">
+        <?php endif; ?>
 
         <?php foreach ($data['addresses-desktop'] as $i): ?>
         <div class="map-section__location map-section__location-<?= $i->type ?>" >

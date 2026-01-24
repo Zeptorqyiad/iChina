@@ -1,0 +1,71 @@
+.tooltip {
+    /*----------CORE STYLE-----------*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    @include spacing(padding-block, 12px);
+    @include spacing(padding-inline, 16px);
+    @include spacing(gap, 4px);
+    background: var(--gray-lighter);
+    color: var(--gray-darker);
+    @include transition((border, background, color, opacity));
+    @include border-r(12px);
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        flex-shrink: 0;
+    }
+
+    &__title {
+        @include t3-b;
+    }
+
+    &__subtitle {
+        @include t4;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        @include spacing(bottom, -8px, -8px, -18px, -18px);
+        @include spacing(hegiht, 18px);
+        left: 0;
+        width: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        @include spacing(bottom, -5px);
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        background: var(--gray-lighter);
+        @include spacing(border-bottom-right-radius, 5px);
+        z-index: 1;
+        @include icon(10px);
+    }
+
+    &-position_left{
+        &::after {
+            left: 25%;
+        }
+    }
+
+    &-position_right{
+        &::after {
+            left: 75%;
+        }
+    }
+
+
+    /*----------THEME-----------*/
+
+    &-theme_dark {
+        background: var(--gray-darker);
+        color: var(--gray-white);
+    }
+}

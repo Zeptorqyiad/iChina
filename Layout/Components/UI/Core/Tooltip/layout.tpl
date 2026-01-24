@@ -2,24 +2,26 @@
 /** @var array $data */
 
 $tooltipClasses = [
-    'location',
-    "location-theme_{$data['theme']}",
+    'tooltip',
+    "tooltip-theme_{$data['theme']}",
+    "tooltip-position_{$data['position']}",
+    "tooltip-side_{$data['side']}",
     $data['className'] ?? ''
 ];
 ?>
 
 <div class="<?= implode(' ', $tooltipClasses) ?>" <?= buildAttrs($data['attributes'] ?? []) ?>>
-    <div class="location__text">
+    <div class="tooltip__text">
         <?php if ($data['title']): ?>
-            <div class="location__title">
+            <p class="tooltip__title">
                 <?= $data['title'] ?>
-            </div>
+            </p>
         <?php endif; ?>
 
         <?php if ($data['subtitle']): ?>
-            <div class="location__subtitle">
+            <p class="tooltip__subtitle">
                 <?= $data['subtitle'] ?>
-            </div>
+            </p>
         <?php endif; ?>
     </div>
 </div>
