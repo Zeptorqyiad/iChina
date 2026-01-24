@@ -106,45 +106,30 @@ $vk = Simflex\Core\Core::siteParam('vk');
                 </div>
             </div>
         </div>
-        <div class="contacts__content-rs">
-            <div class="contacts__content-rs_item">
-                <h5 class="contacts__content-rs_item--title">
-                    Офис в России:
-                </h5>
-                <div class="contacts__content-rs_item--address">
-                    г. Комсомольск-на-Амуре, ул. Достоевского, д. 17
-                </div>
-                <div class="contacts__content-rs_item--image">
-                    <img src="/assets/images/Contacts/image.png"
-                         alt=""
-                         class="contacts__content-rs_item--image"
-                    >
 
-                    <img src="/assets/images/Contacts/dot.png"
-                         alt=""
-                         class="contacts__content-dot"
-                    >
-                </div>
+        <?php if (!empty($data['items'])): ?>
+            <div class="contacts__content-rs">
+                <?php foreach ($data['items'] as $i): ?>
+                    <div class="contacts__content-rs_item">
+                        <h5 class="contacts__content-rs_item--title">
+                            <?= $i['title'] ?>
+                        </h5>
+                        <div class="contacts__content-rs_item--address">
+                            <?= $i['subtitle'] ?>
+                        </div>
+                        <div class="contacts__content-rs_item--image">
+                            <img src="<?= $i['image'] ?>"
+                                 alt=""
+                                 class="contacts__content-rs_item--image"
+                            >
+                            <img src="/assets/images/Contacts/dot.png"
+                                 alt=""
+                                 class="contacts__content-dot"
+                            >
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <div class="contacts__content-rs_item">
-                <h5 class="contacts__content-rs_item--title">
-                    Офис в Шанхае:
-                </h5>
-                <div class="contacts__content-rs_item--address">
-                    上海上海市虹口区广中路街道
-                </div>
-                <div class="contacts__content-rs_item--image">
-                    <img src="/assets/images/Contacts/image.png"
-                         alt=""
-                         class="contacts__content-rs_item--image"
-                    >
-
-                    <img src="/assets/images/Contacts/dot.png"
-                         alt=""
-                         class="contacts__content-dot"
-                    >
-                </div>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>

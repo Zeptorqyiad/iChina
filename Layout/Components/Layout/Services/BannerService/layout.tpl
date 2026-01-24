@@ -56,11 +56,13 @@
 
             <?php if (!empty($data['items'])): ?>
                 <ul class="banner-service__bottom">
-                    <?php App\Layout\Components\Cards\MinServiceCard\Layout::draw([
-                        'title' => $data['service_card-title'],
-                        'text' => $data['service_card-text'],
-                        'link' => $data['service_card-link'],
-                    ]); ?>
+                    <?php if ($data['service_card-title']) {
+                        App\Layout\Components\Cards\MinServiceCard\Layout::draw([
+                            'title' => $data['service_card-title'],
+                            'text' => $data['service_card-text'],
+                            'link' => $data['service_card-link'],
+                        ]);
+                    }  ?>
 
                     <?php foreach ($data['items'] as $i): ?>
                         <li class="banner-service__rullet">

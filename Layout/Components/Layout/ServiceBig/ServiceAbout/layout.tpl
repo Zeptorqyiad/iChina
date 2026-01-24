@@ -5,16 +5,14 @@
 
 <section class="service-about">
     <div class="service-about__container container">
-        <?php
-            if ($data['title'] || $data['titleAccent']) {
-                App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
-                    title: $data['title'] ?? '',
-                    titleAccent: $data['titleAccent'] ?? '',
-                    desc: $data['desc'] ?? '',
-                    separator: true,
-                );
-            }
-        ?>
+        <?php if ($data['title'] || $data['titleAccent']) {
+            App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
+                title: $data['title'] ?? '',
+                titleAccent: $data['titleAccent'] ?? '',
+                desc: $data['desc'] ?? '',
+                separator: true,
+            );
+        } ?>
 
         <div class="service-about__wrap">
             <div class="service-about__left">

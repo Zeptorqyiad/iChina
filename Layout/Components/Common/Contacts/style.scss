@@ -27,6 +27,11 @@
             flex-direction: row;
             @include spacing(gap, 20px);
 
+            @include Mobile {
+                flex-direction: column;
+                width: 100%;
+            }
+
             &_item {
                 display: flex;
                 flex-direction: column;

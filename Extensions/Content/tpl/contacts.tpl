@@ -15,12 +15,14 @@ App\Layout\Components\Common\Header\Layout::draw();
         style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
     );
 
-    App\Layout\Components\Common\Contacts\Layout::draw();
+    App\Layout\Components\Common\Contacts\Layout::draw([
+        'items' => self::getTableFrom('contacts-items', $content),
+    ]);
 
     App\Layout\Components\Common\FormFeedback\Layout::draw([
-        'title' => $index['params']['form-feedback_title'] ?? 'Обратная связь',
-        'desc' => $index['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
-        'image' => $index['params']['form-feedback-img'] ?? '/assets/images/Main/Form.png',
+        'title' => $content['params']['contacts_form-title'] ?? $index['params']['form-feedback_title'],
+        'desc' => $content['params']['contacts_form-desc'] ?? $index['params']['form-feedback_desc'],
+        'image' => $content['params']['contacts_form-image'] ?? $index['params']['form-feedback-img'],
     ]);
     ?>
 </main>
