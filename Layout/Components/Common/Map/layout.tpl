@@ -53,15 +53,5 @@ $addresses = Addresses::findAdv()
                 ]); ?>
             </div>
         </div>
-
-        <?php if ($data['card-title'] || $data['card-desc']) {
-            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                    className: 'map__separator',
-            );
-
-            App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
-            title: $data['card-title'],
-            desc: $data['card-desc'],
-        ); } ?>
     </div>
 </section>

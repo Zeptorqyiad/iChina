@@ -132,7 +132,7 @@ App\Layout\Components\Common\Header\Layout::draw([
 
         App\Layout\Components\Common\Partners\Layout::draw([
             'title' => $content['params']['partners_title'],
-            'desc' => $content['params']['partners_desc'] ,
+            'desc' => $content['params']['partners_desc'],
             'items' => self::getTableFrom('partner-items', $content),
         ]); // Натянуто
 

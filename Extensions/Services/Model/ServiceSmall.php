@@ -5,67 +5,85 @@ namespace App\Extensions\Services\Model;
 use Simflex\Core\ModelBase;
 
 /**
- * @property int service_small_id
+ * @property int sm_id
  * @property int npp
  * @property boolean is_active
  * @property string alias
  * @property string path
  * @property string name
  *
- * @property string fs_title
- * @property string fs_desc
- * @property string fs_image
- * @property table fs_offer_list
+ * @property string banner_image
+ * @property string banner_title
+ * @property string banner_subtitle
+ * @property text banner_desc
+ * @property string banner_card_title
+ * @property text banner_card_text
+ * @property string banner_card_button_text
+ * @property string banner_card_button_link
+ * @property text banner_items ['title','text']
+ *
+ * @property string about_title
+ * @property string about_title_accent
+ * @property text about_desc
+ * @property string about_subtitle_left
+ * @property text about_desc_left
+ * @property text about_bullits ['text']
+ * @property text about_accent_text
+ * @property text about_items ['text', 'img']
+ * @property string about_image
+ * @property string about_offer_title
+ * @property text about_offer_desc
+ * @property string about_offer_price
+ * @property string about_offer_time
+ * @property string  about_offer_button_text
  *
  * @property string stages_title
- * @property string stages_desc
- * @property table stages_cards
+ * @property text stages_desc
+ * @property text stages_cards ['title','desc']
+ * @property string stages_image
+ * @property string stages_offer_title
+ * @property text stages_offer_desc
+ * @property string stages_offer_button_text
  *
  * @property string risks_title
- * @property string risks_desc
- * @property table risks_text
+ * @property string risks_title_accent
+ * @property text risks_desc
+ * @property text risks_tap ['title','desc']
  * @property string risks_callback_title
- * @property string risks_callback_desc
+ * @property text risks_callback_desc
  *
- * @property string other_services_title
- * @property string other_services_desc
- * @property table other_services_services
+ * @property string o_serv_title
+ * @property string o_serv_title_accent
+ * @property text o_serv_desc
+ * @property text o_serv_items ['title','desc','link','image']
+ *
+ * @property string benefits_title
+ * @property string benefits_title_accent
+ * @property text benefits_description
+ * @property text benefits_items ['image','title','text']
  *
  * @property string faq_title
- * @property string faq_desc
- * @property table faq_faq
+ * @property text faq_desc
+ * @property text faq_faq ['question','answer']
  *
- * @property table seo_items
+ * @property string form_title
+ * @property text form_desc
+ * @property string form_image
+ *
+ * @property string seo_title
+ * @property text seo_desc
+ * @property string seo_title_2
+ * @property text seo_desc_2
  */
 
 class ServiceSmall extends ModelBase
 {
     protected static $table = 'service_small';
 
-    protected static $primaryKeyName = 'service_small_id';
+    protected static $primaryKeyName = 'sm_id';
 
     public function getOfferList(): array
     {
         return json_decode($this->fs_offer_list, true)['v'] ?? [];
-    }
-    public function getStagesCards(): array
-    {
-        return json_decode($this->stages_cards, true)['v'] ?? [];
-    }
-    public function getRisksText(): array
-    {
-        return json_decode($this->risks_text, true)['v'] ?? [];
-    }
-    public function getOtherServicesCards(): array
-    {
-        return json_decode($this->other_services_services, true)['v'] ?? [];
-    }
-    public function getFaqCards(): array
-    {
-        return json_decode($this->faq_faq, true)['v'] ?? [];
-    }
-    public function getSeoItems(): array
-    {
-        return json_decode($this->seo_items, true)['v'] ?? [];
     }
 }

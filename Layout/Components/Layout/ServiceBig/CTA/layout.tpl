@@ -44,7 +44,7 @@
             <div class="cta__content-rs">
                 <?php if ($data['image']): ?>
                     <div class="cta__content-rs--image">
-                        <img src="<?= $data['image'] ?>" alt="">
+                        <img src="/uf/images/source/<?= $data['image'] ?>" alt="">
                     </div>
                 <?php endif; ?>
             </div>
