@@ -141,4 +141,6 @@ App\Layout\Components\Modals\CallbackModal\Layout::draw();
 App\Layout\Components\Modals\ServicesModal\Layout::draw();
 App\Layout\Components\Modals\MenuModal\Layout::draw();
 App\Layout\Components\UI\Other\TabBar\Layout::draw();
+App\Layout\Components\Modals\SuccessModal\Layout::draw();
+App\Layout\Components\Modals\ErrorModal\Layout::draw();
 ?>

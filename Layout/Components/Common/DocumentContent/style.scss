@@ -4,4 +4,7 @@
         @include spacing(padding-block-start, 40px, 40px, 20px, 20px);
         @include spacing(padding-block-end, 80px, 80px, 40px, 40px);
     }
+    &--anchor {
+        cursor: pointer;
+    }
 }

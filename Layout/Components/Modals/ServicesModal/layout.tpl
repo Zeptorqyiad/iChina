@@ -61,6 +61,7 @@
                 text: 'Смотреть все',
                 link: '/services/',
                 style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Large,
             ); ?>
         </li>
     </ul>

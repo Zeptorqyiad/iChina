@@ -2,16 +2,9 @@
 
 namespace App\Extensions\Form\Component;
 
-use App\Extensions\Catalog\MailAssist;
-use App\Plugins\ReCaptcha\ReCaptcha;
 use Simflex\Core\ComponentBase;
-use Simflex\Core\Container;
 use Simflex\Core\Core;
-use Simflex\Core\DB;
-
 use Simflex\Core\Time;
-
-use function Sodium\compare;
 
 class AjaxForm extends ComponentBase
 {
@@ -20,122 +13,89 @@ class AjaxForm extends ComponentBase
 
     protected function content()
     {
-        if (!ReCaptcha::checkResponse()) {
-            return json_encode(['success' => false]);
+        header('Content-Type: application/json; charset=utf-8');
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            exit(json_encode(['success' => false, 'errors' => ['Invalid request method.']], JSON_THROW_ON_ERROR));
         }
 
-        $type = $_REQUEST['type'] ?? '';
         $name = $_REQUEST['name'] ?? '';
-        $email = strtolower($_REQUEST['email'] ?? '');
         $phone = $_REQUEST['phone'] ?? '';
-        $message = $_REQUEST['message'] ?? '';
-        $from = $_REQUEST['from'] ?? '';
-        $fromTitle = $_REQUEST['from_title'] ?? '';
-        $date = Time::create()->asMySQL();
+        $email = strtolower($_REQUEST['email'] ?? '');
+        $textarea = $_REQUEST['textarea'] ?? '';
 
-        // fix type
-        if ($type == 'available') {
-            $type = 'Сообщить о поступлении';
-            $message = DB::result('select name from catalog_product where product_id = ?', 'name', [$message]);
-        } elseif ($type == 'callback') {
-            $type = 'Остались вопросы';
+        $this->data = compact('name', 'email', 'phone', 'textarea');
+
+        if (empty($phone)) {
+            $this->errors[] = 'Не заполнены обязательные поля';
+            exit(json_encode(['success' => false, 'errors' => $this->errors, JSON_THROW_ON_ERROR]));
         }
 
-        $this->data = compact('type', 'name', 'email', 'phone', 'message', 'date', 'from', 'fromTitle');
+        $this->data = compact('name', 'phone', 'email', 'textarea');
 
-        // insert to db
-        $type = 'normal';
-        if (!$email) {
-            DB::query(
-                'INSERT INTO callback (name, phone, message, date) VALUES (?, ?, ?, ?)',
-                [$name, $phone, $message, $date]
-            );
-        } else {
-            DB::query(
-                'insert into callback_email (email, is_subscribed) select ?, 1 where not exists(select 1 from callback_email where email = ?)',
-                [$email, $email]
-            );
-        }
-        return json_encode(['success' => $this->sendMail() && $this->sendTelegram(), 'errors' => $this->errors]);
+        exit(json_encode(['success' => $this->sendTelegram() || $this->sendMail(), 'errors' => $this->errors]));
     }
 
     protected function sendMail()
     {
-        $m = new MailAssist(Core::siteParam('form_email'), 'Новая заявка с сайта');
+        try {
+            $m = new MailAssist(Core::siteParam('form_email'), 'Новая заявка с сайта');
 
-        $html = <<<HTML
-<p><b>Форма: </b> {$this->data['type']}</p>
-<p><b>Страница: </b> <a href="{$this->data['from']}">{$this->data['fromTitle']}</a></p>
-<p></p>
+            $html = <<<HTML
 <p><b>Имя: </b> {$this->data['name']}</p>
-<p><b>E-mail: </b> {$this->data['email']}</p>
 <p><b>Телефон: </b> {$this->data['phone']}</p>
-<p></p>
-<p><b>Сообщение: </b> {$this->data['message']}</p>
+<p><b>E-mail: </b> {$this->data['email']}</p>
+<p><b>Комментарий: </b> {$this->data['textarea']}</p>
 HTML;
 
-        $m->content($html);
-        return $m->send();
+            $m->content($html);
+
+            if (!$m->send()) {
+                $this->errors[] = 'Почта не отправлена: ' . ($m->ErrorInfo ?: 'Неизвестная ошибка');
+                return false;
+            }
+            return true;
+        } catch (\Exception $e) {
+            $this->errors[] = 'Ошибка почты: ' . $e->getMessage();
+            return false;
+        }
     }
 
     protected function sendTelegram()
     {
-        $patch = function ($i) {
-            return str_replace(
-                ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!'],
-                [
-                    '\\_',
-                    '\\*',
-                    '\\[',
-                    '\\]',
-                    '\\(',
-                    '\\)',
-                    '\\~',
-                    '\\`',
-                    '\\>',
-                    '\\#',
-                    '\\+',
-                    '\\-',
-                    '\\=',
-                    '\\|',
-                    '\\{',
-                    '\\}',
-                    '\\.',
-                    '\\!'
-                ],
-                $i
-            );
-        };
-
-        $md = <<<MD
-**НОВАЯ ЗАЯВКА**
-
-**Форма: ** {$patch($this->data['type'])}
-**Страница: ** [{$patch($this->data['fromTitle'])}]({$patch($this->data['from'])})
-
-**Имя: ** {$patch($this->data['name'])}
-**E\-mail: ** {$patch($this->data['email'])}
-**Телефон: ** {$patch($this->data['phone'])}
-
-**Сообщение: ** {$patch($this->data['message'])}
-MD;
+        $text = "<b>НОВАЯ ЗАЯВКА</b>\n\n" .
+            "<b>Имя:</b> " . htmlspecialchars($this->data['name']) . "\n" .
+            "<b>E-mail:</b> " . htmlspecialchars($this->data['email']) . "\n" .
+            "<b>Телефон:</b> " . htmlspecialchars($this->data['phone']) . "\n" .
+            "<b>Комментарий:</b> " . htmlspecialchars($this->data['textarea']);
 
         $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => 'https://api.telegram.org/bot' . Core::siteParam('form_tg_token') . '/sendMessage',
+            CURLOPT_POST => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => [
+                'chat_id' => Core::siteParam('form_tg_chat_id'),
+                'text' => $text,
+                'parse_mode' => 'HTML'
+            ]
+        ]);
 
-        curl_setopt(
-            $ch,
-            CURLOPT_URL,
-            'https://api.telegram.org/bot' . Core::siteParam('form_tg_token') . '/sendMessage'
-        );
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-            'chat_id' => Core::siteParam('form_tg_chat_id'),
-            'parse_mode' => 'MarkdownV2',
-            'text' => $md
-        ]));
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
+        if ($httpCode !== 200 || $response === false) {
+            $this->errors[] = 'Telegram sending failed: HTTP ' . $httpCode;
+            return false;
+        }
+
+        $result = json_decode($response, true);
+        if (!$result['ok']) {
+            $this->errors[] = 'Telegram API error: ' . ($result['description'] ?? 'Unknown');
+            return false;
+        }
+
         return true;
     }
 }

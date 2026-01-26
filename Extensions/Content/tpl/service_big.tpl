@@ -93,11 +93,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'desc' => $this->service->another_about_desc,
             'subtitle-left' => $this->service->another_about_subtitle_left,
             'desc-left' => $this->service->another_about_desc_left,
-            'bullits' => $this->service->another_about_bullits ?? [
-                [
-                    'text' => ''
-                ]
-            ],
+            'bullits' => $this->service->another_about_bullits,
             'callback-title' => $this->service->another_about_callback_title,
             'callback-desc' => $this->service->another_about_callback_desc,
         ]);
@@ -105,12 +101,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         App\Layout\Components\Common\Stages\Layout::draw([
             'title' => $this->service->stages_title,
             'desc' => $this->service->stages_desc,
-            'cards' => $this->service->stages_cards ?? [
-                [
-                    'title' => '',
-                    'desc' => '',
-                ]
-            ],
+            'cards' => $this->service->stages_cards,
             'image' => $this->service->stages_offer_image,
             'offer-title' => $this->service->stages_offer_title,
             'offer-desc' => $this->service->stages_offer_desc,
@@ -121,12 +112,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $this->service->risks_title,
             'titleAccent' => $this->service->risks_title_accent,
             'desc' => $this->service->risks_desc,
-            'text' => $this->service->risks_questions ?? [
-                [
-                    'title' => 'С чего начать?',
-                    'desc' => 'Тест 1',
-                ]
-            ],
+            'text' => $this->service->risks_questions,
             'callback-title' => $this->service->risks_callback_title,
             'callback-desc' => $this->service->risks_callback_desc,
         ]);
@@ -172,14 +158,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $this->service->o_serv_title,
             'titleAccent' => $this->service->o_serv_title_accent,
             'desc' => $this->service->o_serv_desc,
-            'items' => $this->service->o_serv_items ?? [
-                [
-                    'title' => 'Полный аутсорсинг ВЭД',
-                    'desc' => 'Все сложности работы с Китаем решаем за вас — от китайской фабрики до вашего склада',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ]
-            ] // TODO
+            'items' => $this->service->o_serv_items
         ]);
 
         App\Layout\Components\Common\Certificate\Layout::draw([
