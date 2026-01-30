@@ -68,7 +68,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'titleAccent' => $content['params']['main-benefit_title-accent'] ?? '',
             'description' => $content['params']['main-benefits_description'] ?? '',
             'items' => self::getTableFrom('main-benefit-items', $content),
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\RouteMap\Layout::draw([
             'title' => $content['params']['route-map_title'] ?? 'Наши ' , // 29
@@ -97,7 +97,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'cards' => self::getTableFrom('categories-items', $content),
             'callback-title' => $content['params']['categories-callback_title'],
             'callback-desc' => $content['params']['categories-callback-desc'],
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Sliders\CasesSlider\Layout::draw([
             'title' => 'Наши кейсы',
@@ -108,50 +108,50 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $content['params']['main_stages-title'],
             'desc' => $content['params']['main_stages-desc'],
             'cards' => self::getTableFrom('main_stage-items', $content)
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\Certificate\Layout::draw([
             'title' => $content['params']['certificate-title'],
             'desc' => $content['params']['certificate-desc'],
             'cards-doc' => self::getTableFrom('certificate-cards_doc', $content),
             'items' => self::getTableFrom('certificate-items', $content),
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\Info\Layout::draw([
             'title' => $content['params']['info_title'],
             'desc' => $content['params']['info_desc'],
             'cards' => self::getTableFrom('info-items', $content),
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([
             'title' => 'медиа-центр',
             'title-accent' => 'ichina',
             'link' => '/blog/',
             'cards' => $post,
-        ]); // Отдельно дорабатывать
+        ]);
 
         App\Layout\Components\Common\Partners\Layout::draw([
             'title' => $content['params']['partners_title'],
             'desc' => $content['params']['partners_desc'],
             'items' => self::getTableFrom('partner-items', $content),
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\ContactSection\Layout::draw([
             'title' => $content['params']['main_contact_title'],
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
             'title' => $content['params']['form-feedback_title'],
             'desc' => $content['params']['form-feedback_desc'],
             'image' => $content['params']['form-feedback-img'],
-        ]); // Натянуто
+        ]);
 
         App\Layout\Components\Common\Seo\Layout::draw([
             'seo-title' => $content['params']['seo_title_1'],
             'seo-desc' => $content['params']['seo_text_1'],
             'seo2-title' => $content['params']['seo_title_2'],
             'seo2-desc' => $content['params']['seo_text_2'],
-        ]); // Натянуто
+        ]);
 	?>
 </main>
 

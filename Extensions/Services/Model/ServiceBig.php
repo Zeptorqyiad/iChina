@@ -123,4 +123,48 @@ class ServiceBig extends ModelBase
     protected static $table = 'service_big';
     protected static $primaryKeyName = 'sb_id';
 
+    public function getBannerItems(): array
+    {
+        return json_decode($this->banner_card_items, true)['v'] ?? [];
+    }
+    public function getAboutItems(): array
+    {
+        return json_decode($this->about_items, true)['v'] ?? [];
+    }
+    public function getAboutBullitsList(): array
+    {
+        return json_decode($this->about_bullits, true)['v'] ?? [];
+    }
+    public function getAnotherAboutBullitsList(): array
+    {
+        return json_decode($this->another_about_bullits, true)['v'] ?? [];
+    }
+    public function getStageCards(): array
+    {
+        return json_decode($this->stages_cards, true)['v'] ?? [];
+    }
+    public function getAboutBenefits(): array
+    {
+        return json_decode($this->about_us_benefits, true)['v'] ?? [];
+    }
+    public function getAboutUsItemsWhy(): array
+    {
+        return json_decode($this->about_us_items_why, true)['v'] ?? [];
+    }
+    public function getBenefitsItems(): array
+    {
+        return json_decode($this->benefits_items, true)['v'] ?? [];
+    }
+    public function getTypes(): array
+    {
+        return json_decode($this->types_badge, true)['v'] ?? [];
+    }
+    public function getOptions(): array
+    {
+        return json_decode($this->options_items, true) ?? [];
+    }
+    public function getQuestions(): array
+    {
+        return json_decode($this->risks_questions, true)['v'] ?? [];
+    }
 }

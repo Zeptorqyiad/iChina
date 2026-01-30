@@ -10,7 +10,6 @@
                 title: $data['title'] ?? '',
                 titleAccent: $data['titleAccent'] ?? '',
                 desc: $data['desc'] ?? '',
-                separator: true,
             );
         } ?>
 
@@ -73,7 +72,9 @@
             ); ?>
 
             <div class="service-about__banner">
-                <img src="<?= $data['image'] ?>" alt="image" class="service-about__banner-image">
+                <img src="/uf/images/source/<?= $data['image'] ?>"
+                     alt="image"
+                     class="service-about__banner-image">
 
                 <?php App\Layout\Components\Cards\OfferCard\Layout::drawOfferCard(
                     title: $data['offer-title'] ?? '',

@@ -49,14 +49,14 @@ $serviceCards = $data['cards']['v'] ?? $data['cards'] ?? [];
             </div>
 
 
-            <?php
-            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+            <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
                 className: 'service-about__separator'
-            );
-            ?>
+            ); ?>
 
             <div class="stages__banner">
-                <img src="<?= $data['image'] ?>" alt="image" class="stages__banner-image">
+                <img src="/uf/images/source/<?= $data['image'] ?>"
+                     alt="image"
+                     class="stages__banner-image">
 
                 <?php App\Layout\Components\Cards\OfferCard\Layout::drawOfferCard(
                     title: $data['offer-title'],

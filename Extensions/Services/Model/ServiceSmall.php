@@ -82,8 +82,32 @@ class ServiceSmall extends ModelBase
 
     protected static $primaryKeyName = 'sm_id';
 
-    public function getOfferList(): array
+    public function getBannerItems(): array
     {
-        return json_decode($this->fs_offer_list, true)['v'] ?? [];
+        return json_decode($this->banner_items, true)['v'] ?? [];
+    }
+    public function getBullitsList(): array
+    {
+        return json_decode($this->about_bullits, true)['v'] ?? [];
+    }
+    public function getAboutItems(): array
+    {
+        return json_decode($this->about_items, true)['v'] ?? [];
+    }
+    public function getStageCards(): array
+    {
+        return json_decode($this->stages_cards, true)['v'] ?? [];
+    }
+    public function getRisks(): array
+    {
+        return json_decode($this->risks_tap, true)['v'] ?? [];
+    }
+    public function getBenefitsItems(): array
+    {
+        return json_decode($this->benefits_items, true)['v'] ?? [];
+    }
+    public function getFaqs(): array
+    {
+        return json_decode($this->faq_faq, true)['v'] ?? [];
     }
 }

@@ -34,7 +34,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'card-text' => $this->service->banner_card_text,
             'button-text' => $this->service->banner_card_button_text,
             'button-link' => $this->service->banner_card_button_link,
-            'items' => $this->service->banner_items,
+            'items' => $this->service->getBannerItems(),
         ]);
 
         App\Layout\Components\Layout\ServiceBig\ServiceAbout\Layout::draw([
@@ -43,9 +43,9 @@ App\Layout\Components\Common\Header\Layout::draw([
             'desc' => $this->service->about_desc,
             'subtitle-left' => $this->service->about_subtitle_left,
             'desc-left' => $this->service->about_desc_left,
-            'bullits' => $this->service->about_bullits,
+            'bullits' => $this->service->getBullitsList(),
             'accent-text' => $this->service->about_accent_text,
-            'items' => $this->service->about_items,
+            'items' => $this->service->getAboutItems(),
             'image' => $this->service->about_image,
             'offer-title' => $this->service->about_offer_title,
             'offer-desc' => $this->service->about_offer_desc,
@@ -57,7 +57,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         App\Layout\Components\Common\Stages\Layout::draw([
             'title' => $this->service->stages_title,
             'desc' => $this->service->stages_desc,
-            'cards' => $this->service->stages_cards,
+            'cards' => $this->service->getStageCards(),
             'image' => $this->service->stages_image,
             'offer-title' => $this->service->stages_offer_title,
             'offer-desc' => $this->service->stages_offer_desc,
@@ -68,7 +68,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $this->service->risks_title,
             'titleAccent' => $this->service->risks_title_accent,
             'desc' => $this->service->risks_desc,
-            'text' => $this->service->risks_tap,
+            'text' => $this->service->getRisks(),
             'callback-title' => $this->service->risks_callback_title,
             'callback-desc' => $this->service->risks_callback_desc,
         ]);
@@ -90,9 +90,9 @@ App\Layout\Components\Common\Header\Layout::draw([
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
             'title' => $this->service->benefits_title ?? $index['params']['main-benefit_title'],
-            'title-accent' => $this->service->benefits_title_accent ?? $index['params']['main-benefit_title-accent'],
+            'titleAccent' => $this->service->benefits_title_accent ?? $index['params']['main-benefit_title-accent'],
             'description' => $this->service->benefits_description ?? $index['params']['main-benefits_description'],
-            'items' => $this->service->benefits_items
+            'items' => $this->service->getBenefitsItems()
         ]);
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([
@@ -128,7 +128,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         App\Layout\Components\Common\Faq\Layout::draw([
             'title' => $this->service->faq_title,
             'desc' => $this->service->faq_desc,
-            'faq' => $this->service->faq_faq,
+            'faq' => $this->service->getFaqs(),
         ]);
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([

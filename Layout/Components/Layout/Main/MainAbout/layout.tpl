@@ -67,19 +67,23 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                 <?php endif; ?>
             </div>
             <div class="main-about__why-rs">
-                <?php App\Layout\Components\Cards\AccentCard\Layout::drawAccentCard(
-                    desc: $data['cardText-why'],
-                ) ?>
-                <div class="main-about__why-rs--text">
-                    <?= $data['description-why'] ?>
-                </div>
+                <?php if ($data['cardText-why']) {
+                    App\Layout\Components\Cards\AccentCard\Layout::drawAccentCard(
+                        desc: $data['cardText-why'],
+                    );
+                }  ?>
+                <?php if ($data['description-why']): ?>
+                    <div class="main-about__why-rs--text">
+                        <?= $data['description-why'] ?>
+                    </div>
+                <?php endif; ?>
 
                 <div class="main-about__why-buttons">
                     <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                            className: 'main-about__why-button--about',
-                            text: 'Все услуги',
-                            link: '/services/',
-                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
+                        className: 'main-about__why-button--about',
+                        text: 'Все услуги',
+                        link: '/services/',
+                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
                     ); ?>
 
                     <?php if ($wt || $tg): ?>
@@ -119,13 +123,15 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
             </div>
         </div>
 
-        <?php
-        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-            className: 'main-about__why-separator',
-        );
-        App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
-            title: $data['callback-title'],
-            desc: $data['callback-desc'],
-        ) ?>
+        <?php if ($data['callback-title'] || $data['callback-text']) : ?>
+            <?php
+            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                className: 'main-about__why-separator',
+            );
+            App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
+                title: $data['callback-title'],
+                desc: $data['callback-desc'],
+            ); ?>
+        <?php endif; ?>
     </div>
 </section>

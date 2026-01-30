@@ -1,6 +1,7 @@
 <?php
 /** @var array $data */
 
+$items = $data['items']['v'] ?? $data['items'] ?? [];
 ?>
 
 <section class="options">
@@ -15,15 +16,15 @@
             ?>
         <?php endif; ?>
 
-        <?php if ($data['items']): ?>
+        <?php if ($items): ?>
             <div class="options__cards">
-                <?php foreach ($data['items'] as $i):
+                <?php foreach ($items as $i):
                     App\Layout\Components\Cards\OptionCard\Layout::drawOptionCard(
-                        title: $i['title'],
-                        image: $i['image'],
-                        desc: $i['desc'],
-                        text: $i['text'],
-                        link: $i['link'],
+                        title: $i['title'] ?? '',
+                        image: $i['image'] ?? '',
+                        desc: $i['desc'] ?? '',
+                        text: $i['text'] ?? '',
+                        link: $i['link'] ?? '',
                     );
                 ?>
                 <?php endforeach; ?>

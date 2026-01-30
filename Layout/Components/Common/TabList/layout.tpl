@@ -1,5 +1,6 @@
 <?php
 /** @var array $data */
+
 ?>
 
 <nav class="tab-list <?= $data['className'] ?? '' ?>">

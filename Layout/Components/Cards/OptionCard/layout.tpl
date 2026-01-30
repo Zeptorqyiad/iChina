@@ -12,14 +12,14 @@
         <?php endif; ?>
 
         <?php if ($data['image']): ?>
-            <img src="<?= $data['image'] ?>" alt="" class="option-card__content-image">
+            <img src="<?= $data['image'] ?>"
+                 alt=""
+                 class="option-card__content-image">
         <?php endif; ?>
 
-        <?php
-            App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
-                desc: $data['desc'],
-            );
-        ?>
+        <?php App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
+            desc: $data['desc'],
+        ); ?>
     </div>
 
     <?php if ($data['link']): ?>

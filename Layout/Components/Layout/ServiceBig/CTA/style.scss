@@ -1,4 +1,6 @@
 .cta {
+    @include spacing(padding-block, 80px, 80px, 60px, 60px);
+
     &__container {}
 
     &__content {
@@ -65,8 +67,6 @@
             }
         }
         &-rs {
-            flex-shrink: 0;
-
             @include Tablet {
                 height: vwt(500px);
             }
