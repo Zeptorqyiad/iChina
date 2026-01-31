@@ -11,19 +11,7 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
 $services = [
     [
         'title' => 'Аутсорсинг ВЭД',
-        'link' => '##',
-    ],[
-        'title' => 'Таможенное сопровождение',
-        'link' => '##',
-    ],[
-        'title' => 'Ведение переговоров',
-        'link' => '##',
-    ],[
-        'title' => 'Подбор поставщика',
-        'link' => '##',
-    ],[
-        'title' => 'Оплата в Китай',
-        'link' => '##',
+        'link' => '/services/autsorsing-ved-/',
     ],
 ];
 $about = [

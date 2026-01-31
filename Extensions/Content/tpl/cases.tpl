@@ -11,7 +11,7 @@ $totalCount = CasesCategory::getTotalCount();
 $q = Cases::findAdv()->where(['is_active' => 1]);
 $c = $_REQUEST['c'] ?? 0;
 if ($this->c) {
-    $q->andWhere(['cases_id' => $this->c]);
+    $q->andWhere(['cc_id' => $this->c]);
 }
 
 
