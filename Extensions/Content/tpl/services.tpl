@@ -32,28 +32,29 @@ App\Layout\Components\Common\Header\Layout::draw([
 		]);
 
 		App\Layout\Components\Layout\Services\Services\Layout::draw([
-			'title' => 'Наши услуги',
-			'description' => 'Мы оказываем полный комплекс услуг во внешнеэкономической деятельности —  от поиска поставщика до доставки товара на ваш склад ',
-		]); // TODO
+			'title' => $content['params']['services_services-title'],
+			'description' => $content['params']['services_services-description'],
+		]);
 
         App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
-            'title' => $content['params']['services_about-title'] ?? $index['params']['main-about_title'],
-            'title-accent' => $content['params']['services_about-title-accent'] ?? $index['params']['main-about_title-accent'],
-            'title-third' => $content['params']['services_about-title-third'] ?? $index['params']['main-about_title-third'],
+            'title' => $content['params']['services_about-title'] ?: $index['params']['main-about_title'],
+            'title-accent' => $content['params']['services_about-title-accent'] ?: $index['params']['main-about_title-accent'],
+            'title-third' => $content['params']['services_about-title-third'] ?: $index['params']['main-about_title-third'],
             'benefits' => self::getTableFrom('services_about-benefits', $content),
-            'title-why' => $content['params']['services_about-title-why'] ?? $index['params']['main-about_title-why'],
-            'items-why' => self::getTableFrom('services_about-items-why', $content) ?? self::getTableFrom('main-about_items-why', $index),
-            'cardText-why' => $content['params']['services_about-cardText-why'] ?? $index['params']['main-about_cardText-why'],
-            'description-why' => $content['params']['services_about-description-why'] ?? $index['params']['main-about_description-why'],
-            'callback-title' => $content['params']['services_about-callback-title'] ?? $index['params']['main-about_callback-title'],
-            'callback-desc' => $content['params']['services_about-callback-desc'] ?? $index['params']['main-about_callback-desc'],
+            'title-why' => $content['params']['services_about-title-why'] ?: $index['params']['main-about_title-why'],
+            'items-why' => self::getTableFrom('services_about-items-why', $content) ?: self::getTableFrom('main-about_items-why', $index),
+            'cardText-why' => $content['params']['services_about-cardText-why'] ?: $index['params']['main-about_cardText-why'],
+            'description-why' => $content['params']['services_about-description-why'] ?: $index['params']['main-about_description-why'],
+            'callback-title' => $content['params']['services_about-callback-title'] ?: $index['params']['main-about_callback-title'],
+            'callback-desc' => $content['params']['services_about-callback-desc'] ?: $index['params']['main-about_callback-desc'],
         ]);
 
+		$servicesBenefitsItems = self::getTableFrom('services_benefits-items', $content);
 		App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-			'title' => $content['params']['services_benefits-title'] ?? $index['params']['main-benefit_title'],
-			'title-accent' => $content['params']['services_benefits-title-accent'] ?? $index['params']['main-benefit_title-accent'],
-			'description' => $content['params']['services_benefits-description'] ?? $index['params']['main-benefits_description'],
-			'items' => $content['params']['services_benefits-items'] ?? self::getTableFrom('main-benefit-items', $index),
+			'title' => $content['params']['services_benefits-title'] ?: $index['params']['main-benefit_title'],
+			'title-accent' => $content['params']['services_benefits-title-accent'] ?: $index['params']['main-benefit_title-accent'],
+			'description' => $content['params']['services_benefits-description'] ?: $index['params']['main-benefits_description'],
+			'items' => !empty($servicesBenefitsItems) ? $servicesBenefitsItems : self::getTableFrom('main-benefit-items', $index),
 		]);
 
 		App\Layout\Components\Common\Certificate\Layout::draw([
@@ -68,11 +69,12 @@ App\Layout\Components\Common\Header\Layout::draw([
 			'link' => '/cases/',
 		]);
 
-		App\Layout\Components\Common\Stages\Layout::draw([
-            'title' => $content['params']['services_stages-title'] ?? $index['params']['main_stages-title'],
-            'desc' => $content['params']['services_stages-desc'] ?? $index['params']['main_stages-desc'],
-            'cards' => $content['params']['services_stages-cards'] ?? self::getTableFrom('main_stage-items', $index)
-		]);
+        $servicesStagesCards = self::getTableFrom('services_stages-cards', $content);
+        App\Layout\Components\Common\Stages\Layout::draw([
+            'title' => $content['params']['services_stages-title'] ?: $index['params']['main_stages-title'],
+            'desc' => $content['params']['services_stages-desc'] ?: $index['params']['main_stages-desc'],
+            'cards' => !empty($servicesStagesCards) ? $servicesStagesCards : self::getTableFrom('main_stage-items', $index)
+        ]);
 
 		App\Layout\Components\Sliders\BlogSlider\Layout::draw([
 			'title' => 'Другие отзывы',
@@ -97,9 +99,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
 		App\Layout\Components\Common\FormFeedback\Layout::draw([
-			'title' => $content['params']['services_form-title'] ?? $index['params']['form-feedback_title'],
-			'desc' => $content['params']['services_form-desc'] ?? $index['params']['form-feedback_desc'],
-            'image' => $content['params']['services_form-image'] ?? $index['params']['form-feedback-img'],
+			'title' => $content['params']['services_form-title'] ?: $index['params']['form-feedback_title'],
+			'desc' => $content['params']['services_form-desc'] ?: $index['params']['form-feedback_desc'],
+            'image' => $content['params']['services_form-image'] ?: $index['params']['form-feedback-img'],
 		]);
 
 		App\Layout\Components\Common\Seo\Layout::draw([

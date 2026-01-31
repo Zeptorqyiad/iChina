@@ -1,7 +1,12 @@
 <?php
 /** @var array $data */
 
-$serviceCards = $data['cards']['v'] ?? $data['cards'] ?? [];
+$rawCards = $data['cards']['v'] ?? $data['cards'] ?? [];
+if (is_string($rawCards)) {
+    $decoded = json_decode($rawCards, true);
+    $rawCards = is_array($decoded) ? ($decoded['v'] ?? $decoded) : [];
+}
+$serviceCards = is_array($rawCards) ? $rawCards : [];
 ?>
 
 <section class="stages <?= $data['className'] ?>">

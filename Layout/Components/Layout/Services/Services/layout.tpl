@@ -2,48 +2,57 @@
 /** @var $data array */
 /** @var $content array */
 
-//use App\Extensions\Site\Model\ServiceCategory;
+use App\Extensions\Services\Model\ServiceCategory;
+use Simflex\Core\DB;
 
-//$catVed = ServiceCategory::findAdv()->where(['name' => 'Консультация ВЭД'])->all();
-//$catCustom = ServiceCategory::findAdv()->where(['name' => 'Услуги таможенного представителя'])->all();
-//$catHelp = ServiceCategory::findAdv()->where(['name' => 'Помощь в оформлении документов'])->all();
-//$catInter = ServiceCategory::findAdv()->where(['name' => 'Услуги международного экспедитора'])->all();
-//$catFin = ServiceCategory::findAdv()->where(['name' => 'Финансовая логистика'])->all();
+$categoryRows = ServiceCategory::findAdv()
+    ->where(['is_active' => 1])
+    ->orderBy('npp')
+    ->all();
 
-//$vedOptions = getServiceOptions('Консультация ВЭД');
-//$customOptions = getServiceOptions('Услуги таможенного представителя');
-//$helpOptions = getServiceOptions('Помощь в оформлении документов');
-//$interOptions = getServiceOptions('Услуги международного экспедитора');
-//$finOptions = getServiceOptions('Финансовая логистика');
+$bigRows = DB::assoc(
+    'SELECT p.category_id, b.sb_id, b.name, b.alias, b.icon, b.banner_service_subtitle AS short_text
+     FROM service_p2c_big p
+     JOIN service_big b ON b.sb_id = p.sb_id
+     WHERE b.is_active = 1
+     ORDER BY b.npp, b.sb_id'
+);
 
 
-$vedOptions = [
-    [
-        'text' => 'Шаблон большой услуги',
-        'short' => 'Текст',
-        'link' => '/service_big/'
-    ],[
-        'text' => 'Шаблон маленькой услуги',
-        'short' => 'Текст',
-        'link' => '/service_small/'
-    ]
-];
-$customOptions = [
-    [
-        'text' => 'Шаблон большой услуги',
-        'short' => 'Текст',
-        'link' => '/service_big/'
-    ],[
-        'text' => 'Шаблон маленькой услуги',
-        'short' => 'Текст',
-        'link' => '/service_small/'
-    ]
-];
+$smallRows = DB::assoc(
+    'SELECT p.category_id, s.sm_id, s.name, s.alias, NULL AS icon, s.banner_subtitle AS short_text
+     FROM service_p2c_small p
+     JOIN service_small s ON s.sm_id = p.sm_id
+     WHERE s.is_active = 1
+     ORDER BY s.npp, s.sm_id'
+);
 
-$categories = [
-    ['cat' => 'Консалтинговые услуги ', 'options' => $vedOptions],
-    ['cat' => 'Услуги в Китае ', 'options' => $customOptions],
-];
+$servicesByCategory = [];
+foreach ($bigRows as $row) {
+    $servicesByCategory[(int)$row['category_id']][] = [
+        'text' => $row['name'] ?? '',
+        'short' => $row['short_text'] ?? '',
+        'icon' => $row['icon'] ?? '',
+        'link' => '/' . ($row['alias'] ?? '') . '/',
+    ];
+}
+foreach ($smallRows as $row) {
+    $servicesByCategory[(int)$row['category_id']][] = [
+        'text' => $row['name'] ?? '',
+        'short' => $row['short_text'] ?? '',
+        'icon' => $row['icon'] ?? '',
+        'link' => '/' . ($row['alias'] ?? '') . '/',
+    ];
+}
+
+$categories = [];
+foreach ($categoryRows as $row) {
+    $categoryId = (int)$row['category_id'];
+    $categories[] = [
+        'cat' => [$row],
+        'options' => $servicesByCategory[$categoryId] ?? [],
+    ];
+}
 ?>
 
 <section class="services">
@@ -51,7 +60,6 @@ $categories = [
         <?php App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
             title: $data['title'] ?? '',
             desc: $data['description'] ?? '',
-            separator: true,
         ); ?>
 
         <ul class="services__steps">
@@ -69,23 +77,17 @@ $categories = [
                         </div>
 
                         <div class="services__step_rs">
-                            <?php foreach ($category['options'] as $option) {
+                            <?php foreach ($category['options'] as $i) {
                                 App\Layout\Components\Cards\ServiceExampleCard\Layout::drawServiceExampleCard(
                                     className: 'service-example-card__link',
-                                    title: $option['text'] ?? '',
-                                    text: $option['short'] ?? '',
-                                    img: '/uf/images/source/' . $option['icon'] ?? '',
-                                    link: '/services' . $option['link'] ?? '',
+                                    title: $i['text'] ?? '',
+                                    text: $i['short'] ?? '',
+                                    img: '/uf/images/source/' . $i['icon'] ?? '',
+                                    link: '/services' . $i['link'] ?? '',
                                 );
                             } ?>
                         </div>
                     </li>
-
-                    <?php
-                    App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'services__separator'
-                    );
-                    ?>
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>

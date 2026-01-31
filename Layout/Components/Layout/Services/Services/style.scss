@@ -1,5 +1,5 @@
 .services {
-    @include spacing(padding-block, 80px, 80px 40px, 40px);
+    @include spacing(padding-block, 100px, 80px 40px, 40px);
 
     &__container {
         display: flex;
@@ -16,11 +16,25 @@
     &__step {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        @include spacing(gap, 20px, 20px, 20px, 20px);
+        @include spacing(gap, 20px);
 
+        &:not(:last-child) {
+            border-width: vw(1px);
+            border-bottom: solid var(--gray-lighter);
+            @include spacing(padding-bottom, 60px, 60px, 32px, 32px);
+            @include spacing(margin-bottom, 60px, 60px, 32px, 32px);
+        }
+
+        @include HD {
+            border-width: vwh(1px);
+        }
         @include Tablet {
             display: flex;
             flex-direction: column;
+            border-width: vwt(1px);
+        }
+        @include Mobile {
+            border-width: vwm(1px);
         }
 
         &_ls {
