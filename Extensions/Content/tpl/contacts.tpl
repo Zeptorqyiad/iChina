@@ -20,9 +20,9 @@ App\Layout\Components\Common\Header\Layout::draw();
     ]);
 
     App\Layout\Components\Common\FormFeedback\Layout::draw([
-        'title' => $content['params']['contacts_form-title'] ?? $index['params']['form-feedback_title'],
-        'desc' => $content['params']['contacts_form-desc'] ?? $index['params']['form-feedback_desc'],
-        'image' => $content['params']['contacts_form-image'] ?? $index['params']['form-feedback-img'],
+        'title' => $content['params']['contacts_form-title'] ?: $index['params']['form-feedback_title'],
+        'desc' => $content['params']['contacts_form-desc'] ?: $index['params']['form-feedback_desc'],
+        'image' => $content['params']['contacts_form-image'] ?: $index['params']['form-feedback-img'],
     ]);
     ?>
 </main>

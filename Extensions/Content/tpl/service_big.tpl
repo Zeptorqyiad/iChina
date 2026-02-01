@@ -68,10 +68,10 @@ App\Layout\Components\Common\Header\Layout::draw([
 
         if ($this->service->benefits_title || !empty($this->service->getBenefitsItems())) {
             App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-                'title' => $this->service->benefits_title ?? $index['params']['main-benefit_title'],
-                'titleAccent' => $this->service->benefits_title_accent ?? $index['params']['main-benefit_title-accent'],
-                'description' => $this->service->benefits_description ?? $index['params']['main-benefits_description'],
-                'items' => $this->service->getBenefitsItems() ?? self::getTableFrom('main-benefit-items', $index),
+                'title' => $this->service->benefits_title ?: $index['params']['main-benefit_title'],
+                'titleAccent' => $this->service->benefits_title_accent ?: $index['params']['main-benefit_title-accent'],
+                'description' => $this->service->benefits_description ?: $index['params']['main-benefits_description'],
+                'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
             ]);
         }
 
@@ -116,9 +116,9 @@ App\Layout\Components\Common\Header\Layout::draw([
 
         if ($this->service->stages_title || $index['params']['main_stages-title']) {
             App\Layout\Components\Common\Stages\Layout::draw([
-                'title' => $this->service->stages_title ?? $index['params']['main_stages-title'],
-                'desc' => $this->service->stages_desc ?? $index['params']['main_stages-desc'],
-                'cards' => $this->service->getStageCards() ?? self::getTableFrom('main_stage-items', $index),
+                'title' => $this->service->stages_title ?: $index['params']['main_stages-title'],
+                'desc' => $this->service->stages_desc ?: $index['params']['main_stages-desc'],
+                'cards' => $this->service->getStageCards() ?: self::getTableFrom('main_stage-items', $index),
                 'image' => $this->service->stages_offer_image,
                 'offer-title' => $this->service->stages_offer_title,
                 'offer-desc' => $this->service->stages_offer_desc,
@@ -148,9 +148,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         }
 
         App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $this->service->route_map_title ?? $index['route-map_title'],
-            'title-accent' => $this->service->route_map_title_accent ?? $index['route-map_title-accent'],
-            'desc' => $this->service->route_map_desc ?? $index['route-map_desc'],
+            'title' => $this->service->route_map_title ?: $index['route-map_title'],
+            'title-accent' => $this->service->route_map_title_accent ?: $index['route-map_title-accent'],
+            'desc' => $this->service->route_map_desc ?: $index['route-map_desc'],
             'items' => $this->service->route_map_items ?? [
                 [
                     'title' => 'Авиаперевозка: Китай — Россия',
@@ -215,9 +215,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
-            'title' => $this->service->form_title ?? $index['params']['form-feedback_title'],
-            'desc' => $this->service->form_desc ?? $index['params']['form-feedback_desc'],
-            'image' => $this->service->form_image ?? $index['params']['form-feedback-img'],
+            'title' => $this->service->form_title ?: $index['params']['form-feedback_title'],
+            'desc' => $this->service->form_desc ?: $index['params']['form-feedback_desc'],
+            'image' => $this->service->form_image ?: $index['params']['form-feedback-img'],
         ]);
 
         App\Layout\Components\Common\Seo\Layout::draw([

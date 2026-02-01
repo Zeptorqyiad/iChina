@@ -89,9 +89,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-            'title' => $this->service->benefits_title ?? $index['params']['main-benefit_title'],
-            'titleAccent' => $this->service->benefits_title_accent ?? $index['params']['main-benefit_title-accent'],
-            'description' => $this->service->benefits_description ?? $index['params']['main-benefits_description'],
+            'title' => $this->service->benefits_title ?: $index['params']['main-benefit_title'],
+            'titleAccent' => $this->service->benefits_title_accent ?: $index['params']['main-benefit_title-accent'],
+            'description' => $this->service->benefits_description ?: $index['params']['main-benefits_description'],
             'items' => $this->service->getBenefitsItems()
         ]);
 
@@ -143,9 +143,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
-            'title' => $this->service->form_title ?? $index['params']['form-feedback_title'],
-            'desc' => $this->service->form_desc ?? $index['params']['form-feedback_desc'],
-            'image' => $this->service->form_image ?? $index['params']['form-feedback-img'],
+            'title' => $this->service->form_title ?: $index['params']['form-feedback_title'],
+            'desc' => $this->service->form_desc ?: $index['params']['form-feedback_desc'],
+            'image' => $this->service->form_image ?: $index['params']['form-feedback-img'],
         ]);
 
         App\Layout\Components\Common\Seo\Layout::draw([

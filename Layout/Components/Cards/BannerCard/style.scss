@@ -25,7 +25,44 @@
 
         &--text {
             @include t2;
-            color: var(--gray-darker);
+            color: var(--gray-darker) !important;
+
+            ul {
+                > li {
+                    position: relative;
+                    @include spacing(padding-left, 20px);
+                    color: var(--gray-darker);
+
+                    &:not(:last-child) {
+                        @include spacing(padding-bottom, 8px);
+                        @include spacing(margin-bottom, 8px);
+                        border-bottom: vw(1px) solid var(--gray-light);
+
+                        @include HD {
+                            border-bottom: vwh(1px) solid var(--gray-light);
+                        }
+                        @include Tablet {
+                            border-bottom: vwt(1px) solid var(--gray-light);
+                        }
+                        @include Mobile {
+                            border-bottom: vwm(1px) solid var(--gray-light);
+                        }
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        @include spacing(top, 6px);
+                        @include spacing(width, 12px);
+                        @include spacing(height, 12px);
+                        background-image: url("data:image/svg+xml,%3Csvg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L6 10L15 1' stroke='%23EFBC38' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                        background-repeat: no-repeat;
+                        background-size: 100%;
+                        background-position: center;
+                    }
+                }
+            }
         }
 
         &--button {
