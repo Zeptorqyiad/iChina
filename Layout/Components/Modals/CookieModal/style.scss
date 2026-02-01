@@ -15,6 +15,10 @@
     pointer-events: none;
     @include transition((transform), 0.3s);
 
+    @include Tablet {
+        @include spacing(bottom, 66px);
+    }
+
     &.active {
         transform: translateY(0) translateZ(0);
         user-select: auto;

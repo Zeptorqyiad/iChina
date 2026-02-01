@@ -23,10 +23,9 @@ App\Layout\Components\Common\Header\Layout::draw();
 	if (!empty($this->review->video_horizontal) || !empty($this->review->video_vertical) || !empty($this->review->video)) {
 		App\Layout\Components\Layout\Post\PostHeading\Layout::drawPostHeading(
 			className: 'video',
-			date: Simflex\Core\Time::normal($this->review->date),
-			category: $this->review->category->name,
-			views: $this->review->views,
-			categoryId: $this->review->category->bc_id
+			date: Simflex\Core\Time::normal($this->review->date) ?? '',
+			category: $this->review->category->name ?? '',
+			categoryId: $this->review->category->bc_id ?? 0
 		);
 
 		App\Layout\Components\Layout\Post\VideoContent\Layout::draw([

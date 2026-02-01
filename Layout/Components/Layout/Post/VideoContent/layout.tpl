@@ -8,19 +8,11 @@
         <div class="video-container">
             <?php if($data['video_h']): ?>
                 <div class="blog-card__video horizontal-video">
-                    <iframe src="<?= $data['video_h'] ?>"
-                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-                            frameborder="0"
-                            allowfullscreen>
-                    </iframe>
+                    <?= $data['video_h'] ?>
                 </div>
             <?php elseif ($data['video_v']): ?>
                 <div class="blog-card__video vertical-video">
-                    <iframe src="<?= $data['video_v'] ?>"
-                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-                            frameborder="0"
-                            allowfullscreen>
-                    </iframe>
+                    <?= $data['video_v'] ?>
                 </div>
             <?php elseif ($data['video']): ?>
                 <video class="blog-card__video horizontal-video"

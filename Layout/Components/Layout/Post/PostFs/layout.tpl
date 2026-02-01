@@ -5,6 +5,7 @@
 
 <section class="post-fs <?= $data['className'] ?>">
     <div class="post-fs__container container">
+        <?php if (!empty($data['imgBig'] || $data['imgMob'])): ?>
             <div class="post-fs__media">
                 <?php if ($data['imgBig']): ?>
                     <img class="post-fs__image post-fs__image--desktop"
@@ -21,6 +22,7 @@
                     >
                 <?php endif; ?>
             </div>
+        <?php endif; ?>
         <div class="post-fs__text">
             <h1 class="post-fs__title">
                 <?= $data['title'] ?>

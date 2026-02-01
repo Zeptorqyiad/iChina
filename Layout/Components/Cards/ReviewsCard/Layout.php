@@ -19,6 +19,7 @@ class Layout extends LayoutBase
         string           $video_h = '',
         string           $video_v = '',
         string           $path = '',
+        int              $is_active_button = 1,
 
         array            $attributes = []
     ): void
@@ -36,6 +37,7 @@ class Layout extends LayoutBase
                 'video_v',
                 'photoMob',
                 'path',
+                'is_active_button',
                 'attributes'
             )
         );

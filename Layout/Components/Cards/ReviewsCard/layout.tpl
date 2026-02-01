@@ -3,13 +3,19 @@
 
 ?>
 
+<?php
+$showButton = !empty($data['is_active_button']);
+?>
+
 <?php if ($data['photo']): ?>
     <div class="reviews-card <?= $data['className'] ?>">
-        <a class="reviews-card__link"
-           href="<?= $data['path'] ?>"
-           draggable="false"
-           aria-label="<?= $data['title'] ?>"
-        ></a>
+        <?php if ($showButton && $data['path']): ?>
+            <a class="reviews-card__link"
+               href="<?= $data['path'] ?>"
+               draggable="false"
+               aria-label="<?= $data['title'] ?>"
+            ></a>
+        <?php endif; ?>
         <div class="reviews-card__container">
             <div class="reviews-card__wrap">
                 <div class="reviews-card__badges">
@@ -33,17 +39,19 @@
                     <?php endif; ?>
                 </div>
 
-                <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                    className: 'reviews-card__button',
-                    text: 'Читать',
-                    link: $data['path'],
-                    icon: 'arrow-right',
-                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
-                    iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
-                    attributes: [
-                        'draggable' => 'false'
-                    ]
-                ); ?>
+                <?php if ($showButton && $data['path']) {
+                    App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                        className: 'reviews-card__button',
+                        text: 'Читать',
+                        link: $data['path'],
+                        icon: 'arrow-right',
+                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
+                        iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                        attributes: [
+                            'draggable' => 'false'
+                        ]
+                    );
+                }  ?>
             </div>
 
             <img class="reviews-card__image"
@@ -111,17 +119,19 @@
                     <?= $data['video_v'] ?>
                 </div>
             <?php endif; ?>
-            <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                className: 'reviews-card__button',
-                text: 'Читать',
-                link: $data['path'],
-                icon: 'arrow-right',
-                style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
-                iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
-                attributes: [
-                    'draggable' => 'false'
-                ]
-            ); ?>
+            <?php if ($showButton && $data['path']) {
+                App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                    className: 'reviews-card__button',
+                    text: 'Читать',
+                    link: $data['path'],
+                    icon: 'arrow-right',
+                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
+                    iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                    attributes: [
+                        'draggable' => 'false'
+                    ]
+                );
+            } ?>
         </div>
         <h3 class="reviews-card__title">
             <?= $data['title'] ?>
@@ -129,10 +139,12 @@
     </div>
 <?php else: ?>
     <div class="reviews-card reviews-card-text <?= $data['className'] ?>">
-        <a class="reviews-card__link"
-           href="<?= $data['path'] ?>"
-           draggable="false"
-        ></a>
+        <?php if ($showButton && $data['path']): ?>
+            <a class="reviews-card__link"
+               href="<?= $data['path'] ?>"
+               draggable="false"
+            ></a>
+        <?php endif; ?>
         <div class="reviews-card__container">
             <div class="reviews-card__wrap">
                 <div class="reviews-card__badges">
@@ -156,17 +168,19 @@
                     <?php endif; ?>
                 </div>
 
-                <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                    className: 'reviews-card__button',
-                    text: 'Читать',
-                    link: $data['path'],
-                    icon: 'arrow-right',
-                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
-                    iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
-                    attributes: [
-                        'draggable' => 'false'
-                    ]
-                ); ?>
+                <?php if ($showButton && $data['path']) {
+                    App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                        className: 'reviews-card__button',
+                        text: 'Читать',
+                        link: $data['path'],
+                        icon: 'arrow-right',
+                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
+                        iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                        attributes: [
+                            'draggable' => 'false'
+                        ]
+                    );
+                } ?>
             </div>
             <?php if ($data['text']): ?>
                 <div class="reviews-card__desc">

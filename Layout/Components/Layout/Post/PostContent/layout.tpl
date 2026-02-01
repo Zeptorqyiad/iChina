@@ -35,30 +35,12 @@
         ); ?>
 
         <div class="post-content__feedback">
-            <div class="feedback-group"
-                 data-id="<?= $data['id'] ?>"
-                 data-path="blog"
-                 data-type="post">
-
-                <button class="feedback-btn post-content__feedback-button post-content__feedback-button--like"
-                    data-action="like"
-                    id="feedback-like-<?= $data['id'] ?>"
-                >
-                    <?= renderIcon('heart', 'feedback__icon') ?>
-                    <span class="feedback-btn__value">
-                        <?= $data['likes'] ?>
-                    </span>
-                </button>
-            </div>
-
-            <?php
-                App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                    className: 'post-content__button-share share-button',
-                    text: 'Поделиться',
-                    icon: 'share',
-                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
-                );
-            ?>
+            <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                className: 'post-content__button-share share-button',
+                text: 'Поделиться',
+                icon: 'share',
+                style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+            ); ?>
         </div>
     </div>
 </section>

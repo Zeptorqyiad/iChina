@@ -9,6 +9,14 @@
         grid-template-columns: repeat(3, 1fr);
         @include spacing(column-gap, 20px);
         @include spacing(row-gap, 40px);
+
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include Mobile {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__item {}
