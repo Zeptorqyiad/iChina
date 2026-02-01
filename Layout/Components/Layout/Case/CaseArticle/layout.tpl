@@ -20,9 +20,9 @@
             <?php endif; ?>
 
             <?php if ($data['tini']): ?>
-                <h3 class="case-content__tini content">
+                <div class="case-content__tini content">
                     <?= $data['tini'] ?>
-                </h3>
+                </div>
             <?php endif; ?>
 
             <!-- Вторая секция  -->
@@ -72,7 +72,7 @@
 
             <?php if ($data['image-third']): ?>
                 <img class="case-content__image"
-                     src="<?= $data['image-third'] ?>"
+                     src="/uf/images/source/<?= $data['image-third'] ?>"
                      alt=""
                 >
             <?php endif; ?>
@@ -85,7 +85,9 @@
             <?php if ($data['image-list']): ?>
                 <div class="case-content__list-image">
                     <?php foreach ($data['image-list'] as $i): ?>
-                        <img class="case-content__image" src="<?= $i['image'] ?>>" alt="">
+                        <img class="case-content__image"
+                             src="<?= $i['image'] ?>"
+                             alt="">
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
@@ -124,28 +126,39 @@
 
             <!-- Четвертая секция  -->
 
-            <h3 class="case-content__title">
-                Отзыв клиента:
-            </h3>
-            <div class="case-content__text">
-                «iChina обеспечила полную прозрачность и соблюдение сроков — мы получили продукт и запуск без стресса».
-            </div>
+            <?php if ($data['fourth_title']): ?>
+                <h3 class="case-content__title">
+                    <?= $data['fourth_title'] ?>
+                </h3>
+            <?php endif; ?>
+
+            <?php if ($data['fourth_text']): ?>
+                <div class="case-content__text">
+                    <?= $data['fourth_text'] ?>
+                </div>
+            <?php endif; ?>
             <div class="case-content__buttons">
                 <?php
-                    App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                        text: 'Связаться',
-                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
-                        size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
-                    );
-                    App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                        text: 'Связаться',
-                        size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
-                    );
+                    if ($data['fourth_button_text_1']) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            text: $data['fourth_button_text_1'],
+                            link: $data['fourth_button_link_1'],
+                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                            size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                        );
+                    }
+                    if ($data['fourth_button_text_2']) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            text: $data['fourth_button_text_2'],
+                            link: $data['fourth_button_link_2'],
+                            size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                        );
+                    }
                 ?>
             </div>
 
             <?php if ($data['video']): ?>
-                <div class="case-content__video">
+                <div class="case-content__video" data-case-video>
                     <video
                         playsinline
                         loop
@@ -156,15 +169,22 @@
                                 type="video/<?= pathinfo($data['video'], PATHINFO_EXTENSION) ?>">
                         Ваш браузер не поддерживает видео.
                     </video>
+                    <button class="case-content__video-play" type="button" aria-label="Play video">
+                        <span class="case-content__video-play-circle">
+                            <?= renderIcon('play', 'case-content__video-play-icon') ?>
+                        </span>
+                    </button>
                 </div>
             <?php endif; ?>
 
-            <div class="case-content__desc">
-                Description
-            </div>
+            <?php if ($data['video_desc']): ?>
+                <div class="case-content__desc">
+                    <?= $data['video_desc'] ?>
+                </div>
+            <?php endif; ?>
 
             <?php if ($data['video_v']): ?>
-                <div class="case-content__video video-vertical">
+                <div class="case-content__video video-vertical" data-case-video>
                     <video
                         playsinline
                         loop
@@ -175,22 +195,35 @@
                                 type="video/<?= pathinfo($data['video_v'], PATHINFO_EXTENSION) ?>">
                         Ваш браузер не поддерживает видео.
                     </video>
+                    <button class="case-content__video-play" type="button" aria-label="Play video">
+                        <span class="case-content__video-play-circle">
+                            <?= renderIcon('play', 'case-content__video-play-icon') ?>
+                        </span>
+                    </button>
                 </div>
             <?php endif; ?>
-            <div class="case-content__desc">
-                Description
-            </div>
-            <div class="case-content__text">
-                Текст
-            </div>
-            <div class="case-content__date">
-                21.02.2024
-            </div>
+
+            <?php if ($data['video_v_desc']): ?>
+                <div class="case-content__desc">
+                    <?= $data['video_v_desc'] ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($data['video_v_text']): ?>
+                <div class="case-content__text">
+                    <?= $data['video_v_text'] ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($data['date']): ?>
+                <div class="case-content__date">
+                    <?= $data['date'] ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="case-article__buttons">
-            <?php
-            App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+            <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'case-article__button',
                 text: 'Назад',
                 icon: 'arrow-left',

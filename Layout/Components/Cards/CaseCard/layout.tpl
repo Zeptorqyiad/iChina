@@ -17,35 +17,32 @@
                 text: 'Подробнее',
                 link: $data['link'],
                 icon: 'arrow-right',
-                style: \App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
-                iconPos: \App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+                style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Gray,
+                iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
                 attributes: [
                     'draggable' => 'false'
                 ]
             ); ?>
         </div>
 
-        <div class="case-card__badges">
-            <?php
-            App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
-                text: 'Услуга',
-                style: App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
-                size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
-            );
-            App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
-                text: 'Вид товара',
-                style: App\Layout\Components\UI\Core\Badge\BadgeStyle::GradientLight,
-                size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
-            );
-            ?>
-        </div>
+        <?php if (!empty($data['badge'])): ?>
+            <div class="case-card__badges">
+                <?php App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
+                    text: $data['badge'],
+                    style: App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
+                    size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
+                ); ?>
+            </div>
+        <?php endif; ?>
 
-        <img class="case-card__image"
-             src="/uf/images/source/<?= $data['photo'] ?>"
-             alt=""
-             draggable="false"
-             loading="lazy"
-        >
+        <?php if ($data['photo']): ?>
+            <img class="case-card__image"
+                 src="/uf/images/source/<?= $data['photo'] ?>"
+                 alt=""
+                 draggable="false"
+                 loading="lazy"
+            >
+        <?php endif; ?>
     </div>
 
     <div class="case-card__text">

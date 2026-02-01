@@ -102,7 +102,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         App\Layout\Components\Sliders\CasesSlider\Layout::draw([
             'title' => 'Наши кейсы',
             'link' => '/cases/',
-        ]); // Отедельно дорабатывать
+        ]);
 
         App\Layout\Components\Common\Stages\Layout::draw([
             'title' => $content['params']['main_stages-title'],

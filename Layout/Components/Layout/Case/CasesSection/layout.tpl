@@ -3,6 +3,10 @@
 
 $totalCount = App\Extensions\Cases\Model\CasesCategory::getTotalCount();
 $cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
+$catMap = [];
+foreach ($cats as $cat) {
+    $catMap[$cat->cc_id] = $cat->name;
+}
 ?>
 
 <section class="cases-section">
@@ -37,7 +41,7 @@ $cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
                     short: $i->short ?? '',
                     photo: $i->photo_min ?? '',
                     link: $i->alias . '/',
-                    badge: $i->badge ?? '',
+                    badge: $catMap[$i->cc_id] ?? '',
                 ); ?>
             <?php endforeach; ?>
         </div>

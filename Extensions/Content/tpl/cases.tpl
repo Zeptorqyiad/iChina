@@ -39,16 +39,16 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
-            'title' => $index['params']['form-feedback_title'] ?? 'Обратная связь',
-            'desc' => $index['params']['form-feedback_desc'] ?? 'Оставьте заявку, чтобы получить консультацию',
-      	    'image' => $content['params']['form-feedback-img'] ?? '/assets/images/Main/Form.png',
+            'title' => $index['params']['form-feedback_title'],
+            'desc' => $index['params']['form-feedback_desc'],
+      	    'image' => $index['params']['form-feedback-img'],
         ]);
 
         App\Layout\Components\Common\Seo\Layout::draw([
-                'seo-title' => $this->review->seo_title ?? '',
-                'seo-desc' => $this->review->seo_desc ?? '',
-                'seo2-title' => $this->review->seo2_title ?? '',
-                'seo2-desc' => $this->review->seo2_desc ?? '',
+            'seo-title' => $this->review->seo_title ?? '',
+            'seo-desc' => $this->review->seo_desc ?? '',
+            'seo2-title' => $this->review->seo2_title ?? '',
+            'seo2-desc' => $this->review->seo2_desc ?? '',
         ]);
     ?>
 </main>
