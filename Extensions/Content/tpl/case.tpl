@@ -21,6 +21,10 @@ App\Layout\Components\Common\Header\Layout::draw([
     ]);
 
     App\Layout\Components\Layout\Case\CaseArticle\Layout::draw([
+        'first-id' => $this->case->first_id,
+        'second-id' => $this->case->second_id,
+        'third-id' => $this->case->third_id,
+        'fourth-id' => $this->case->fourth_id,
         'nav-title' => $this->case->nav_title,
         'link' => $this->case->getLinkTo(),
         'tini' => $this->case->tini,

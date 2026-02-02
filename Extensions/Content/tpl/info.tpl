@@ -14,6 +14,8 @@ App\Layout\Components\Common\Header\Layout::draw();
         );
 
         App\Layout\Components\Common\InfoSection\Layout::draw([
+            'nav-title' => $content['params']['info_nav-title'],
+            'link' => self::getTableFrom('info_nav-link', $content),
             'text' => self::getTableFrom('info_page_text', $content),
         ]);
     ?>

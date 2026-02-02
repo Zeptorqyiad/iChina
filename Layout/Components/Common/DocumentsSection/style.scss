@@ -50,4 +50,28 @@
         grid-template-columns: repeat(2, 1fr);
         @include spacing(gap, 12px);
     }
+
+    &__anchor {
+        @include spacing(padding, 20px);
+        @include spacing(border-radius, 20px);
+        @include spacing(padding-bottom, 12px);
+        background: var(--gray-lighter);
+        width: 100%;
+
+        &--title {
+            @include h4;
+            color: var(--gray-darker);
+            @include spacing(margin-bottom, 16px);
+        }
+        &--link {
+            @include t2;
+            color: var(--color1-dark);
+            width: 100%;
+            display: block;
+
+            &:not(:last-child) {
+                @include spacing(margin-bottom, 4px);
+            }
+        }
+    }
 }

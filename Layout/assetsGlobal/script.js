@@ -1139,3 +1139,49 @@ async function makeFeedback(id, like, hadOld) {
         });
     });
 }
+
+//!===========================================================
+//! ANCHOR OFFSET (FIXED HEADER)
+//!===========================================================
+(() => {
+    const ANCHOR_OFFSET = 120;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function scrollToHash(hash, replaceState = false) {
+        if (!hash) return;
+        const id = decodeURIComponent(hash.replace('#', ''));
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - ANCHOR_OFFSET;
+        const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+        window.scrollTo({top: Math.max(0, targetTop), behavior});
+
+        if (replaceState) {
+            history.replaceState(null, '', `#${id}`);
+        }
+    }
+
+    document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        event.preventDefault();
+        scrollToHash(href);
+        history.pushState(null, '', href);
+    });
+
+    window.addEventListener('hashchange', () => {
+        scrollToHash(window.location.hash, true);
+    });
+
+    window.addEventListener('load', () => {
+        if (window.location.hash) {
+            scrollToHash(window.location.hash, true);
+        }
+    });
+})();

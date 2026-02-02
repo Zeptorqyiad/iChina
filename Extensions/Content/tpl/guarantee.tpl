@@ -14,7 +14,10 @@ App\Layout\Components\Common\Header\Layout::draw();
     );
 
     App\Layout\Components\Common\InfoSection\Layout::draw([
+        'nav-title' => $content['params']['guarantee_nav-title'],
+        'link' => self::getTableFrom('guarantee_nav-link', $content),
         'text' => self::getTableFrom('guarantee_page_text', $content),
+        'is_form' => $content['params']['guarantee-is_form']
     ]);
     ?>
 </main>

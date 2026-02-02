@@ -11,6 +11,19 @@ $cats = App\Extensions\Site\Model\DocumentsCategory::findAdv()->all();
         <?php App\Layout\Components\Common\NavSticky\Layout::draw(); ?>
 
         <div class="documents-section__body content documents-container">
+            <?php if ($data['nav-title'] || $data['link']): ?>
+                <div class="documents-section__anchor">
+                    <h4 class="documents-section__anchor--title">
+                        <?= $data['nav-title'] ?>
+                    </h4>
+                    <?php foreach ($data['link'] as $i): ?>
+                        <a href="#<?= $i['link'] ?>" class="documents-section__anchor--link">
+                            <?= $i['title'] ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
             <?php if ($data['title']): ?>
                 <h2 class="document-section__body--title uppercase">
                     <?= $data['title'] ?>
@@ -25,7 +38,7 @@ $cats = App\Extensions\Site\Model\DocumentsCategory::findAdv()->all();
             <div class="documents-section__items">
                 <?php foreach ($cats as $c): ?>
                     <?php if ($children = $c->getChildrenDocuments()): ?>
-                        <div class="documents-section__item">
+                        <div class="documents-section__item" id="<?= $c->anchor ?>">
                             <h3 class="documents-section__item--title">
                                 <?= $c->name ?>
                             </h3>

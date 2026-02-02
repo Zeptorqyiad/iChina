@@ -2,6 +2,7 @@
 /** @var array $content */
 
 App\Layout\Components\Common\Header\Layout::draw();
+
 ?>
 
 <main>
@@ -14,6 +15,8 @@ App\Layout\Components\Common\Header\Layout::draw();
     );
 
     App\Layout\Components\Common\DocumentsSection\Layout::draw([
+        'nav-title' => $content['params']['documents_nav-title'],
+        'link' => self::getTableFrom('documents_nav-link', $content),
         'title' => $content['params']['documents_title'],
         'text' => $content['params']['documents_text'],
     ]);

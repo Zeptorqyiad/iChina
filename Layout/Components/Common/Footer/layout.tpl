@@ -41,7 +41,7 @@ $info = [
         'link' => '/glossary/',
     ],[
         'title' => 'Гарантии',
-        'link' => '/guarantees/',
+        'link' => '/guarantee/',
     ],[
         'title' => 'Политика конфиденциальности',
         'link' => '/documents/policy/',

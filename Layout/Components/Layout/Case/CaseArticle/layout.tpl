@@ -20,12 +20,14 @@
             <?php endif; ?>
 
             <?php if ($data['tini']): ?>
-                <div class="case-content__tini content">
+                <div class="case-content__tini content" id="<?= $data['first-id'] ?>">
                     <?= $data['tini'] ?>
                 </div>
             <?php endif; ?>
 
             <!-- Вторая секция  -->
+
+            <div id="<?= $data['second-id'] ?>"></div>
 
             <?php if ($data['title-s']): ?>
                 <h3 class="case-content__title">
@@ -58,6 +60,8 @@
             <?php endif; ?>
 
             <!-- Третья секция  -->
+
+            <div id="<?= $data['third-id'] ?>"></div>
 
             <?php if ($data['title-third']): ?>
                 <h3 class="case-content__title">
@@ -125,6 +129,8 @@
             <?php endif; ?>
 
             <!-- Четвертая секция  -->
+
+            <div id="<?= $data['fourth-id'] ?>"></div>
 
             <?php if ($data['fourth_title']): ?>
                 <h3 class="case-content__title">
