@@ -7,7 +7,7 @@
     top: auto;
     background: var(--gray-lighter);
     z-index: z('tooltip');
-    transform: translateY(100%) translateZ(0);
+    transform: translateY(150%) translateZ(0);
     will-change: transform, opacity;
     backface-visibility: hidden;
     contain: layout paint;

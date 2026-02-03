@@ -37,21 +37,23 @@
                 </div>
             <?php endif; ?>
 
-            <div class="info-section__form">
-                <div class="info-section__form-top">
-                    <h3 class="info-section__form-top--title">
-                        Связаться
-                    </h3>
-                    <div class="info-section__form-top--subtitle">
-                        Свяжитесь с нами, чтобы обсудить, как мы можем
-                        помочь именно вашему бизнесу.
+            <?php if ($data['is_form_active'] == 1): ?>
+                <div class="info-section__form">
+                    <div class="info-section__form-top">
+                        <h3 class="info-section__form-top--title">
+                            Связаться
+                        </h3>
+                        <div class="info-section__form-top--subtitle">
+                            Свяжитесь с нами, чтобы обсудить, как мы можем
+                            помочь именно вашему бизнесу.
+                        </div>
                     </div>
-                </div>
 
-                <?php App\Layout\Components\Common\Form\Layout::draw([
-                    'className' => 'form-feedback__form',
-                ]); ?>
-            </div>
+                    <?php App\Layout\Components\Common\Form\Layout::draw([
+                        'className' => 'form-feedback__form',
+                    ]); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

@@ -17,6 +17,7 @@ App\Layout\Components\Common\Header\Layout::draw();
             'nav-title' => $content['params']['info_nav-title'],
             'link' => self::getTableFrom('info_nav-link', $content),
             'text' => self::getTableFrom('info_page_text', $content),
+            'is_form_active' => $content['params']['info_form_active'],
         ]);
     ?>
 </main>

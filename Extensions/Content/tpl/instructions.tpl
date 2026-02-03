@@ -15,6 +15,7 @@ App\Layout\Components\Common\Header\Layout::draw();
 
         App\Layout\Components\Common\InfoSection\Layout::draw([
             'text' => self::getTableFrom('instructions_page_text', $content),
+            'is_form_active' => $content['params']['instructions_form_active'],
         ]);
         ?>
     </main>

@@ -2,19 +2,17 @@
     position: fixed;
     display: none;
     z-index: z('tooltip');
-    max-width: calc(100% - 2 * #{vw(8px)});
-    @include spacing(bottom, 8px);
+    bottom: 0;
+    left: 0;
+    background: var(--gray-light);
+    @include spacing(padding-block, 4px);
+    @include spacing(padding-inline, 8px);
 
-    @include HD {
-        max-width: calc(100% - 2 * #{vwh(8px)});
-    }
     @include Tablet {
         display: block;
-        @include spacing(left, 8px);
-        width: 100%;
+        min-width: 100%;
     }
     @include Mobile {
-        right: vwm(8px);
         margin-left: 0;
         margin-right: 0;
         width: unset;

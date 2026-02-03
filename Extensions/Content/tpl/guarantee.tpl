@@ -17,7 +17,7 @@ App\Layout\Components\Common\Header\Layout::draw();
         'nav-title' => $content['params']['guarantee_nav-title'],
         'link' => self::getTableFrom('guarantee_nav-link', $content),
         'text' => self::getTableFrom('guarantee_page_text', $content),
-        'is_form' => $content['params']['guarantee-is_form']
+        'is_form_active' => $content['params']['guarantee_form_active'],
     ]);
     ?>
 </main>
