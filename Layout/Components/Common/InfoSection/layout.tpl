@@ -23,13 +23,33 @@
                 </div>
             <?php endif; ?>
 
+            <?php if ($data['main-title'] || $data['main-text'] || $data['main-card']): ?>
+                <div class="info-section__main">
+                    <?php if ($data['main-title']): ?>
+                        <h2 class="info-section__main--title">
+                            <?= $data['main-title'] ?>
+                        </h2>
+                    <?php endif; ?>
+                    <?php if ($data['main-text']): ?>
+                        <div class="info-section__main--text">
+                            <?= $data['main-text'] ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($data['main-card']): ?>
+                        <div class="info-section__main--card">
+                            <?= $data['main-card'] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
             <?php if ($data['text']): ?>
                 <div class="content">
                     <?php foreach ($data['text'] as $i): ?>
                         <div class="info-section__content-block" id="<?= $i['anchor'] ?>">
-                            <h2>
+                            <h3>
                                 <?= $i['title'] ?>
-                            </h2>
+                            </h3>
 
                             <?= $i['text'] ?>
                         </div>

@@ -15,7 +15,7 @@
 
     &__step {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: vw(440px) 1fr;
         @include spacing(gap, 20px);
 
         &:not(:last-child) {
@@ -27,6 +27,7 @@
 
         @include HD {
             border-width: vwh(1px);
+            grid-template-columns: vwh(400px) 1fr;
         }
         @include Tablet {
             display: flex;

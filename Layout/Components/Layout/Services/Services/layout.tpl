@@ -11,7 +11,7 @@ $categoryRows = ServiceCategory::findAdv()
     ->all();
 
 $bigRows = DB::assoc(
-    'SELECT p.category_id, b.sb_id, b.name, b.alias, b.icon, b.banner_service_subtitle AS short_text
+    'SELECT p.category_id, b.sb_id, b.name, b.shortly, b.alias, b.icon
      FROM service_p2c_big p
      JOIN service_big b ON b.sb_id = p.sb_id
      WHERE b.is_active = 1
@@ -20,7 +20,7 @@ $bigRows = DB::assoc(
 
 
 $smallRows = DB::assoc(
-    'SELECT p.category_id, s.sm_id, s.name, s.alias, NULL AS icon, s.banner_subtitle AS short_text
+    'SELECT p.category_id, s.sm_id, s.name, s.banner_subtitle AS shortly, s.alias, NULL AS icon
      FROM service_p2c_small p
      JOIN service_small s ON s.sm_id = p.sm_id
      WHERE s.is_active = 1
@@ -31,7 +31,7 @@ $servicesByCategory = [];
 foreach ($bigRows as $row) {
     $servicesByCategory[(int)$row['category_id']][] = [
         'text' => $row['name'] ?? '',
-        'short' => $row['short_text'] ?? '',
+        'short' => $row['shortly'] ?? '',
         'icon' => $row['icon'] ?? '',
         'link' => '/' . ($row['alias'] ?? '') . '/',
     ];
@@ -39,7 +39,7 @@ foreach ($bigRows as $row) {
 foreach ($smallRows as $row) {
     $servicesByCategory[(int)$row['category_id']][] = [
         'text' => $row['name'] ?? '',
-        'short' => $row['short_text'] ?? '',
+        'short' => $row['shortly'] ?? '',
         'icon' => $row['icon'] ?? '',
         'link' => '/' . ($row['alias'] ?? '') . '/',
     ];
@@ -74,16 +74,27 @@ foreach ($categoryRows as $row) {
                             <div class="services__step_ls--text">
                                 <?= $category['cat'][0]['subtitle'] ?? 'Тест' ?>
                             </div>
+
+                            <?php
+                            App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                                text: 'Нужна консультация',
+                                size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                                attributes: [
+                                    'onclick' => 'modalManager.open("callback-modal")',
+                                ]
+                            );
+                            ?>
                         </div>
 
                         <div class="services__step_rs">
                             <?php foreach ($category['options'] as $i) {
-                                App\Layout\Components\Cards\ServiceExampleCard\Layout::drawServiceExampleCard(
+                                App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
                                     className: 'service-example-card__link',
                                     title: $i['text'] ?? '',
-                                    text: $i['short'] ?? '',
-                                    img: '/uf/images/source/' . $i['icon'] ?? '',
-                                    link: '/services' . $i['link'] ?? '',
+                                    desc: $i['short'] ?? '',
+                                    link: '/services' . $i['link'],
+                                    image: '/uf/images/source/' . $i['icon'] ?? '',
+                                    style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
                                 );
                             } ?>
                         </div>

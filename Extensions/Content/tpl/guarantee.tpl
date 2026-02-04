@@ -16,6 +16,9 @@ App\Layout\Components\Common\Header\Layout::draw();
     App\Layout\Components\Common\InfoSection\Layout::draw([
         'nav-title' => $content['params']['guarantee_nav-title'],
         'link' => self::getTableFrom('guarantee_nav-link', $content),
+        'main-title' => $content['params']['guarantee_main-title'],
+        'main-text' => $content['params']['guarantee_main-text'],
+        'main-card' => $content['params']['guarantee_main-card'],
         'text' => self::getTableFrom('guarantee_page_text', $content),
         'is_form_active' => $content['params']['guarantee_form_active'],
     ]);

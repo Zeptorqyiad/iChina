@@ -12,6 +12,7 @@ use Simflex\Core\ModelBase;
  * @property string alias
  * @property string path
  * @property string icon
+ * @property string shortly
  *
  * @property string banner_image
  * @property string banner_service_title

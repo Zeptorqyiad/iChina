@@ -1,6 +1,7 @@
 <?php
 /** @var array $data */
 
+$badgeStyle = $data['badgeStyle'] ?? App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient;
 ?>
 
 <div class="case-card <?= $data['className'] ?>">
@@ -29,7 +30,7 @@
             <div class="case-card__badges">
                 <?php App\Layout\Components\UI\Core\Badge\Layout::drawBadge(
                     text: $data['badge'],
-                    style: App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
+                    style: $badgeStyle,
                     size: App\Layout\Components\UI\Core\Badge\BadgeSize::Medium,
                 ); ?>
             </div>

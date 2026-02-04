@@ -13,6 +13,7 @@ class Layout extends LayoutBase
         string             $photo = '',
         string             $link = '',
         string             $badge = '',
+        $badgeStyle = null,
         array              $attributes = []
     ): void
     {
@@ -23,6 +24,7 @@ class Layout extends LayoutBase
                 'photo',
                 'link',
                 'badge',
+                'badgeStyle',
                 'attributes'
             )
         );

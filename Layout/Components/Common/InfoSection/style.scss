@@ -80,4 +80,28 @@
             }
         }
     }
+
+    &__main {
+        &--title {
+            @include h2;
+            color: var(--gray-darker);
+            @include spacing(padding-block, 20px);
+        }
+
+        &--text {
+            @include t2;
+            color: var(--gray-dark);
+            @include spacing(padding-bottom, 20px);
+        }
+
+        &--card {
+            @include t2;
+            color: var(--gray-dark);
+            width: 100%;
+            background: var(--gray-lighter);
+            @include spacing(margin-bottom, 20px, 20px, 12px, 12px);
+            @include spacing(padding, 20px);
+            @include spacing(border-radius, 20px);
+        }
+    }
 }

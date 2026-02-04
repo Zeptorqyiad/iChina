@@ -4,8 +4,10 @@
 $totalCount = App\Extensions\Cases\Model\CasesCategory::getTotalCount();
 $cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
 $catMap = [];
+$catTypeMap = [];
 foreach ($cats as $cat) {
     $catMap[$cat->cc_id] = $cat->name;
+    $catTypeMap[$cat->cc_id] = $cat->type ?? '';
 }
 ?>
 
@@ -23,13 +25,15 @@ foreach ($cats as $cat) {
             );
 
             foreach ($cats as $cat) {
-                App\Layout\Components\UI\Core\Tab\Layout::drawTab(
-                    className: $data['cats'] == $cat->cc_id  ? 'active' : '',
-                    text: $cat->name,
-                    link: '/cases/?c=' . $cat->cc_id,
-                    badge: $cat->getCount(),
-                    size: App\Layout\Components\UI\Core\Tab\TabSize::Small
-                );
+                if (!empty($cat->getCount())) {
+                    App\Layout\Components\UI\Core\Tab\Layout::drawTab(
+                        className: $data['cats'] == $cat->cc_id  ? 'active' : '',
+                        text: $cat->name,
+                        link: '/cases/?c=' . $cat->cc_id,
+                        badge: $cat->getCount(),
+                        size: App\Layout\Components\UI\Core\Tab\TabSize::Small
+                    );
+                }
             }
             ?>
         </div>
@@ -42,6 +46,9 @@ foreach ($cats as $cat) {
                     photo: $i->photo_min ?? '',
                     link: $i->alias . '/',
                     badge: $catMap[$i->cc_id] ?? '',
+                    badgeStyle: ($catTypeMap[$i->cc_id] ?? '') === 'blue'
+                        ? App\Layout\Components\UI\Core\Badge\BadgeStyle::GradientLight
+                        : App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
                 ); ?>
             <?php endforeach; ?>
         </div>
