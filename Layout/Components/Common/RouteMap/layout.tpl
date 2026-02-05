@@ -11,7 +11,6 @@
                     title: $data['title'],
                     titleAccent: $data['title-accent'],
                     desc: $data['desc'],
-                    separator: true
                 );
             ?>
         <?php endif; ?>
@@ -22,7 +21,6 @@
                     <?php
                         App\Layout\Components\Cards\AccordionCard\Layout::drawAccordionCard(
                             title: $i['title'],
-                            image: $i['image'],
                             provider: $i['provider'],
                             city: $i['city'],
                             city2: $i['city2'],
@@ -39,11 +37,13 @@
         </div>
 
         <div class="route-map__images">
-            <img class="route-map__image" src="/assets/images/Main/map.png" alt="map">
+            <img class="route-map__image"
+                 src="/uf/images/source/<?= $data['image'] ?>"
+                 alt="map">
 
             <?php foreach ($data['items'] as $i): ?>
                 <img class="route-map__image-route"
-                     src="<?= $i['image'] ?>"
+                     src="<?= $i['imageRoute'] ?>"
                      alt="map"
                      id="air-china-russia"
                 >

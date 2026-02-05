@@ -64,32 +64,19 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]); //TODO Натянуто,  кроме карточек услуг
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-            'title' => $content['params']['main-benefit_title'] ?? '',
-            'titleAccent' => $content['params']['main-benefit_title-accent'] ?? '',
-            'description' => $content['params']['main-benefits_description'] ?? '',
+            'title' => $content['params']['main-benefit_title'],
+            'titleAccent' => $content['params']['main-benefit_title-accent'],
+            'description' => $content['params']['main-benefits_description'],
             'items' => self::getTableFrom('main-benefit-items', $content),
         ]);
 
         App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $content['params']['route-map_title'] ?? 'Наши ' , // 29
-            'title-accent' => $content['params']['route-map_title-accent'] ?? 'маршруты', // 30
-            'desc' => $content['params']['route-map_desc'] ?? 'Наши специалисты помогут вам выбрать оптимальный маршрут, осуществляем таможенное оформление грузов по всей России', // 31
-            'items' => [
-                [
-                    'title' => 'Авиаперевозка: Китай — Россия',
-                    'image' => '',
-                    'provider' => '',
-                    'city' => 'Шанхай',
-                    'city2' => '',
-                    'city3' => 'Москва',
-                    'city4' => '',
-                    'transportation' => 'Авиаперевозка',
-                    'transportation2' => 'ЖД или автоперевозка',
-                    'transportation3' => '',
-                    'transportation4' => '',
-                ]
-            ]
-        ]); // 32 // TODO оставил npp под них
+            'title' => $content['params']['route-map_title'],
+            'title-accent' => $content['params']['route-map_title-accent'],
+            'desc' => $content['params']['route-map_desc'],
+            'image' => $content['params']['route-map_image'],
+            'items' => self::getTableFrom('route-map_items', $content),
+        ]);
 
         App\Layout\Components\Common\Categories\Layout::draw([
             'title' => $content['params']['categories-title'],

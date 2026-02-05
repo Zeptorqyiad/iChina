@@ -93,17 +93,6 @@ use Simflex\Core\ModelBase;
  * @property string risks_callback_title
  * @property text risks_callback_desc
  *
- * @property string map_title
- * @property text map_desc
- * @property string addresses_title
- * @property string map_image
- * @property string map_image_t
- *
- * @property string route_map_title
- * @property string route_map_title_accent
- * @property text route_map_desc
- * @property text route_map_items
- *
  * @property string o_serv_title
  * @property string o_serv_title_accent
  * @property text o_serv_desc

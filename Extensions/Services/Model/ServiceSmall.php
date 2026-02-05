@@ -22,16 +22,16 @@ use Simflex\Core\ModelBase;
  * @property text banner_card_text
  * @property string banner_card_button_text
  * @property string banner_card_button_link
- * @property text banner_items ['title','text']
+ * @property text banner_items
  *
  * @property string about_title
  * @property string about_title_accent
  * @property text about_desc
  * @property string about_subtitle_left
  * @property text about_desc_left
- * @property text about_bullits ['text']
+ * @property text about_bullits
  * @property text about_accent_text
- * @property text about_items ['text', 'img']
+ * @property text about_items
  * @property string about_image
  * @property string about_offer_title
  * @property text about_offer_desc
@@ -41,7 +41,7 @@ use Simflex\Core\ModelBase;
  *
  * @property string stages_title
  * @property text stages_desc
- * @property text stages_cards ['title','desc']
+ * @property text stages_cards
  * @property string stages_image
  * @property string stages_offer_title
  * @property text stages_offer_desc
@@ -50,23 +50,23 @@ use Simflex\Core\ModelBase;
  * @property string risks_title
  * @property string risks_title_accent
  * @property text risks_desc
- * @property text risks_tap ['title','desc']
+ * @property text risks_tap
  * @property string risks_callback_title
  * @property text risks_callback_desc
  *
  * @property string o_serv_title
  * @property string o_serv_title_accent
  * @property text o_serv_desc
- * @property text o_serv_items ['title','desc','link','image']
+ * @property text o_serv_items
  *
  * @property string benefits_title
  * @property string benefits_title_accent
  * @property text benefits_description
- * @property text benefits_items ['image','title','text']
+ * @property text benefits_items
  *
  * @property string faq_title
  * @property text faq_desc
- * @property text faq_faq ['question','answer']
+ * @property text faq_faq
  *
  * @property string form_title
  * @property text form_desc

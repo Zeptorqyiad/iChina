@@ -72,9 +72,9 @@ $vk = Simflex\Core\Core::siteParam('vk');
 
                     <div class="contact-section__info-row--container">
                         <?php if ($workhours):?>
-                            <p class="contact-section__info-row--text-lh">
+                            <div class="contact-section__info-row--text-lh">
                                 <?= '{workhours}' ?>
-                            </p>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -88,9 +88,9 @@ $vk = Simflex\Core\Core::siteParam('vk');
                     <div class="contact-section__info-row--container">
                         <?php if ($address):?>
 
-                            <p class="contact-section__info-row--text-lh">
+                            <div class="contact-section__info-row--text-lh">
                                 <?='{address}'?>
-                            </p>
+                            </div>
                         <?php endif; ?>
                     </div>
 

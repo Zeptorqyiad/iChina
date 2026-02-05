@@ -10,6 +10,7 @@ $reviews = Reviews::findAdv()
         ->all();
 
 $index = $content->loadFrom('/');
+$about = $content->loadFrom('/about/');
 
 App\Layout\Components\Common\Header\Layout::draw([
 	'absolute' => true,
@@ -137,35 +138,20 @@ App\Layout\Components\Common\Header\Layout::draw([
             ]);
         }
 
-        if ($this->service->map_title || $this->service->map_desc) {
-            App\Layout\Components\Common\Map\Layout::draw([
-                'main-title' => $this->service->map_title,
-                'main-desc' => $this->service->map_desc,
-                'addresses-title' => $this->service->addresses_title,
-                'image' => $this->service->map_image,
-                'image-t' => $this->service->map_image_t,
-            ]);
-        }
+        App\Layout\Components\Common\Map\Layout::draw([
+            'title' => $about['params']['about_map-title'],
+            'desc' => $about['params']['about_map-desc'],
+            'addresses-title' => $about['params']['about_map-addresses-title'],
+            'image' => $about['params']['about_map-image'],
+            'image-t' => $about['params']['about_map-image-t'],
+        ]);
 
         App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $this->service->route_map_title ?: $index['route-map_title'],
-            'title-accent' => $this->service->route_map_title_accent ?: $index['route-map_title-accent'],
-            'desc' => $this->service->route_map_desc ?: $index['route-map_desc'],
-            'items' => $this->service->route_map_items ?? [
-                [
-                    'title' => 'Авиаперевозка: Китай — Россия',
-                    'image' => '',
-                    'provider' => '',
-                    'city' => 'Шанхай',
-                    'city2' => '',
-                    'city3' => 'Москва',
-                    'city4' => '',
-                    'transportation' => 'Авиаперевозка',
-                    'transportation2' => 'ЖД или автоперевозка',
-                    'transportation3' => '',
-                    'transportation4' => '',
-                ]
-            ]
+            'title' => $index['params']['route-map_title'],
+            'title-accent' => $index['params']['route-map_title-accent'],
+            'desc' => $index['params']['route-map_desc'],
+            'image' => $index['params']['route-map_image'],
+            'items' => self::getTableFrom('route-map_items', $index),
         ]);
 
         App\Layout\Components\Common\Categories\Layout::draw([
