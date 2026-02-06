@@ -146,13 +146,15 @@ App\Layout\Components\Common\Header\Layout::draw([
             'image-t' => $about['params']['about_map-image-t'],
         ]);
 
-        App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $index['params']['route-map_title'],
-            'title-accent' => $index['params']['route-map_title-accent'],
-            'desc' => $index['params']['route-map_desc'],
-            'image' => $index['params']['route-map_image'],
-            'items' => self::getTableFrom('route-map_items', $index),
-        ]);
+        if (!empty($index['params']['route-map_title'])) {
+            App\Layout\Components\Common\RouteMap\Layout::draw([
+                'title' => $index['params']['route-map_title'],
+                'title-accent' => $index['params']['route-map_title-accent'],
+                'desc' => $index['params']['route-map_desc'],
+                'image' => $index['params']['route-map_image'],
+                'items' => self::getTableFrom('route-map_items', $index),
+            ]);
+        }
 
         App\Layout\Components\Common\Categories\Layout::draw([
             'title' => $index['params']['categories-title'],
@@ -183,6 +185,14 @@ App\Layout\Components\Common\Header\Layout::draw([
             'link' => '/reviews/',
             'cards' => $reviews,
         ]);
+
+        if (!empty($this->service->getFaqs())) {
+            App\Layout\Components\Common\Faq\Layout::draw([
+                'title' => $this->service->faq_title,
+                'desc' => $this->service->faq_desc,
+                'faq' => $this->service->getFaqs(),
+            ]);
+        }
 
         App\Layout\Components\Common\Info\Layout::draw([
             'title' => $index['params']['info_title'],

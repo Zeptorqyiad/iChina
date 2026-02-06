@@ -10,8 +10,7 @@
                 App\Layout\Components\UI\Core\Tab\Layout::drawTab(
                     className: 'tab-nav__tab tab-sticky__tab',
                     text: $i['title'],
-                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
-                    size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
+                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Outline,
                 );
             } ?>
         </div>

@@ -98,6 +98,10 @@ use Simflex\Core\ModelBase;
  * @property text o_serv_desc
  * @property text o_serv_items
  *
+ * @property string faq_title 90
+ * @property text faq_desc 91
+ * @property text faq_faq 92
+ *
  * @property string form_title
  * @property text form_desc
  * @property string form_image
@@ -156,5 +160,9 @@ class ServiceBig extends ModelBase
     public function getQuestions(): array
     {
         return json_decode($this->risks_questions, true)['v'] ?? [];
+    }
+    public function getFaqs(): array
+    {
+        return json_decode($this->faq_faq, true)['v'] ?? [];
     }
 }

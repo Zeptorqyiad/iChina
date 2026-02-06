@@ -18,18 +18,14 @@
         </div>
 
         <?php if($data['text']): ?>
-            <?php
-                App\Layout\Components\Common\TabList\Layout::draw([
-                    'text' => $data['text'],
-                ]);
-            ?>
+            <?php App\Layout\Components\Common\TabList\Layout::draw([
+                'text' => $data['text'],
+            ]); ?>
 
             <div class="risks__body">
-                <?php
-                    App\Layout\Components\Common\TabSticky\Layout::draw([
-                        'text' => $data['text'],
-                    ]);
-                ?>
+                <?php App\Layout\Components\Common\TabSticky\Layout::draw([
+                    'text' => $data['text'],
+                ]); ?>
 
                 <?php foreach($data['text'] as $i): ?>
                     <div class="risks__body-text">

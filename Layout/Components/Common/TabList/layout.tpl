@@ -11,7 +11,6 @@
                     className: 'tab-nav__tab tab-list__tab',
                     text: $i['title'],
                     style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
-                    size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
                 );
             } ?>
         </div>

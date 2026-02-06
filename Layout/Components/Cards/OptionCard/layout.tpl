@@ -18,6 +18,7 @@
         <?php endif; ?>
 
         <?php App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
+            className: 'content',
             desc: $data['desc'],
         ); ?>
     </div>
