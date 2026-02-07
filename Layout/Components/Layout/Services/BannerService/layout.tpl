@@ -45,7 +45,7 @@
                 <div class="banner-service__center-rs">
                     <?php if ($data['card-title'] || $data['card-text']) {
                         App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
-                            title: $data['card-title'],
+                            title: $data['card-title'] ?? '',
                             text: $data['card-text'] ?? '',
                             buttonText: $data['button-text'] ?? '',
                             buttonLink: $data['button-link'] ?? '',

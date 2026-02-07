@@ -5,6 +5,25 @@ $tg = Simflex\Core\Core::siteParam('tg');
 $vk = Simflex\Core\Core::siteParam('vk');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 $max_social = Simflex\Core\Core::siteParam('max_social');
+
+$dropdown = [
+    [
+        'text' => 'Частые вопросы',
+        'link' => '/faq/',
+    ],[
+        'text' => 'Гарантия и безопасность',
+        'link' => '/guarantee/',
+    ],[
+        'text' => 'Глоссарий',
+        'link' => '/glossary/',
+    ],[
+        'text' => 'Инструкция для клиентов',
+        'link' => '/instructions/',
+    ],[
+        'text' => 'Список городов',
+        'link' => '/cities/',
+    ]
+]
 ?>
 
 <header class="header <?= $data['absolute'] ? 'absolute' : 'fixed' ?>">
@@ -74,9 +93,22 @@ $max_social = Simflex\Core\Core::siteParam('max_social');
                     <a class="header__items--link" draggable="false" href="/cases/">
                         Кейсы
                     </a>
-                    <a class="header__items--link" draggable="false" href="/info/">
-                        Информация
-                    </a>
+                    <div class="header__items-drop">
+                        <a class="header__items--link header__items--link-chevron" draggable="false" href="/info/">
+                            Информация
+                            <?= renderIcon('chevron-up', 'header__items-drop--chevron') ?>
+                        </a>
+
+                        <div class="header__items-drop-dropdown">
+                            <?php foreach($dropdown as $i): ?>
+                                <a href="<?= $i['link'] ?>" class="header__items-drop-dropdown--link">
+                                    <span>
+                                        <?= $i['text'] ?>
+                                    </span>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                     <a class="header__items--link" draggable="false" href="/contacts/">
                         Контакты
                     </a>

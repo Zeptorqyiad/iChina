@@ -8,11 +8,11 @@
         <div class="banner-service__card--title">
             <?= $data['title'] ?>
         </div>
-    <?php endif; ?>
 
-    <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-        theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
-    ); ?>
+        <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+            theme: App\Layout\Components\UI\Core\Separator\SeparatorTheme::Medium,
+        ); ?>
+    <?php endif; ?>
 
     <?php if ($data['text']): ?>
         <div class="banner-service__card--text">

@@ -13,12 +13,42 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         @include spacing(gap, 20px, 20px, 16px, 16px);
+        counter-reset: stages-step;
 
         @include Tablet {
             grid-template-columns: repeat(2, 1fr);
         }
         @include Mobile {
             grid-template-columns: repeat(1, 1fr);
+        }
+
+        .stages__step {
+            counter-increment: stages-step;
+        }
+
+        .step-card__marker {
+            position: relative;
+
+            &::before {
+                content: counter(stages-step);
+                @include t3-b;
+                line-height: 1;
+                color: inherit;
+            }
+        }
+
+        .step-card__marker--number::before {
+            content: none;
+        }
+
+        .stages__step:last-child {
+            .step-card__marker::before {
+                content: none;
+            }
+        }
+
+        .marker__icon {
+            display: none;
         }
 
         .step-card__marker {

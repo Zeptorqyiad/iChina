@@ -63,9 +63,33 @@
 		}
 		& .header__items--link {
 			color: var(--gray-dark);
+			@include transition((color));
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					color: var(--color1-main);
+				}
+			}
+
+			&:active {
+				color: var(--color1-darker);
+			}
 		}
 		& .header__items-callback--social {
 			background: var(--gray-lighter) !important;
+		}
+		& .header__items-drop--chevron {
+			color: var(--gray-black);
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					color: var(--color1-main);
+				}
+			}
+
+			&:active {
+				color: var(--color1-darker);
+			}
 		}
 	}
 
@@ -207,17 +231,117 @@
 			@media (hover: hover) and (pointer: fine) {
 				&:hover {
 					color: var(--color1-light);
+
+					& .header__items-drop--chevron {
+						color: var(--color1-light);
+					}
 				}
 			}
 
 			&:active {
 				color: var(--color1-main);
 			}
+
+			&-chevron {
+				display: inline-flex;
+				align-items: center;
+				@include spacing(gap, 4px);
+			}
 		}
-	}
 
-	&__button {
+		&-drop {
+			position: relative;
+			display: flex;
+			flex-direction: row;
+			@include spacing(gap, 4px);
+			align-items: center;
 
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					& .header__items-drop--chevron {
+						transform: rotate(-180deg);
+					}
+
+					& .header__items-drop-dropdown {
+						opacity: 1;
+						visibility: visible;
+						pointer-events: auto;
+					}
+
+					&::before {
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				@include spacing(height, 12px);
+				top: 116%;
+				left: 0;
+				background-image: url("data:image/svg+xml,%3Csvg width='8' height='4' viewBox='0 0 8 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 4L-1.74846e-07 4L2.40074 0.799834C3.20078 -0.266613 4.79922 -0.266611 5.59926 0.799836L8 4Z' fill='white'/%3E%3C/svg%3E%0A");
+				background-repeat: no-repeat;
+				background-size: auto;
+				@include spacing(background-position-x, 66px);
+				background-position-y: 0;
+				opacity: 0;
+				visibility: hidden;
+				@include transition((opacity, visibility), '0.3s');
+			}
+
+			&--chevron {
+				@include icon(16px);
+				color: var(--gray-white);
+				@include transition((transform), '0.3s');
+			}
+
+			&-dropdown {
+				position: absolute;
+				@include spacing(top, 50px);
+				@include spacing(left, -40px);
+				width: 100%;
+				@include spacing(min-width, 220px);
+				height: fit-content;
+				background: var(--gray-white);
+				@include spacing(padding, 12px);
+				@include spacing(border-radius, 20px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				@include spacing(gap, 12px);
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+				@include transition((opacity, visibility), '0.3s');
+				will-change: opacity;
+
+				&--link {
+					@include spacing(padding, 8px);
+
+					span {
+						@include t3;
+						color: var(--gray-darker);
+						white-space: nowrap;
+						@include spacing(padding-block, 2px);
+						@include spacing(padding-inline, 4px);
+						@include transition((color));
+
+						@media (hover: hover) and (pointer: fine) {
+							&:hover {
+								color: var(--color1-main)
+							}
+						}
+
+						&:active {
+							color: var(--color1-dark);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	&__burger {

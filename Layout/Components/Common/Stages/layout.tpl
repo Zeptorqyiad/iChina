@@ -7,6 +7,7 @@ if (is_string($rawCards)) {
     $rawCards = is_array($decoded) ? ($decoded['v'] ?? $decoded) : [];
 }
 $serviceCards = is_array($rawCards) ? $rawCards : [];
+$defaultLastImage = $data['last-image'] ?? '/assets/images/Main/heart.png';
 ?>
 
 <section class="stages <?= $data['className'] ?>">
@@ -32,12 +33,18 @@ $serviceCards = is_array($rawCards) ? $rawCards : [];
                     $num = '';
                     $button = '';
                     $style = App\Layout\Components\Cards\StepCard\StepCardStyle::Outline;
+                    $lastImage = $cards[$i]['img'] ?? $defaultLastImage;
 
                     if ($i === 0) {
                         $button = 'Оставить заявку';
                         $num = '1';
                     } elseif ($i >= 1 && $i <= 8) {
                         $num = (string) ($i + 1);
+                    }
+                    if ($i === (count($cards) - 1) && $lastImage) {
+                        $img = $lastImage;
+                        $num = '';
+                        $style = App\Layout\Components\Cards\StepCard\StepCardStyle::White;
                     }
 
                     App\Layout\Components\Cards\StepCard\Layout::drawStepCard(
@@ -84,6 +91,7 @@ $serviceCards = is_array($rawCards) ? $rawCards : [];
                     $num = '';
                     $button = '';
                     $style = App\Layout\Components\Cards\StepCard\StepCardStyle::Outline;
+                    $lastImage = $cards[$i]['img'] ?? $defaultLastImage;
 
                     if ($i === 0) {
                         $button = 'Оставить заявку';
@@ -92,6 +100,11 @@ $serviceCards = is_array($rawCards) ? $rawCards : [];
                         $num = (string) ($i + 1);
                     } elseif ($i === 5) {
                         $img = $cards[$i]['img'] ?? '';
+                        $style = App\Layout\Components\Cards\StepCard\StepCardStyle::White;
+                    }
+                    if ($i === (count($cards) - 1) && $lastImage) {
+                        $img = $lastImage;
+                        $num = '';
                         $style = App\Layout\Components\Cards\StepCard\StepCardStyle::White;
                     }
 

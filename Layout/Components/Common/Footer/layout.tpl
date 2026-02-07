@@ -21,7 +21,7 @@ $about = [
         'link' => '/about/',
     ],[
         'title' => 'Медиа-центр',
-        'link' => '/media/',
+        'link' => '/blog/',
     ],[
         'title' => 'Отзывы',
         'link' => '/reviews/',

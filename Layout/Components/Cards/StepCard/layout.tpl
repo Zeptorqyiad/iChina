@@ -14,11 +14,25 @@ $stepStyle = $data['stepStyle'] ?? '';
     <div class="step-card__text">
         <div class="step-card__item">
             <?php
-                App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
-                    className: 'step-card__marker',
-                    img: $data['icon'] ?? '',
-                    size: \App\Layout\Components\UI\Core\Marker\MarkerSize::Small,
-                );
+                if (!empty($data['number'])) {
+                    $markerClasses = [
+                        'marker',
+                        'marker-size_s',
+                        'step-card__marker',
+                        'step-card__marker--number',
+                    ];
+                    ?>
+                    <div class="<?= implode(' ', $markerClasses) ?>">
+                        <span class="step-card__marker-text"><?= $data['number'] ?></span>
+                    </div>
+                    <?php
+                } else {
+                    App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
+                        className: 'step-card__marker',
+                        img: $data['icon'] ?? '',
+                        size: \App\Layout\Components\UI\Core\Marker\MarkerSize::Small,
+                    );
+                }
             ?>
             <h3 class="step-card__title">
                 <?= $data['title'] ?>

@@ -16,6 +16,10 @@
         @include Tablet {
             grid-template-columns: 1fr;
         }
+
+        ul {
+            list-style-type: disc !important;
+        }
     }
 
     &__scheme {

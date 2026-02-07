@@ -70,13 +70,15 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('main-benefit-items', $content),
         ]);
 
-        App\Layout\Components\Common\RouteMap\Layout::draw([
-            'title' => $content['params']['route-map_title'],
-            'title-accent' => $content['params']['route-map_title-accent'],
-            'desc' => $content['params']['route-map_desc'],
-            'image' => $content['params']['route-map_image'],
-            'items' => self::getTableFrom('route-map_items', $content),
-        ]);
+        if (!empty(self::getTableFrom('route-map_items', $content))) {
+            App\Layout\Components\Common\RouteMap\Layout::draw([
+                'title' => $content['params']['route-map_title'],
+                'title-accent' => $content['params']['route-map_title-accent'],
+                'desc' => $content['params']['route-map_desc'],
+                'image' => $content['params']['route-map_image'],
+                'items' => self::getTableFrom('route-map_items', $content),
+            ]);
+        }
 
         App\Layout\Components\Common\Categories\Layout::draw([
             'title' => $content['params']['categories-title'],
