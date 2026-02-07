@@ -29,11 +29,11 @@ foreach ($cats as $cat) {
         </ul>
 
         <?php
-        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator();
-        ?>
+            if (!empty($data['pagination']) && (int)($data['pagination']['pages'] ?? 0) > 1) {
+                App\Layout\Components\UI\Core\Separator\Layout::drawSeparator();
 
-        <?php
-//           App\Layout\Components\UI\Other\Pagination\Layout::draw();
+                App\Layout\Components\UI\Other\Pagination\Layout::draw($data['pagination']);
+            }
         ?>
     </div>
 </section>

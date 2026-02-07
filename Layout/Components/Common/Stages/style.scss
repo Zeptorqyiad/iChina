@@ -10,6 +10,7 @@
     }
 
     &__steps {
+        position: relative;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         @include spacing(gap, 20px, 20px, 16px, 16px);
@@ -34,6 +35,19 @@
                 @include t3-b;
                 line-height: 1;
                 color: inherit;
+            }
+
+            img {
+                position: absolute;
+                @include spacing(top, -50px, -50px, -35px, -35px);
+                @include spacing(left, -15px, -15px, -5px, -5px);
+                @include icon(120px);
+                overflow: visible;
+                object-fit: cover;
+
+                @include Tablet {
+                    @include icon(100px);
+                }
             }
         }
 

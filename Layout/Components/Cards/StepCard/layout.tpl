@@ -29,8 +29,9 @@ $stepStyle = $data['stepStyle'] ?? '';
                 } else {
                     App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
                         className: 'step-card__marker',
+                        icon: '',
                         img: $data['icon'] ?? '',
-                        size: \App\Layout\Components\UI\Core\Marker\MarkerSize::Small,
+                        size: App\Layout\Components\UI\Core\Marker\MarkerSize::Small,
                     );
                 }
             ?>

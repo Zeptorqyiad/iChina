@@ -3,6 +3,7 @@
 
 ?>
 
+<?php if ($data['title'] || $data['titleAccent'] || !empty($data['items'])): ?>
 <section class="team">
     <div class="team__container wrapper">
         <?php App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
@@ -25,3 +26,4 @@
         </ul>
     </div>
 </section>
+<?php endif; ?>

@@ -2,11 +2,18 @@
 /** @var array $content */
 
 use App\Extensions\Blog\Model\Blog;
+use App\Extensions\Reviews\Model\Reviews;
 
 $post = Blog::findAdv()
         ->limit(10)
         ->andWhere(['is_active' => 1])
         ->orderBy('npp')
+        ->all();
+
+$review = Reviews::findAdv()
+        ->limit(10)
+        ->orderBy('npp')
+        ->andWhere(['is_active' => 1])
         ->all();
 
 App\Layout\Components\Common\Header\Layout::draw([
@@ -104,6 +111,12 @@ App\Layout\Components\Common\Header\Layout::draw([
             'desc' => $content['params']['certificate-desc'],
             'cards-doc' => self::getTableFrom('certificate-cards_doc', $content),
             'items' => self::getTableFrom('certificate-items', $content),
+        ]);
+
+        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
+            'title' => 'Другие отзывы',
+            'link' => '/reviews/',
+            'cards' => $review,
         ]);
 
         App\Layout\Components\Common\Info\Layout::draw([

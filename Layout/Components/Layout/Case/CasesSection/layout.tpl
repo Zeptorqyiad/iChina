@@ -52,13 +52,11 @@ foreach ($cats as $cat) {
                 ); ?>
             <?php endforeach; ?>
         </div>
-        <?php
-//        App\Layout\Components\UI\Other\Pagination\Layout::draw();
-        ?>
+        <?php if (!empty($data['pagination']) && (int)($data['pagination']['pages'] ?? 0) > 1) {
+
+            App\Layout\Components\UI\Core\Separator\Layout::drawSeparator();
+
+            App\Layout\Components\UI\Other\Pagination\Layout::draw($data['pagination']);
+        } ?>
     </div>
 </section>
-<div class="container">
-    <?php
-        App\Layout\Components\UI\Core\Separator\Layout::drawSeparator();
-    ?>
-</div>

@@ -33,6 +33,17 @@
 	&.fixed {
 		& .header__items--link {
 			color: var(--gray-dark) !important;
+			@include transition((color));
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					color: var(--color1-main) !important;
+				}
+			}
+
+			&:active {
+				color: var(--color1-darker) !important;
+			}
 		}
 
 		& .header__items-callback--social {
@@ -44,6 +55,19 @@
 		}
 		& .header__logo--mobile {
 			display: flex !important;
+		}
+		& .header__items-drop--chevron {
+			color: var(--gray-black);
+
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					color: var(--color1-main);
+				}
+			}
+
+			&:active {
+				color: var(--color1-darker);
+			}
 		}
 	}
 

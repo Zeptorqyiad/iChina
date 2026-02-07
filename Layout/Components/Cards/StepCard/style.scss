@@ -32,8 +32,7 @@
     }
 
     &__marker-text {
-        @include t3-b;
-        line-height: 1;
+        @include h5;
         color: inherit;
     }
 

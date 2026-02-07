@@ -9,15 +9,22 @@ use App\Extensions\Cases\Model\CasesCategory;
 $totalCount = CasesCategory::getTotalCount();
 
 $q = Cases::findAdv()->where(['is_active' => 1]);
-$c = $_REQUEST['c'] ?? 0;
-if ($this->c) {
-    $q->andWhere(['cc_id' => $this->c]);
+$c = (int)($_REQUEST['c'] ?? 0);
+if ($c) {
+    $q->andWhere(['cc_id' => $c]);
 }
 
-
-$pag = $_REQUEST['page'] ?? 0;
-$count = $q->select('count(*)')->fetchScalar();
-$cases = $q->select('*')->limit('16 offset ' . ($pag * 16))->orderBy('npp DESC')->all();
+$perPage = 16;
+$page = max(0, (int)($_REQUEST['page'] ?? 0));
+$count = (int)$q->select('count(*)')->fetchScalar();
+$pages = max(1, (int)ceil($count / $perPage));
+if ($page > $pages - 1) {
+    $page = $pages - 1;
+}
+$cases = $q->select('*')
+    ->limit($perPage . ' offset ' . ($page * $perPage))
+    ->orderBy('npp DESC')
+    ->all();
 
 App\Layout\Components\Common\Header\Layout::draw([
     'subtitle' => $index['params']['header_logo-text'],
@@ -36,6 +43,11 @@ App\Layout\Components\Common\Header\Layout::draw([
         App\Layout\Components\Layout\Case\CasesSection\Layout::draw([
             'items' => $cases,
             'cats' => $c,
+            'pagination' => [
+                'page' => $page,
+                'pages' => $pages,
+                'name' => 'page',
+            ],
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([

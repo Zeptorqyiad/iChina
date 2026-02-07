@@ -9,9 +9,17 @@ $q = Reviews::findAdv()->where(['is_active' => 1]);
 
 $totalCount = Reviews::getTotalCount();
 
-$pag = $_REQUEST['page'] ?? 0;
-$count = $q->select('count(*)')->fetchScalar();
-$cards = $q->select('*')->limit('16 offset ' . ($pag * 16))->orderBy('npp DESC')->all();
+$perPage = 16;
+$page = max(0, (int)($_REQUEST['page'] ?? 0));
+$count = (int)$q->select('count(*)')->fetchScalar();
+$pages = max(1, (int)ceil($count / $perPage));
+if ($page > $pages - 1) {
+    $page = $pages - 1;
+}
+$cards = $q->select('*')
+    ->limit($perPage . ' offset ' . ($page * $perPage))
+    ->orderBy('npp DESC')
+    ->all();
 
 App\Layout\Components\Common\Header\Layout::draw();
 ?>
@@ -25,6 +33,11 @@ App\Layout\Components\Common\Header\Layout::draw();
 
 		App\Layout\Components\Layout\Reviews\ReviewsContent\Layout::draw([
 			'cards' => $cards,
+            'pagination' => [
+                'page' => $page,
+                'pages' => $pages,
+                'name' => 'page',
+            ],
 		]);
 
 		App\Layout\Components\Common\FormFeedback\Layout::draw([
