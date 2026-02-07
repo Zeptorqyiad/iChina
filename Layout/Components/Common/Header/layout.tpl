@@ -4,6 +4,7 @@
 $tg = Simflex\Core\Core::siteParam('tg');
 $vk = Simflex\Core\Core::siteParam('vk');
 $wt = Simflex\Core\Core::siteParam('whats_app');
+$max_social = Simflex\Core\Core::siteParam('max_social');
 ?>
 
 <header class="header <?= $data['absolute'] ? 'absolute' : 'fixed' ?>">
@@ -107,6 +108,15 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                             link: $tg,
                             size: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialSize::Small,
                             theme: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialTheme::Transparent
+                        );
+                    }
+                    if ($max_social) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            className: 'header__items-callback--social',
+                            link: $max_social,
+                            icon: 'social-max',
+                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Monochrome,
+                            size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
                         );
                     }
 

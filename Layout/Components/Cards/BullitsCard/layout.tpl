@@ -10,6 +10,14 @@ $bullitsCardClasses = [
 ?>
 
 <ul class="<?= implode(' ', $bullitsCardClasses) ?>">
+    <?php if ($data['title']): ?>
+        <h4 class="bullits-card__head">
+            <?= $data['title'] ?>
+        </h4>
+
+        <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(); ?>
+    <?php endif; ?>
+
     <?php if ($data['desc']): ?>
         <div class="bullits-card__title">
             <?= $data['desc'] ?>

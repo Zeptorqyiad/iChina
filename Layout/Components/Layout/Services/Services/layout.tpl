@@ -20,7 +20,7 @@ $bigRows = DB::assoc(
 
 
 $smallRows = DB::assoc(
-    'SELECT p.category_id, s.sm_id, s.name, s.banner_subtitle AS shortly, s.alias, NULL AS icon
+    'SELECT p.category_id, s.sm_id, s.name, s.shortly, s.alias, s.icon
      FROM service_p2c_small p
      JOIN service_small s ON s.sm_id = p.sm_id
      WHERE s.is_active = 1
@@ -93,7 +93,7 @@ foreach ($categoryRows as $row) {
                                     title: $i['text'] ?? '',
                                     desc: $i['short'] ?? '',
                                     link: '/services' . $i['link'],
-                                    image: '/uf/images/source/' . $i['icon'] ?? '',
+                                    image: !empty($i['icon']) ? '/uf/images/source/' . $i['icon'] : '',
                                     style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
                                 );
                             } ?>

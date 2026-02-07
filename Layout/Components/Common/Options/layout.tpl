@@ -22,6 +22,7 @@ $items = $data['items']['v'] ?? $data['items'] ?? [];
                     App\Layout\Components\Cards\OptionCard\Layout::drawOptionCard(
                         title: $i['title'] ?? '',
                         image: $i['image'] ?? '',
+                        cardTitle: $i['cardTitle'] ?? 'ghb',
                         desc: $i['desc'] ?? '',
                         text: $i['text'] ?? '',
                         link: $i['link'] ?? '',

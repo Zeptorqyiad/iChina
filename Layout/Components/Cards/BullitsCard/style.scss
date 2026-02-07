@@ -91,6 +91,12 @@
         }
     }
 
+    &__head {
+        @include h4;
+        color: var(--gray-darker);
+        margin: 0;
+    }
+
     /*----------THEME-----------*/
     &-theme_dark {
         background-color: var(--gray-lighter);

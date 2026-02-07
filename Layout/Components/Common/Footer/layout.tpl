@@ -7,6 +7,7 @@ $address = Simflex\Core\Core::siteParam('address');
 $workhours = Simflex\Core\Core::siteParam('workhours');
 $tg = Simflex\Core\Core::siteParam('tg');
 $wt = Simflex\Core\Core::siteParam('whats_app');
+$max_social = Simflex\Core\Core::siteParam('max_social');
 
 $services = [
     [
@@ -182,6 +183,16 @@ $info = [
                                     className: 'footer__social-button',
                                     link: $tg,
                                     size: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialSize::Small,
+                                );
+                            }
+
+                            if ($max_social) {
+                                App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                                        className: 'header__items-callback--social',
+                                        link: $max_social,
+                                        icon: 'social-max',
+                                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Monochrome,
+                                        size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
                                 );
                             }
                             ?>

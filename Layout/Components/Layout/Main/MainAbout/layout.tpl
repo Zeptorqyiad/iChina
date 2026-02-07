@@ -131,6 +131,7 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
             App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
                 title: $data['callback-title'],
                 desc: $data['callback-desc'],
+
             ); ?>
         <?php endif; ?>
     </div>

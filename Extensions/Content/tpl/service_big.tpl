@@ -52,29 +52,25 @@ App\Layout\Components\Common\Header\Layout::draw([
             ]);
         }
 
-        if ($this->service->about_us_title) {
-            App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
-                'title' => $this->service->about_us_title,
-                'title-accent' => $this->service->about_us_title_accent,
-                'title-third' => $this->service->about_us_title_third,
-                'benefits' => $this->service->getAboutBenefits(),
-                'title-why' => $this->service->about_us_title_why,
-                'items-why' => $this->service->getAboutUsItemsWhy(),
-                'cardText-why' => $this->service->about_us_card_text_why,
-                'description-why' => $this->service->about_us_description_why,
-                'callback-title' => $this->service->about_us_callback_title,
-                'callback-desc' => $this->service->about_us_callback_desc,
-            ]);
-        }
+        App\Layout\Components\Layout\Main\MainAbout\Layout::draw([
+            'title' => $this->service->about_us_title ?: $index['params']['main-about_title'],
+            'title-accent' => $this->service->about_us_title_accent ?: $index['params']['main-about_title-accent'],
+            'title-third' => $this->service->about_us_title_third ?: $index['params']['main-about_title-third'],
+            'benefits' => $this->service->getAboutBenefits(),
+            'title-why' => $this->service->about_us_title_why ?: $index['params']['main-about_title-why'],
+            'items-why' => $this->service->getAboutUsItemsWhy() ?: self::getTableFrom('main-about_items-why', $index),
+            'cardText-why' => $this->service->about_us_card_text_why ?: $index['params']['main-about_cardText-why'],
+            'description-why' => $this->service->about_us_description_why ?: $index['params']['main-about_description-why'],
+            'callback-title' => $this->service->about_us_callback_title ?: $index['params']['main-about_callback-title'],
+            'callback-desc' => $this->service->about_us_callback_desc ?: $index['params']['main-about_callback-desc'],
+        ]);
 
-        if ($this->service->benefits_title || !empty($this->service->getBenefitsItems())) {
-            App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
-                'title' => $this->service->benefits_title ?: $index['params']['main-benefit_title'],
-                'titleAccent' => $this->service->benefits_title_accent ?: $index['params']['main-benefit_title-accent'],
-                'description' => $this->service->benefits_description ?: $index['params']['main-benefits_description'],
-                'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
-            ]);
-        }
+        App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
+            'title' => $this->service->benefits_title ?: $index['params']['main-benefit_title'],
+            'titleAccent' => $this->service->benefits_title_accent ?: $index['params']['main-benefit_title-accent'],
+            'description' => $this->service->benefits_description ?: $index['params']['main-benefits_description'],
+            'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
+        ]);
 
         if ($this->service->types_title || !empty($this->service->getTypes())) {
             App\Layout\Components\Common\Types\Layout::draw([
@@ -109,9 +105,11 @@ App\Layout\Components\Common\Header\Layout::draw([
                 'desc' => $this->service->another_about_desc,
                 'subtitle-left' => $this->service->another_about_subtitle_left,
                 'desc-left' => $this->service->another_about_desc_left,
+                'bullitsTitle' => $this->service->another_about_bullits_title,
                 'bullits' => $this->service->getAnotherAboutBullitsList(),
                 'callback-title' => $this->service->another_about_callback_title,
                 'callback-desc' => $this->service->another_about_callback_desc,
+                'callback-button-text' => $this->service->another_about_callback_button_text,
             ]);
         }
 

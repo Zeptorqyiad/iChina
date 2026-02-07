@@ -6,17 +6,26 @@ $cases = App\Extensions\Cases\Model\Cases::findAdv()
     ->limit(15)
     ->orderBy('npp desc')
     ->all();
+
+$cats = App\Extensions\Cases\Model\CasesCategory::findAdv()->all();
+$catMap = [];
+$catTypeMap = [];
+foreach ($cats as $cat) {
+    $catMap[$cat->cc_id] = $cat->name;
+    $catTypeMap[$cat->cc_id] = $cat->type ?? '';
+}
 ?>
 
 <section class="cases-slider js--cases-slider <?= $data['className'] ?>">
 
-    <h2 class="section-title cases-slider__title title wrapper">
-        <?= $data['title'] ?>
-    </h2>
+    <?php if ($data['title']): ?>
+        <h2 class="section-title cases-slider__title title wrapper">
+            <?= $data['title'] ?>
+        </h2>
+    <?php endif; ?>
 
     <div class="cases-slider__buttons wrapper">
-        <?php
-        if ($data['link']) {
+        <?php if ($data['link']) {
             App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                 className: 'cases-slider__button-link',
                 text: 'Показать все',
@@ -47,6 +56,10 @@ $cases = App\Extensions\Cases\Model\Cases::findAdv()
                         short: $i->short ?? '',
                         photo: $i->photo_min ?? '',
                         link: '/cases/' . $i->alias . '/',
+                        badge: $catMap[$i->cc_id] ?? '',
+                        badgeStyle: ($catTypeMap[$i->cc_id] ?? '') === 'blue'
+                                ? App\Layout\Components\UI\Core\Badge\BadgeStyle::GradientLight
+                                : App\Layout\Components\UI\Core\Badge\BadgeStyle::Gradient,
                     );
                 } ?>
             </div>

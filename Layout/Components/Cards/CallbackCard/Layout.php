@@ -10,6 +10,7 @@ class Layout extends LayoutBase
         string           $className = '',
         string           $title = '',
         string           $desc = '',
+        string           $buttonText = '',
         array            $attributes = []
     ): void
     {
@@ -17,6 +18,7 @@ class Layout extends LayoutBase
                 'className',
                 'title',
                 'desc',
+                'buttonText',
                 'attributes'
             )
         );

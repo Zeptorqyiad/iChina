@@ -19,7 +19,7 @@
 
         <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
             className: 'callback-card__info-button-callback',
-            text: 'Оставить заявку',
+            text: $data['buttonText'] ?: 'Оставить заявку',
             attributes: [
                 'onclick' => 'modalManager.open("callback-modal")',
             ]

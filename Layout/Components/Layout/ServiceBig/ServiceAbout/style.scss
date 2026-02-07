@@ -33,6 +33,11 @@
         flex-direction: column;
         @include spacing(gap, 40px, 40px, 32px, 32px);
 
+        & .bullits-card__head {
+            @include t2;
+            color: var(--gray-darker);
+        }
+
         &-text {
             display: flex;
             flex-direction: column;

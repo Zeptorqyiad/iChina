@@ -19,6 +19,7 @@
 
         <?php App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
             className: 'content',
+            title: $data['cardTitle'],
             desc: $data['desc'],
         ); ?>
     </div>

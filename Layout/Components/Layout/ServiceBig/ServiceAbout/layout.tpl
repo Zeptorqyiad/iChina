@@ -41,8 +41,9 @@
                     </div>
                 <?php endif; ?>
 
-                <?php if ($data['bullits']) {
+                <?php if ($data['bullits'] || $data['bullitsTitle']) {
                     App\Layout\Components\Cards\BullitsCard\Layout::drawBullitsCard(
+                        title: $data['bullitsTitle'] ?? '',
                         bullits: $data['bullits'],
                     );
                 } ?>
@@ -94,7 +95,8 @@
             <?php App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
                 className: 'service-about__callback',
                 title: $data['callback-title'] ?? '',
-                desc: $data['callback-desc'] ?? ''
+                desc: $data['callback-desc'] ?? '',
+                buttonText: $data['callback-button-text'] ?? '',
             ); ?>
         <?php endif; ?>
     </div>

@@ -9,6 +9,7 @@ Layout extends LayoutBase
 {
     public static function drawBullitsCard(
         string               $className = '',
+        string               $title = '',
         string               $desc = '',
         array                $bullits = [],
         array                $text = [],
@@ -17,6 +18,7 @@ Layout extends LayoutBase
     {
         static::draw(compact(
             'className',
+            'title',
             'desc',
             'bullits',
             'text',

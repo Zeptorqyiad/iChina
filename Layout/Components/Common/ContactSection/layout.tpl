@@ -13,6 +13,7 @@ $workhours = Simflex\Core\Core::siteParam('workhours');
 $tg = Simflex\Core\Core::siteParam('tg');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 $vk = Simflex\Core\Core::siteParam('vk');
+$max_social = Simflex\Core\Core::siteParam('max_social');
 
 ?>
 
@@ -119,6 +120,15 @@ $vk = Simflex\Core\Core::siteParam('vk');
                                     link: $tg
                                 );
                             }
+
+                            if ($max_social) {
+                                App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                                    className: 'header__items-callback--social',
+                                    link: $max_social,
+                                    icon: 'social-max',
+                                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                                );
+                            }
                             ?>
                         </div>
                     </div>
@@ -126,7 +136,7 @@ $vk = Simflex\Core\Core::siteParam('vk');
             </div>
 
             <div class="contact-section__map">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A28729b750bcad8b79288a6fcbdd6567aafe54566467124634da8fdef05fe39ad&amp;width=920&amp;height=540&amp;lang=ru_RU&amp;scroll=true"></script>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9621d876410349ec0c553599034c60650545fc9faa9e1e0b581bdebd3826189c&amp;width=920&amp;height=650&amp;lang=ru_RU&amp;scroll=true"></script>
             </div>
         </div>
     </div>

@@ -81,18 +81,20 @@ App\Layout\Components\Common\Header\Layout::draw([
             'callback-desc' => $index['params']['categories-callback-desc'],
         ]);
 
-        App\Layout\Components\Common\OtherServices\Layout::draw([
-            'title' => $this->service->o_serv_title,
-            'titleAccent' => $this->service->o_serv_title_accent,
-            'desc' => $this->service->o_serv_desc,
-            'items' => $this->service->o_serv_items
-        ]);
+        if ($this->service->o_serv_title || $this->service->o_serv_desc) {
+            App\Layout\Components\Common\OtherServices\Layout::draw([
+                'title' => $this->service->o_serv_title,
+                'titleAccent' => $this->service->o_serv_title_accent,
+                'desc' => $this->service->o_serv_desc,
+                'items' => $this->service->o_serv_items
+            ]);
+        }
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
             'title' => $this->service->benefits_title ?: $index['params']['main-benefit_title'],
             'titleAccent' => $this->service->benefits_title_accent ?: $index['params']['main-benefit_title-accent'],
             'description' => $this->service->benefits_description ?: $index['params']['main-benefits_description'],
-            'items' => $this->service->getBenefitsItems()
+            'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
         ]);
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([
@@ -125,11 +127,13 @@ App\Layout\Components\Common\Header\Layout::draw([
             'link' => '/cases/',
         ]);
 
-        App\Layout\Components\Common\Faq\Layout::draw([
-            'title' => $this->service->faq_title,
-            'desc' => $this->service->faq_desc,
-            'faq' => $this->service->getFaqs(),
-        ]);
+        if (!empty($this->service->getFaqs())) {
+            App\Layout\Components\Common\Faq\Layout::draw([
+                'title' => $this->service->faq_title,
+                'desc' => $this->service->faq_desc,
+                'faq' => $this->service->getFaqs(),
+            ]);
+        }
 
         App\Layout\Components\Sliders\BlogSlider\Layout::draw([
             'title' => 'медиа-центр',

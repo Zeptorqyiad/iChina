@@ -13,6 +13,15 @@ $workhours = Simflex\Core\Core::siteParam('office_address');
 $tg = Simflex\Core\Core::siteParam('tg');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 $vk = Simflex\Core\Core::siteParam('vk');
+$max_social = Simflex\Core\Core::siteParam('max_social');
+$mapScripts = $data['mapScripts'] ?? [];
+
+if (empty($mapScripts)) {
+    $mapScripts = [
+        '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae0eb2b77dd818b6aab6005ccf70f39e5f8730f2493db3052ae9079c444f7fbbf&amp;width=450&amp;height=600&amp;lang=ru_RU&amp;scroll=true"></script>',
+        '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adba3bdb02a43813c385e9f7984b8122489339f00af268eaf155978a3bd9d6101&amp;width=450&amp;height=600&amp;lang=ru_RU&amp;scroll=true"></script>',
+    ];
+}
 
 ?>
 
@@ -102,6 +111,14 @@ $vk = Simflex\Core\Core::siteParam('vk');
                             type: App\Layout\Components\UI\Core\Buttons\ButtonSocial\ButtonSocialType::Vkontakte,
                         );
                     }
+                    if ($max_social) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            className: 'header__items-callback--social',
+                            link: $max_social,
+                            icon: 'social-max',
+                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                        );
+                    }
                     ?>
                 </div>
             </div>
@@ -109,23 +126,21 @@ $vk = Simflex\Core\Core::siteParam('vk');
 
         <?php if (!empty($data['items'])): ?>
             <div class="contacts__content-rs">
-                <?php foreach ($data['items'] as $i): ?>
+                <?php foreach ($data['items'] as $i => $index): ?>
                     <div class="contacts__content-rs_item">
                         <h5 class="contacts__content-rs_item--title">
-                            <?= $i['title'] ?>
+                            <?= $index['title'] ?>
                         </h5>
                         <div class="contacts__content-rs_item--address">
-                            <?= $i['subtitle'] ?>
+                            <?= $index['subtitle'] ?>
                         </div>
-                        <div class="contacts__content-rs_item--image">
-                            <img src="<?= $i['image'] ?>"
-                                 alt=""
-                                 class="contacts__content-rs_item--image"
-                            >
-                            <img src="/assets/images/Contacts/dot.png"
-                                 alt=""
-                                 class="contacts__content-dot"
-                            >
+                        <div class="contacts__content-rs_item--map">
+                            <?php
+                            $mapScript = $mapScripts[$i] ?? '';
+                            if ($mapScript) {
+                                echo $mapScript;
+                            }
+                            ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

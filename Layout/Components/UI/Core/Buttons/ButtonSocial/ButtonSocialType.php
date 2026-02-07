@@ -12,5 +12,5 @@ enum ButtonSocialType: string
     case Google = 'go';
     case YouTube = 'yt';
     case RuTube = 'rt';
-
+    case Max = 'max';
 }

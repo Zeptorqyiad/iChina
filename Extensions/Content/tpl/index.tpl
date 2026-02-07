@@ -61,7 +61,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'description-why' => $content['params']['main-about_description-why'],
             'callback-title' => $content['params']['main-about_callback-title'],
             'callback-desc' => $content['params']['main-about_callback-desc'],
-        ]); //TODO Натянуто,  кроме карточек услуг
+        ]); // TODO
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
             'title' => $content['params']['main-benefit_title'],
