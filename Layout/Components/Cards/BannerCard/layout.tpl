@@ -21,13 +21,19 @@
     <?php endif; ?>
 
     <?php if ($data['buttonText']) {
+        $buttonLink = $data['buttonLink'] ?? '';
+        $buttonAttributes = [];
+        if (!$buttonLink) {
+            $buttonAttributes['onclick'] = 'modalManager.open("callback-modal")';
+        }
         App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
             className: 'banner-service__card--button',
             text: $data['buttonText'],
-            link: $data['buttonLink'] ?? '',
+            link: $buttonLink,
             icon: 'arrow-right',
             style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
             iconPos: App\Layout\Components\UI\Core\Buttons\Button\ButtonIconPos::Right,
+            attributes: $buttonAttributes,
         );
     }  ?>
 </div>

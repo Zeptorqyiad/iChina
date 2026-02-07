@@ -11,6 +11,7 @@
     @include border-w(2px);
     @include spacing(padding-block, 10px);
     @include spacing(padding-inline, 12px);
+    height: fit-content !important;
 
     &__text {
         @include spacing(margin-inline, 4px);
