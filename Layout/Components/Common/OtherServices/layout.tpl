@@ -1,6 +1,7 @@
 <?php
 /** @var array $data */
 
+var_dump($data['items']);
 ?>
 
 <div class="<?= $data['title'] ? 'other-services' : '' ?>">

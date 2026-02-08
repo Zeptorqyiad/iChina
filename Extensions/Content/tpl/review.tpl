@@ -9,6 +9,7 @@ $items = $q->select('*')
 	->limit(15)
 	->orderBy('npp')
 	->andWhere(['is_active' => 1])
+    ->andWhere('reviews_id != ' . (int)$this->review->reviews_id)
 	->all();
 
 App\Layout\Components\Common\Header\Layout::draw();

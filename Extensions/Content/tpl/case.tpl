@@ -57,6 +57,7 @@ App\Layout\Components\Common\Header\Layout::draw([
     App\Layout\Components\Sliders\CasesSlider\Layout::draw([
         'title' => 'Другие наши кейсы',
         'link' => '/cases/',
+        'id' => $this->case->cases_id
     ]);
 
     App\Layout\Components\Common\FormFeedback\Layout::draw([

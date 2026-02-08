@@ -3,6 +3,7 @@
 
 $cases = App\Extensions\Cases\Model\Cases::findAdv()
     ->where(['is_active' => 1])
+    ->andWhere('cases_id != ' . (int)$data['id'])
     ->limit(15)
     ->orderBy('npp desc')
     ->all();

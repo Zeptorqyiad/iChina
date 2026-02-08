@@ -43,9 +43,9 @@ $accordionCardClasses = [
             <?php endif; ?>
 
             <!-- Первый "Этап перевозки" -->
-            <?php if ($data['transition']): ?>
+            <?php if ($data['transportation']): ?>
                 <div class="accordion-card__info-wrap">
-                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation1'] ?></div>
+                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation'] ?></div>
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>
@@ -60,6 +60,13 @@ $accordionCardClasses = [
                 </div>
             <?php endif; ?>
 
+            <?php if ($data['transportation2']): ?>
+                <div class="accordion-card__info-wrap">
+                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation2'] ?></div>
+
+                    <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
+                </div>
+            <?php endif; ?>
             <!-- Дальше либо второй и т.д. "Города остановки", либо еще "Этапы перевозки" -->
 
             <?php if ($data['city2']): ?>
@@ -68,13 +75,16 @@ $accordionCardClasses = [
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>
-            <?php elseif ($data['transportation2']): ?>
-                <div class="accordion-card__info-wrap">
-                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation2'] ?></div>
+            <?php endif; ?>
+
+            <?php if ($data['transportation3']): ?>
+                <div class="accordion-card__info-wrap ">
+                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation3'] ?></div>
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>
             <?php endif; ?>
+
 
             <?php if ($data['city3']): ?>
                 <div class="accordion-card__info-wrap">
@@ -82,9 +92,11 @@ $accordionCardClasses = [
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>
-            <?php elseif ($data['transportation3']): ?>
+            <?php endif; ?>
+
+            <?php if ($data['transportation4']): ?>
                 <div class="accordion-card__info-wrap ">
-                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation3'] ?></div>
+                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation4'] ?></div>
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>
@@ -93,12 +105,6 @@ $accordionCardClasses = [
             <?php if ($data['city4']): ?>
                 <div class="accordion-card__info-wrap">
                     <div class="accordion-card__info-item accordion-card__info-item-secondary"><?= $data['city4'] ?></div>
-
-                    <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
-                </div>
-            <?php elseif ($data['transportation4']): ?>
-                <div class="accordion-card__info-wrap ">
-                    <div class="accordion-card__info-item accordion-card__info-item-primary"><?= $data['transportation4'] ?></div>
 
                     <?= renderIcon('arrow-right', 'accordion-card__info-arrow') ?>
                 </div>

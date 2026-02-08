@@ -188,11 +188,11 @@ $info = [
 
                             if ($max_social) {
                                 App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                                        className: 'header__items-callback--social',
-                                        link: $max_social,
-                                        icon: 'social-max',
-                                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Monochrome,
-                                        size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
+                                    className: 'header__items-callback--social',
+                                    link: $max_social,
+                                    icon: 'social-max',
+                                    style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,
+                                    size: App\Layout\Components\UI\Core\Buttons\Button\ButtonSize::Small,
                                 );
                             }
                             ?>

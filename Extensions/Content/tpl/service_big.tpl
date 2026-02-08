@@ -162,14 +162,12 @@ App\Layout\Components\Common\Header\Layout::draw([
             'callback-desc' => $index['params']['categories-callback-desc'],
         ]);
 
-        if ($this->service->o_serv_title || $this->service->o_serv_desc) {
-            App\Layout\Components\Common\OtherServices\Layout::draw([
-                'title' => $this->service->o_serv_title,
-                'titleAccent' => $this->service->o_serv_title_accent,
-                'desc' => $this->service->o_serv_desc,
-                'items' => $this->service->o_serv_items
-            ]);
-        }
+        App\Layout\Components\Common\OtherServices\Layout::draw([
+            'title' => $this->service->o_serv_title,
+            'titleAccent' => $this->service->o_serv_title_accent,
+            'desc' => $this->service->o_serv_desc,
+            'items' => $this->service->o_serv_items
+        ]);
 
         App\Layout\Components\Common\Certificate\Layout::draw([
             'title' => $index['params']['certificate-title'],

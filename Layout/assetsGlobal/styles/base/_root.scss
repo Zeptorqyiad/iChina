@@ -242,7 +242,7 @@ h4, h5 {
     }
 
     a {
-        @include t2;
+        @include t2-b;
         color: var(--color1-main);
         transition: color 0.3s ease;
         text-decoration: none;
