@@ -7,13 +7,9 @@
     <div class="banner-service__background-image">
         <img src="/uf/images/source/<?= $data['image'] ?>" alt="">
         <div class="banner-service__background-image--mask"></div>
-        <div class="banner-service__background-image--v-line"></div>
-        <div class="banner-service__background-image--h-line"></div>
-        <div class="banner-service__background-image--ellipse">
-            <svg width="203" height="203" viewBox="0 0 203 203" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M202 202.5H0.501953C0.567029 176.077 5.78903 149.92 15.877 125.506C26.0285 100.938 40.9077 78.6142 59.665 59.8105C78.4225 41.0068 100.691 26.0905 125.198 15.9141C149.552 5.80153 175.643 0.566373 202 0.500977V202.5Z" stroke="#919599"/>
-            </svg>
-        </div>
+        <img class="banner-service__background-image--vector"
+             src="/assets/images/Main/Vector.png"
+             alt="" >
     </div>
 
     <div class="banner-service__container">
@@ -43,6 +39,12 @@
                     <?php endif; ?>
                 </div>
                 <div class="banner-service__center-rs">
+                    <?php if ($data['description']): ?>
+                        <div class="banner-service__description banner-service__description--mobile">
+                            <?= $data['description'] ?>
+                        </div>
+                    <?php endif; ?>
+
                     <?php if ($data['card-title'] || $data['card-text']) {
                         App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
                             title: $data['card-title'] ?? '',
@@ -79,3 +81,20 @@
         </div>
     </div>
 </section>
+
+<div class="banner-service__center-rs banner-service__center-rs--mobile">
+    <?php if ($data['description']): ?>
+        <div class="banner-service__description banner-service__description--mobile">
+            <?= $data['description'] ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($data['card-title'] || $data['card-text']) {
+        App\Layout\Components\Cards\BannerCard\Layout::drawBannerCard(
+                title: $data['card-title'] ?? '',
+                text: $data['card-text'] ?? '',
+                buttonText: $data['button-text'] ?? '',
+                buttonLink: $data['button-link'] ?? '',
+        );
+    } ?>
+</div>

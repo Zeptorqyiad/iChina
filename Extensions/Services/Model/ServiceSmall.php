@@ -76,6 +76,10 @@ use Simflex\Core\ModelBase;
  * @property text seo_desc
  * @property string seo_title_2
  * @property text seo_desc_2
+ *
+ * @property string meta_title
+ * @property text meta_de
+ * @property text meta_kw
  */
 
 class ServiceSmall extends ModelBase

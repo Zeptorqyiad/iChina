@@ -5,14 +5,12 @@
 
 <section class="types">
     <div class="types__container container">
-        <?php
-        if ($data['title'] || $data['desc']) {
+        <?php if ($data['title'] || $data['desc']) {
             App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
                 title: $data['title'] ?? '',
                 desc: $data['desc'] ?? '',
             );
-        }
-        ?>
+        } ?>
 
         <div class="types__cards">
             <?php if ($data['badge']): ?>
@@ -47,7 +45,7 @@
 
                 <?php App\Layout\Components\Cards\AccentCard\Layout::drawAccentCard(
                     text: $data['card-text'] ?? '',
-                    icon: $data['card-image'],
+                    icon: $data['card-image'] ?? '',
                     desc: $data['card-desc'] ?? '',
                 ); ?>
             </div>

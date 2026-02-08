@@ -3,11 +3,12 @@
         display: flex;
         flex-direction: column;
         @include spacing(gap, 12px);
-        @include spacing(width, 340px);
+        @include spacing(width, 340px, 360px, 360px);
         @include spacing(padding, 24px);
         height: fit-content;
         @include border-r(12px);
         background: var(--gray-white);
+        flex-shrink: 0;
 
         & .separator {
             @include spacing(height, 2px);

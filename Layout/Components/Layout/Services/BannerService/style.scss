@@ -1,15 +1,17 @@
 .banner-service {
     position: relative;
-    @include spacing(height, 798px, 650px, 700px, 550px);
+    @include spacing(min-height, 798px, 650px, 700px, 550px);
 
     &__background-image {
-        @include spacing(height, 798px, 650px, 700px, 550px);
+        height: 100%;
         width: 100%;
         z-index: 1;
         overflow: hidden;
         position: absolute;
         top: 0;
         left: 0;
+        right: 0;
+        bottom: 0;
 
         img {
             width: 100%;
@@ -27,62 +29,85 @@
             width: 100%;
             height: 100%;
         }
-        &--v-line {
+
+        &--vector {
             position: absolute;
             top: 0;
-            left: 23%;
-            transform: translate(-23%, 0);
-            @include spacing(width, 1px);
-            background: var(--gray-medium);
-            height: 100%;
-            z-index: 3;
-        }
-        &--h-line {
-            position: absolute;
-            top: 55%;
             left: 0;
-            transform: translate(0, -55%);
-            @include spacing(height, 1px);
-            background: var(--gray-medium);
             width: 100%;
-            z-index: 3;
-        }
-        &--ellipse {
-            position: absolute;
-            top: 39.7%;
-            left: 13.9%;
-            transform: translate(-14%, -39.7%);
-            z-index: 2;
+            height: 100%;
+            opacity: 0.6;
+            z-index: 10;
         }
     }
 
     &__container {
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
         z-index: 4;
         width: 100%;
     }
 
     &__content {
-        @include spacing(padding-block-start, 100px);
+        @include spacing(padding-block-start, 100px, 100px, 70px, 70px);
+
+        & .bread-crumbs__container {
+            margin-inline: 0;
+        }
+
+        & .bread-crumbs__button-home {
+            background: var(--gray-dark) !important;
+
+            svg {
+                color: var(--gray-white) !important;
+            }
+        }
     }
 
     &__center {
-        @include spacing(padding-block-start, 40px);
-        @include spacing(padding-block-end, 110px);
+        @include spacing(padding-block-start, 40px, 40px, 24px, 24px);
+        @include spacing(padding-block-end, 110px, 110px, 100px, 60px);
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
-        @include spacing(margin-right, 250px);
+        justify-content: flex-start;
+        @include spacing(padding-left, 250px, 250px, 0, 0);
+
+        @include Tablet {
+            flex-direction: column;
+            gap: vwt(40px);
+        }
 
         &-ls {
-            @include spacing(width, 800px);
+            @include spacing(width, 800px, 800px);
             display: flex;
             flex-direction: column;
             @include spacing(gap, 133px);
+
+            @include Tablet {
+                width: 100%;
+            }
         }
         &-rs {
+            @include Tablet {
+                display: flex;
+                flex-direction: row;
+                @include spacing(gap, 60px);
+            }
+
+            @include Mobile {
+                display: none;
+            }
+
+            &--mobile {
+                display: none;
+
+                @include Mobile {
+                    display: flex;
+                    flex-direction: column;
+                    @include spacing(padding-inline, 16px);
+                    @include spacing(padding-top, 20px);
+                    gap: vwm(20px);
+                }
+            }
         }
     }
 
@@ -94,6 +119,10 @@
         &--title {
             @include h1;
             color: var(--gray-white);
+
+            @include Mobile {
+                @include h2;
+            }
         }
         &--subtitle {
             @include h3;
@@ -105,22 +134,48 @@
         @include t2;
         color: var(--gray-white);
         @include spacing(width, 660px);
+
+        @include Tablet {
+            display: none;
+        }
+
+        &--mobile {
+            display: none;
+
+            @include Tablet {
+                display: flex;
+                @include t3;
+            }
+            @include Mobile {
+                color: var(--gray-darker);
+                width: 100%;
+            }
+        }
     }
 
     &__bottom {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
-        @include spacing(gap, 70px);
+        @include spacing(gap, 70px, 70px, 20px, 20px);
         justify-content: flex-end;
-        @include spacing(margin-right, 250px);
+        @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+
+        @include Mobile {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 
     &__rullet {
         display: flex;
         flex-direction: column;
-        @include spacing(gap, 12px);
-        @include spacing(width, 224px);
+        @include spacing(gap, 12px, 12px, 8px, 4px);
+        @include spacing(width, 224px, 224px, 220px);
+
+        @include Mobile {
+            width: 100%;
+        }
 
         &--title {
             @include h2;
@@ -129,6 +184,10 @@
         &--text {
             @include t2;
             color: var(--gray-white);
+
+            @include Tablet {
+                @include t3;
+            }
         }
     }
 }

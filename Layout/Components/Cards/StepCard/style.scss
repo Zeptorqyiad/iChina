@@ -21,7 +21,7 @@
 
     &__item {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         @include spacing(gap, 16px);
     }
 

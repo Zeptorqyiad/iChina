@@ -8,7 +8,7 @@
     height: 100%;
 
     @include Mobile {
-        height: vwm(266px);
+        height: fit-content;
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -42,6 +42,7 @@
         position: absolute;
         right: 0;
         bottom: 0;
+        z-index: 5;
 
         img {
             width: 100%;
@@ -56,6 +57,8 @@
     }
 
     &__desc {
+        position: relative;
+        z-index: 10;
         @include t2;
 
         @include Tablet {

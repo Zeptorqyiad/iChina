@@ -53,7 +53,6 @@
                 @include spacing(padding, 14px);
                 @include spacing(gap, 12px);
                 @include border-r(12px);
-                user-select: none;
             }
 
             &--marker {
