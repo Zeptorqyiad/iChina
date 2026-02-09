@@ -83,6 +83,14 @@
 </section>
 
 <div class="banner-service__center-rs banner-service__center-rs--mobile">
+    <?php if ($data['service_card-title']) {
+        App\Layout\Components\Cards\MinServiceCard\Layout::draw([
+            'title' => $data['service_card-title'],
+            'text' => $data['service_card-text'],
+            'link' => $data['service_card-link'],
+        ]);
+    }  ?>
+
     <?php if ($data['description']): ?>
         <div class="banner-service__description banner-service__description--mobile">
             <?= $data['description'] ?>

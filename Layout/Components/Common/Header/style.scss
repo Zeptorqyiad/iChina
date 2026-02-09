@@ -342,6 +342,16 @@
 				@include transition((opacity, visibility), '0.3s');
 				will-change: opacity;
 
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					right: 0;
+					@include spacing(top, -12px);
+					@include spacing(height, 12px);
+					background: transparent;
+				}
+
 				&--link {
 					@include spacing(padding, 8px);
 

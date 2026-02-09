@@ -1,16 +1,15 @@
 <?php
 /** @var array $data */
 
-var_dump($data['items']);
 ?>
 
 <div class="<?= $data['title'] ? 'other-services' : '' ?>">
     <?php if ($data['title'] || $data['desc']): ?>
         <div class="other-services__top wrapper">
             <?php App\Layout\Components\Cards\TitleCard\Layout::drawTitleCard(
-                title: $data['title'],
-                titleAccent: $data['titleAccent'],
-                desc: $data['desc'],
+                title: $data['title'] ?? '',
+                titleAccent: $data['titleAccent'] ?? '',
+                desc: $data['desc'] ?? '',
             ); ?>
         </div>
     <?php endif; ?>

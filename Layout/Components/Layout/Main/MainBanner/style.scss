@@ -5,8 +5,9 @@
 		position: relative;
 		z-index: 2;
 		width: 100%;
-		@include spacing(height, 798px, 650px);
-		overflow: hidden;
+		@include spacing(min-height, 798px, 650px);
+		height: auto;
+		overflow-x: hidden;
 
 		@include Tablet {
 			height: fit-content;
@@ -17,17 +18,42 @@
 		position: relative;
 		z-index: 5;
 		width: 100%;
-		height: 100%;
-		//overflow: hidden;
-		@include spacing(height, 798px, 650px, 700px, 550px);
+		height: auto;
+		@include spacing(min-height, 798px, 650px, 700px, 550px);
+
+		& .swiper-wrapper {
+			min-height: inherit;
+			height: 100%;
+		}
 	}
 
 	&__slide {
 		width: 100%;
+		position: relative;
+		height: 100%;
+		min-height: inherit;
+
+		@include Tablet {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-main {
+			position: relative;
+			height: 100%;
+			min-height: inherit;
+
+			@include Tablet {
+				height: auto;
+			}
+		}
 
 		&-image {
 			width: 100%;
 			height: 100%;
+			position: absolute;
+			inset: 0;
+			z-index: 1;
 
 			img {
 				width: 100%;
@@ -44,6 +70,16 @@
 				opacity: 0.5;
 				width: 100%;
 				height: 100%;
+			}
+
+			&--vector {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0.6;
+				z-index: 2;
 			}
 		}
 	}
@@ -66,6 +102,11 @@
 			@include spacing(width, 300px);
 			left: 50%;
 			transform: translate(-50%, 0);
+			bottom: vwt(200px);
+		}
+		@include Mobile {
+			bottom: unset;
+			top: 44%;
 		}
 	}
 
@@ -85,13 +126,18 @@
 	}
 
 	&__wrap {
-		position: absolute;
-		@include spacing(top, 142px, 112px, 100px, 100px);
+		position: relative;
+		@include spacing(padding-top, 142px, 112px, 100px, 100px);
+		@include spacing(padding-bottom, 80px, 30px, 20px, 20px);
 		right: 0;
 		display: grid;
 		justify-items: end;
+		align-content: space-between;
+		z-index: 10;
 		grid-template-columns: 1fr vw(340px);
-		grid-template-rows: vw(413px) vw(132px);
+		grid-template-rows: 1fr auto;
+		min-height: inherit;
+		height: 100%;
 		@include spacing(column-gap, 180px);
 		@include spacing(row-gap, 30px);
 		grid-template-areas:
@@ -100,7 +146,7 @@
 
 		@include HD {
 			grid-template-columns: 1fr vwh(360px);
-			grid-template-rows: vwh(394px) vwh(132px);
+			grid-template-rows: 1fr auto;
 			@include spacing(column-gap, 40px);
 		}
 
@@ -108,6 +154,8 @@
 			display: flex;
 			flex-direction: column;
 			left: 0;
+			height: auto;
+			min-height: 0;
 		}
 
 		@include Mobile {
@@ -119,12 +167,14 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+			align-items: flex-end;
 
 			@include HD {
 				padding-left: vwh(200px);
 			}
 			@include Tablet {
 				padding-left: 0;
+				align-items: flex-start;
 			}
 
 			&.banner-grid-info {
@@ -240,6 +290,9 @@
 			@include spacing(gap, 12px);
 			@include spacing(width, 224px, 224px, 220px);
 
+			@include Tablet {
+				justify-content: center;
+			}
 			@include Mobile {
 				gap: vwm(4px);
 				width: 100%;

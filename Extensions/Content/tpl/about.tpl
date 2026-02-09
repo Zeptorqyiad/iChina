@@ -16,7 +16,7 @@ App\Layout\Components\Common\Header\Layout::draw([
 ]);
 ?>
 
-<main>
+<main style="overflow-x: hidden;">
     <?php
         App\Layout\Components\Layout\Services\BannerService\Layout::draw([
             'image' => $content['params']['about_banner-image'],
