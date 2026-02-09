@@ -1,6 +1,45 @@
 <?php
 /** @var array $data */
 
+$useServices = true;
+
+$servicesOptions = [];
+if ($useServices) {
+    $bigRows = \Simflex\Core\DB::assoc(
+        'SELECT b.sb_id, b.name, b.alias, b.npp
+         FROM service_big b
+         WHERE b.is_active = 1
+         ORDER BY b.npp, b.sb_id'
+    );
+
+    $smallRows = \Simflex\Core\DB::assoc(
+        'SELECT s.sm_id, s.name, s.alias, s.npp
+         FROM service_small s
+         WHERE s.is_active = 1
+         ORDER BY s.npp, s.sm_id'
+    );
+
+    $allRows = array_merge($bigRows, $smallRows);
+    usort($allRows, static function ($a, $b) {
+        $aNpp = (int)($a['npp'] ?? 0);
+        $bNpp = (int)($b['npp'] ?? 0);
+        if ($aNpp === $bNpp) {
+            $aId = (int)($a['sb_id'] ?? $a['sm_id'] ?? 0);
+            $bId = (int)($b['sb_id'] ?? $b['sm_id'] ?? 0);
+            return $aId <=> $bId;
+        }
+        return $aNpp <=> $bNpp;
+    });
+    foreach ($allRows as $row) {
+        $alias = $row['alias'] ?? '';
+        $servicesOptions[] = [
+            'text' => $row['name'] ?? '',
+            'link' => '/' . $alias . '/',
+            'value' => $alias,
+        ];
+    }
+}
+
 $email = Simflex\Core\Core::siteParam('email');
 $phone = Simflex\Core\Core::siteParam('phone');
 $tg = Simflex\Core\Core::siteParam('tg');
@@ -40,8 +79,7 @@ $vk = Simflex\Core\Core::siteParam('vk');
                 App\Layout\Components\UI\Core\Collapsible\Layout::drawCollapsible(
                     className: 'menu-model__collapsible',
                     text: 'Услуги',
-                    options: [],
-                    serviceRoute: false,
+                    options: $servicesOptions,
                 );
                 App\Layout\Components\UI\Core\Tab\Layout::drawTab(
                     className: 'menu-modal__link',
