@@ -19,9 +19,13 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                 </div>
             <?php endif; ?>
 
-            <?php if ($data['items']): ?>
+            <?php if (!empty($data['card-1'])): ?>
                 <?php App\Layout\Components\Common\OtherServices\Layout::draw([
-                    'items' => $data['items'],
+                    'card-1' => $data['card-1'],
+                    'card-2' => $data['card-2'],
+                    'card-3' => $data['card-3'],
+                    'card-4' => $data['card-4'],
+                    'card-5' => $data['card-5'],
                 ]); ?>
             <?php elseif ($data['benefits']): ?>
                 <ul class="main-about__benefits">

@@ -57,7 +57,11 @@ use Simflex\Core\ModelBase;
  * @property string o_serv_title
  * @property string o_serv_title_accent
  * @property text o_serv_desc
- * @property text o_serv_items
+ * @property string o_serv_card_1
+ * @property string o_serv_card_2
+ * @property string o_serv_card_3
+ * @property string o_serv_card_4
+ * @property string o_serv_card_5
  *
  * @property string benefits_title
  * @property string benefits_title_accent

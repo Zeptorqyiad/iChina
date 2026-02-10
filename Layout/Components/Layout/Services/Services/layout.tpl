@@ -88,12 +88,13 @@ foreach ($categoryRows as $row) {
 
                         <div class="services__step_rs">
                             <?php foreach ($category['options'] as $i) {
+
                                 App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
                                     className: 'service-example-card__link',
                                     title: $i['text'] ?? '',
                                     desc: $i['short'] ?? '',
                                     link: '/services' . $i['link'],
-                                    image: !empty($i['icon']) ? '/uf/images/source/' . $i['icon'] : '',
+                                    image: !empty($i['icon']) ? $i['icon'] : '',
                                     style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
                                 );
                             } ?>

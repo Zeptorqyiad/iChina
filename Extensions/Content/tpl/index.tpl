@@ -29,46 +29,18 @@ App\Layout\Components\Common\Header\Layout::draw([
             'title' => $content['params']['main-about_title'],
             'title-accent' => $content['params']['main-about_title-accent'],
             'title-third' => $content['params']['main-about_title-third'],
-            'items' => [
-                [
-                    'className' => 'first',
-                    'title' => 'Полный аутсорсинг ВЭД',
-                    'desc' => 'Все сложности работы с Китаем решаем за вас — от китайской фабрики до вашего склада',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ],[
-                    'className' => 'second',
-                    'title' => 'Таможенное сопровождение ',
-                    'desc' => 'Работаем с разрешительной документацией, чтобы ваши грузы проходили без риска простоев',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ],[
-                    'className' => 'third',
-                    'title' => 'Ведение переговоров',
-                    'desc' => 'Мы команда, готовая отстаивать ваши интересы перед китайской стороной на равных',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ],[
-                    'className' => 'fouth',
-                    'title' => 'Подбор поставщика ',
-                    'desc' => 'Проверка от ICHINA - безопасный путь к качественному производителю',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ],[
-                    'className' => 'fivth',
-                    'title' => 'Оплата в Китай',
-                    'desc' => 'Описание услуги',
-                    'link' => '##',
-                    'image' => '/assets/images/Main/key.png',
-                ]
-            ],
+            'card-1' => $content['params']['main-about_card-1'],
+            'card-2' => $content['params']['main-about_card-2'],
+            'card-3' => $content['params']['main-about_card-3'],
+            'card-4' => $content['params']['main-about_card-4'],
+            'card-5' => $content['params']['main-about_card-5'],
             'title-why' => $content['params']['main-about_title-why'],
             'items-why' => self::getTableFrom('main-about_items-why', $content),
             'cardText-why' => $content['params']['main-about_cardText-why'],
             'description-why' => $content['params']['main-about_description-why'],
             'callback-title' => $content['params']['main-about_callback-title'],
             'callback-desc' => $content['params']['main-about_callback-desc'],
-        ]); // TODO
+        ]);
 
         App\Layout\Components\Layout\Main\MainBenefit\Layout::draw([
             'title' => $content['params']['main-benefit_title'],

@@ -14,17 +14,19 @@
         </div>
     <?php endif; ?>
 
-    <ul class="other-services__items <?= $data['title'] ? 'wrapper' : '' ?>">
-        <?php foreach ($data['items'] as $i): ?>
-            <li class="other-services__item <?= $i['className'] ?>" >
-                <?php App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
-                    title: $i['title'],
-                    desc: $i['desc'],
-                    link: $i['link'],
-                    image: $i['image'],
-                    style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
-                ); ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <?php if (!empty($data['items'])): ?>
+        <ul class="other-services__items <?= $data['title'] ? 'wrapper' : '' ?>">
+            <?php foreach ($data['items'] as $i): ?>
+                <li class="other-services__item <?= $i['className'] ?>" >
+                    <?php App\Layout\Components\Cards\ServiceCard\Layout::drawServiceCard(
+                        title: $i['title'],
+                        desc: $i['desc'],
+                        link: $i['link'],
+                        image: $i['icon'],
+                        style: App\Layout\Components\Cards\ServiceCard\ServiceCardStyle::Gray,
+                    ); ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 </div>

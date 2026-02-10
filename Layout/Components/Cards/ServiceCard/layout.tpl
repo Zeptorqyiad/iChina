@@ -31,7 +31,7 @@ $serviceCardClasses = [
 
     <?php if ($data['image']): ?>
         <div class="service-card__image">
-            <img src="<?= $data['image'] ?>" alt="">
+            <img src="/uf/images/source/<?= $data['image'] ?>" alt="">
         </div>
     <?php endif; ?>
 
