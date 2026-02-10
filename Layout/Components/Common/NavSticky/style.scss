@@ -25,10 +25,6 @@
         flex-direction: column;
         width: 100%;
         @include spacing(gap, 12px);
-
-        & .nav-sticky__tab {
-            @include spacing(padding-block, 16px);
-        }
     }
 
     &__tab {
