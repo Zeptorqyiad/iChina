@@ -88,13 +88,13 @@ $vk = Simflex\Core\Core::siteParam('vk');
                     style: App\Layout\Components\UI\Core\Tab\TabStyle::Flat,
                     size: App\Layout\Components\UI\Core\Tab\TabSize::Small
                 );
-                App\Layout\Components\UI\Core\Tab\Layout::drawTab(
-                    className: 'menu-modal__link',
-                    text: 'Отзывы',
-                    link: '/reviews/',
-                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Flat,
-                    size: App\Layout\Components\UI\Core\Tab\TabSize::Small
-                );
+//                App\Layout\Components\UI\Core\Tab\Layout::drawTab(
+//                    className: 'menu-modal__link',
+//                    text: 'Отзывы',
+//                    link: '/reviews/',
+//                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Flat,
+//                    size: App\Layout\Components\UI\Core\Tab\TabSize::Small
+//                );
                 App\Layout\Components\UI\Core\Tab\Layout::drawTab(
                     className: 'menu-modal__link',
                     text: 'Кейсы',

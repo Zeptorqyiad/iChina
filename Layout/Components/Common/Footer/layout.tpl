@@ -22,10 +22,12 @@ $about = [
     ],[
         'title' => 'Медиа-центр',
         'link' => '/blog/',
-    ],[
-        'title' => 'Отзывы',
-        'link' => '/reviews/',
-    ],[
+    ],
+//    [
+//        'title' => 'Отзывы',
+//        'link' => '/reviews/',
+//    ],
+    [
         'title' => 'Кейсы',
         'link' => '/cases/',
     ],[

@@ -66,14 +66,6 @@
                 }
             }
 
-            &--phone, .footer__contact-us--button {
-                .btn-contact__text {
-                    @include Tablet {
-                        @include h6;
-                    }
-                }
-            }
-
             &--text {
                 color: var(--gray-darker);
                 @include h5;

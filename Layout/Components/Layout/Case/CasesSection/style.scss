@@ -14,6 +14,11 @@
         @include spacing(gap, 8px);
         @include spacing(padding-block-start, 12px);
         @include spacing(padding-block-end, 20px);
+
+        @include Tablet {
+            white-space: nowrap;
+            overflow-x: scroll;
+        }
     }
     &__category {
         display: flex;

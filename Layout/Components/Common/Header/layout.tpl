@@ -87,9 +87,9 @@ $dropdown = [
                     <a class="header__items--link" draggable="false" href="/blog/">
                         Медиа-центр
                     </a>
-                    <a class="header__items--link" draggable="false" href="/reviews/">
-                        Отзывы
-                    </a>
+<!--                    <a class="header__items--link" draggable="false" href="/reviews/">-->
+<!--                        Отзывы-->
+<!--                    </a>-->
                     <a class="header__items--link" draggable="false" href="/cases/">
                         Кейсы
                     </a>

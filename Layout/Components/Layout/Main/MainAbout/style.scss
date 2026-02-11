@@ -121,6 +121,11 @@
 		&-button {
 			&--services {
 				flex: 1;
+
+				@include Tablet {
+					flex: unset;
+					width: 100%;
+				}
 			}
 			&--about {
 				flex: 1;

@@ -74,22 +74,25 @@
         grid-area: share;
         display: flex;
         align-items: center;
-        @include spacing(gap, 20px, 20px, 20px, 20px);
+        @include spacing(gap, 20px);
 
         @include Mobile{
-            justify-content: space-between;
             margin-top: vwm(12px);
+
+            & .btn {
+                width: 100%;
+            }
         }
 
         &-buttons{
             display: flex;
-            @include spacing(gap, 12px, 12px, 12px, 12px);
+            @include spacing(gap, 12px);
         }
 
         &-button{
             display: flex;
             align-items: center;
-            @include spacing(gap, 8px, 8px, 8px, 8px);
+            @include spacing(gap, 8px);
 
             @include Tablet{
                 height: vwt(48px);
