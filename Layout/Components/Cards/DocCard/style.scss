@@ -51,7 +51,7 @@
     &__icon {
         position: absolute;
         width: fit-content;
-        color: var(--color1-lighter);
+        color: var(--gray-black);
         @include spacing(top, 20px, 20px, 20px, 20px);
         @include spacing(right, 20px, 20px, 20px, 20px);
     }

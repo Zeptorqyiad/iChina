@@ -77,7 +77,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
 		App\Layout\Components\Sliders\BlogSlider\Layout::draw([
-			'title' => 'Другие отзывы',
+			'title' => 'Наши отзывы',
 			'link' => '/reviews/',
 			'cards' => $items,
 		]);

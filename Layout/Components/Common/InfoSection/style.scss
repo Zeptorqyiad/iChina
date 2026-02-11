@@ -86,6 +86,7 @@
             @include h2;
             color: var(--gray-darker);
             @include spacing(padding-block, 20px);
+            line-height: 120% !important;
         }
 
         &--text {

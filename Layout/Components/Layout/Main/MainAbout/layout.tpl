@@ -4,6 +4,8 @@
 $tg = Simflex\Core\Core::siteParam('tg');
 $vk = Simflex\Core\Core::siteParam('vk');
 $wt = Simflex\Core\Core::siteParam('whats_app');
+
+$current_url = $_SERVER['REQUEST_URI'];
 ?>
 
 <section class="main-about">
@@ -83,12 +85,14 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                 <?php endif; ?>
 
                 <div class="main-about__why-buttons">
-                    <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                        className: 'main-about__why-button--about',
-                        text: 'Все услуги',
-                        link: '/services/',
-                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
-                    ); ?>
+                    <?php if (strpos($current_url, '/services/') === false) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            className: 'main-about__why-button--services',
+                            text: 'Все услуги',
+                            link: '/services/',
+                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Accent,
+                        );
+                    } ?>
 
                     <?php if ($wt || $tg): ?>
                         <div class="main-about__why-buttons-social">
@@ -117,12 +121,14 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
                         </div>
                     <?php endif; ?>
 
-                    <?php App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                        className: 'main-about__why-button',
-                        text: 'Подробнее о компании',
-                        link: '/about/',
-                        style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline
-                    ); ?>
+                    <?php if (strpos($current_url, '/about/') === false) {
+                        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
+                            className: 'main-about__why-button--about',
+                            text: 'Подробнее о компании',
+                            link: '/about/',
+                            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Outline
+                        );
+                    } ?>
                 </div>
             </div>
         </div>
@@ -135,7 +141,6 @@ $wt = Simflex\Core\Core::siteParam('whats_app');
             App\Layout\Components\Cards\CallbackCard\Layout::drawCallbackCard(
                 title: $data['callback-title'],
                 desc: $data['callback-desc'],
-
             ); ?>
         <?php endif; ?>
     </div>

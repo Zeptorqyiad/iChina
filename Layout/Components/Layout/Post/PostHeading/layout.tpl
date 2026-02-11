@@ -13,7 +13,6 @@
                         className: 'post-heading__link post-heading__category',
                         text: $data['category'],
                         link: '/blog/?c=' . $data['categoryId'] ?? 0,
-                        iconLeft: 'uniq-hashtag',
                         size: \App\Layout\Components\UI\Core\Tab\TabSize::Small,
                     );
                 }

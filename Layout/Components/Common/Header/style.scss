@@ -341,6 +341,7 @@
 				pointer-events: none;
 				@include transition((opacity, visibility), '0.3s');
 				will-change: opacity;
+				z-index: 20;
 
 				&::before {
 					content: '';
