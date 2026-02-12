@@ -27,20 +27,27 @@
         @include border-r(12px);
 
         @include Tablet {
-            display: none;
+            height: vwt(280px);
+        }
+        @include Mobile {
+            height: vwm(150px);
         }
 
         &-route {
             display: none;
             position: absolute;
             top: 0;
+            @include border-r(12px);
+
+            @include Tablet {
+                height: vwt(280px);
+            }
+            @include Mobile {
+                height: vwm(150px);
+            }
 
             &.active {
                 display: block;
-
-                @include Tablet {
-                    display: none;
-                }
             }
         }
     }

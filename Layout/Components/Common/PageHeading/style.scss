@@ -8,6 +8,10 @@
         flex-direction: row;
         align-items: center;
         @include spacing(gap, 20px);
+
+        @include Mobile {
+            flex-direction: column;
+        }
     }
 
     &__back {

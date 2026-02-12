@@ -61,11 +61,10 @@
                 <div class="info-section__form">
                     <div class="info-section__form-top">
                         <h3 class="info-section__form-top--title">
-                            Связаться
+                            <?= $data['form_title'] ?>
                         </h3>
                         <div class="info-section__form-top--subtitle">
-                            Свяжитесь с нами, чтобы обсудить, как мы можем
-                            помочь именно вашему бизнесу.
+                            <?= $data['form_desc'] ?>
                         </div>
                     </div>
 

@@ -10,21 +10,6 @@
         titleAccent: $data['titleAccent'],
     ); ?>
 
-    <div class="about-history__controls">
-        <?php
-        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-            className: 'about-history__button-prev',
-            icon: 'arrow-left',
-            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary
-        );
-        App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-            className: 'about-history__button-next',
-            icon: 'arrow-right',
-            style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary
-        );
-        ?>
-    </div>
-
     <div class="about-history__body">
         <div class="about-history__body-wrap">
             <?php

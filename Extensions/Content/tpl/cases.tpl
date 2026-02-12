@@ -51,9 +51,9 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Common\FormFeedback\Layout::draw([
-            'title' => $index['params']['form-feedback_title'],
-            'desc' => $index['params']['form-feedback_desc'],
-      	    'image' => $index['params']['form-feedback-img'],
+            'title' => $content['params']['cases-form_title']  ?: $index['params']['form-feedback_title'],
+            'desc' => $content['params']['cases-form_desc'] ?: $index['params']['form-feedback_desc'],
+      	    'image' => $content['params']['cases-form_image'] ?: $index['params']['form-feedback-img'],
         ]);
 
         App\Layout\Components\Common\Seo\Layout::draw([

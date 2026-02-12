@@ -92,7 +92,7 @@
     &__content {
         display: flex;
         flex-direction: column;
-        border-top: solid var(--gray-light);
+        border-top: solid var(--color2-main);
         opacity: 0;
         transform: translateX(100%);
         @include border-w(2px);

@@ -1,5 +1,6 @@
 <?php
 /** @var array $content */
+$index = $content->loadFrom('/');
 
 App\Layout\Components\Common\Header\Layout::draw();
 ?>
@@ -19,9 +20,10 @@ App\Layout\Components\Common\Header\Layout::draw();
             'main-title' => $content['params']['instructions_main-title'],
             'main-text' => $content['params']['instructions_main-text'],
             'main-card' => $content['params']['instructions_main-card'],
-
             'text' => self::getTableFrom('instructions_page_text', $content),
             'is_form_active' => $content['params']['instructions_form_active'],
+            'form_title' => $content['params']['instructions_form_title'] ?: $index['params']['form-feedback_title'],
+            'form_desc' => $content['params']['instructions_form_desc'] ?: $index['params']['form-feedback_desc'],
         ]);
         ?>
     </main>

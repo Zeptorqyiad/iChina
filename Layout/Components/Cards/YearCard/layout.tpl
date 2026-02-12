@@ -12,16 +12,13 @@
         $rowKeys = ['descRowFirst', 'descRowSecond', 'descRowThird'];
 
         foreach ($rowKeys as $key):
-            if (!empty($data[$key])):
-                ?>
+            if (!empty($data[$key])): ?>
                 <div class="year-card__row">
-                    <?php
-                    App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
+                    <?php App\Layout\Components\UI\Core\Marker\Layout::drawMarker(
                         className: 'year-card__row-marker',
                         icon: 'arrow-up-right',
                         size: \App\Layout\Components\UI\Core\Marker\MarkerSize::Small,
-                    );
-                    ?>
+                    ); ?>
                     <p class="year-card__row-text"><?= $data[$key] ?></p>
                 </div>
             <?php
