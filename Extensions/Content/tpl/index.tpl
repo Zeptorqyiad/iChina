@@ -85,7 +85,7 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $content),
         ]);
 
-        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
+        App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
             'title' => 'Другие отзывы',
             'link' => '/reviews/',
             'cards' => $review,

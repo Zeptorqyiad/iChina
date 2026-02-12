@@ -1,34 +1,38 @@
 .reviews-slider {
+    @include spacing(padding-block, 80px, 80px, 60px, 60px);
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-        "title buttons"
-        "slider slider";
-    @include spacing(padding-block, 80px, 80px 40px, 40px);
+    "title buttons"
+    "slider slider";
     @include spacing(gap, 40px, 40px, 32px, 32px);
     overflow: hidden;
 
     @include Tablet {
         grid-template-columns: 1fr;
         grid-template-areas:
-        'title'
-        'slider'
-        'buttons';
+    'title'
+    'slider'
+    'buttons';
     }
 
     &__title {
         grid-area: title;
         @include h2;
         color: var(--gray-black);
-        @include spacing(padding-left, 250px, 45px, 16px, 16px);
+        display: inline-flex;
+        white-space: nowrap;
+
+        &--accent {
+            color: var(--color2-main);
+        }
     }
 
     &__buttons {
         display: flex;
-        @include spacing(padding-right, 250px, 45px, 16px, 16px);
-        @include spacing(gap, 12px, 12px);
+        @include spacing(gap, 12px);
         justify-self: end;
         align-items: center;
         grid-area: buttons;
@@ -37,10 +41,6 @@
             width: 100%;
             justify-self: start;
             gap: 0;
-            padding-left: vwt(16px);
-        }
-        @include Mobile {
-            padding-left: vwm(16px);
         }
     }
 

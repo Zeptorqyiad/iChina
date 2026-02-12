@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reviews-slider').forEach(container => {
         const slider = container.querySelector('.reviews-slider__slider');
         const slides = slider.querySelectorAll('.swiper-slide');
-        const hasNavigation = slides.length > 5;
+        const hasNavigation = slides.length > 3;
 
         const swiperConfig = {
             loop: true,
             breakpoints: {
-                0: {spaceBetween: 16, slidesPerView: 1.24},
-                481: {spaceBetween: 16, slidesPerView: 2.6},
-                811: {spaceBetween: 20, slidesPerView: 4.14},
-                1401: {spaceBetween: 20, slidesPerView: 4.7},
+                0: {spaceBetween: 16, slidesPerView: 1.2},
+                481: {spaceBetween: 16, slidesPerView: 2.5},
+                811: {spaceBetween: 16, slidesPerView: 3.11},
+                1401: {spaceBetween: 20, slidesPerView: 3.52},
             },
         };
 
