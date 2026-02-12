@@ -1,3 +1,4 @@
+-- Active: 1770919202136@@et9.ru@10506@slavyanov_zavod
 <?php
 
 namespace App\Extensions\Cases\Component;
@@ -38,6 +39,15 @@ class Cases extends Content
     $this->case = \App\Extensions\Cases\Model\Cases::findOne([
         'alias' => Container::getRequest()->getUrlLastPart()
     ]);
+
+    Page::$override['description'] = $this->case->meta_desc;
+      Page::$override['keywords'] = $this->case->meta_kw;
+
+      if($this->case->meta_title) {
+          Page::$override['title'] = $this->case->meta_title;
+      } else {
+          Page::$override['title'] = $this->case->name;
+      }
 
     if ($this->case) {
       $this->path = '/cases/case/';

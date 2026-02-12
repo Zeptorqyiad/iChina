@@ -48,8 +48,8 @@
     if ($title) {
         Simflex\Core\Page::$override['uses_meta'] = true;
     }
-    $description = Simflex\Core\Page::$override['description'] ?? $content['params']['meta_de'] ?? '';
-    $keywords = Simflex\Core\Page::$override['keywords'] ?? $content['params']['meta_kw'] ?? '';
+    $description = Simflex\Core\Page::$override['description'] ?: ($content['params']['meta_de'] ?? '');
+    $keywords = Simflex\Core\Page::$override['keywords'] ?: ($content['params']['meta_kw'] ?? '');
 
     Simflex\Core\Page::meta(); ?>
     <meta name="description" content="<?= $description ?>"/>
