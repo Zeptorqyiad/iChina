@@ -86,7 +86,7 @@ App\Layout\Components\Common\Header\Layout::draw([
         ]);
 
         App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
-            'title' => 'Другие отзывы',
+            'title' => 'Наши отзывы',
             'link' => '/reviews/',
             'cards' => $review,
         ]);

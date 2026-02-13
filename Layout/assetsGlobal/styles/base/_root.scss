@@ -323,3 +323,11 @@ h4, h5 {
         @include spacing(height, 400px, 356px, 270px, 194px);
     }
 }
+
+.social-max .btn__icon svg {
+  transition: filter 0.2s ease;
+}
+
+.social-max:hover .btn__icon svg {
+  filter: grayscale(100%) brightness(0.6);
+}

@@ -123,7 +123,7 @@ $max_social = Simflex\Core\Core::siteParam('max_social');
 
                             if ($max_social) {
                                 App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
-                                    className: 'header__items-callback--social',
+                                    className: 'header__items-callback--social social-max',
                                     link: $max_social,
                                     icon: 'social-max',
                                     style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Secondary,

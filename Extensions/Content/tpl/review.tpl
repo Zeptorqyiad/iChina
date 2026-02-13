@@ -57,7 +57,7 @@ App\Layout\Components\Common\Header\Layout::draw();
 		'date' => Simflex\Core\Time::normal($this->review->date),
 	]);
 
-	App\Layout\Components\Sliders\BlogSlider\Layout::draw([
+	App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
 		'title' => 'Другие отзывы',
 		'link' => '/reviews/',
 		'cards' => $items,

@@ -182,11 +182,11 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $index),
         ]);
 
-        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
-            'title' => 'Наши отзывы',
-            'link' => '/reviews/',
-            'cards' => $reviews,
-        ]);
+        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+        //     'title' => 'Наши отзывы',
+        //     'link' => '/reviews/',
+        //     'cards' => $reviews,
+        // ]);
 
         if (!empty($this->service->getFaqs())) {
             App\Layout\Components\Common\Faq\Layout::draw([

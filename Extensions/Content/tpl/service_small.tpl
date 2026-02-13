@@ -101,11 +101,11 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
         ]);
 
-        App\Layout\Components\Sliders\BlogSlider\Layout::draw([
-            'title' => 'Наши отзывы',
-            'link' => '/reviews/',
-            'cards' => $reviews,
-        ]);
+        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+        //     'title' => 'Наши отзывы',
+        //     'link' => '/reviews/',
+        //     'cards' => $reviews,
+        // ]);
 
         App\Layout\Components\Common\Certificate\Layout::draw([
             'title' => $index['params']['certificate-title'],
