@@ -49,6 +49,10 @@
     &__title {
         color: var(--gray-darker);
         @include t2-b;
+
+        @include Tablet {
+            @include t3-b;
+        }
     }
 
     &__text {

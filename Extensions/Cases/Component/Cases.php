@@ -1,4 +1,3 @@
--- Active: 1770919202136@@et9.ru@10506@slavyanov_zavod
 <?php
 
 namespace App\Extensions\Cases\Component;

@@ -65,6 +65,8 @@ App\Layout\Components\Common\Header\Layout::draw([
 
 	App\Layout\Components\Sliders\BlogSlider\Layout::draw([
 		'title' => 'Другие статьи',
+		'link' => '/blog/',
+		'cards' => $items,
 	]);
 
 	App\Layout\Components\Common\FormFeedback\Layout::draw([

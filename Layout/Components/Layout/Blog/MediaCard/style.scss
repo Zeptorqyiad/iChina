@@ -148,13 +148,6 @@
             align-items: center;
             @include spacing(gap, 8px);
 
-            @include Tablet {
-                height: vwt(48px);
-            }
-            @include Mobile {
-                height: vwm(48px);
-            }
-
             &:hover{
                 .post-content__feedback-value,
                 .feedback__icon{

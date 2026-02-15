@@ -197,3 +197,11 @@
     backface-visibility: hidden;
     perspective: 1000px;
 }
+
+@mixin Safari-only {
+    @media not all and (min-resolution:.001dpcm) { 
+        @supports (-webkit-appearance:none) {
+            @content;
+        }
+    }
+}

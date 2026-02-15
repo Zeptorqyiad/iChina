@@ -85,7 +85,29 @@
             @include transition((color, opacity, transform), var(--transition-timing), linear);
             @include truncate(1);
             @include spacing(left, 24px, 16px, 10px, 6px);
-            @include spacing(bottom, 20px);
+            @include spacing(bottom, 20px, 20px, 20px, 20px);
+
+            @include Tablet {
+                writing-mode: vertical-rl;
+                -webkit-writing-mode: vertical-rl;
+                @include spacing(height, 130px);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-end;
+            
+                @supports (-webkit-touch-callout: none) {
+                    display: inline-flex;
+                    transform: rotate(180deg) translateX(-50%);
+                }
+            }
+            @include Mobile {
+                @supports (-webkit-touch-callout: none) {
+                    display: inline-flex;
+                    transform: rotate(180deg) translateX(0%);
+                    align-items: flex-end;
+                }
+            }
         }
     }
 

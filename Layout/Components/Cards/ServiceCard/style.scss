@@ -37,8 +37,8 @@
     }
 
     &__image {
-        @include spacing(width, 200px, 200px, 150px, 150px);
-        @include spacing(height, 200px, 200px, 150px, 150px);
+        @include spacing(width, 100px);
+        @include spacing(height, 100px);
         position: absolute;
         right: 0;
         bottom: 0;

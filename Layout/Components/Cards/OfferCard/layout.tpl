@@ -21,15 +21,15 @@
             <?php if ($data['price'] || $data['time']): ?>
                 <div class="offer-card__content-properties">
                     <div class="offer-card__content-property">
-                        <?= $data['price'] ?> ₽
+                        <?= $data['price'] ?> 
                     </div>
 
-                    <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                        className: 'offer-card__content-separator',
-                        orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical
-                    ); ?>
-
                     <?php if ($data['time']): ?>
+                        <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
+                            className: 'offer-card__content-separator',
+                            orientation: App\Layout\Components\UI\Core\Separator\SeparatorOrientation::Vertical
+                        ); ?>
+
                         <div class="offer-card__content-property">
                             <?= $data['time'] ?>
                         </div>
