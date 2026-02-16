@@ -11,8 +11,20 @@ $max_social = Simflex\Core\Core::siteParam('max_social');
 
 $services = [
     [
-        'title' => 'Аутсорсинг ВЭД',
-        'link' => '/services/autsorsing-ved-/',
+        'title' => 'ВЭД по ключ',
+        'link' => '/services/otdel-ved-na-autsorse/',
+    ],[
+        'title' => 'Таможенное оформление',
+        'link' => '/services/tamozennoe-oformlenie/',
+    ],[
+        'title' => 'Переговоры с поставщиком',
+        'link' => '/services/peregovory-s-postavsikom/',
+    ],[
+        'title' => 'Подбор кода ТН ВЭД',
+        'link' => '/services/podbor-koda-tn-ved/',
+    ],[
+        'title' => 'Оплата в Китай',
+        'link' => '/services/oplata-v-kitaj/',
     ],
 ];
 $about = [

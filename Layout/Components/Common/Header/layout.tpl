@@ -180,6 +180,7 @@ $dropdown = [
 <?php
 App\Layout\Components\Modals\CookieModal\Layout::draw();
 App\Layout\Components\Modals\CallbackModal\Layout::draw();
+App\Layout\Components\Modals\CategoriesModal\Layout::draw();
 App\Layout\Components\Modals\ServicesModal\Layout::draw();
 App\Layout\Components\Modals\MenuModal\Layout::draw();
 App\Layout\Components\UI\Other\TabBar\Layout::draw();

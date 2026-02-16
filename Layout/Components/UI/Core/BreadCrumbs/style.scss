@@ -4,6 +4,10 @@
     &__list {
         display: flex;
         align-items: center;
+
+        @include Mobile {
+            overflow-y: scroll;
+        }
     }
 
     &__item {
@@ -11,6 +15,10 @@
         align-items: center;
         @include gap(8px);
         @include t3;
+
+        &-title {
+            white-space: nowrap;
+        }
     }
 
 

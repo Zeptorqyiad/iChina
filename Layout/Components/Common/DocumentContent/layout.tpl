@@ -8,6 +8,7 @@ $parsedText = json_decode($data['text'], true);
 
 <section class="documents-section wrapper">
     <?php App\Layout\Components\Common\PageHeading\Layout::drawPageHeading(
+            className: 'documents-section__heading',
             style: App\Layout\Components\Common\PageHeading\PageHeadingStyle::Secondary
     ); ?>
 

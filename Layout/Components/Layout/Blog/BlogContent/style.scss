@@ -19,8 +19,8 @@
         display: flex;
         flex-direction: row;
         @include spacing(gap, 40px, 40px, 32px, 32px);
-        @include spacing(padding-top, 40px, 40px, 40px, 40px);
-        @include spacing(padding-bottom, 80px, 80px, 40px, 40px);
+        @include spacing(padding-top, 40px, 40px, 40px, 20px);
+        @include spacing(padding-bottom, 80px, 80px, 40px, 20px);
 
         @include Tablet {
             flex-direction: column;
@@ -34,6 +34,7 @@
                 display: flex;
                 padding: vwt(8px) vwt(16px) vwt(8px) vwt(12px);
                 width: vwt(480px);
+                border-color: var(--gray-light) !important;
             }
             @include Mobile {
                 padding: vwm(8px) vwm(16px) vwm(8px) vwm(12px);

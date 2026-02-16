@@ -34,7 +34,7 @@
                     );
                     App\Layout\Components\UI\Core\Buttons\Button\Layout::drawButton(
                         text: 'Читать подробную инструкцию',
-                        link: '/info/',
+                        link: '/instructions/',
                         style: App\Layout\Components\UI\Core\Buttons\Button\ButtonStyle::Dark,
                     );
                     ?>

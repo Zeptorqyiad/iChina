@@ -8,16 +8,16 @@
     <div class="blog-content__container container">
         <div class="blog-content__section">
             <?php
-//                App\Layout\Components\UI\Core\Tab\Layout::drawTab(
-//                    className: 'blog-content__section-modal',
-//                    text: 'Все категории',
-//                    iconLeft: 'filter',
-//                    style: App\Layout\Components\UI\Core\Tab\TabStyle::Secondary,
-//                    size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
-//                    attributes: [
-//                        'onclick' => 'modalManager.open("categories-modal");'
-//                    ]
-//                );
+               App\Layout\Components\UI\Core\Tab\Layout::drawTab(
+                   className: 'blog-content__section-modal',
+                   text: 'Все категории',
+                   iconLeft: 'filter',
+                   style: App\Layout\Components\UI\Core\Tab\TabStyle::Outline,
+                   size: App\Layout\Components\UI\Core\Tab\TabSize::Large,
+                   attributes: [
+                       'onclick' => 'modalManager.open("categories-modal");'
+                   ]
+               );
                 App\Layout\Components\Layout\Blog\MediaFilter\Layout::draw([
                     'className' => 'media-filter__content',
                     'cats' => $data['cats'],

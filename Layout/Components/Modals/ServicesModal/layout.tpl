@@ -11,7 +11,7 @@ $bigAll = DB::assoc(
     'SELECT sb_id, name, alias, icon FROM service_big WHERE is_active = 1 ORDER BY npp, sb_id LIMIT ' . (int)$totalItems
 );
 $smallAll = DB::assoc(
-    'SELECT sm_id, name, alias FROM service_small WHERE is_active = 1 ORDER BY npp, sm_id LIMIT ' . (int)$totalItems
+    'SELECT sm_id, name, alias, icon FROM service_small WHERE is_active = 1 ORDER BY npp, sm_id LIMIT ' . (int)$totalItems
 );
 
 $bigCount = min($bigTarget, count($bigAll));
@@ -47,7 +47,7 @@ for ($i = 0; $i < $maxLoops; $i++) {
         $services[] = [
             'name' => $row['name'] ?? '',
             'alias' => $row['alias'] ?? '',
-            'icon' => '',
+            'icon' => $row['icon'] ?? '',
         ];
     }
 }
