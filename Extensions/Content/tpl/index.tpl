@@ -85,11 +85,11 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $content),
         ]);
 
-        App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
-            'title' => 'Наши отзывы',
-            'link' => '/reviews/',
-            'cards' => $review,
-        ]);
+        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+        //     'title' => 'Наши отзывы',
+        //     'link' => '/reviews/',
+        //     'cards' => $review,
+        // ]);
 
         App\Layout\Components\Common\Info\Layout::draw([
             'title' => $content['params']['info_title'],

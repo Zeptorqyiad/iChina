@@ -69,7 +69,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        @include spacing(padding-left, 250px, 250px, 0, 0);
+        @include spacing(padding-left, 250px, 140px, 0, 0);
 
         @include Tablet {
             flex-direction: column;
@@ -125,6 +125,7 @@
         &--title {
             @include h1;
             color: var(--gray-white);
+            @include spacing(font-size, 64px, 45px, 42px, 42px);
 
             @include Mobile {
                 @include h2;

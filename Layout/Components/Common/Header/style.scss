@@ -120,6 +120,10 @@
 	&.over-modal {
 		z-index: 130 !important;
 
+		& .header__items-drop--chevron {
+			color: var(--gray-dark) !important;
+		}
+
 		& .header__items--link {
 			color: var(--gray-dark);
 			@include transition((color));

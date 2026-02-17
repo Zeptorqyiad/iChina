@@ -90,6 +90,11 @@
             @include spacing(right, 430px, 400px);
         }
 
+        &-amur {
+            @include spacing(bottom, 274px, 246px);
+            @include spacing(right, 106px, 102px);
+        }
+
         &-wrapper{
             z-index: 1;
             position: absolute;
