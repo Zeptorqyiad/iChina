@@ -64,4 +64,21 @@
             width: 100%;
         }
     }
+
+    &__item {
+        &:not(:last-child) {
+            border-bottom: solid var(--gray-lighter);
+            border-width: vw(1px);
+
+            @include HD {
+                border-width: vwh(1px);
+            }
+            @include Tablet {
+                border-width: vwt(1px);
+            }
+            @include Mobile {
+                border-width: vwm(1px);
+            }
+        }
+    }
 }

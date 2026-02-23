@@ -20,7 +20,7 @@
         </div>
 
         <?php App\Layout\Components\Common\Form\Layout::draw([
-            'className' => 'callback-modal__form'
+            'className' => 'callback-modal__form form-feedback__form'
         ]); ?>
     </div>
 </div>
