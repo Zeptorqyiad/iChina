@@ -4,18 +4,6 @@
     flex-direction: column;
     @include spacing(gap, 20px);
     @include spacing(padding-block, 30px, 30px, 24px, 24px);
-    border-width: vw(1px);
-    border-top: solid var(--gray-lighter);
-
-    @include HD {
-        border-width: vwh(1px);
-    }
-    @include Tablet {
-        border-width: vwt(1px);
-    }
-    @include Mobile {
-        border-width: vwm(1px);
-    }
 
     &__info {
         display: flex;

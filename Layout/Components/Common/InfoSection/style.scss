@@ -64,6 +64,12 @@
             @include spacing(padding, 20px);
         }
 
+        & .form__captcha {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
         &-top {
             display: flex;
             flex-direction: column;

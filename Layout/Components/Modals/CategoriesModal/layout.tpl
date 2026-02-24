@@ -24,9 +24,6 @@ if ($c) {
                         'cats' => $c,
                     ]
                 );
-                App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(
-                    className: 'categories-modal__separator'
-                );
             ?>
         </div>
     </div>

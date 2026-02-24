@@ -129,5 +129,11 @@
         .form__button-submit {
             width: 100%;
         }
+
+        & .form__captcha {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
     }
 }
