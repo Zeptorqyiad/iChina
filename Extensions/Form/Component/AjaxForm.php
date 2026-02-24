@@ -4,6 +4,7 @@ namespace App\Extensions\Form\Component;
 
 use Simflex\Core\ComponentBase;
 use Simflex\Core\Core;
+use Simflex\Core\DB;
 use Simflex\Core\Time;
 
 class AjaxForm extends ComponentBase
@@ -31,7 +32,27 @@ class AjaxForm extends ComponentBase
             exit(json_encode(['success' => false, 'errors' => $this->errors, JSON_THROW_ON_ERROR]));
         }
 
-        $this->data = compact('name', 'phone', 'email', 'textarea');
+        $message = json_encode([
+            'email' => $email,
+        ], JSON_UNESCAPED_UNICODE);
+
+        $last = DB::result('select callback_id, name, phone, message from callback order by callback_id desc limit 1');
+        if ($last && $last['name'] === $name && $last['phone'] === $phone && $last['message'] === $message) {
+            $this->data['id'] = $last['callback_id'];
+            exit(json_encode(['success' => true, 'errors' => []]));
+        }
+
+        DB::query(
+            'insert into callback (name, phone, message) values (?, ?, ?)',
+            [$name, $phone, $message]
+        );
+
+        $this->data['id'] = DB::insertId();
+
+        DB::query(
+            'insert into callback_email (email, is_subscribed) select ?, 1 where not exists(select 1 from callback_email where email = ?)',
+            [$email, $email]
+        );
 
         exit(json_encode(['success' => $this->sendTelegram() || $this->sendMail(), 'errors' => $this->errors]));
     }
