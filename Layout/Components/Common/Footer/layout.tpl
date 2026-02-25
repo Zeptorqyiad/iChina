@@ -1,6 +1,13 @@
 <?php
 /** @var array $data */
 
+use App\Extensions\Site\Model\Content;
+
+$review = Content::findAdv()
+    ->where(['content_id' => 4])
+    ->andWhere(['active' => 1])
+    ->all();
+
 $email = Simflex\Core\Core::siteParam('email');
 $phone = Simflex\Core\Core::siteParam('phone');
 $address = Simflex\Core\Core::siteParam('address');
@@ -34,12 +41,7 @@ $about = [
     ],[
         'title' => 'Медиа-центр',
         'link' => '/blog/',
-    ],
-//    [
-//        'title' => 'Отзывы',
-//        'link' => '/reviews/',
-//    ],
-    [
+    ], [
         'title' => 'Кейсы',
         'link' => '/cases/',
     ],[
@@ -47,6 +49,14 @@ $about = [
         'link' => '/contacts/',
     ],
 ];
+
+if (!empty($review)) {
+    array_splice($about, 2, 0, [[
+        'title' => 'Отзывы',
+        'link' => '/reviews/',
+    ]]);
+}
+
 $info = [
     [
         'title' => 'Частые вопросы',

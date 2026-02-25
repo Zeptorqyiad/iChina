@@ -1,10 +1,17 @@
 <?php
 /** @var array $data */
 
+use App\Extensions\Site\Model\Content;
+
 $tg = Simflex\Core\Core::siteParam('tg');
 $vk = Simflex\Core\Core::siteParam('vk');
 $wt = Simflex\Core\Core::siteParam('whats_app');
 $max_social = Simflex\Core\Core::siteParam('max_social');
+
+$review = Content::findAdv()
+    ->where(['content_id' => 4])
+    ->andWhere(['active' => 1])
+    ->all();
 
 $dropdown = [
     [
@@ -87,9 +94,11 @@ $dropdown = [
                     <a class="header__items--link" draggable="false" href="/blog/">
                         Медиа-центр
                     </a>
-<!--                    <a class="header__items--link" draggable="false" href="/reviews/">-->
-<!--                        Отзывы-->
-<!--                    </a>-->
+                    <?php if ($review): ?>
+                        <a class="header__items--link" draggable="false" href="/reviews/">
+                            Отзывы
+                        </a>
+                    <?php endif; ?>
                     <a class="header__items--link" draggable="false" href="/cases/">
                         Кейсы
                     </a>
