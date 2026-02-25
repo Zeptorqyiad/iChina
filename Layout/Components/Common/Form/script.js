@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('.form-feedback__form');
+    const forms = document.querySelectorAll('.form-feedback__form:not(.callback-modal__form)');
 
     if (!forms.length) return;
 

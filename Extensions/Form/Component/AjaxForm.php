@@ -33,7 +33,7 @@ class AjaxForm extends ComponentBase
         }
 
         $message = json_encode([
-            'email' => $email,
+            'email' => $textarea,
         ], JSON_UNESCAPED_UNICODE);
 
         $last = DB::result('select callback_id, name, phone, message from callback order by callback_id desc limit 1');
@@ -48,11 +48,6 @@ class AjaxForm extends ComponentBase
         );
 
         $this->data['id'] = DB::insertId();
-
-        DB::query(
-            'insert into callback_email (email, is_subscribed) select ?, 1 where not exists(select 1 from callback_email where email = ?)',
-            [$email, $email]
-        );
 
         exit(json_encode(['success' => $this->sendTelegram() || $this->sendMail(), 'errors' => $this->errors]));
     }
