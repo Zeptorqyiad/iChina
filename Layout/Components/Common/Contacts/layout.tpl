@@ -83,6 +83,7 @@ if (empty($mapScripts)) {
                 </div>
             </div>
 
+            <?php if ($wt || $tg || $max_social || $vk): ?>
             <?php App\Layout\Components\UI\Core\Separator\Layout::drawSeparator(); ?>
 
             <div class="contacts__content_item">
@@ -122,6 +123,7 @@ if (empty($mapScripts)) {
                     ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
 
         <?php if (!empty($data['items'])): ?>
