@@ -54,15 +54,24 @@ class MailAssist
 
     public function send()
     {
+        $mailHost = env('MAIL_HOST');
+        $mailUser = env('MAIL_USERNAME');
+        $mailPass = env('MAIL_PASSWORD');
+        $mailSecurity = env('MAIL_SECURITY');
+
+        if (!$mailHost || !$mailUser || !$mailPass) {
+            throw new \RuntimeException('SMTP не настроен: заполните MAIL_HOST, MAIL_USERNAME, MAIL_PASSWORD в .env');
+        }
+
         $mail = new PHPMailer();
         $mail->isSMTP();
         $mail->SMTPAuth = true;
-        $mail->SMTPSecure = env('MAIL_SECURITY');
-        $mail->Host = env('MAIL_HOST');
-        $mail->Username = env('MAIL_USERNAME');
-        $mail->Password = env('MAIL_PASSWORD');
+        $mail->SMTPSecure = $mailSecurity;
+        $mail->Host = $mailHost;
+        $mail->Username = $mailUser;
+        $mail->Password = $mailPass;
         $mail->FromName = Core::siteParam('site_name');
-        $mail->From = env('MAIL_USERNAME');
+        $mail->From = $mailUser;
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
         $mail->SMTPDebug = 2;
         $mail->Debugoutput = function ($str, $level) {

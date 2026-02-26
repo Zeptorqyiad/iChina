@@ -19,7 +19,7 @@ $checkboxClasses = [
     <?php endif; ?>
     <?php if ($data['policy'] && !$data['text']): ?>
         <span class="checkbox__policy">
-            Я соглашаюсь с <a href="/policy/">политикой обработки персональных данных</a>
+            Я соглашаюсь с <a href="/documents/policy/">политикой обработки персональных данных</a>
         </span>
     <?php endif; ?>
 </label>

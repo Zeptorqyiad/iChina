@@ -31,7 +31,8 @@
     "ext-readline": "*",
     "growtask/simflex-file-manager": "dev-master",
     "ext-pdo": "*",
-    "curl/curl": "^2.5"
+    "curl/curl": "^2.5",
+    "phpmailer/phpmailer": "^6.10"
   },
   "require-dev": {
     "codeception/module-phpbrowser": "*",

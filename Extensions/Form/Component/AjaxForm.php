@@ -55,7 +55,13 @@ class AjaxForm extends ComponentBase
     protected function sendMail()
     {
         try {
-            $m = new MailAssist(Core::siteParam('form_email'), 'Новая заявка с сайта');
+            $formEmail = Core::siteParam('form_email');
+            if (!$formEmail) {
+                $this->errors[] = 'Почта не настроена: заполните параметр form_email';
+                return false;
+            }
+
+            $m = new MailAssist($formEmail, 'Новая заявка с сайта');
 
             $html = <<<HTML
 <p><b>Имя: </b> {$this->data['name']}</p>
@@ -79,6 +85,22 @@ HTML;
 
     protected function sendTelegram()
     {
+        $token = Core::siteParam('form_tg_token');
+        $chatId = Core::siteParam('form_tg_chat_id');
+
+        $token  = strip_tags($token);
+        $chatId = strip_tags($chatId);
+
+        $token  = trim($token);
+        $chatId = trim($chatId);
+
+        if (empty($token) || empty($chatId)) {
+            $this->errors[] = 'Telegram token or chat_id not set after cleaning';
+            return false;
+        }
+
+        error_log("Cleaned TG token: '$token', chat_id: '$chatId'");
+
         $text = "<b>НОВАЯ ЗАЯВКА</b>\n\n" .
             "<b>Имя:</b> " . htmlspecialchars($this->data['name']) . "\n" .
             "<b>E-mail:</b> " . htmlspecialchars($this->data['email']) . "\n" .
@@ -87,14 +109,16 @@ HTML;
 
         $ch = curl_init();
         curl_setopt_array($ch, [
-            CURLOPT_URL => 'https://api.telegram.org/bot' . Core::siteParam('form_tg_token') . '/sendMessage',
+            CURLOPT_URL => 'https://api.telegram.org/bot' . $token . '/sendMessage',
             CURLOPT_POST => true,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS => [
-                'chat_id' => Core::siteParam('form_tg_chat_id'),
-                'text' => $text,
-                'parse_mode' => 'HTML'
-            ]
+            CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+            CURLOPT_POSTFIELDS => http_build_query([
+                'chat_id'     => $chatId,
+                'text'        => $text,
+                'parse_mode'  => 'HTML'
+            ]),
+            CURLOPT_TIMEOUT => 10,
         ]);
 
         $response = curl_exec($ch);
@@ -103,12 +127,14 @@ HTML;
 
         if ($httpCode !== 200 || $response === false) {
             $this->errors[] = 'Telegram sending failed: HTTP ' . $httpCode;
+            error_log("TG fail: HTTP $httpCode, response: " . $response);
             return false;
         }
 
         $result = json_decode($response, true);
         if (!$result['ok']) {
             $this->errors[] = 'Telegram API error: ' . ($result['description'] ?? 'Unknown');
+            error_log("TG API error: " . json_encode($result));
             return false;
         }
 
