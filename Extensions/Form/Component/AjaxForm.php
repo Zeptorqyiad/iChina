@@ -24,6 +24,8 @@ class AjaxForm extends ComponentBase
         $phone = $_REQUEST['phone'] ?? '';
         $email = strtolower($_REQUEST['email'] ?? '');
         $textarea = $_REQUEST['textarea'] ?? '';
+        $from = $_REQUEST['from'] ?? '';
+        $fromTitle = $_REQUEST['from_title'] ?? '';
 
         $this->data = compact('name', 'email', 'phone', 'textarea');
 
@@ -64,6 +66,7 @@ class AjaxForm extends ComponentBase
             $m = new MailAssist($formEmail, 'Новая заявка с сайта');
 
             $html = <<<HTML
+<p><b>Страница: </b> {$this->data['fromTitle']}</p>
 <p><b>Имя: </b> {$this->data['name']}</p>
 <p><b>Телефон: </b> {$this->data['phone']}</p>
 <p><b>E-mail: </b> {$this->data['email']}</p>
@@ -102,6 +105,7 @@ HTML;
         error_log("Cleaned TG token: '$token', chat_id: '$chatId'");
 
         $text = "<b>НОВАЯ ЗАЯВКА</b>\n\n" .
+            "<b>Страница:</b> " . htmlspecialchars($this->data['fromTitle']) . "\n" .
             "<b>Имя:</b> " . htmlspecialchars($this->data['name']) . "\n" .
             "<b>E-mail:</b> " . htmlspecialchars($this->data['email']) . "\n" .
             "<b>Телефон:</b> " . htmlspecialchars($this->data['phone']) . "\n" .
