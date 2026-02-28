@@ -3,6 +3,7 @@
 
 use App\Extensions\Blog\Model\Blog;
 use App\Extensions\Reviews\Model\Reviews;
+use App\Extensions\Site\Model\Content;
 
 $post = Blog::findAdv()
         ->limit(10)
@@ -14,6 +15,11 @@ $review = Reviews::findAdv()
         ->limit(10)
         ->orderBy('npp')
         ->andWhere(['is_active' => 1])
+        ->all();
+
+$reviewActive = Content::findAdv()
+        ->where(['content_id' => 4])
+        ->andWhere(['active' => 1])
         ->all();
 
 App\Layout\Components\Common\Header\Layout::draw([
@@ -85,11 +91,13 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $content),
         ]);
 
-        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
-        //     'title' => 'Наши отзывы',
-        //     'link' => '/reviews/',
-        //     'cards' => $review,
-        // ]);
+        if ($reviewActive) {
+            App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+                'title' => 'Наши отзывы',
+                'link' => '/reviews/',
+                'cards' => $review,
+            ]);
+        }
 
         App\Layout\Components\Common\Info\Layout::draw([
             'title' => $content['params']['info_title'],

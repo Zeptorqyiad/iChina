@@ -2,11 +2,17 @@
 /** @var array $content */
 
 use App\Extensions\Reviews\Model\Reviews;
+use App\Extensions\Site\Model\Content;
 
 $reviews = Reviews::findAdv()
         ->limit(10)
         ->where(['is_active' => 1])
         ->orderBy('npp')
+        ->all();
+
+$reviewActive = Content::findAdv()
+        ->where(['content_id' => 4])
+        ->andWhere(['active' => 1])
         ->all();
 
 $index = $content->loadFrom('/');
@@ -72,6 +78,15 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => $this->service->getBenefitsItems() ?: self::getTableFrom('main-benefit-items', $index),
         ]);
 
+        if ($this->service->options_title) {
+            App\Layout\Components\Common\Options\Layout::draw([
+                'title' => $this->service->options_title,
+                'titleAccent' => $this->service->options_title_accent,
+                'desc' => $this->service->options_desc,
+                'items' => $this->service->getOptions()
+            ]);
+        }
+
         if ($this->service->types_title || !empty($this->service->getTypes())) {
             App\Layout\Components\Common\Types\Layout::draw([
                 'title' => $this->service->types_title,
@@ -86,15 +101,6 @@ App\Layout\Components\Common\Header\Layout::draw([
                 'subtitle' => $this->service->cta_subtitle,
                 'text' => $this->service->cta_text,
                 'image' => $this->service->cta_image,
-            ]);
-        }
-
-        if ($this->service->options_title) {
-            App\Layout\Components\Common\Options\Layout::draw([
-                'title' => $this->service->options_title,
-                'titleAccent' => $this->service->options_title_accent,
-                'desc' => $this->service->options_desc,
-                'items' => $this->service->getOptions()
             ]);
         }
 
@@ -182,11 +188,13 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $index),
         ]);
 
-        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
-        //     'title' => 'Наши отзывы',
-        //     'link' => '/reviews/',
-        //     'cards' => $reviews,
-        // ]);
+        if ($reviewActive) {
+            App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+                'title' => 'Наши отзывы',
+                'link' => '/reviews/',
+                'cards' => $reviews,
+            ]);
+        }
 
         if (!empty($this->service->getFaqs())) {
             App\Layout\Components\Common\Faq\Layout::draw([

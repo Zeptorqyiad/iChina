@@ -2,6 +2,8 @@
 /** @var array $content */
 
 use App\Extensions\Reviews\Model\Reviews;
+use App\Extensions\Site\Model\Content;
+
 $index = $content->loadFrom('/');
 
 $reviews = Reviews::findAdv()
@@ -9,6 +11,11 @@ $reviews = Reviews::findAdv()
         ->limit(15)
         ->orderBy('npp')
         ->andWhere(['is_active' => 1])
+        ->all();
+
+$reviewActive = Content::findAdv()
+        ->where(['content_id' => 4])
+        ->andWhere(['active' => 1])
         ->all();
 
 App\Layout\Components\Common\Header\Layout::draw([
@@ -111,11 +118,13 @@ App\Layout\Components\Common\Header\Layout::draw([
             'items' => self::getTableFrom('certificate-items', $index),
         ]);
 
-        // App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
-        //     'title' => 'Другие отзывы',
-        //     'link' => '/reviews/',
-        //     'cards' => $reviews,
-        // ]);
+        if ($reviewActive) {
+             App\Layout\Components\Sliders\ReviewsSlider\Layout::draw([
+                 'title' => 'Другие отзывы',
+                 'link' => '/reviews/',
+                 'cards' => $reviews,
+             ]);
+        }
 
         App\Layout\Components\Common\Info\Layout::draw([
             'title' => $index['params']['info_title'],
