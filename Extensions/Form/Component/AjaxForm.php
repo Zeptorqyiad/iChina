@@ -24,10 +24,10 @@ class AjaxForm extends ComponentBase
         $phone = $_REQUEST['phone'] ?? '';
         $email = strtolower($_REQUEST['email'] ?? '');
         $textarea = $_REQUEST['textarea'] ?? '';
-        $from = $_REQUEST['from'] ?? '';
+        $from = $_REQUEST['from_uri'] ?? '';
         $fromTitle = $_REQUEST['from_title'] ?? '';
 
-        $this->data = compact('name', 'email', 'phone', 'textarea');
+        $this->data = compact('name', 'email', 'phone', 'textarea', 'from', 'fromTitle');
 
         if (empty($phone)) {
             $this->errors[] = 'Не заполнены обязательные поля';
@@ -66,7 +66,7 @@ class AjaxForm extends ComponentBase
             $m = new MailAssist($formEmail, 'Новая заявка с сайта');
 
             $html = <<<HTML
-<p><b>Страница: </b> {$this->data['fromTitle']}</p>
+<p><b>Страница: </b> <a href="{$this->data['from']}">{$this->data['fromTitle']}</a></p>
 <p><b>Имя: </b> {$this->data['name']}</p>
 <p><b>Телефон: </b> {$this->data['phone']}</p>
 <p><b>E-mail: </b> {$this->data['email']}</p>

@@ -9,6 +9,10 @@ $formId = uniqid('form_');
       enctype="multipart/form-data"
       method="post"
 >
+    <input type="hidden" name="from" value="">
+    <input type="hidden" name="from_uri" value="">
+    <input type="hidden" name="from_title" value="">
+
     <div class="form__inputs">
         <?php
             App\Layout\Components\UI\Core\TextInput\Layout::drawInput(
