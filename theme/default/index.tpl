@@ -43,15 +43,25 @@
     <!-- Main meta data -->
     <?php
     $content = App\Extensions\Content\Content::getStatic(Simflex\Core\Container::getRequest()->getPath());
+    $siteName = trim(strip_tags(html_entity_decode((string)Simflex\Core\Core::siteParam('site_name'), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
 
     $title = Simflex\Core\Page::$override['title'] ?? $content['params']['meta_title'] ?? '';
-    if ($title) {
-        Simflex\Core\Page::$override['uses_meta'] = true;
-    }
+    $title = trim(strip_tags(html_entity_decode((string)$title, ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+
     $description = Simflex\Core\Page::$override['description'] ?: ($content['params']['meta_de'] ?? '');
     $keywords = Simflex\Core\Page::$override['keywords'] ?: ($content['params']['meta_kw'] ?? '');
 
-    Simflex\Core\Page::meta(); ?>
+    ob_start();
+    Simflex\Core\Page::meta();
+    $metaHtml = ob_get_clean();
+    $metaHtml = preg_replace_callback('/<title>(.*?)<\/title>/is', static function ($m) {
+        $decoded = html_entity_decode((string)$m[1], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $parts = explode('|', $decoded, 2);
+        $parts = array_map(static fn($p) => trim(strip_tags($p)), $parts);
+        $clean = count($parts) === 2 ? ($parts[0] . ' | ' . $parts[1]) : ($parts[0] ?? '');
+        return '<title>' . htmlspecialchars($clean, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</title>';
+    }, $metaHtml, 1);
+    echo $metaHtml; ?>
     <meta name="description" content="<?= $description ?>"/>
     <meta name="keywords" content="<?= $keywords ?>"/>
     <meta name="robots" content="index, follow">
@@ -61,7 +71,7 @@
         {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "{site_name}",
+            "name": "<?= $siteName ?>",
             "description": "<?= $description ?>",
             "url": "<?= url('') ?>",
             "logo": "<?= url('/assets/meta/favicon/icon.svg') ?>",
@@ -81,7 +91,7 @@
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:url" content="<?= url(Simflex\Core\Container::getRequest()->getPath()) ?>">
     <meta property="og:description" content="<?= $description ?>">
-    <meta property="og:site_name" content="{site_name}">
+    <meta property="og:site_name" content="<?= $siteName ?>">
     <meta property="og:logo" content="<?= url('/assets/meta/favicon/icon-192.png') ?>">
     <meta property="og:locale" content="ru_RU"/>
     <meta property="og:image" content="<?= url('/assets/meta/og-image.png') ?>">

@@ -250,7 +250,7 @@
 		}
 
 		&--link {
-			@include t3-b;
+			@include t2-b;
 			@include spacing(padding-block, 10px);
 			@include spacing(padding-inline, 8px);
 			@include transition((color));
