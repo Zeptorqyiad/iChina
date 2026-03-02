@@ -51,13 +51,15 @@ class AjaxForm extends ComponentBase
 
         $this->data['id'] = DB::insertId();
 
-        exit(json_encode(['success' => $this->sendTelegram() || $this->sendMail(), 'errors' => $this->errors]));
+        $tgSent = $this->sendTelegram();
+        $mailSent = $this->sendMail();
+        exit(json_encode(['success' => $tgSent || $mailSent, 'errors' => $this->errors]));
     }
 
     protected function sendMail()
     {
         try {
-            $formEmail = Core::siteParam('form_email');
+            $formEmail = trim(strip_tags((string)Core::siteParam('form_email')));
             if (!$formEmail) {
                 $this->errors[] = 'Почта не настроена: заполните параметр form_email';
                 return false;
@@ -102,8 +104,6 @@ HTML;
             return false;
         }
 
-        error_log("Cleaned TG token: '$token', chat_id: '$chatId'");
-
         $text = "<b>НОВАЯ ЗАЯВКА</b>\n\n" .
             "<b>Страница:</b> " . htmlspecialchars($this->data['fromTitle']) . "\n" .
             "<b>Имя:</b> " . htmlspecialchars($this->data['name']) . "\n" .
@@ -131,14 +131,12 @@ HTML;
 
         if ($httpCode !== 200 || $response === false) {
             $this->errors[] = 'Telegram sending failed: HTTP ' . $httpCode;
-            error_log("TG fail: HTTP $httpCode, response: " . $response);
             return false;
         }
 
         $result = json_decode($response, true);
         if (!$result['ok']) {
             $this->errors[] = 'Telegram API error: ' . ($result['description'] ?? 'Unknown');
-            error_log("TG API error: " . json_encode($result));
             return false;
         }
 

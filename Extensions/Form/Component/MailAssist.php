@@ -4,7 +4,6 @@ namespace App\Extensions\Form\Component;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use Simflex\Core\Core;
-use Simflex\Core\Log;
 
 class MailAssist
 {
@@ -16,6 +15,7 @@ class MailAssist
     protected $body;
     protected $attachment;
     protected $attachmentName;
+    public $ErrorInfo;
 
     // todo: do it properly!
     public static string $tplPath = __DIR__;
@@ -68,15 +68,12 @@ class MailAssist
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = $mailSecurity;
         $mail->Host = $mailHost;
+        $mail->Port = 465;
         $mail->Username = $mailUser;
         $mail->Password = $mailPass;
-        $mail->FromName = Core::siteParam('site_name');
+        $mail->FromName = trim(strip_tags((string)Core::siteParam('site_name')));
         $mail->From = $mailUser;
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
-        $mail->SMTPDebug = 2;
-        $mail->Debugoutput = function ($str, $level) {
-            Log::info('PHPMailer: {l} - {str}', ['l' => $level, 'str' => $str]);
-        };
 
         $mail->SMTPOptions = [
             'ssl' => [
@@ -86,11 +83,25 @@ class MailAssist
             ]
         ];
 
-        $mail->addReplyTo(Core::siteParam('form_email'));
+        $replyTo = trim((string)Core::siteParam('form_email'));
+        if ($replyTo !== '' && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
+            $mail->addReplyTo($replyTo);
+        }
 
-        $mail->addAddress($this->address);
+        $recipients = $this->normalizeEmails((string)$this->address);
+        if (!$recipients) {
+            $this->ErrorInfo = 'Нет валидных email получателей. form_email=' . (string)$this->address;
+            return false;
+        }
+
+        foreach ($recipients as $recipient) {
+            $mail->addAddress($recipient);
+        }
+
         if ($this->additionalAddress) {
-            $mail->addAddress($this->additionalAddress);
+            foreach ($this->normalizeEmails((string)$this->additionalAddress) as $recipient) {
+                $mail->addAddress($recipient);
+            }
         }
 
         if ($this->attachment) {
@@ -104,7 +115,9 @@ class MailAssist
 
         $mail->Subject = $this->subject;
         $mail->Body = $this->body;
-        return $mail->send();
+        $result = $mail->send();
+        $this->ErrorInfo = $mail->ErrorInfo;
+        return $result;
     }
 
     protected function runTemplate()
@@ -113,5 +126,18 @@ class MailAssist
         extract($this->data ?? []);
         include static::$tplPath . '/tpl/mail/' . $this->template;
         return ob_get_clean();
+    }
+
+    protected function normalizeEmails(string $raw): array
+    {
+        $parts = preg_split('/[;,]+/', strip_tags($raw)) ?: [];
+        $emails = [];
+        foreach ($parts as $part) {
+            $email = trim($part);
+            if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emails[] = $email;
+            }
+        }
+        return array_values(array_unique($emails));
     }
 }
