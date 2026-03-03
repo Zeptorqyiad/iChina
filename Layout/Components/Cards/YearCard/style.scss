@@ -75,7 +75,8 @@
             left: 0;
             text-transform: uppercase;
             color: var(--gray-medium);
-            writing-mode: sideways-lr;
+            -webkit-writing-mode: vertical-rl;
+            writing-mode: vertical-rl;
             text-orientation: mixed;
             text-align: left;
             user-select: none;
@@ -83,7 +84,9 @@
             transform: translateY(0);
             @include h2;
             @include transition((color, opacity, transform), var(--transition-timing), linear);
-            @include truncate(1);
+            white-space: nowrap;
+            overflow: visible;
+            text-overflow: clip;
             @include spacing(left, 24px, 16px, 10px, 6px);
             @include spacing(bottom, 20px, 20px, 20px, 20px);
 

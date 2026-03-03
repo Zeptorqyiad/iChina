@@ -42,8 +42,10 @@
                 @include spacing(top, -50px, -50px, -35px, -35px);
                 @include spacing(left, -15px, -15px, -5px, -5px);
                 @include icon(120px);
-                overflow: visible;
-                object-fit: cover;
+                display: block;
+                object-fit: contain;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0) scale(3);
 
                 @include Tablet {
                     @include icon(100px);
