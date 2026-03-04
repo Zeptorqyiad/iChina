@@ -37,6 +37,8 @@
     <link rel="preload" href="https://cdn.sn9.ru/lib/fancybox/5.0/fancybox.umd.js" as="script">
     <script src="https://cdn.sn9.ru/lib/fancybox/5.0/fancybox.umd.js" defer></script>
 
+    <script src="https://smartcaptcha.cloud.yandex.ru/captcha.js" defer></script>
+
     <!-- Canonical URL -->
     <link rel="canonical" href="<?= url(Simflex\Core\Container::getRequest()->getPath()) ?>"/>
 

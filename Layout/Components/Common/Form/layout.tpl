@@ -13,6 +13,12 @@ $formId = uniqid('form_');
     <input type="hidden" name="from_uri" value="">
     <input type="hidden" name="from_title" value="">
 
+    <div
+        id="captcha-container"
+        class="smart-captcha"
+        data-sitekey="<?= env('YA_CAPTCHA_KEY') ?>"
+    ></div>
+
     <div class="form__inputs">
         <?php
             App\Layout\Components\UI\Core\TextInput\Layout::drawInput(
